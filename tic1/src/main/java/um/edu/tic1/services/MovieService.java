@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.repositories.MovieRepository;
 
+import java.util.List;
+
 @Service
 public class MovieService {
 
@@ -19,4 +21,9 @@ public class MovieService {
     public void save(Movie movie) {
         mr.save(movie);
     }
+
+    public List<Movie> read() {
+        return mr.findAll();
+    }
+
 }

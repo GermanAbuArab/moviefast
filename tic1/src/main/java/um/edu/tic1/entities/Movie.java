@@ -13,10 +13,12 @@ public class Movie {
     Long id;
     String name;
     String description;
+    String estreno;
 
-    public Movie(String name,String description){
+    public Movie(String name,String description, String estreno){
         this.description=description;
         this.name=name;
+        this.estreno=estreno;
 
     }
 
