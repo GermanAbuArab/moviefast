@@ -12,52 +12,63 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.AddMovieController">
-   <left>
-      <VBox prefHeight="349.0" prefWidth="129.0" style="-fx-background-color: #6697e3;" BorderPane.alignment="CENTER" />
-   </left>
-   <top>
-      <VBox BorderPane.alignment="CENTER">
-         <children>
-            <HBox style="-fx-background-color: #e8e7e3;">
-               <children>
-                  <ImageView fitHeight="59.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.AddMovieController">
+    <left>
+        <VBox prefHeight="349.0" prefWidth="129.0" style="-fx-background-color: #6697e3;" BorderPane.alignment="CENTER" />
+    </left>
+    <top>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <HBox style="-fx-background-color: #e8e7e3;">
+                    <children>
+                        <ImageView fitHeight="59.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
 
-                     </image>
-                  </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Agregar Pelicula" wrappingWidth="253.13671875">
-                     <font>
-                        <Font size="32.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="8.0" top="8.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </top>
-   <center>
-      <AnchorPane prefHeight="349.0" prefWidth="333.0" BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="nombrePelicula" layoutX="32.0" layoutY="46.0" prefHeight="29.0" prefWidth="172.0" promptText="Pelicula" />
-            <Button layoutX="156.0" layoutY="263.0" mnemonicParsing="false" onAction="#addMovie" prefHeight="37.0" prefWidth="154.0" text="Agregar Pelicula" textFill="#0a0a0a" />
-            <Label layoutX="32.0" layoutY="15.0" text="Nombre de pelicula:">
-               <font>
-                  <Font name="Arial" size="15.0" />
-               </font>
-            </Label>
-            <Button fx:id="addScene" layoutX="23.0" layoutY="262.0" mnemonicParsing="false" onAction="#mostrarPelis" prefHeight="34.0" prefWidth="113.0" text="Mostrar pelis" textFill="#222020" />
-            <TextField fx:id="descripcion" alignment="TOP_LEFT" layoutX="25.0" layoutY="111.0" prefHeight="38.0" prefWidth="270.0" promptText="Breve descripcion.." />
-            <TextField fx:id="estreno" layoutX="27.0" layoutY="190.0" promptText="Año de estreno" />
-            <Label layoutX="28.0" layoutY="80.0" text="Descripcion:">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-   </center>
+                            </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Agregar Pelicula" wrappingWidth="253.13671875">
+                            <font>
+                                <Font size="32.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="8.0" top="8.0" />
+                            </HBox.margin>
+                        </Text>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <AnchorPane prefHeight="349.0" prefWidth="333.0" BorderPane.alignment="CENTER">
+            <children>
+                <TextField fx:id="nombrePelicula" layoutX="38.0" layoutY="66.0" prefHeight="29.0" prefWidth="172.0" promptText="Pelicula" />
+                <Button layoutX="154.0" layoutY="310.0" mnemonicParsing="false" onAction="#addMovie" prefHeight="25.0" prefWidth="154.0" text="Agregar Pelicula" textFill="#0a0a0a" />
+                <Label layoutX="38.0" layoutY="35.0" text="Nombre de pelicula:">
+                    <font>
+                        <Font name="Arial" size="15.0" />
+                    </font>
+                </Label>
+                <Button layoutX="38.0" layoutY="310.0" mnemonicParsing="false" onAction="#addScene" prefHeight="25.0" prefWidth="62.0" text="Volver" textFill="#222020" />
+                <TextField fx:id="categoria" alignment="TOP_LEFT" layoutX="38.0" layoutY="257.0" prefHeight="28.0" prefWidth="270.0" promptText="Categoria" />
+                <Label layoutX="38.0" layoutY="103.0" text="Descripcion:">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="descripcion" alignment="TOP_LEFT" layoutX="38.0" layoutY="131.0" prefHeight="31.0" prefWidth="270.0" promptText="Breve descripcion.." />
+                <TextField fx:id="genero" alignment="TOP_LEFT" layoutX="38.0" layoutY="197.0" prefHeight="24.0" prefWidth="270.0" promptText="Genero" />
+                <Label layoutX="38.0" layoutY="234.0" text="Categoria">
+                    <font>
+                        <Font name="Arial" size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="38.0" layoutY="175.0" text="Genero">
+                    <font>
+                        <Font name="Arial" size="15.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </center>
 </BorderPane>

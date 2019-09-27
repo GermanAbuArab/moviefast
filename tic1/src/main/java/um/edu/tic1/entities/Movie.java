@@ -10,16 +10,17 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
-    String name;
-    String description;
-    String estreno;
+    private     Long id;
+    private String name;
+    private String description;
+    private String genero;
+    private String categoria;
 
-    public Movie(String name,String description, String estreno){
+    public Movie(String name,String description,String genero,String categoria){
         this.description=description;
         this.name=name;
-        this.estreno=estreno;
-
+        this.categoria=categoria;
+        this.genero=genero;
     }
 
     public Movie() {
