@@ -20,26 +20,27 @@ import um.edu.tic1.Tic1Application;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.MovieService;
 
-import javax.print.DocFlavor;
 import java.io.IOException;
 import java.util.List;
-import java.util.ResourceBundle;
 
 @Component
-public class mostrarController {
+public class MostrarController {
+
 
     @Autowired
     private MovieService ms;
 
 
-    public mostrarController(){
+    public MostrarController() {
         System.out.println("Entro");
 
     }
 
-    @FXML private TableView<Movie> tabla;
+    @FXML
+    private TableView<Movie> tabla;
 
-    @FXML private TableColumn<Movie,String> nombrePeli;
+    @FXML
+    private TableColumn<Movie, String> nombrePeli;
 
     @FXML
     private TextField nombrePelicula, descripcion, estreno;
@@ -48,20 +49,20 @@ public class mostrarController {
     private void volver(ActionEvent event) throws IOException {  // vuelve a la scena
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
-        Parent inicio = fxmlLoader.load(getClass().getResource("/templates/addMovie.fxml"));
+        Parent inicio = fxmlLoader.load(getClass().getResource("/templates/mostrar.fxml"));
         Scene inicioScene = new Scene(inicio);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
     }
 
-    public ObservableList<Movie> getMovie(){
+    public ObservableList<Movie> getMovie() {
 
         ObservableList<Movie> movie = FXCollections.observableArrayList();
 
-        List<Movie> lista = ms.read();
+        List<Movie> lista = ms.findAll();
 
-        for(int i=0;i<lista.size();i++){
+        for (int i = 0; i < lista.size(); i++) {
             movie.add(lista.get(i));
         }
 
@@ -70,7 +71,7 @@ public class mostrarController {
 
     public void initialize() {
         //set up the columns in the table
-       nombrePeli.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nombrePeli.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         //load dummy data
         tabla.setItems(getMovie());

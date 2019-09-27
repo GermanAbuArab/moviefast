@@ -6,14 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.tic1.Tic1Application;
 import um.edu.tic1.entities.Movie;
-import um.edu.tic1.repositories.MovieRepository;
 import um.edu.tic1.services.MovieService;
 
 import java.io.IOException;
@@ -32,16 +30,16 @@ public class AddMovieController {
 
     @FXML
     private TextField nombrePelicula, descripcion,genero,categoria;
-    @FXML
-    public void mostrarPelis2(){
-
-        List<Movie> lista = ms.read();
-
-        for(int i=0;i<lista.size();i++){
-            System.out.println("Nombre: " +lista.get(i).getName());
-        }
-
-    }
+//    @FXML
+//    public void mostrarPelis2(){
+//
+//        List<Movie> lista = ms.findAll();
+//
+//        for(int i=0;i<lista.size();i++){
+//            System.out.println("Nombre: " +lista.get(i).getName());
+//        }
+//
+//    }
 
     @FXML
     public void addMovie(){

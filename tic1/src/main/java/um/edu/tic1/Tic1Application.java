@@ -39,7 +39,7 @@ public class Tic1Application extends Application {
 	public void start(Stage primaryStage) throws Exception{
 		fxmlLoader = new FXMLLoader();
 		fxmlLoader.setControllerFactory(context::getBean);
-		root = fxmlLoader.load(getClass().getResourceAsStream("/templates/addMovie.fxml"));
+		root = fxmlLoader.load(getClass().getResourceAsStream("/templates/mostrar.fxml"));
 		primaryStage.setTitle("MovieFast");
 		primaryStage.setScene( new Scene(root,600,500));
 		primaryStage.show();
