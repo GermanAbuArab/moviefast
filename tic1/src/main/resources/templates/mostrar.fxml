@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.MostrarController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.MostrarController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -61,9 +61,12 @@
                         <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#volver" text="Volver" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                      </children>
                   </AnchorPane>
-                  <TableView fx:id="tabla" prefHeight="375.0" prefWidth="640.0">
+                  <TableView fx:id="tabla" editable="true" prefHeight="375.0" prefWidth="640.0">
                     <columns>
                       <TableColumn fx:id="nombrePeli" prefWidth="75.0" text="Nombre" />
+                        <TableColumn fx:id="nombrePeli1" prefWidth="75.0" text="Descripcion" />
+                        <TableColumn fx:id="nombrePeli11" prefWidth="75.0" text="Genero" />
+                        <TableColumn fx:id="nombrePeli111" prefWidth="75.0" text="Categoria" />
                     </columns>
                   </TableView>
               </items>
