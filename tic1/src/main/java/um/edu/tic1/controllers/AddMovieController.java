@@ -1,5 +1,6 @@
 package um.edu.tic1.controllers;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 import um.edu.tic1.Tic1Application;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.MovieService;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -70,7 +72,7 @@ public class AddMovieController {
     private void mostrarPelis(ActionEvent event) throws IOException {  // vuelve a la scena
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
-        Parent inicio = fxmlLoader.load(getClass().getResource("/templates/mostrar.fxml"));
+        Parent inicio = fxmlLoader.load(getClass().getResource("/templates/addMovie.fxml"));
         Scene inicioScene = new Scene(inicio);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);

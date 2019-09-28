@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.MostrarController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.MostrarController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -54,7 +54,7 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <SplitPane dividerPositions="0.12852664576802508" layoutX="220.0" layoutY="68.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+            <SplitPane dividerPositions="0.11912225705329153" layoutX="220.0" layoutY="68.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
@@ -64,9 +64,9 @@
                   <TableView fx:id="tabla" editable="true" prefHeight="375.0" prefWidth="640.0">
                     <columns>
                       <TableColumn fx:id="nombrePeli" prefWidth="75.0" text="Nombre" />
-                        <TableColumn fx:id="nombrePeli1" prefWidth="75.0" text="Descripcion" />
-                        <TableColumn fx:id="nombrePeli11" prefWidth="75.0" text="Genero" />
-                        <TableColumn fx:id="nombrePeli111" prefWidth="75.0" text="Categoria" />
+                        <TableColumn fx:id="descripcion" prefWidth="75.0" text="Descripcion" />
+                        <TableColumn fx:id="categoria" prefWidth="75.0" text="Categoria" />
+                        <TableColumn fx:id="genero" prefWidth="75.0" text="Genero" />
                     </columns>
                   </TableView>
               </items>

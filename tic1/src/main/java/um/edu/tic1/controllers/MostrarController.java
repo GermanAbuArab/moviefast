@@ -43,13 +43,22 @@ public class MostrarController {
     private TableColumn<Movie, String> nombrePeli;
 
     @FXML
-    private TextField nombrePelicula, descripcion, estreno;
+    private TableColumn<Movie, String> categoria;
+
+    @FXML
+    private TableColumn<Movie, String> descripcion;
+
+    @FXML
+    private TableColumn<Movie, String> genero;
+
+    //@FXML
+    //private TextField nombrePelicula, descripcion, estreno;
 
     @FXML
     private void volver(ActionEvent event) throws IOException {  // vuelve a la scena
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
-        Parent inicio = fxmlLoader.load(getClass().getResource("/templates/mostrar.fxml"));
+        Parent inicio = fxmlLoader.load(getClass().getResource("/templates/addMovie.fxml"));
         Scene inicioScene = new Scene(inicio);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
@@ -70,8 +79,13 @@ public class MostrarController {
     }
 
     public void initialize() {
+
         //set up the columns in the table
+        genero.setCellValueFactory(new PropertyValueFactory<>("genero"));
         nombrePeli.setCellValueFactory(new PropertyValueFactory<>("name"));
+        categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        descripcion.setCellValueFactory(new PropertyValueFactory<>("description"));
+
 
         //load dummy data
         tabla.setItems(getMovie());
@@ -80,6 +94,8 @@ public class MostrarController {
         //to be editable
         tabla.setEditable(true);
         nombrePeli.setCellFactory(TextFieldTableCell.forTableColumn());
+        categoria.setCellFactory(TextFieldTableCell.forTableColumn());
+        genero.setCellFactory(TextFieldTableCell.forTableColumn());
 
     }
 

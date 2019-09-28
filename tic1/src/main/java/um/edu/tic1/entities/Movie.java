@@ -8,9 +8,10 @@ import javax.persistence.*;
 @Table(name="movies")
 public class Movie {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private     Long id;
+    private Long id;
     private String name;
     private String description;
     private String genero;
@@ -48,5 +49,21 @@ public class Movie {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }
