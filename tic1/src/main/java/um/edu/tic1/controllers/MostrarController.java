@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -96,6 +97,11 @@ public class MostrarController {
         nombrePeli.setCellFactory(TextFieldTableCell.forTableColumn());
         categoria.setCellFactory(TextFieldTableCell.forTableColumn());
         genero.setCellFactory(TextFieldTableCell.forTableColumn());
+
+
+        //This will allow the table to select multiple rows at once
+        //vamos a usar esto para poder marcar varias y eliminarlas
+        tabla.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
     }
 
