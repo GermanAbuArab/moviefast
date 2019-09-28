@@ -72,7 +72,7 @@ public class AddMovieController {
     private void mostrarPelis(ActionEvent event) throws IOException {  // vuelve a la scena
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
-        Parent inicio = fxmlLoader.load(getClass().getResource("/templates/addMovie.fxml"));
+        Parent inicio = fxmlLoader.load(getClass().getResource("/templates/mostrar.fxml"));
         Scene inicioScene = new Scene(inicio);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);

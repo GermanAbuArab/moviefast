@@ -55,7 +55,7 @@ public class MostrarController {
     //private TextField nombrePelicula, descripcion, estreno;
 
     @FXML
-    private void volver(ActionEvent event) throws IOException {  // vuelve a la scena
+    private void volver(ActionEvent event)throws IOException {  // vuelve a la scena
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
         Parent inicio = fxmlLoader.load(getClass().getResource("/templates/addMovie.fxml"));
