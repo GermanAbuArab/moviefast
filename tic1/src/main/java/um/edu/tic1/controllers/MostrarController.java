@@ -67,6 +67,14 @@ public class MostrarController {
         window.show();
     }
 
+    @FXML
+    private void eliminar(ActionEvent event)throws IOException {
+       tabla.getItems().removeAll(tabla.getSelectionModel().getSelectedItem());
+       ms.getMovieRepository().delete(getMovie().remove(tabla.getSelectionModel().getFocusedIndex()));
+
+
+    }
+
     public ObservableList<Movie> getMovie() {
 
         ObservableList<Movie> movie = FXCollections.observableArrayList();

@@ -59,7 +59,7 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
                         <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#volver" text="Agregar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <Button layoutY="73.0" mnemonicParsing="false" text="Eliminar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <Button layoutY="73.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <Button cache="true" layoutY="114.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="80.0" text="Aplicar " textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                      </children>
                   </AnchorPane>
