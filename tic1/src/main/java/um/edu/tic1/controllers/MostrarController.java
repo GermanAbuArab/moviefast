@@ -55,6 +55,32 @@ public class MostrarController {
     //@FXML
     //private TextField nombrePelicula, descripcion, estreno;
 
+    public void initialize() {
+
+        //set up the columns in the table
+        genero.setCellValueFactory(new PropertyValueFactory<>("genero"));
+        nombrePeli.setCellValueFactory(new PropertyValueFactory<>("name"));
+        categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        descripcion.setCellValueFactory(new PropertyValueFactory<>("description"));
+
+
+        //load dummy data
+        tabla.setItems(getMovie());
+
+        //Update the table to allow for the first and last name fields
+        //to be editable
+        tabla.setEditable(true); //
+        nombrePeli.setCellFactory(TextFieldTableCell.forTableColumn());
+        categoria.setCellFactory(TextFieldTableCell.forTableColumn());
+        genero.setCellFactory(TextFieldTableCell.forTableColumn());
+
+
+        //This will allow the table to select multiple rows at once
+        //vamos a usar esto para poder marcar varias y eliminarlas
+        tabla.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+    }
+
     @FXML
     private void volver(ActionEvent event)throws IOException {  // vuelve a la scena
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -76,6 +102,12 @@ public class MostrarController {
 
     }
 
+    @FXML
+    private void aplicar(ActionEvent event)throws IOException{
+
+    }
+
+
     public ObservableList<Movie> getMovie() {
 
         ObservableList<Movie> movie = FXCollections.observableArrayList();
@@ -89,31 +121,16 @@ public class MostrarController {
         return movie;
     }
 
-    public void initialize() {
 
-        //set up the columns in the table
-        genero.setCellValueFactory(new PropertyValueFactory<>("genero"));
-        nombrePeli.setCellValueFactory(new PropertyValueFactory<>("name"));
-        categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-        descripcion.setCellValueFactory(new PropertyValueFactory<>("description"));
+    public void editNombreCommit(TableColumn.CellEditEvent<Movie, String> movieStringCellEditEvent) {
 
+        //PROBLEMA DE EFICIENCIA CON ESTE METODO, EDITA TODA LA PELICULA PARA EDITAR UN CAMPO
 
-        //load dummy data
-        tabla.setItems(getMovie());
-
-        //Update the table to allow for the first and last name fields
-        //to be editable
-        tabla.setEditable(false); //
-        nombrePeli.setCellFactory(TextFieldTableCell.forTableColumn());
-        categoria.setCellFactory(TextFieldTableCell.forTableColumn());
-        genero.setCellFactory(TextFieldTableCell.forTableColumn());
-
-
-        //This will allow the table to select multiple rows at once
-        //vamos a usar esto para poder marcar varias y eliminarlas
-        tabla.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        long idEdit = tabla.getSelectionModel().getSelectedItem().getId();
+        Movie movie = tabla.getSelectionModel().getSelectedItem();
+        movie.setName(movieStringCellEditEvent.getNewValue());
+        ms.getMovieRepository().deleteById(idEdit);
+        ms.getMovieRepository().save(movie);
 
     }
-
-
 }
