@@ -65,6 +65,8 @@ public class AddMovieController {
         //}
         nombrePelicula.clear();
         descripcion.clear();
+        categoria.clear();
+        genero.clear();
 
     }
 
