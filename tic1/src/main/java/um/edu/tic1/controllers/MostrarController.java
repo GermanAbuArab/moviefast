@@ -69,6 +69,7 @@ public class MostrarController {
 
     @FXML
     private void eliminar(ActionEvent event)throws IOException {
+        // todo hay que arreglar el tema de que si apretas eliminar sin apretar sobra nada tira una excepcion, hay que cathcearla y que salte un cartelito
        tabla.getItems().removeAll(tabla.getSelectionModel().getSelectedItem());
        ms.getMovieRepository().delete(getMovie().remove(tabla.getSelectionModel().getFocusedIndex()));
 
