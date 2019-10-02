@@ -102,7 +102,7 @@ public class MostrarController {
 
         //Update the table to allow for the first and last name fields
         //to be editable
-        tabla.setEditable(true);
+        tabla.setEditable(false); //
         nombrePeli.setCellFactory(TextFieldTableCell.forTableColumn());
         categoria.setCellFactory(TextFieldTableCell.forTableColumn());
         genero.setCellFactory(TextFieldTableCell.forTableColumn());
