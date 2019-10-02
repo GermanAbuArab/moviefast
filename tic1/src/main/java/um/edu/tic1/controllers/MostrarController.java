@@ -102,11 +102,6 @@ public class MostrarController {
 
     }
 
-    @FXML
-    private void aplicar(ActionEvent event)throws IOException{
-
-    }
-
 
     public ObservableList<Movie> getMovie() {
 
@@ -126,11 +121,19 @@ public class MostrarController {
 
         //PROBLEMA DE EFICIENCIA CON ESTE METODO, EDITA TODA LA PELICULA PARA EDITAR UN CAMPO
 
-        long idEdit = tabla.getSelectionModel().getSelectedItem().getId();
-        Movie movie = tabla.getSelectionModel().getSelectedItem();
+        this.idEdit = tabla.getSelectionModel().getSelectedItem().getId();
+        this.movie = tabla.getSelectionModel().getSelectedItem();
         movie.setName(movieStringCellEditEvent.getNewValue());
+
+    }
+
+    private Movie movie;
+    private long idEdit;
+
+    @FXML
+    private void aplicar(ActionEvent event)throws IOException{
+        //problema no se puede editar de a mas de a uno, podira solucionarse con un arraylist de movies en lugar de una sola.
         ms.getMovieRepository().deleteById(idEdit);
         ms.getMovieRepository().save(movie);
-
     }
 }
