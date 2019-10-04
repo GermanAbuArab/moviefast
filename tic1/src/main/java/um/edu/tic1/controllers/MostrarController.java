@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
@@ -21,6 +20,7 @@ import um.edu.tic1.Tic1Application;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.MovieService;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -52,6 +52,8 @@ public class MostrarController {
     @FXML
     private TableColumn<Movie, String> genero;
 
+    @FXML
+    private Button btn_nav, home_icon;
     //@FXML
     //private TextField nombrePelicula, descripcion, estreno;
 
@@ -88,6 +90,7 @@ public class MostrarController {
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/addMovie.fxml"));
         Scene inicioScene = new Scene(inicio);
+        inicioScene.getStylesheets().add("templates/styles.css");
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
