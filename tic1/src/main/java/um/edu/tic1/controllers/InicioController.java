@@ -1,6 +1,5 @@
 package um.edu.tic1.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 import um.edu.tic1.Tic1Application;
+import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
@@ -32,13 +32,14 @@ public class InicioController {
         window.show();
     }
 
-    public void usuarioFinal(ActionEvent actionEvent)throws IOException {
+    @FXML
+    public void usuarioFinal(ActionEvent event)throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
         Scene inicioScene = new Scene(inicio);
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
     }
