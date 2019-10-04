@@ -31,4 +31,15 @@ public class InicioController {
         window.setScene(inicioScene);
         window.show();
     }
+
+    public void usuarioFinal(ActionEvent actionEvent)throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
+        Scene inicioScene = new Scene(inicio);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(inicioScene);
+        window.show();
+    }
 }

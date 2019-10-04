@@ -9,6 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.MovieService;
 
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
 
 
 
-
+@Component
 public class ViewFilmsController implements Initializable {
 
     HBox hb = new HBox();
@@ -32,6 +33,7 @@ public class ViewFilmsController implements Initializable {
     @Autowired
     private MovieService ms;
 
+    @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -57,7 +59,6 @@ public class ViewFilmsController implements Initializable {
             for (int i = 0 ; i < rows; i++) {
                 for (int j = 0; j < columns; j++) {
                     if (indicePeli < movies.size()) {
-                        grid.a
                         indicePeli++;
                     }
                 }
