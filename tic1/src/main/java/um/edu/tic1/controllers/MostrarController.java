@@ -16,10 +16,10 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import sun.rmi.server.MarshalOutputStream;
 import um.edu.tic1.Tic1Application;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.MovieService;
-
 import java.awt.*;
 import java.io.IOException;
 import java.util.List;
@@ -36,6 +36,7 @@ public class MostrarController {
         System.out.println("Entro");
 
     }
+    private Movie peli;
 
     @FXML
     private TableView<Movie> tabla;
@@ -79,7 +80,7 @@ public class MostrarController {
 
         //This will allow the table to select multiple rows at once
         //vamos a usar esto para poder marcar varias y eliminarlas
-        tabla.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        //tabla.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
     }
 
@@ -99,9 +100,32 @@ public class MostrarController {
     @FXML
     private void eliminar(ActionEvent event)throws IOException {
         // todo hay que arreglar el tema de que si apretas eliminar sin apretar sobra nada tira una excepcion, hay que cathcearla y que salte un cartelito
-       tabla.getItems().removeAll(tabla.getSelectionModel().getSelectedItem());
-       ms.getMovieRepository().delete(getMovie().remove(tabla.getSelectionModel().getFocusedIndex()));
 
+            if (getMovie().isEmpty()){
+                AlertBox.display("Error","no hay peliculas que borrar");
+            }else {
+                if (tabla.getSelectionModel().getSelectedItem() == null) {
+                    AlertBox.display("Error", "Porfavor seleccione la pelicula que quiere borrar");
+                } else {
+                    tabla.getItems().removeAll(tabla.getSelectionModel().getSelectedItem());
+                    if (tabla.getSelectionModel().getSelectedIndex() != -1) {
+                        ms.getMovieRepository().delete(getMovie().remove(tabla.getSelectionModel().getSelectedIndex() + 1));
+                    } else {
+                            ms.getMovieRepository().delete(getMovie().remove(0));
+
+                    }
+                    System.out.println("borraste" + tabla.getSelectionModel().getSelectedIndex());
+
+                }
+            }
+
+      /*  if( tabla.getItems().isEmpty()){
+            AlertBox.display("Error","No  hay peliculas para borrar");
+        }
+        if(tabla.getSelectionModel().getSelectedItem() == null && tabla.getItems().isEmpty()==false ){
+            AlertBox.display("Error","Porfavor seleccione la pelicula que quiere borrar");
+
+        }*/
 
     }
 
