@@ -108,13 +108,16 @@ public class MostrarController {
                     AlertBox.display("Error", "Porfavor seleccione la pelicula que quiere borrar");
                 } else {
                     tabla.getItems().removeAll(tabla.getSelectionModel().getSelectedItem());
+
+
                     if (tabla.getSelectionModel().getSelectedIndex() != -1) {
-                        ms.getMovieRepository().delete(getMovie().remove(tabla.getSelectionModel().getSelectedIndex() + 1));
-                    } else {
-                            ms.getMovieRepository().delete(getMovie().remove(0));
+                        ms.getMovieRepository().delete(getMovie().remove(tabla.getSelectionModel().getSelectedIndex() +1));
 
                     }
-                    System.out.println("borraste" + tabla.getSelectionModel().getSelectedIndex());
+                    else {
+                        ms.getMovieRepository().delete(getMovie().get(0));
+                    }
+
 
                 }
             }
