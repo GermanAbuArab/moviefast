@@ -42,6 +42,7 @@ public class ViewFilmsController implements Initializable {
 
 
 
+
         }
 
     private ObservableList<Movie> getMovie() {
