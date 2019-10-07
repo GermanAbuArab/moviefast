@@ -31,7 +31,7 @@ public class AddMovieController {
     private MovieService ms;
 
     @FXML
-    private TextField nombrePelicula, descripcion,genero,categoria,imagenURL;
+    private TextField nombrePelicula, descripcion,genero,categoria;
 //    @FXML
 //    public void mostrarPelis2(){
 //
@@ -50,8 +50,7 @@ public class AddMovieController {
         String descripcion1=descripcion.getText();
         String categoria1= categoria.getText();
         String genero1=genero.getText();
-        String imagen1=imagenURL.getText();
-        Movie movie = new Movie(nombre,descripcion1,genero1,categoria1,imagen1);
+        Movie movie = new Movie(nombre,descripcion1,genero1,categoria1);
 
         //try {
         System.out.println("hasta aca llega , SI DEBUGEAMOS VEMOS QUE EL REPOSITORIO ES NULO");
@@ -68,7 +67,6 @@ public class AddMovieController {
         descripcion.clear();
         categoria.clear();
         genero.clear();
-        imagenURL.clear();
 
     }
 

@@ -16,7 +16,7 @@ public class Movie {
     private String description;
     private String genero;
     private String categoria;
-    private String imageURL;
+
     public Movie(String name,String description,String genero,String categoria){
         this.description=description;
         this.name=name;
@@ -24,7 +24,7 @@ public class Movie {
         this.genero=genero;
     }
 
-    public Movie(String nombre, String descripcion1, String genero1, String categoria1, String imagen1) {
+    public Movie() {
     }
 
     public Long getId() {
@@ -65,13 +65,5 @@ public class Movie {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
-    }
-
-    public String getImageURL() {
-        return imageURL;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
     }
 }
