@@ -41,37 +41,8 @@ public class ViewFilmsController implements Initializable {
 
 
 
-        /*
-        try {
 
-            ObservableList<Movie> movies = getMovie();
-
-            scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-
-
-            // gridpane settings
-            // setting exterior grid padding
-            grid.setPadding(new Insets(7,7,7,7));
-            // setting interior grid padding
-            grid.setHgap(10);
-            grid.setVgap(10);
-            // grid.setGridLinesVisible(true);
-
-            int rows = (movies.size() / 4) + 1;
-            int columns = 4;
-            int indicePeli = 0;
-
-            for (int i = 0 ; i < rows; i++) {
-                for (int j = 0; j < columns; j++) {
-                    if (indicePeli < movies.size()) {
-                        indicePeli++;
-                    }
-                }
-            }
         }
-        catch(Exception e) {
-            e.printStackTrace();
-        }}
 
     private ObservableList<Movie> getMovie() {
 
@@ -85,6 +56,5 @@ public class ViewFilmsController implements Initializable {
 
         return movie;
     }
-    */
+
     }
-}
