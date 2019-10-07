@@ -54,6 +54,9 @@ public class MostrarController {
     private TableColumn<Movie, String> genero;
 
     @FXML
+    private TableColumn<Movie, String> image;
+
+    @FXML
     private Button btn_nav, home_icon;
     //@FXML
     //private TextField nombrePelicula, descripcion, estreno;
@@ -65,7 +68,7 @@ public class MostrarController {
         nombrePeli.setCellValueFactory(new PropertyValueFactory<>("name"));
         categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         descripcion.setCellValueFactory(new PropertyValueFactory<>("description"));
-
+        image.setCellValueFactory(new PropertyValueFactory<>("peliuclas"));
 
         //load dummy data
         tabla.setItems(getMovie());
@@ -76,7 +79,8 @@ public class MostrarController {
         nombrePeli.setCellFactory(TextFieldTableCell.forTableColumn());
         categoria.setCellFactory(TextFieldTableCell.forTableColumn());
         genero.setCellFactory(TextFieldTableCell.forTableColumn());
-
+        descripcion.setCellFactory(TextFieldTableCell.forTableColumn());
+        image.setCellFactory(TextFieldTableCell.forTableColumn());
 
         //This will allow the table to select multiple rows at once
         //vamos a usar esto para poder marcar varias y eliminarlas
@@ -99,7 +103,6 @@ public class MostrarController {
 
     @FXML
     private void eliminar(ActionEvent event)throws IOException {
-        // todo hay que arreglar el tema de que si apretas eliminar sin apretar sobra nada tira una excepcion, hay que cathcearla y que salte un cartelito
 
             if (getMovie().isEmpty()){
                 AlertBox.display("Error","no hay peliculas que borrar");
