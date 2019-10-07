@@ -24,7 +24,7 @@ public class Movie {
         this.genero=genero;
     }
 
-    public Movie() {
+    public Movie(String nombre, String descripcion1, String genero1, String categoria1, String imagen1) {
     }
 
     public Long getId() {
