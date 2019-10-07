@@ -3,20 +3,28 @@ package um.edu.tic1.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import um.edu.tic1.Tic1Application;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.MovieService;
+import javafx.event.ActionEvent;
 
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -70,7 +78,16 @@ public class ViewFilmsController implements Initializable {
 
     }
 
+        public void movie(ActionEvent event)throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/Movie.fxml"));
+        Scene inicioScene = new Scene(inicio,1000,1000);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(inicioScene);
+        window.show();
+    }
 
 
     private ObservableList<Movie> getMovie() {

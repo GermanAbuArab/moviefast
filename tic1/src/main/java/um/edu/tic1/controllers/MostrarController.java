@@ -91,9 +91,8 @@ public class MostrarController {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
-        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/addMovie.fxml"));
-        Scene inicioScene = new Scene(inicio);
-        inicioScene.getStylesheets().add("templates/styles.css");
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/resources/templates/addMovie.fxml"));
+        Scene inicioScene = new Scene(inicio,1000,1000);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
