@@ -41,7 +41,7 @@ public class Tic1Application extends Application {
 		fxmlLoader.setControllerFactory(context::getBean);
 		root = fxmlLoader.load(getClass().getResourceAsStream("/templates/inicio.fxml"));
 		primaryStage.setTitle("MovieFast");
-		primaryStage.setScene( new Scene(root,600,500));
+		primaryStage.setScene( new Scene(root,1200,1600));
 		primaryStage.show();
 	}
 

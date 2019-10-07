@@ -53,8 +53,6 @@ public class MostrarController {
     @FXML
     private TableColumn<Movie, String> genero;
 
-    @FXML
-    private TableColumn<Movie, String> image;
 
     @FXML
     private Button btn_nav, home_icon;
@@ -68,7 +66,7 @@ public class MostrarController {
         nombrePeli.setCellValueFactory(new PropertyValueFactory<>("name"));
         categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         descripcion.setCellValueFactory(new PropertyValueFactory<>("description"));
-        image.setCellValueFactory(new PropertyValueFactory<>("peliuclas"));
+
 
         //load dummy data
         tabla.setItems(getMovie());
@@ -80,7 +78,7 @@ public class MostrarController {
         categoria.setCellFactory(TextFieldTableCell.forTableColumn());
         genero.setCellFactory(TextFieldTableCell.forTableColumn());
         descripcion.setCellFactory(TextFieldTableCell.forTableColumn());
-        image.setCellFactory(TextFieldTableCell.forTableColumn());
+
 
         //This will allow the table to select multiple rows at once
         //vamos a usar esto para poder marcar varias y eliminarlas
