@@ -16,7 +16,7 @@ public class Movie {
     private String description;
     private String genero;
     private String categoria;
-
+    private String imageURL;
     public Movie(String name,String description,String genero,String categoria){
         this.description=description;
         this.name=name;
@@ -65,5 +65,13 @@ public class Movie {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }
