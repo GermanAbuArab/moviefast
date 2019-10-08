@@ -38,6 +38,7 @@ public class InicioController {
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
+        inicio.getStylesheets().add("/templates/styles.css");
         Scene inicioScene = new Scene(inicio);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);

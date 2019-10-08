@@ -6,10 +6,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.springframework.stereotype.Component;
 import um.edu.tic1.Tic1Application;
 
 import java.io.IOException;
 
+@Component
 public class MovieController {
 
   /*  public void movie(ActionEvent event)throws IOException {

@@ -4,6 +4,7 @@ package um.edu.tic1.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,7 +22,7 @@ import java.util.List;
 
 
 @Component
-public class AddMovieController {
+public class AddMovieController  {
 
     public AddMovieController() {
         System.out.println( "SKERE");

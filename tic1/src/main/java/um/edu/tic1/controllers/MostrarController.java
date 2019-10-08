@@ -91,7 +91,7 @@ public class MostrarController {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
-        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/resources/templates/addMovie.fxml"));
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/addMovie.fxml"));
         Scene inicioScene = new Scene(inicio,1000,1000);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
@@ -163,7 +163,7 @@ public class MostrarController {
     @FXML
     private void aplicar(ActionEvent event)throws IOException{
         //problema no se puede editar de a mas de a uno, podira solucionarse con un arraylist de movies en lugar de una sola.
-        ms.getMovieRepository().deleteById(idEdit);
+            ms.getMovieRepository().deleteById(idEdit);
         ms.getMovieRepository().save(movie);
     }
 }

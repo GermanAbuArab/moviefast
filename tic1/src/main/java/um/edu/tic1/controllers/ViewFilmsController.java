@@ -77,7 +77,7 @@ public class ViewFilmsController implements Initializable {
         grid.add(pic2,0,1);
 
     }
-
+        @FXML
         public void movie(ActionEvent event)throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
