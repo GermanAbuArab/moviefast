@@ -40,7 +40,7 @@
         </VBox>
     </top>
     <center>
-        <AnchorPane prefHeight="349.0" prefWidth="333.0" BorderPane.alignment="CENTER">
+        <AnchorPane id="anchorPane" fx:id="anchorPane" prefHeight="349.0" prefWidth="333.0" BorderPane.alignment="CENTER">
             <children>
                 <TextField fx:id="nombrePelicula" layoutX="38.0" layoutY="66.0" prefHeight="29.0" prefWidth="172.0" promptText="Pelicula" />
                 <Button layoutX="210.0" layoutY="359.0" mnemonicParsing="false" onAction="#addMovie" prefHeight="25.0" prefWidth="154.0" text="Agregar Pelicula" textFill="#0a0a0a" />
@@ -74,7 +74,7 @@
             </Label>
                 <Button layoutX="40.0" layoutY="359.0" mnemonicParsing="false" onAction="#mostrarPelis" prefHeight="25.0" prefWidth="62.0" text="Volver" textFill="#222020" />
             <TextField layoutX="38.0" layoutY="308.0" prefHeight="25.0" prefWidth="211.0" />
-            <Button layoutX="272.0" layoutY="308.0" mnemonicParsing="false" text="Agregar" />
+            <Button layoutX="272.0" layoutY="308.0" mnemonicParsing="false" onAction="#addImage" text="Agregar" />
             </children>
         </AnchorPane>
     </center>

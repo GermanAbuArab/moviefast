@@ -9,6 +9,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,6 +19,8 @@ import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.MovieService;
 
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -32,7 +36,12 @@ public class AddMovieController  {
     private MovieService ms;
 
     @FXML
+     private AnchorPane anchorPane;
+
+    @FXML
     private TextField nombrePelicula, descripcion,genero,categoria;
+    @FXML
+    private File imagen;
 //    @FXML
 //    public void mostrarPelis2(){
 //
@@ -43,14 +52,27 @@ public class AddMovieController  {
 //        }
 //
 //    }
-
     @FXML
-    public void addMovie(){
+    public File addImage() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open file dialog");
+        Stage stage = (Stage)anchorPane.getScene().getWindow();
+        imagen =fileChooser.showOpenDialog(stage);
+        if (imagen != null){
+            return imagen;
+        }
+        else return null;
+    }
+
+        @FXML
+    public void addMovie() throws IOException {
 
         String nombre=nombrePelicula.getText();
         String descripcion1=descripcion.getText();
         String categoria1= categoria.getText();
         String genero1=genero.getText();
+
+
         Movie movie = new Movie(nombre,descripcion1,genero1,categoria1);
 
         //try {
