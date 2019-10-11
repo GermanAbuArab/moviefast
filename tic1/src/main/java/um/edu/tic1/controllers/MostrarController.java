@@ -87,12 +87,23 @@ public class MostrarController {
     }
 
     @FXML
-    private void volver(ActionEvent event)throws IOException {  // vuelve a la scena
+    private void agregar(ActionEvent event)throws IOException {  // vuelve a la scena
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/addMovie.fxml"));
-        Scene inicioScene = new Scene(inicio,1000,1000);
+        Scene inicioScene = new Scene(inicio,600,500);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(inicioScene);
+        window.show();
+    }
+    @FXML
+    private void volver(ActionEvent event)throws IOException {  // vuelve a la scena
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/inicio.fxml"));
+        Scene inicioScene = new Scene(inicio,600,500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
