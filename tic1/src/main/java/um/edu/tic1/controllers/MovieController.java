@@ -35,6 +35,7 @@ public class MovieController {
 
     @FXML
     private void volver(ActionEvent event)throws IOException {  // vuelve a la scena
+
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
@@ -44,6 +45,7 @@ public class MovieController {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
+
     }
     public ObservableList<Movie> getMovie() {
 

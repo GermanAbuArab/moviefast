@@ -2,10 +2,13 @@ package um.edu.tic1.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,6 +31,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -36,12 +40,19 @@ import java.util.ResourceBundle;
 @Component
 public class ViewFilmsController implements Initializable {
 
+
+    ArrayList<File> fileList = new ArrayList<File>();
     HBox hb = new HBox();
+    File imagen = new File("descarga.jpg");
 
     @FXML
     private ScrollPane scrollPane;
     @FXML
     private GridPane grid;
+    @FXML
+    ImageView pic;
+    @FXML
+    Image imagen1;
     @FXML
     private Button btn_nav, home_icon;
 
@@ -51,46 +62,70 @@ public class ViewFilmsController implements Initializable {
     private MovieService ms;
 
     public void initialize(URL location, ResourceBundle resources) {
+        int b=0;
+        while (b<4){
+            fileList.add(imagen);
+            b++;
+        }
 
-//
-//        Image imgUsa = new Image ("http://gifimage.net/wp-content/uploads/2017/06/american-flag-gif-13.gif");
-//        Image imgChina = new Image ("http://bestanimations.com/Flags/Asia/china/chinese-flag-waving-gif-animation-10.gif");
-//
-//        ImageView ivUsa = new ImageView(imgUsa);
-//        ImageView ivChina = new ImageView(imgChina);
-//
-      /*  Image image = new Image ("descarga.jpg");
+        grid.setPadding(new Insets(50,7,7,7));
+        // setting interior grid padding
+        grid.setHgap(10);
+        grid.setVgap(150);
 
-        ImageView pic = new ImageView();
-        ImageView pic1 = new ImageView();
-        ImageView pic2 = new ImageView();
-        pic.setFitWidth(175);
+        // grid.setGridLinesVisible(true);
+
+        int rows = (fileList.size() / 2) + 1;
+        int columns = 2;
+        int imageIndex = 0;
+        for (int i = 0 ; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (imageIndex < fileList.size()) {
+                    addImage(imageIndex, j, i);
+                    imageIndex++;
+                }
+            }
+        }
+        fileList.clear();
+
+
+    }
+
+    private void addImage(int index, int colIndex, int rowIndex) {
+
+        String idToCut = fileList.get(index).getName();
+        String id = idToCut.substring(0, (idToCut.length() - 4));
+        imagen1 = new Image("descarga.jpg");
+        pic = new ImageView();
+        pic.setFitWidth(150);
         pic.setFitHeight(150);
-        pic.setImage(image);
-        pic1.setFitWidth(175);
-        pic1.setFitHeight(150);
-        pic1.setImage(image);
-        pic2.setFitWidth(175);
-        pic2.setFitHeight(150);
-        pic2.setImage(image);
+        pic.setImage(imagen1);
+        pic.setId(id);
+        grid.add(pic,colIndex,rowIndex);
 
+        pic.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
-        grid.add(pic,0,0);
-        grid.add(pic1,1,0);
-        grid.add(pic2,0,1);
-        */
+            public void handle(MouseEvent event) {
+
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+
+                Parent inicio = null;
+                try {
+                    inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/Movie.fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Scene inicioScene = new Scene(inicio,600,500);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(inicioScene);
+                window.show();
+
+            }
+        });
     }
-        @FXML
-        public void movie(MouseEvent event)throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
-        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/Movie.fxml"));
-        Scene inicioScene = new Scene(inicio,600,500);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(inicioScene);
-        window.show();
-    }
+
 
     @FXML
     private void iniciarSesion(ActionEvent event)throws IOException {  // vuelve a la scena

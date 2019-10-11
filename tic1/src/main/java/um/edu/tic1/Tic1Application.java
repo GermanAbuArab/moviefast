@@ -16,7 +16,24 @@ public class Tic1Application extends Application {
 
 	private static ConfigurableApplicationContext context;
 	private FXMLLoader fxmlLoader;
-	private Parent root;
+	private static Parent root;
+	static Stage primaryStage;
+
+
+
+	public static void setRoot(Parent root) {
+
+		Tic1Application.root = root;
+	}
+
+	public static Stage getStage() {
+
+		return primaryStage;
+	}
+
+	public static Parent getRoot() {
+		return root;
+	}
 
 	@Override
 	public void init() {
@@ -57,5 +74,7 @@ public class Tic1Application extends Application {
 	public void stop() {
 		Tic1Application.getContext().close();
 	}
+
+
 
 }
