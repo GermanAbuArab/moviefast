@@ -50,9 +50,22 @@ public class ViewFilmsController implements Initializable {
     @FXML
     private GridPane grid;
     @FXML
-    ImageView pic;
+    ImageView pic,imagenInicio,imagenRecomendados,imagenTeatros,imagenMap,imagenLogin,imagenMovieFast;
     @FXML
     Image imagen1;
+    @FXML
+    Image ImagenInicio = new Image("assets/icono_inicio.png");
+   @FXML
+    Image ImagenRecomendados = new Image("assets/icono_fav.png");
+    @FXML
+    Image ImagenTeatros = new Image("assets/icono_teatro.png");
+    @FXML
+    Image ImagenMap = new Image("assets/icono_map.png");
+    @FXML
+    Image ImagenLogin = new Image("assets/icono_login.png");
+    @FXML
+    Image ImagenMovieFast = new Image("assets/icono_movieFast.png");
+
     @FXML
     private Button btn_nav, home_icon;
 
@@ -62,6 +75,32 @@ public class ViewFilmsController implements Initializable {
     private MovieService ms;
 
     public void initialize(URL location, ResourceBundle resources) {
+
+        imagenInicio.setFitWidth(25);
+        imagenInicio.setFitHeight(25);
+        imagenInicio.setImage(ImagenInicio);
+
+        imagenLogin.setFitWidth(25);
+        imagenLogin.setFitHeight(25);
+        imagenLogin.setImage(ImagenLogin);
+
+        imagenMovieFast.setFitWidth(30);
+        imagenMovieFast.setFitHeight(30);
+        imagenMovieFast.setImage(ImagenMovieFast);
+
+        imagenRecomendados.setFitWidth(25);
+        imagenRecomendados.setFitHeight(25);
+        imagenRecomendados.setImage(ImagenRecomendados);
+
+        imagenTeatros.setFitWidth(25);
+        imagenTeatros.setFitHeight(25);
+        imagenTeatros.setImage(ImagenTeatros);
+
+        imagenMap.setFitWidth(25);
+        imagenMap.setFitHeight(25);
+        imagenMap.setImage(ImagenMap);
+
+
         int b=0;
         while (b<4){
             fileList.add(imagen);
