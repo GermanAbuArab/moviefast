@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -23,6 +24,7 @@ import um.edu.tic1.services.MovieService;
 import javafx.event.ActionEvent;
 
 import java.awt.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -44,6 +46,7 @@ public class ViewFilmsController implements Initializable {
     private Button btn_nav, home_icon;
 
 
+
     @Autowired
     private MovieService ms;
 
@@ -56,7 +59,7 @@ public class ViewFilmsController implements Initializable {
 //        ImageView ivUsa = new ImageView(imgUsa);
 //        ImageView ivChina = new ImageView(imgChina);
 //
-        Image image = new Image ("descarga.jpg");
+      /*  Image image = new Image ("descarga.jpg");
 
         ImageView pic = new ImageView();
         ImageView pic1 = new ImageView();
@@ -75,15 +78,15 @@ public class ViewFilmsController implements Initializable {
         grid.add(pic,0,0);
         grid.add(pic1,1,0);
         grid.add(pic2,0,1);
-
+        */
     }
         @FXML
-        public void movie(ActionEvent event)throws IOException {
+        public void movie(MouseEvent event)throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/Movie.fxml"));
-        Scene inicioScene = new Scene(inicio,1000,1000);
+        Scene inicioScene = new Scene(inicio,600,500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
