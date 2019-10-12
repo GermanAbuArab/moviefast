@@ -22,6 +22,7 @@ public class MovieService {
         mr.save(movie);
     }
 
+
     public List<Movie> findAll() {
         return mr.findAll();
     }

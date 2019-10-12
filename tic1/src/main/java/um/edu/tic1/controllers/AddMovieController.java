@@ -64,7 +64,7 @@ public class AddMovieController  {
         else return null;
     }
 
-        @FXML
+    @FXML
     public void addMovie() throws IOException {
 
         String nombre=nombrePelicula.getText();
