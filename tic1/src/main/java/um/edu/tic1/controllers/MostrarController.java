@@ -142,6 +142,18 @@ public class MostrarController {
 
     }
 
+    public void cines(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/addCine.fxml"));
+        Scene inicioScene = new Scene(inicio,600,500);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(inicioScene);
+        window.show();
+
+    }
+
 
     public ObservableList<Movie> getMovie() {
 
@@ -176,4 +188,6 @@ public class MostrarController {
             ms.getMovieRepository().deleteById(idEdit);
         ms.getMovieRepository().save(movie);
     }
+
+
 }
