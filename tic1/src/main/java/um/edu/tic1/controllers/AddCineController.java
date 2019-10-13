@@ -61,7 +61,7 @@ public class AddCineController {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
-        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/mostrar.fxml"));
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/tablaCines.fxml"));
         Scene inicioScene = new Scene(inicio,600,500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
