@@ -14,12 +14,15 @@ public class Cine {
     private String name;
     private ArrayList<Sala> salas = new ArrayList<>();
 
-    private void agregarSala(Sala sala){
+    public void agregarSala(Sala sala){
         salas.add(sala);
     }
 
     public Cine(String nombre) {
         this.name = nombre;
+    }
+
+    public Cine() {
     }
 
     public Long getId() {
