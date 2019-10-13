@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,7 +33,7 @@ public class SignInController {
     private TextField nombreUsuario;
 
     @FXML
-    private TextField password;
+    private PasswordField password;
 
     @FXML
     private Button signIn;
@@ -58,12 +59,20 @@ public class SignInController {
         String contra = password.getText();
         Usuario usuario = new Usuario(userName,nombre,contra);
 
+        if (us.getUr().findByName(userName)!=null) {
+            if (us.getUr().findByName(userName).getUserName().equals(userName)) {
+                AlertBox.display("Registro","Lo siento,ese usuario ya exsite,porfavor elija otro");
+                Nombre.clear();
+                nombreUsuario.clear();
+                password.clear();
+            }
+        }else {
             us.save(usuario);
             Nombre.clear();
             nombreUsuario.clear();
             password.clear();
-        AlertBox.display("Registro", "Registro Completo");
-
+            AlertBox.display("Registro", "Registro Completo");
+        }
 
         //todo al crear nuevo usuario habria que cambiar de escena
 

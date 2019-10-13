@@ -22,6 +22,10 @@ public class UsuarioService {
         ur.save(usuario);
     }
 
+    public void delete(Usuario usuario){
+               ur.delete(usuario);
+    }
+
 
     public List<Usuario> findAll() {
         return ur.findAll();
