@@ -62,6 +62,7 @@
             <Label layoutX="400.0" layoutY="29.0" text="Nombre" />
             <Label layoutX="400.0" layoutY="106.0" text="Nombre de usuario" />
             <Label layoutX="400.0" layoutY="182.0" text="Contraseña" />
+            <Button layoutX="365.0" layoutY="281.0" mnemonicParsing="false" onAction="#volver" text="Volver" />
       </children>
     </AnchorPane>
   </children>

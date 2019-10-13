@@ -23,6 +23,11 @@ public class Usuario {
         this.password = password;
     }
 
+    public String getUserName(){
+        return userName;
+    }
+
+
     public Usuario(){
     }
 }

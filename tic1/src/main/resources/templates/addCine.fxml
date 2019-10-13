@@ -49,6 +49,7 @@
                         <Font name="Arial" size="15.0" />
                     </font>
                 </Label>
+            <Button layoutX="12.0" layoutY="359.0" mnemonicParsing="false" onAction="#volver" text="Volver" />
             </children>
         </AnchorPane>
     </center>

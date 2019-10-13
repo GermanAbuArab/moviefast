@@ -1,11 +1,18 @@
 package um.edu.tic1.controllers;
 
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import um.edu.tic1.Tic1Application;
 import um.edu.tic1.entities.Cine;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.CineService;
@@ -46,6 +53,20 @@ public class AddCineController {
         //  e.printStackTrace();
         //}
         nombreCine.clear();
+    }
+
+    @FXML
+    private void volver(ActionEvent event)throws IOException {  // vuelve a la scena
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/mostrar.fxml"));
+        Scene inicioScene = new Scene(inicio,600,500);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(inicioScene);
+        window.show();
+
     }
 
 
