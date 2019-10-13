@@ -21,4 +21,28 @@ public class Cine {
     public Cine(String nombre) {
         this.name = nombre;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<Sala> getSalas() {
+        return salas;
+    }
+
+    public void setSalas(ArrayList<Sala> salas) {
+        this.salas = salas;
+    }
 }

@@ -61,6 +61,11 @@
                   </Button>
                </children>
             </HBox>
+            <Button fx:id="SignIn" mnemonicParsing="false" onAction="#SignIn" prefHeight="31.0" prefWidth="137.0" styleClass="icon_boton" text="Register">
+               <graphic>
+                  <ImageView fx:id="imagenLogin1" fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Button>
          </children>
       </VBox>
    </top>
