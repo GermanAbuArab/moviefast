@@ -24,14 +24,14 @@ import java.io.IOException;
 import java.util.List;
 
 @Component
-public class MostrarController {
+public class TablaMoviesController {
 
 
     @Autowired
     private MovieService ms;
 
 
-    public MostrarController() {
+    public TablaMoviesController() {
         System.out.println("Entro");
 
     }

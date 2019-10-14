@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.loginController">
+   <top>
+      <VBox prefHeight="52.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="196.0" layoutY="27.0" text="Usuario:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="197.0" layoutY="88.0" text="Contraseña:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField layoutX="196.0" layoutY="52.0" promptText="Usuario" />
+            <PasswordField layoutX="196.0" layoutY="115.0" promptText="Contraseña" />
+            <Button layoutX="316.0" layoutY="198.0" mnemonicParsing="false" onAction="#ingresar" text="Ingresar" />
+            <Button layoutX="165.0" layoutY="198.0" mnemonicParsing="false" onAction="#volver" text="Volver" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
