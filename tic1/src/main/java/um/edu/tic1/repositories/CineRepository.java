@@ -14,4 +14,6 @@ public interface CineRepository extends JpaRepository<Cine,Long> {
     List<Cine> findAllByName(String name);
     Cine findByName(String name);
 
+    @Override
+    List<Cine> findAll();
 }

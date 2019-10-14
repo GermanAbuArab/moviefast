@@ -31,7 +31,7 @@ public class vistaCinesController {
 
     private Cine cine;
 
-    public void setCine(Cine cine){
+    public void setCine(Cine cine) {
         this.cine = cine;
     }
 
@@ -62,14 +62,13 @@ public class vistaCinesController {
         nombreSala.setCellFactory(TextFieldTableCell.forTableColumn());
 
 
-
         //This will allow the table to select multiple rows at once
         //vamos a usar esto para poder marcar varias y eliminarlas
         //tabla.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
 
-
     }
+
     public ObservableList<Sala> getSalas() {
 
         ObservableList<Sala> salas = FXCollections.observableArrayList();
@@ -82,10 +81,6 @@ public class vistaCinesController {
 
         return salas;
     }
-
-
-
-
 
 
     @FXML
@@ -106,8 +101,9 @@ public class vistaCinesController {
         this.cine.agregarSala(sala);
         Cine cine2 = this.cine;
         nombreAgregado.clear();
-        cineService.save(cine2);
         initialize();
+        // cineService.save(cine2);
+
 
     }
 
@@ -117,7 +113,7 @@ public class vistaCinesController {
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
         this.cine = null;
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/inicio.fxml"));
-        Scene inicioScene = new Scene(inicio,600,500);
+        Scene inicioScene = new Scene(inicio, 600, 500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();

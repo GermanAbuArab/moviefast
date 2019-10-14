@@ -13,6 +13,7 @@ public class Cine {
     private Long id;
 
     private String name;
+    //todo manytoone
     private ArrayList<Sala> salas = new ArrayList<>();
 
     public void agregarSala(Sala sala){
