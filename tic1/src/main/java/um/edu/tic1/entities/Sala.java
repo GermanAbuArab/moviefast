@@ -2,6 +2,8 @@ package um.edu.tic1.entities;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -12,6 +14,8 @@ public class Sala {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+
+
 
     public Sala(){
 
