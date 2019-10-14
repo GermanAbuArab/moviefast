@@ -171,7 +171,7 @@ public class MostrarController {
 
     public void editNombreCommit(TableColumn.CellEditEvent<Movie, String> movieStringCellEditEvent) {
 
-        //PROBLEMA DE EFICIENCIA CON ESTE METODO, EDITA TODA LA PELICULA PARA EDITAR UN CAMPO
+        //todo PROBLEMA DE EFICIENCIA CON ESTE METODO, EDITA TODA LA PELICULA PARA EDITAR UN CAMPO
 
         this.idEdit = tabla.getSelectionModel().getSelectedItem().getId();
         this.movie = tabla.getSelectionModel().getSelectedItem();
@@ -184,7 +184,7 @@ public class MostrarController {
 
     @FXML
     private void aplicar(ActionEvent event)throws IOException{
-        //problema no se puede editar de a mas de a uno, podira solucionarse con un arraylist de movies en lugar de una sola.
+        // todo problema no se puede editar de a mas de a uno, podira solucionarse con un arraylist de movies en lugar de una sola.
             ms.getMovieRepository().deleteById(idEdit);
         ms.getMovieRepository().save(movie);
     }

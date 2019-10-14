@@ -55,7 +55,7 @@ public class AddMovieController  {
     @FXML
     public File addImage() throws IOException {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open file dialog");
+        fileChooser.setTitle("Elija su imagen");
         Stage stage = (Stage)anchorPane.getScene().getWindow();
         imagen =fileChooser.showOpenDialog(stage);
         if (imagen != null){

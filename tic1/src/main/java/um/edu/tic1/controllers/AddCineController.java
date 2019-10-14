@@ -21,7 +21,9 @@ import um.edu.tic1.services.MovieService;
 import java.io.IOException;
 
 @Component
-public class AddCineController {
+public class
+
+AddCineController {
 
     @Autowired
     private CineService cs;
@@ -34,7 +36,7 @@ public class AddCineController {
 
 
     @FXML
-    public void addMovie() throws IOException {
+    public void addCine() throws IOException {
 
         String nombre=nombreCine.getText();
 

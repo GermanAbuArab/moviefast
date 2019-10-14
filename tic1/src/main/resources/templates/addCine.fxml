@@ -43,7 +43,7 @@
         <AnchorPane id="anchorPane" fx:id="anchorPane" prefHeight="349.0" prefWidth="333.0" BorderPane.alignment="CENTER">
             <children>
                 <TextField fx:id="nombreCine" layoutX="38.0" layoutY="66.0" prefHeight="29.0" prefWidth="172.0" promptText="Nombre" />
-                <Button layoutX="210.0" layoutY="359.0" mnemonicParsing="false" onAction="#addMovie" prefHeight="25.0" prefWidth="154.0" text="Agregar Cine" textFill="#0a0a0a" />
+                <Button layoutX="210.0" layoutY="359.0" mnemonicParsing="false" onAction="#addCine" prefHeight="25.0" prefWidth="154.0" text="Agregar Cine" textFill="#0a0a0a" />
                 <Label layoutX="38.0" layoutY="35.0" text="Nombre del cine:">
                     <font>
                         <Font name="Arial" size="15.0" />

@@ -11,6 +11,7 @@ public class Cine {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String name;
     private ArrayList<Sala> salas = new ArrayList<>();
 

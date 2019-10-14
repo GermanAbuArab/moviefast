@@ -11,20 +11,20 @@ import java.util.List;
 public class CineService{
 
     @Autowired
-    private CineRepository cs;
+    private CineRepository cr;
 
     public CineRepository getMovieRepository() {
-        return cs;
+        return cr;
     }
 
 
     public void save(Cine cine) {
-        cs.save(cine);
+        cr.save(cine);
     }
 
 
     public List<Cine> findAll() {
-        return cs.findAll();
+        return cr.findAll();
     }
 
 }
