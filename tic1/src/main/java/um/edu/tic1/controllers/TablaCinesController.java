@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
+import org.hibernate.loader.Loader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import um.edu.tic1.Tic1Application;
@@ -58,6 +59,8 @@ public class TablaCinesController {
 
     @Autowired
     private CineService cs;
+    @Autowired
+    private vistaCinesController vc;
 
     private ObservableList<Cine> getCine() {
 
@@ -123,5 +126,24 @@ public class TablaCinesController {
         window.setScene(inicioScene);
         window.show();
 
+    }
+
+    public void entrar(ActionEvent event) throws IOException {
+
+        Cine cine = tabla.getSelectionModel().getSelectedItem();
+        vc.setCine(cine);
+        if (cine == null){
+            AlertBox.display("Error","Seleccione un cine");
+        }else {
+
+
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+            Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/vistaCines.fxml"));
+            Scene inicioScene = new Scene(inicio, 600, 500);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(inicioScene);
+            window.show();
+        }
     }
 }

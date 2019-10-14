@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
@@ -18,35 +19,47 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import um.edu.tic1.Tic1Application;
 import um.edu.tic1.entities.Cine;
+import um.edu.tic1.entities.Movie;
+import um.edu.tic1.entities.Sala;
 import um.edu.tic1.services.CineService;
 
 import java.io.IOException;
 import java.util.List;
 
 @Controller
-public class TablaCinesController {
+public class vistaCinesController {
+
+    private Cine cine;
+
+    public void setCine(Cine cine){
+        this.cine = cine;
+    }
+
+    @Autowired
+    private CineService cineService;
 
     @FXML
-    private Button botonAplicar;
+    private TableView<Sala> tabla;
 
     @FXML
-    private TableView<Cine> tabla;
-
+    private TableColumn<Sala, String> nombreSala;
     @FXML
-    private TableColumn<Cine, String> nombrePeli;
+    private TextField nombreAgregado;
+
 
     public void initialize() {
 
+
         //set up the columns in the table
-        nombrePeli.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nombreSala.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         //load dummy data
-        tabla.setItems(getCine());
+        tabla.setItems(getSalas());
 
         //Update the table to allow for the first and last name fields
         //to be editable
         tabla.setEditable(true); //
-        nombrePeli.setCellFactory(TextFieldTableCell.forTableColumn());
+        nombreSala.setCellFactory(TextFieldTableCell.forTableColumn());
 
 
 
@@ -54,37 +67,26 @@ public class TablaCinesController {
         //vamos a usar esto para poder marcar varias y eliminarlas
         //tabla.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
+
+
     }
+    public ObservableList<Sala> getSalas() {
 
-    @Autowired
-    private CineService cs;
+        ObservableList<Sala> salas = FXCollections.observableArrayList();
 
-    private ObservableList<Cine> getCine() {
-
-        ObservableList<Cine> movie = FXCollections.observableArrayList();
-
-        List<Cine> lista = cs.findAll();
+        List<Sala> lista = cine.getSalas();
 
         for (int i = 0; i < lista.size(); i++) {
-            movie.add(lista.get(i));
+            salas.add(lista.get(i));
         }
 
-        return movie;
+        return salas;
     }
 
 
 
-    @FXML
-    void agregar(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
-        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/addCine.fxml"));
-        Scene inicioScene = new Scene(inicio,600,500);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(inicioScene);
-        window.show();
-    }
+
 
     @FXML
     void aplicar(ActionEvent event) {
@@ -97,7 +99,15 @@ public class TablaCinesController {
     }
 
     @FXML
-    void eliminar(ActionEvent event) {
+    void agregarSala(ActionEvent event) {
+        String nombre = nombreAgregado.getText();
+        Sala sala = new Sala();
+        sala.setName(nombre);
+        this.cine.agregarSala(sala);
+        Cine cine2 = this.cine;
+        nombreAgregado.clear();
+        cineService.save(cine2);
+        initialize();
 
     }
 
@@ -105,7 +115,7 @@ public class TablaCinesController {
     void volver(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
-
+        this.cine = null;
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/inicio.fxml"));
         Scene inicioScene = new Scene(inicio,600,500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -113,15 +123,5 @@ public class TablaCinesController {
         window.show();
     }
 
-    public void peliculas(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
-        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/mostrar.fxml"));
-        Scene inicioScene = new Scene(inicio,600,500);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(inicioScene);
-        window.show();
-
-    }
 }
