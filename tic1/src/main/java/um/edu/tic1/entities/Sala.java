@@ -15,6 +15,9 @@ public class Sala {
     private Long id;
     private String name;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_cine")
+    private Cine cine;
 
 
     public Sala(){
