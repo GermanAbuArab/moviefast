@@ -1,5 +1,5 @@
 package um.edu.tic1.entities;
-
+/*
 import javax.persistence.*;
 import java.awt.*;
 import java.util.Date;
@@ -20,4 +20,4 @@ public class Funcion {
     @JoinColumn(name = "fk_order")
     private Sala sala;
 
-}
+}*/

@@ -132,6 +132,7 @@ public class ViewFilmsController implements Initializable {
 
     private void addImage(int index, int colIndex, int rowIndex) {
 
+
         String idToCut = fileList.get(index).getName();
         String id = idToCut.substring(0, (idToCut.length() - 4));
         imagen1 = new Image("descarga.jpg");
@@ -145,6 +146,8 @@ public class ViewFilmsController implements Initializable {
         pic.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
             public void handle(MouseEvent event) {
+            Movie movie = getMovie().get(index);
+
 
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
@@ -155,6 +158,9 @@ public class ViewFilmsController implements Initializable {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+                MovieController movieController = fxmlLoader.getController();
+                movieController.loadData(movie);
                 Scene inicioScene = new Scene(inicio,600,500);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(inicioScene);
@@ -163,6 +169,8 @@ public class ViewFilmsController implements Initializable {
             }
         });
     }
+
+
 
 
 

@@ -26,11 +26,15 @@ public class MovieController {
     @Autowired
     private MovieService ms;
 
+    public void loadData(Movie movie){
+        nombre.setText(movie.getName());
+        descripcion.setText(movie.getDescription());
+        genero.setText(movie.getGenero());
+        categoria.setText(movie.getCategoria());
+    }
+
     public void initialize() {
-        nombre.setText(ms.getMovieRepository().findByName("pep").getName());
-        descripcion.setText(ms.getMovieRepository().findByName("pep").getDescription());
-        genero.setText(ms.getMovieRepository().findByName("pep").getGenero());
-        categoria.setText(ms.getMovieRepository().findByName("pep").getDescription());
+
     }
 
     @FXML

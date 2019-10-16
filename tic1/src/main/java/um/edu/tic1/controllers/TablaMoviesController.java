@@ -189,6 +189,12 @@ public class TablaMoviesController {
         ms.getMovieRepository().save(movie);
     }
 
+    public TableView<Movie> getTabla(){
+        return tabla;
+    }
+
+
+
 
 
 }
