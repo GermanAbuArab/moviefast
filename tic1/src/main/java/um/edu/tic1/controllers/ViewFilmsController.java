@@ -102,7 +102,7 @@ public class ViewFilmsController implements Initializable {
 
 
         int b=0;
-        while (b<6){
+        while (b<getMovie().size()){
             fileList.add(imagen);
             b++;
         }
