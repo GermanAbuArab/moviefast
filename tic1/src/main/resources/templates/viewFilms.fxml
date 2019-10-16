@@ -51,21 +51,27 @@
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <Button mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="31.0" prefWidth="96.0" styleClass="icon_boton" text="Login">
+                  <Button mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="31.0" prefWidth="96.0" styleClass="icon_boton" stylesheets="@styles.css" text="Login" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="8.0" top="8.0" />
                      </HBox.margin>
                      <graphic>
-                        <ImageView fx:id="imagenLogin" fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imagenLogin" fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" styleClass="icon_boton" />
                      </graphic>
+                     <font>
+                        <Font name="Arial Narrow" size="12.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="SignIn" mnemonicParsing="false" onAction="#SignIn" prefHeight="31.0" prefWidth="100.0" styleClass="icon_boton" text="Register">
+                  <Button fx:id="SignIn" mnemonicParsing="false" onAction="#SignIn" prefHeight="31.0" prefWidth="100.0" styleClass="icon_boton" text="Register" textFill="WHITE">
                      <graphic>
                         <ImageView fx:id="imagenLogin1" fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                      <HBox.margin>
                         <Insets right="8.0" top="8.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
                   </Button>
                </children>
             </HBox>
@@ -152,6 +158,9 @@
                      </font>
                   </Label>
                </children>
+               <VBox.margin>
+                  <Insets top="4.0" />
+               </VBox.margin>
             </HBox>
             <AnchorPane prefHeight="372.0" prefWidth="387.0">
                <children>
@@ -159,6 +168,8 @@
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -167,6 +178,9 @@
                     </rowConstraints>
                   </GridPane>
                </children>
+               <VBox.margin>
+                  <Insets top="8.0" />
+               </VBox.margin>
             </AnchorPane>
          </children>
       </VBox>

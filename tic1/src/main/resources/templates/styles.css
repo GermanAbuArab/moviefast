@@ -1,5 +1,5 @@
 
-.btn_nav, .search_button{
+.btn_nav, .search_button, .btn_login . btn_register{
     -fx-background-color: #6697e3;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 15, 0, 0, 0);
 }
@@ -12,7 +12,7 @@
     -fx-opacity: 0.8;
 }
 .icon_boton{
-    -fx-background-color: #e8e7e3;
+    -fx-background-color: #6697e3;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 15, 0, 0, 0);
 
 }

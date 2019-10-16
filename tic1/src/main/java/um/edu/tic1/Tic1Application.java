@@ -59,7 +59,7 @@ public class Tic1Application extends Application {
 		root = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
 		root.getStylesheets().add("/templates/styles.css");
 		primaryStage.setTitle("MovieFast");
-		primaryStage.setScene( new Scene(root,800,500));
+		primaryStage.setScene( new Scene(root,1000,500));
 		primaryStage.show();
 	}
 

@@ -109,13 +109,13 @@ public class ViewFilmsController implements Initializable {
 
         grid.setPadding(new Insets(50,7,7,7));
         // setting interior grid padding
-        grid.setHgap(10);
+        grid.setHgap(150);
         grid.setVgap(150);
 
         // grid.setGridLinesVisible(true);
 
         int rows = (fileList.size() / 2) + 1;
-        int columns = 2;
+        int columns = 4;
         int imageIndex = 0;
         for (int i = 0 ; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
