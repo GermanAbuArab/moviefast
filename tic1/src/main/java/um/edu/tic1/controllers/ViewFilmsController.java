@@ -181,6 +181,7 @@ public class ViewFilmsController implements Initializable {
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/login.fxml"));
         Scene inicioScene = new Scene(inicio,600,500);
+        inicioScene.getStylesheets().add("/templates/styles.css");
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();

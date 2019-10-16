@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,10 @@ import java.util.List;
 public class MovieController {
     @FXML
     private Text nombre,descripcion,genero,categoria;
+
     @Autowired
     private MovieService ms;
+
 
     public void loadData(Movie movie){
         nombre.setText(movie.getName());
@@ -34,6 +38,7 @@ public class MovieController {
     }
 
     public void initialize() {
+
 
     }
 
@@ -45,7 +50,7 @@ public class MovieController {
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");
-        Scene inicioScene = new Scene(inicio,800,500);
+        Scene inicioScene = new Scene(inicio,1000,500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
