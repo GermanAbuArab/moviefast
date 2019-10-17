@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.ViewFilmsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="720.0" styleClass="fondoViewFilms" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.ViewFilmsController">
    <top>
       <VBox styleClass="top_nav" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
@@ -79,7 +79,7 @@
       </VBox>
    </top>
    <left>
-      <VBox prefHeight="377.0" prefWidth="233.0" style="-fx-background-color: #2a68c9;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="377.0" prefWidth="233.0" BorderPane.alignment="CENTER">
          <children>
             <HBox>
                <children>
@@ -148,11 +148,11 @@
       </VBox>
    </left>
    <center>
-      <VBox BorderPane.alignment="CENTER">
+      <VBox prefHeight="401.0" prefWidth="382.0" BorderPane.alignment="CENTER">
          <children>
             <HBox>
                <children>
-                  <Label text="Cartelera">
+                  <Label text="Cartelera" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="32.0" />
                      </font>
@@ -183,6 +183,9 @@
                </VBox.margin>
             </AnchorPane>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </VBox>
    </center>
    <right>
@@ -190,7 +193,7 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Comprar">
+                  <Label text="Comprar" textFill="WHITE">
                      <font>
                         <Font size="21.0" />
                      </font>

@@ -12,6 +12,10 @@
     -fx-background-color: #6697e3;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 15, 0, 0, 0);
 }
+.fondoViewFilms{
+    -fx-background-image: url(../assets/fondoviewFilms.jpg);
+    -fx-background-size: cover;
+}
 
 .text-field{
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 15, 0, 0, 0);
