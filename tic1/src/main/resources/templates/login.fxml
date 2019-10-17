@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -34,34 +33,37 @@
                      </HBox.margin>
                   </Text>
                   <Region prefHeight="50.0" prefWidth="127.0" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onAction="#volver" styleClass="icon_boton" text="Volver" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets right="8.0" top="8.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
          </children>
       </VBox>
    </top>
-   <center>
-      <AnchorPane style="-fx-background-color: #dce3d2;" styleClass="fondo_login" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+   <left>
+      <AnchorPane styleClass="fondo_login" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="317.0" layoutY="22.0" text="Usuario:">
-               <font>
-                  <Font name="Arial" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="317.0" layoutY="88.0" text="Contraseña:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField layoutX="317.0" layoutY="53.0" promptText="Usuario" />
-            <PasswordField layoutX="317.0" layoutY="115.0" promptText="Contraseña" />
-            <Button layoutX="411.0" layoutY="186.0" mnemonicParsing="false" onAction="#ingresar" styleClass="icon_boton" text="Ingresar" textFill="WHITE" />
-            <Button layoutX="321.0" layoutY="186.0" mnemonicParsing="false" onAction="#volver" styleClass="icon_boton" text="Volver" textFill="WHITE" />
-            <ImageView fitHeight="259.0" fitWidth="226.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/assets/login_user.jpg" />
-               </image>
-            </ImageView>
+            <AnchorPane layoutX="24.0" layoutY="44.0" prefHeight="223.0" prefWidth="218.0" style="-fx-background-color: #e8e7e3;" styleClass="fondoAux">
+               <children>
+                  <TextField layoutX="26.0" layoutY="52.0" promptText="Usuario" />
+                  <Label layoutX="24.0" layoutY="24.0" text="Usuario:">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="24.0" layoutY="102.0" text="Contraseña:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <PasswordField layoutX="26.0" layoutY="129.0" promptText="Contraseña" />
+                  <Button layoutX="71.0" layoutY="176.0" mnemonicParsing="false" onAction="#ingresar" styleClass="icon_boton" text="Ingresar" textFill="WHITE" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
-   </center>
+   </left>
 </BorderPane>

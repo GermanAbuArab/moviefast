@@ -1,3 +1,12 @@
+.fondo_login{
+    -fx-background-image: url(../assets/fondoLogin.jpg);
+    -fx-background-size: cover;
+}
+.fondoAux{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 15, 0, 0, 0);
+    -fx-background-radius: 18 18 18 18;
+    -fx-border-radius: 18 18 18 18;
+}
 
 .btn_nav, .search_button, .btn_login . btn_register{
     -fx-background-color: #6697e3;
@@ -7,6 +16,7 @@
 .text-field{
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 15, 0, 0, 0);
 }
+
 
 .btn_nav:hover, .search_button:hover , .icon_boton:hover{
     -fx-cursor: pointer;
@@ -20,9 +30,4 @@
 
 .top_nav{
     -fx-background-color: #e8e7e3;
-}
-
-.fondo_login{
-    -fx-background-image: url("assets/login_user.jpg") ;
-
 }
