@@ -2,22 +2,24 @@ package um.edu.tic1.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,7 +36,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
+import java.util.function.Predicate;
 
 
 @Component
@@ -65,16 +67,20 @@ public class ViewFilmsController implements Initializable {
     Image ImagenLogin = new Image("assets/icono_login.png");
     @FXML
     Image ImagenMovieFast = new Image("assets/icono_movieFast.png");
+    @FXML
+    private TextField buscar;
+
 
     @FXML
     private Button btn_nav, home_icon;
-
 
 
     @Autowired
     private MovieService ms;
 
     public void initialize(URL location, ResourceBundle resources) {
+
+
 
         imagenInicio.setFitWidth(25);
         imagenInicio.setFitHeight(25);
@@ -130,6 +136,7 @@ public class ViewFilmsController implements Initializable {
 
     }
 
+
     private void addImage(int index, int colIndex, int rowIndex) {
 
 
@@ -155,13 +162,14 @@ public class ViewFilmsController implements Initializable {
                 Parent inicio = null;
                 try {
                     inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/Movie.fxml"));
+                    inicio.getStylesheets().add("/templates/styles.css");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
                 MovieController movieController = fxmlLoader.getController();
                 movieController.loadData(movie);
-                Scene inicioScene = new Scene(inicio,600,500);
+                Scene inicioScene = new Scene(inicio,600,400);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(inicioScene);
                 window.show();
@@ -169,6 +177,8 @@ public class ViewFilmsController implements Initializable {
             }
         });
     }
+
+
 
 
 

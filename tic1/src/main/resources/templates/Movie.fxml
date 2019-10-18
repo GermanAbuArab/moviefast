@@ -8,9 +8,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.MovieController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="fondoFilm" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.MovieController">
    <children>
-      <ImageView fitHeight="289.0" fitWidth="234.0" layoutX="24.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="274.0" fitWidth="219.0" layoutX="24.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@/descarga.jpg" />
          </image>
@@ -38,8 +38,11 @@
       <Text id="nombre" fx:id="nombre" layoutX="343.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <Text id="genero" fx:id="genero" layoutX="343.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <Text id="categoria" fx:id="categoria" layoutX="364.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Button layoutX="41.0" layoutY="352.0" mnemonicParsing="false" onAction="#volver" prefHeight="25.0" prefWidth="60.0" text="Volver" />
-      <Button layoutX="475.0" layoutY="352.0" mnemonicParsing="false" text="Comprar" />
+      <Button layoutX="36.0" layoutY="352.0" mnemonicParsing="false" onAction="#volver" prefHeight="34.0" prefWidth="76.0" styleClass="btn_volver" text="Volver" />
+      <Button layoutX="475.0" layoutY="352.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="84.0" styleClass="btn_comprar" text="Comprar">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></Button>
       <Text id="descripcion" fx:id="descripcion" layoutX="300.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="22.13671875" />
    </children>
 </AnchorPane>

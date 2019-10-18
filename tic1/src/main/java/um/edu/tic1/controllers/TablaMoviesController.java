@@ -2,6 +2,8 @@ package um.edu.tic1.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,6 +25,7 @@ import um.edu.tic1.services.MovieService;
 import java.awt.*;
 import java.io.IOException;
 import java.util.List;
+import java.util.function.Predicate;
 
 @Component
 public class TablaMoviesController {
@@ -40,6 +44,7 @@ public class TablaMoviesController {
     @FXML
     private TableView<Movie> tabla;
 
+
     @FXML
     private TableColumn<Movie, String> nombrePeli;
 
@@ -52,13 +57,18 @@ public class TablaMoviesController {
     @FXML
     private TableColumn<Movie, String> genero;
 
+    @FXML
+    private javafx.scene.control.TextField buscar;
 
     @FXML
     private Button btn_nav, home_icon;
+
     //@FXML
     //private TextField nombrePelicula, descripcion, estreno;
 
     public void initialize() {
+
+
 
         //set up the columns in the table
         genero.setCellValueFactory(new PropertyValueFactory<>("genero"));
@@ -67,8 +77,25 @@ public class TablaMoviesController {
         descripcion.setCellValueFactory(new PropertyValueFactory<>("description"));
 
 
-        //load dummy data
-        tabla.setItems(getMovie());
+        FilteredList filteredData = new FilteredList(getMovie(),e -> true);
+
+        buscar.textProperty().addListener(((observable, oldValue, newValue) -> {
+            filteredData.setPredicate((Predicate<? super Movie>)(Movie movie) ->{
+
+                if(newValue.isEmpty() || newValue==null){
+                    return true;
+                }else if (movie.getName().contains(newValue)){
+                    return true;
+                }else if (movie.getGenero().contains(newValue)){
+                    return true;
+                }
+                return false;
+            });
+        }));
+        SortedList sortedList = new SortedList(filteredData);
+        sortedList.comparatorProperty().bind(tabla.comparatorProperty());
+        tabla.setItems(sortedList);
+
 
         //Update the table to allow for the first and last name fields
         //to be editable
@@ -111,26 +138,20 @@ public class TablaMoviesController {
     @FXML
     private void eliminar(ActionEvent event)throws IOException {
 
+        int selectedIndex = tabla.getSelectionModel().getSelectedIndex();
             if (getMovie().isEmpty()){
                 AlertBox.display("Error","no hay peliculas que borrar");
             }else {
                 if (tabla.getSelectionModel().getSelectedItem() == null) {
                     AlertBox.display("Error", "Porfavor seleccione la pelicula que quiere borrar");
                 } else {
-                    tabla.getItems().removeAll(tabla.getSelectionModel().getSelectedItem());
-
-
-                    if (tabla.getSelectionModel().getSelectedIndex() != -1) {
-                        ms.getMovieRepository().delete(getMovie().remove(tabla.getSelectionModel().getSelectedIndex() +1));
-
-                    }
-                    else {
-                        ms.getMovieRepository().delete(getMovie().get(0));
-                    }
+                    Movie product = tabla.getSelectionModel().getSelectedItem();
+                    ms.getMovieRepository().delete(product);
 
 
                 }
             }
+            initialize();
 
       /*  if( tabla.getItems().isEmpty()){
             AlertBox.display("Error","No  hay peliculas para borrar");
@@ -194,7 +215,29 @@ public class TablaMoviesController {
     }
 
 
+  /* @FXML
+    private void search(KeyEvent event){
 
+       FilteredList filteredData = new FilteredList(getMovie(),e -> true);
+
+        buscar.textProperty().addListener(((observable, oldValue, newValue) -> {
+            filteredData.setPredicate((Predicate<? super Movie>)(Movie movie) ->{
+
+                if(newValue.isEmpty() || newValue==null){
+                    return true;
+                }else if (movie.getName().contains(newValue)){
+                    return true;
+                }else if (movie.getGenero().contains(newValue)){
+                    return true;
+                }
+                return false;
+            });
+        }));
+
+        SortedList sortedList = new SortedList(filteredData);
+        sortedList.comparatorProperty().bind(tabla.comparatorProperty());
+        tabla.setItems(sortedList);
+    }*/
 
 
 }

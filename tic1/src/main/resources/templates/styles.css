@@ -12,8 +12,18 @@
     -fx-background-color: #6697e3;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 15, 0, 0, 0);
 }
+
+.btn_comprar,.btn_volver{
+    -fx-background-color:#e8e7e3 ;
+    -fx-effect: dropshadow(three-pass-box, rgb(220, 227, 210), 15, 0, 0, 0);
+}
+
 .fondoViewFilms{
     -fx-background-image: url(../assets/fondoviewFilms.jpg);
+    -fx-background-size: cover;
+}
+.fondoFilm{
+    -fx-background-image: url(../assets/login_user.jpg);
     -fx-background-size: cover;
 }
 

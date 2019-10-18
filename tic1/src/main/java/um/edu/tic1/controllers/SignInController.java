@@ -49,6 +49,8 @@ public class SignInController {
         Image imagenCine = new Image("cinema.jpg");
 
         imagenFondo.setImage(imagenCine);
+
+
     }
 
     @FXML
