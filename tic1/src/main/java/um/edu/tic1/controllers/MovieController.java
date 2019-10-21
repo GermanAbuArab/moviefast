@@ -29,14 +29,21 @@ public class MovieController {
     @Autowired
     private MovieService ms;
 
+    @FXML
+    private ImageView imagenMovie;
+
 
     public void loadData(Movie movie){
         nombre.setText(movie.getName());
         descripcion.setText(movie.getDescription());
         genero.setText(movie.getGenero());
         categoria.setText(movie.getCategoria());
+
     }
 
+    public void setImagenMovie(Image imagen){
+        imagenMovie.setImage(imagen);
+    }
     public void initialize() {
 
 

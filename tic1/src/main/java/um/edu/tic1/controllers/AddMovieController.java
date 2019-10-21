@@ -21,6 +21,7 @@ import um.edu.tic1.services.MovieService;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -53,17 +54,18 @@ public class AddMovieController  {
 //
 //    }
     @FXML
-    public File addImage() throws IOException {
+    public byte[] addImage() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Elija su imagen");
-        Stage stage = (Stage)anchorPane.getScene().getWindow();
-        imagen =fileChooser.showOpenDialog(stage);
-        if (imagen != null){
-            return imagen;
-        }
-        else return null;
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*bmp", "*png", "*jpg"));
+        imagen = fileChooser.showOpenDialog(null);
+        File file = new File(imagen.getPath());
+        byte[] picInBytes = new byte[(int) file.length()];
+        FileInputStream fileInputStream = new FileInputStream(file);
+        fileInputStream.read(picInBytes);
+        fileInputStream.close();
+        return picInBytes;
     }
-
     @FXML
     public void addMovie() throws IOException {
 
@@ -71,9 +73,10 @@ public class AddMovieController  {
         String descripcion1=descripcion.getText();
         String categoria1= categoria.getText();
         String genero1=genero.getText();
-
+        byte[] movieImage = addImage();
 
         Movie movie = new Movie(nombre,descripcion1,genero1,categoria1);
+        movie.setMovieImage(movieImage);
 
         //try {
         System.out.println("hasta aca llega , SI DEBUGEAMOS VEMOS QUE EL REPOSITORIO ES NULO");

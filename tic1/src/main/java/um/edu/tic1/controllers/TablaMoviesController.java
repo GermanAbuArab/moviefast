@@ -153,13 +153,6 @@ public class TablaMoviesController {
             }
             initialize();
 
-      /*  if( tabla.getItems().isEmpty()){
-            AlertBox.display("Error","No  hay peliculas para borrar");
-        }
-        if(tabla.getSelectionModel().getSelectedItem() == null && tabla.getItems().isEmpty()==false ){
-            AlertBox.display("Error","Porfavor seleccione la pelicula que quiere borrar");
-
-        }*/
 
     }
 

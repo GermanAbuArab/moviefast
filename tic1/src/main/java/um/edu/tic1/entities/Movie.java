@@ -1,6 +1,8 @@
 package um.edu.tic1.entities;
 
 
+import com.sun.istack.internal.NotNull;
+
 import javax.annotation.Generated;
 import javax.persistence.*;
 
@@ -16,6 +18,11 @@ public class Movie {
     private String description;
     private String genero;
     private String categoria;
+
+    @Lob
+    @Column(nullable = false,length = 45)
+    @NotNull
+    private byte[] movieImage;
 
     public Movie(String name,String description,String genero,String categoria){
         this.description=description;
@@ -35,8 +42,16 @@ public class Movie {
         this.id = id;
     }
 
+    public void setMovieImage(byte[] movieImage) {
+        this.movieImage = movieImage;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public byte[] getMovieImage() {
+        return movieImage;
     }
 
     public void setName(String name) {
