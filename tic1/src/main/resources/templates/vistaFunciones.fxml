@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -18,19 +17,19 @@
         <children>
           <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="298.0" prefWidth="528.0" VBox.vgrow="ALWAYS">
                <children>
-                  <SplitPane dividerPositions="0.11912225705329153" layoutX="220.0" layoutY="68.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                  <SplitPane dividerPositions="0.13166144200626959" layoutX="220.0" layoutY="68.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
                               <Button layoutX="11.0" layoutY="324.0" mnemonicParsing="false" onAction="#volver" text="Volver" />
                            </children>
                         </AnchorPane>
-                        <TableView fx:id="tabla" editable="true" prefHeight="290.0" prefWidth="422.0">
+                        <TableView fx:id="tabla" editable="true" prefHeight="388.0" prefWidth="423.0">
                           <columns>
-                            <TableColumn fx:id="nombreSala" onEditCommit="#editNombreCommit" prefWidth="75.0" text="Funcion" />
-                              <TableColumn fx:id="descripcion" prefWidth="75.0" text="Sala" />
-                              <TableColumn prefWidth="75.0" text="Inicio" />
-                              <TableColumn prefWidth="75.0" text="Fin" />
+                            <TableColumn fx:id="nombreSala" onEditCommit="#editNombreCommit" prefWidth="75.0" text="Sala" />
+                              <TableColumn fx:id="descripcion" prefWidth="75.0" text="Capacidad" />
+                              <TableColumn prefWidth="75.0" />
+                              <TableColumn prefWidth="75.0" />
                           </columns>
                         </TableView>
                     </items>
@@ -43,17 +42,13 @@
    <right>
       <VBox prefHeight="200.0" prefWidth="154.0" BorderPane.alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Funcion">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
                <VBox.margin>
                   <Insets left="8.0" top="50.0" />
                </VBox.margin>
             </Text>
-            <ComboBox layoutX="18.0" layoutY="200.0" prefWidth="150.0">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </ComboBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Horario">
+            <TextField fx:id="nombreAgregado" promptText="Nombre sala" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Capacidad">
                <VBox.margin>
                   <Insets left="8.0" top="8.0" />
                </VBox.margin>
@@ -63,17 +58,7 @@
                   <Insets left="8.0" top="8.0" />
                </VBox.margin>
             </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:">
-               <VBox.margin>
-                  <Insets left="8.0" top="8.0" />
-               </VBox.margin>
-            </Text>
-            <ComboBox prefWidth="150.0">
-               <VBox.margin>
-                  <Insets left="8.0" top="8.0" />
-               </VBox.margin>
-            </ComboBox>
-            <Button mnemonicParsing="false" text="Agregar">
+            <Button mnemonicParsing="false" onAction="#agregarSala" text="Agregar">
                <VBox.margin>
                   <Insets left="8.0" top="8.0" />
                </VBox.margin>

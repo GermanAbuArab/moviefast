@@ -22,8 +22,10 @@ import um.edu.tic1.entities.Cine;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.entities.Sala;
 import um.edu.tic1.services.CineService;
+import um.edu.tic1.services.SalaService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -45,6 +47,8 @@ public class vistaCinesController {
     private TableColumn<Sala, String> nombreSala;
     @FXML
     private TextField nombreAgregado;
+    @Autowired
+    private SalaService salaService;
 
 
     public void initialize() {
@@ -54,7 +58,7 @@ public class vistaCinesController {
         nombreSala.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         //load dummy data
-        tabla.setItems(getSalas());
+        tabla.setItems((ObservableList<Sala>) getSalas());
 
         //Update the table to allow for the first and last name fields
         //to be editable
@@ -73,7 +77,7 @@ public class vistaCinesController {
 
         ObservableList<Sala> salas = FXCollections.observableArrayList();
 
-        List<Sala> lista = cine.getSalas();
+        List<Sala> lista = salaService.findAll();
 
         for (int i = 0; i < lista.size(); i++) {
             salas.add(lista.get(i));
@@ -98,8 +102,8 @@ public class vistaCinesController {
         String nombre = nombreAgregado.getText();
         Sala sala = new Sala();
         sala.setName(nombre);
-        this.cine.agregarSala(sala);
-        Cine cine2 = this.cine;
+        sala.setCine(cine);
+        salaService.save(sala);
         nombreAgregado.clear();
         initialize();
         // cineService.save(cine2);

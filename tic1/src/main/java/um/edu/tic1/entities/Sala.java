@@ -12,11 +12,13 @@ public class Sala {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "salas_id")
     private Long id;
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_cine")
+    @ManyToOne
+            //(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cine_id")
     private Cine cine;
 
 
@@ -38,5 +40,13 @@ public class Sala {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Cine getCine() {
+        return cine;
+    }
+
+    public void setCine(Cine cine) {
+        this.cine = cine;
     }
 }

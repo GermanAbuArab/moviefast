@@ -3,6 +3,7 @@ package um.edu.tic1.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="cines")
@@ -10,15 +11,12 @@ public class Cine {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "cine_id")
     private Long id;
 
     private String name;
-    //todo manytoone
-    private ArrayList<Sala> salas = new ArrayList<>();
 
-    public void agregarSala(Sala sala){
-        salas.add(sala);
-    }
+
 
     public Cine(String nombre) {
         this.name = nombre;
@@ -43,11 +41,7 @@ public class Cine {
         this.name = name;
     }
 
-    public ArrayList<Sala> getSalas() {
-        return salas;
-    }
 
-    public void setSalas(ArrayList<Sala> salas) {
-        this.salas = salas;
-    }
+
+
 }
