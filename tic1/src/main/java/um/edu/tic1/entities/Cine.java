@@ -13,7 +13,9 @@ public class Cine {
     private Long id;
 
     private String name;
-    //todo manytoone
+
+    @JoinColumn(name = "salas_fk")
+    @OneToMany
     private ArrayList<Sala> salas = new ArrayList<>();
 
     public void agregarSala(Sala sala){
