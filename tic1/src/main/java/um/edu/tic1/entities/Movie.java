@@ -1,7 +1,7 @@
 package um.edu.tic1.entities;
 
 
-import com.sun.istack.internal.NotNull;
+
 
 import javax.annotation.Generated;
 import javax.persistence.*;
@@ -21,7 +21,7 @@ public class Movie {
 
     @Lob
     @Column(nullable = false,length = 45)
-    @NotNull
+
     private byte[] movieImage;
 
     public Movie(String name,String description,String genero,String categoria){
