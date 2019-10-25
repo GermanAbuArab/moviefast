@@ -12,6 +12,8 @@ public class Usuario {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "usuario_id")
     String userName;
 
     String name;

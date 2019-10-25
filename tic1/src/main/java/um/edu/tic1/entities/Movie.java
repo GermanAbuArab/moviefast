@@ -13,6 +13,7 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @CollectionTable(name = "movie_id")
     private Long id;
     private String name;
     private String description;

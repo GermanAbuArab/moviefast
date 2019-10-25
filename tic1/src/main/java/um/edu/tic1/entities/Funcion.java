@@ -9,16 +9,19 @@ import java.util.Date;
 public class Funcion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "funcion_id")
     private Long id;
     private String name;
-    //private Movie movie;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "movie_id ")
+    private Movie movie;
     private String dimension;
     private String idioma;
     private boolean subs;
     private Date inicio;
     private Date cierre;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_sala")
+    @JoinColumn(name = "sala_id ")
     private Sala sala;
 
 }

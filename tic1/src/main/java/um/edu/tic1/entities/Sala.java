@@ -12,7 +12,7 @@ public class Sala {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "salas_id")
+    @Column(name = "sala_id")
     private Long id;
     private String name;
 
