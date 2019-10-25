@@ -1,5 +1,7 @@
 package um.edu.tic1.controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -13,13 +15,10 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +27,12 @@ import um.edu.tic1.Tic1Application;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.MovieService;
 import javafx.event.ActionEvent;
-
 import javax.imageio.ImageIO;
+import javax.swing.border.Border;
 import java.awt.*;
-
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.File;
+import javafx.scene.control.ScrollBar;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -48,13 +46,15 @@ public class ViewFilmsController implements Initializable {
 
 
     ArrayList<Image> fileList = new ArrayList<Image>();
-    HBox hb = new HBox();
-    File imagen = new File("descarga.jpg");
 
     @FXML
-    private ScrollPane scrollPane;
+    private ScrollBar sc;
+    @FXML
+    private HBox hbox;
     @FXML
     private GridPane grid;
+    @FXML
+    private BorderPane borderPane;
     @FXML
     ImageView pic,imagenInicio,imagenRecomendados,imagenTeatros,imagenMap,imagenLogin,imagenMovieFast;
     @FXML
@@ -74,6 +74,7 @@ public class ViewFilmsController implements Initializable {
     @FXML
     private TextField buscar;
 
+    private Image[] images= new Image[150];
 
     @FXML
     private Button btn_nav, home_icon;
@@ -84,6 +85,24 @@ public class ViewFilmsController implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
 
+        FilteredList filteredData = new FilteredList(getMovie(),e -> true);
+
+        buscar.textProperty().addListener(((observable, oldValue, newValue) -> {
+            filteredData.setPredicate((Predicate<? super Movie>)(Movie movie) ->{
+
+                if(newValue.isEmpty() || newValue==null){
+                    return true;
+                }else if (movie.getName().contains(newValue)){
+                    return true;
+                }else if (movie.getGenero().contains(newValue)){
+                    return true;
+                }
+                return false;
+            });
+        }));
+        SortedList sortedList = new SortedList(filteredData);
+        //sortedList.comparatorProperty().bind(tabla.comparatorProperty());
+        //tabla.setItems(sortedList);
 
 
         imagenInicio.setFitWidth(25);
@@ -110,32 +129,45 @@ public class ViewFilmsController implements Initializable {
         imagenMap.setFitHeight(25);
         imagenMap.setImage(ImagenMap);
 
+        int m =0;
+        for (m=0 ;m<getMovie().size();m++){
+            byte[] img = getMovie().get(m).getMovieImage();
+            ByteArrayInputStream bis = new ByteArrayInputStream(img);
+            BufferedImage bImage = null;
+            try {
+                bImage = ImageIO.read(bis);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Image image = SwingFXUtils.toFXImage(bImage,null);
+            images[m] = image;
+        }
+
 
         int b=0;
         while (b<getMovie().size()){
             try {
-                fileList.add(makeImages()[b]);
+
+                fileList.add(images[b]);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             b++;
         }
 
-        grid.setPadding(new Insets(50,7,7,7));
-        // setting interior grid padding
-        grid.setHgap(150);
-        grid.setVgap(150);
+        grid.setPadding(new Insets(70,7,7,7));
+        grid.setHgap(140);
+        grid.setVgap(195);
 
-        // grid.setGridLinesVisible(true);
-
-        int rows = 2;
-        int columns = 4;
+        int rows = 3;
+        int columns = 6;
         int imageIndex = 0;
         for (int i = 0 ; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 if (imageIndex < fileList.size()) {
                     try {
                         addImage(imageIndex, j, i);
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -144,20 +176,52 @@ public class ViewFilmsController implements Initializable {
             }
         }
         fileList.clear();
+        for (m=0;m<getMovie().size();m++) {
+            int finalM = m;
+            grid.getChildren().get(m).setOnMouseEntered(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    grid.getChildren().get(finalM).setStyle("-fx-scale-x: 1.1; -fx-scale-y: 1.1;");
+                }
+            });
+
+            grid.getChildren().get(m).setOnMouseExited(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    grid.getChildren().get(finalM).setStyle("-fx-scale-x: 1; -fx-scale-y: 1;");
+                }
+            });
+        }
+
+        sc.valueProperty().addListener(new ChangeListener<Number>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Number> ov,
+                                Number old_val, Number new_val) {
+                hbox.setLayoutY(-new_val.doubleValue() +10);
+            }
+        });
+
+
+
+
+
 
 
     }
 
 
-    private void addImage(int index, int colIndex, int rowIndex) throws Exception {
 
+    private void addImage(int index, int colIndex, int rowIndex) throws Exception {
 
 
         pic = new ImageView();
         pic.setFitWidth(150);
-        pic.setFitHeight(150);
-        pic.setImage(makeImages()[index]);
+        pic.setFitHeight(200);
+        pic.setImage(images[index]);
         grid.add(pic,colIndex,rowIndex);
+
+
 
         pic.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
@@ -179,7 +243,7 @@ public class ViewFilmsController implements Initializable {
                 MovieController movieController = fxmlLoader.getController();
                 movieController.loadData(movie);
                 try {
-                    movieController.setImagenMovie(makeImages()[index]);
+                    movieController.setImagenMovie(images[index]);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -192,20 +256,6 @@ public class ViewFilmsController implements Initializable {
         });
     }
 
-
-    private Image[] makeImages() throws Exception{
-        int m =0;
-        Image[] images= new Image[getMovie().size()];
-        for (m=0 ;m<getMovie().size();m++){
-            byte[] img = getMovie().get(m).getMovieImage();
-            ByteArrayInputStream bis = new ByteArrayInputStream(img);
-            BufferedImage bImage = ImageIO.read(bis);
-            Image image = SwingFXUtils.toFXImage(bImage,null);
-            images[m] = image;
-
-        }
-        return images;
-    }
 
 
 
