@@ -57,7 +57,7 @@ public class AddMovieController  {
     public byte[] addImage() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Elija su imagen");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*bmp", "*png", "*jpg"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*bmp", "*png", "*jpg","*jfif"));
         imagen = fileChooser.showOpenDialog(null);
         File file = new File(imagen.getPath());
         byte[] picInBytes = new byte[(int) file.length()];
