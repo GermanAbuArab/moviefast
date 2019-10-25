@@ -38,6 +38,6 @@
          <font>
             <Font name="Arial" size="12.0" />
          </font></Button>
-      <Text id="descripcion" fx:id="descripcion" layoutX="300.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="22.13671875" />
+      <Text id="descripcion" fx:id="descripcion" layoutX="240.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="219.0" />
    </children>
 </AnchorPane>

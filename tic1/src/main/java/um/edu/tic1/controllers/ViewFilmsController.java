@@ -15,6 +15,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -42,23 +44,17 @@ import java.util.function.Predicate;
 
 
 @Component
-public class ViewFilmsController implements Initializable {
+public class ViewFilmsController  {
 
-
-    ArrayList<Image> fileList = new ArrayList<Image>();
 
     @FXML
-    private ScrollBar sc;
+    private ScrollPane scrollPane;
     @FXML
     private HBox hbox;
     @FXML
     private GridPane grid;
     @FXML
-    private BorderPane borderPane;
-    @FXML
     ImageView pic,imagenInicio,imagenRecomendados,imagenTeatros,imagenMap,imagenLogin,imagenMovieFast;
-    @FXML
-    Image imagen1;
     @FXML
     Image ImagenInicio = new Image("assets/icono_inicio.png");
    @FXML
@@ -73,36 +69,35 @@ public class ViewFilmsController implements Initializable {
     Image ImagenMovieFast = new Image("assets/icono_movieFast.png");
     @FXML
     private TextField buscar;
+    private TableView<Movie> tabla = new TableView<>();
 
     private Image[] images= new Image[150];
 
-    @FXML
-    private Button btn_nav, home_icon;
 
 
     @Autowired
     private MovieService ms;
 
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
+
 
         FilteredList filteredData = new FilteredList(getMovie(),e -> true);
+            buscar.textProperty().addListener(((observable, oldValue, newValue) -> {
+                filteredData.setPredicate((Predicate<? super Movie>)(Movie movie) ->{
 
-        buscar.textProperty().addListener(((observable, oldValue, newValue) -> {
-            filteredData.setPredicate((Predicate<? super Movie>)(Movie movie) ->{
-
-                if(newValue.isEmpty() || newValue==null){
-                    return true;
-                }else if (movie.getName().contains(newValue)){
-                    return true;
-                }else if (movie.getGenero().contains(newValue)){
-                    return true;
-                }
-                return false;
-            });
-        }));
+                    if(newValue.isEmpty() || newValue==null){
+                        return true;
+                    }else if (movie.getName().contains(newValue)){
+                        return true;
+                    }else if (movie.getGenero().contains(newValue)){
+                        return true;
+                    }
+                    return false;
+                });
+            }));
         SortedList sortedList = new SortedList(filteredData);
-        //sortedList.comparatorProperty().bind(tabla.comparatorProperty());
-        //tabla.setItems(sortedList);
+        sortedList.comparatorProperty().bind(tabla.comparatorProperty());
+        tabla.setItems(sortedList);
 
 
         imagenInicio.setFitWidth(25);
@@ -130,8 +125,8 @@ public class ViewFilmsController implements Initializable {
         imagenMap.setImage(ImagenMap);
 
         int m =0;
-        for (m=0 ;m<getMovie().size();m++){
-            byte[] img = getMovie().get(m).getMovieImage();
+        for (m=0 ;m<sortedList.size();m++){
+            byte[] img = tabla.getItems().get(m).getMovieImage();
             ByteArrayInputStream bis = new ByteArrayInputStream(img);
             BufferedImage bImage = null;
             try {
@@ -143,28 +138,16 @@ public class ViewFilmsController implements Initializable {
             images[m] = image;
         }
 
-
-        int b=0;
-        while (b<getMovie().size()){
-            try {
-
-                fileList.add(images[b]);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            b++;
-        }
-
-        grid.setPadding(new Insets(70,7,7,7));
-        grid.setHgap(140);
-        grid.setVgap(195);
+        grid.setPadding(new Insets(90,7,80,7));
+        grid.setHgap(50);
+        grid.setVgap(170);
 
         int rows = 3;
-        int columns = 6;
+        int columns = 7;
         int imageIndex = 0;
         for (int i = 0 ; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                if (imageIndex < fileList.size()) {
+                if (imageIndex < images.length) {
                     try {
                         addImage(imageIndex, j, i);
 
@@ -175,7 +158,6 @@ public class ViewFilmsController implements Initializable {
                 }
             }
         }
-        fileList.clear();
         for (m=0;m<getMovie().size();m++) {
             int finalM = m;
             grid.getChildren().get(m).setOnMouseEntered(new EventHandler<MouseEvent>() {
@@ -193,34 +175,19 @@ public class ViewFilmsController implements Initializable {
             });
         }
 
-        sc.valueProperty().addListener(new ChangeListener<Number>() {
-
-            @Override
-            public void changed(ObservableValue<? extends Number> ov,
-                                Number old_val, Number new_val) {
-                hbox.setLayoutY(-new_val.doubleValue() +10);
-            }
-        });
-
-
-
-
-
-
-
+        //scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        //scrollPane.setFitToHeight(true);
     }
 
 
 
     private void addImage(int index, int colIndex, int rowIndex) throws Exception {
 
-
         pic = new ImageView();
         pic.setFitWidth(150);
         pic.setFitHeight(200);
         pic.setImage(images[index]);
         grid.add(pic,colIndex,rowIndex);
-
 
 
         pic.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

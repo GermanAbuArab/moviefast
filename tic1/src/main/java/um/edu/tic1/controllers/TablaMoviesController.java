@@ -204,6 +204,7 @@ public class TablaMoviesController {
     }
 
     public TableView<Movie> getTabla(){
+
         return tabla;
     }
 
