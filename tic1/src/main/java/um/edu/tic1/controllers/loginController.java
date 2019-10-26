@@ -42,6 +42,9 @@ public class loginController implements Initializable {
     @Autowired
     private vistaCinesController vc;
 
+    @Autowired
+    private vistaUsuarioCineController vuc;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         imagenMovieFast.setFitWidth(30);
@@ -87,11 +90,11 @@ public class loginController implements Initializable {
 
         if(cineEncontrado){
 
-            vc.setCine(lista.get(indiceCine));
+            vuc.setCine(lista.get(indiceCine));
 
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
-            Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/vistaFunciones.fxml"));
+            Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/vistaUsuarioCine.fxml"));
             Scene inicioScene = new Scene(inicio, 600, 500);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(inicioScene);
