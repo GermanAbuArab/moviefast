@@ -63,6 +63,20 @@ public class MovieController {
         window.show();
 
     }
+    @FXML
+    private void comprar(ActionEvent event)throws IOException {  // vuelve a la scena
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/ManageBookingsScene.fxml"));
+        inicio.getStylesheets().add("/templates/styles.css");
+        Scene inicioScene = new Scene(inicio,700,500);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(inicioScene);
+        window.show();
+
+    }
     public ObservableList<Movie> getMovie() {
 
         ObservableList<Movie> movie = FXCollections.observableArrayList();

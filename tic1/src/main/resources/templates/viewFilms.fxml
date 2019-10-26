@@ -35,7 +35,7 @@
                      </HBox.margin>
                   </Text>
                   <Region prefHeight="50.0" prefWidth="127.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="59.0" styleClass="search_button" stylesheets="@styles.css" text="Buscar" textFill="WHITE">
+                  <Button mnemonicParsing="false"  prefHeight="33.0" prefWidth="59.0" styleClass="search_button" stylesheets="@styles.css" text="Buscar" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="8.0" top="8.0" />
                      </HBox.margin>

@@ -17,18 +17,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="compgc01.ManageBookingsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.ManageBookingsController">
    <children>
       <AnchorPane layoutX="-1.0" layoutY="31.0" prefHeight="371.0" prefWidth="700.0">
          <children>
             <Label fx:id="totalSeatsLabel" layoutX="537.0" layoutY="335.0" text="Total seats: 18" />
             <Label fx:id="bookedSeatsLabel" layoutX="215.0" layoutY="335.0" text="Booked seats: 0" />
             <Label fx:id="availableSeatsLabel" layoutX="378.0" layoutY="335.0" text="Available seats: 18" />
-            <ImageView fitHeight="191.0" fitWidth="530.0" layoutX="173.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../res/images/backgroundImages/curtains.png" />
-               </image>
-            </ImageView>
+
             <AnchorPane layoutX="195.0" layoutY="48.0" prefHeight="256.0" prefWidth="488.0">
                <children>
                   <GridPane fx:id="gridSeats" alignment="CENTER" layoutX="61.0" layoutY="69.0" prefHeight="165.0" prefWidth="363.0">
