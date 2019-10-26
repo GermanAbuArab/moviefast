@@ -133,6 +133,7 @@ public class ViewFilmsController  {
                 bImage = ImageIO.read(bis);
             } catch (IOException e) {
                 e.printStackTrace();
+                System.out.println("RE LOCO");
             }
             Image image = SwingFXUtils.toFXImage(bImage,null);
             images[m] = image;
@@ -217,7 +218,7 @@ public class ViewFilmsController  {
                 Scene inicioScene = new Scene(inicio,600,400);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(inicioScene);
-                window.show();
+                window.show();//ramayama
 
             }
         });

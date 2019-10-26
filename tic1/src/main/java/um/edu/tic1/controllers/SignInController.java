@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.tic1.Tic1Application;
+import um.edu.tic1.entities.ClienteFinal;
 import um.edu.tic1.entities.Usuario;
 import um.edu.tic1.services.UsuarioService;
 
@@ -59,7 +60,7 @@ public class SignInController {
         String nombre = Nombre.getText();
         String userName = nombreUsuario.getText();
         String contra = password.getText();
-        Usuario usuario = new Usuario(userName,nombre,contra);
+        ClienteFinal usuario = new ClienteFinal(userName,nombre,contra);
 
         if (us.getUr().findByName(userName)!=null) {
             if (us.getUr().findByName(userName).getUserName().equals(userName)) {

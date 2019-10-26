@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo_login" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.loginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo_login" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.loginController">
    <top>
       <VBox styleClass="top_nav" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
@@ -48,7 +48,7 @@
          <children>
             <AnchorPane layoutX="24.0" layoutY="44.0" prefHeight="223.0" prefWidth="218.0" style="-fx-background-color: #e8e7e3;" styleClass="fondoAux">
                <children>
-                  <TextField layoutX="26.0" layoutY="52.0" promptText="Usuario" />
+                  <TextField fx:id="usuarioIngresado" layoutX="26.0" layoutY="52.0" promptText="Usuario" />
                   <Label layoutX="24.0" layoutY="24.0" text="Usuario:">
                      <font>
                         <Font name="Arial" size="16.0" />

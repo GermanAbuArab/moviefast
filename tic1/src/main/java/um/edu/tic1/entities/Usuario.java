@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type",
         discriminatorType = DiscriminatorType.STRING)
-public class Usuario {
+public abstract class Usuario {
 
 
     @Id
