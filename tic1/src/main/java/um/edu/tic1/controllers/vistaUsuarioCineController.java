@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -19,9 +20,11 @@ import org.springframework.stereotype.Controller;
 import um.edu.tic1.Tic1Application;
 import um.edu.tic1.entities.Cine;
 import um.edu.tic1.entities.Funcion;
+import um.edu.tic1.entities.Movie;
 import um.edu.tic1.entities.Sala;
 import um.edu.tic1.services.CineService;
 import um.edu.tic1.services.FuncionService;
+import um.edu.tic1.services.MovieService;
 import um.edu.tic1.services.SalaService;
 
 import java.io.IOException;
@@ -72,17 +75,49 @@ public class vistaUsuarioCineController {
     @FXML
     private TextField capacidadAgregada;
 
+    @FXML
+    private ComboBox comboSala;
+
+    @FXML
+    private ComboBox comboDimension;
+
+    @FXML
+    private ComboBox comboPeli;
+
     @Autowired
     private SalaService salaService;
 
     @Autowired
     private FuncionService funcionService;
 
+    @Autowired
+    private MovieService movieService;
+
 
     public void initialize() {
 
         inicializarSalas();
         inicializarFunciones();
+        inicializarCombos();
+
+    }
+
+    public void inicializarCombos(){
+
+        ObservableList<Sala> salas = getSalas();
+        ObservableList<Movie> pelis = getMovie();
+
+
+        comboSala.setItems(salas);
+        comboPeli.setItems(pelis);
+
+    }
+
+    public void comboSalaActualizado(){
+
+        Sala sala = (Sala) comboSala.getSelectionModel().getSelectedItem();
+
+        //segun esto se pone la dimension
 
     }
 
@@ -152,6 +187,19 @@ public class vistaUsuarioCineController {
         return salas;
     }
 
+    public ObservableList<Movie> getMovie() {
+
+        ObservableList<Movie> movie = FXCollections.observableArrayList();
+
+        List<Movie> lista = movieService.findAll();
+
+        for (int i = 0; i < lista.size(); i++) {
+            movie.add(lista.get(i));
+        }
+
+        return movie;
+    }
+
 
     @FXML
     void aplicar(ActionEvent event) {
@@ -164,28 +212,30 @@ public class vistaUsuarioCineController {
     }
 
     @FXML
-    void agregarSala(ActionEvent event) {
+    void agregarFuncion(ActionEvent event) {
+
+
+
+    }
+
+    public void addFun(){
+
+        System.out.println("Entro aca MAN");
+
+        Funcion funcion = new Funcion();
+
+        Sala sala = (Sala) comboSala.getSelectionModel().getSelectedItem();
+        Movie peli = (Movie) comboPeli.getSelectionModel().getSelectedItem();
         String nombre = nombreAgregado.getText();
-        Sala sala = new Sala();
+        long id = 1;
 
-        try {
-            int capacidadInt = Integer.parseInt(capacidadAgregada.getText());
-            sala.setCapacidad(capacidadInt);
-        } catch (NumberFormatException nfe) {
-            System.out.println("NumberFormatException: " + nfe.getMessage());
-        }
+        funcion.setId(id);
+        funcion.setSala(sala);
+        funcion.setMovie(peli);
+        funcion.setName(nombre);
+        funcion.setDimension("2D");
 
-
-        sala.setName(nombre);
-        sala.setCine(cine);
-        salaService.save(sala);
-        nombreAgregado.clear();
-        capacidadAgregada.clear();
-        //capacidad.clear();
-
-        initialize();
-        // cineService.save(cine2);
-
+        funcionService.save(funcion);
 
     }
 
