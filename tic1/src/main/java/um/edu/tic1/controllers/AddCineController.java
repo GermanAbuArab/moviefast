@@ -34,6 +34,9 @@ AddCineController {
     @FXML
     private TextField nombreCine;
 
+    @FXML
+    private TextField idIngresado;
+
 
     @FXML
     public void addCine() throws IOException {
@@ -41,7 +44,19 @@ AddCineController {
         String nombre=nombreCine.getText();
 
 
+
+
         Cine cine = new Cine(nombre);
+
+        try {
+            long id = Long.parseLong(idIngresado.getText());
+            System.out.println("long id = " +id);
+            cine.setId(id);
+        } catch (NumberFormatException nfe) {
+            System.out.println("NumberFormatException: " + nfe.getMessage());
+        }
+
+
 
         //try {
         System.out.println("hasta aca llega , SI DEBUGEAMOS VEMOS QUE EL REPOSITORIO ES NULO");
@@ -55,6 +70,7 @@ AddCineController {
         //  e.printStackTrace();
         //}
         nombreCine.clear();
+        idIngresado.clear();
     }
 
     @FXML

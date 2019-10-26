@@ -50,6 +50,12 @@
                     </font>
                 </Label>
             <Button layoutX="12.0" layoutY="359.0" mnemonicParsing="false" onAction="#volver" text="Volver" />
+            <TextField fx:id="idIngresado" layoutX="42.0" layoutY="140.0" prefHeight="30.0" prefWidth="174.0" promptText="ID" />
+            <Label layoutX="42.0" layoutY="114.0" text="ID">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </center>

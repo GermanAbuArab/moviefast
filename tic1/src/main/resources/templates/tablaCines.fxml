@@ -59,11 +59,11 @@
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="363.0" prefWidth="60.0">
                      <children>
-                        <Button layoutX="6.0" layoutY="42.0" mnemonicParsing="false" onAction="#agregar" text="Agregar" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="-6.0" />
-                        <Button layoutY="73.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <Button fx:id="botonAplicar" cache="true" layoutY="114.0" mnemonicParsing="false" onAction="#entrar" prefHeight="22.0" prefWidth="80.0" text="Entrar" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <Button layoutX="6.0" layoutY="42.0" mnemonicParsing="false" onAction="#agregar" text="Agregar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <Button layoutY="86.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <Button fx:id="botonAplicar" cache="true" layoutY="135.0" mnemonicParsing="false" onAction="#entrar" prefHeight="22.0" prefWidth="80.0" text="Entrar" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <Button layoutX="11.0" layoutY="324.0" mnemonicParsing="false" onAction="#volver" text="Volver" />
-                        <Button fx:id="peliculas" layoutX="8.0" layoutY="151.0" mnemonicParsing="false" onAction="#peliculas" text="Peliculas" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <Button fx:id="peliculas" layoutY="173.0" mnemonicParsing="false" onAction="#peliculas" text="Peliculas" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <TextField layoutX="15.0" layoutY="8.0" prefHeight="25.0" prefWidth="121.0" promptText="Filtrar" />
                      </children>
                   </AnchorPane>
