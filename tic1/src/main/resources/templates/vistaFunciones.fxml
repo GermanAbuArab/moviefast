@@ -30,7 +30,7 @@
                         </AnchorPane>
                         <TabPane>
                            <tabs>
-                              <Tab text="Salas">
+                              <Tab closable="false" text="Salas">
                                  <content>
                                     <TableView fx:id="tabla" editable="true" prefHeight="388.0" prefWidth="423.0">
                                       <columns>
@@ -43,7 +43,7 @@
                                     </TableView>
                                  </content>
                               </Tab>
-                              <Tab text="Funciones">
+                              <Tab closable="false" text="Funciones">
                                  <content>
                                     <BorderPane>
                                        <center>
