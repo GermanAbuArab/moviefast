@@ -45,6 +45,10 @@ public class vistaCinesController {
 
     @FXML
     private TableColumn<Sala, String> nombreSala;
+
+    @FXML
+    private TableColumn<Sala, String> capacidad;
+
     @FXML
     private TextField nombreAgregado;
     @Autowired
@@ -56,6 +60,7 @@ public class vistaCinesController {
 
         //set up the columns in the table
         nombreSala.setCellValueFactory(new PropertyValueFactory<>("name"));
+        capacidad.setCellValueFactory(new PropertyValueFactory<>("capacidad"));
 
         //load dummy data
         tabla.setItems((ObservableList<Sala>) getSalas());
@@ -80,7 +85,11 @@ public class vistaCinesController {
         List<Sala> lista = salaService.findAll();
 
         for (int i = 0; i < lista.size(); i++) {
-            salas.add(lista.get(i));
+            Sala sala = lista.get(i);
+
+            if(sala.getCine().equals(this.cine)) {
+                salas.add(lista.get(i));
+            }
         }
 
         return salas;
@@ -101,6 +110,15 @@ public class vistaCinesController {
     void agregarSala(ActionEvent event) {
         String nombre = nombreAgregado.getText();
         Sala sala = new Sala();
+
+        try {
+            int capacidadInt = Integer.parseInt(capacidad.getText());
+            sala.setCapacidad(capacidadInt);
+        } catch (NumberFormatException nfe) {
+            System.out.println("NumberFormatException: " + nfe.getMessage());
+        }
+
+
         sala.setName(nombre);
         sala.setCine(cine);
         salaService.save(sala);
