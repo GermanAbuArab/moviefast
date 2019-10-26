@@ -35,6 +35,7 @@
                                     <TableView fx:id="tabla" editable="true" prefHeight="388.0" prefWidth="423.0">
                                       <columns>
                                         <TableColumn fx:id="nombreSala" onEditCommit="#editNombreCommit" prefWidth="75.0" text="Sala" />
+                                          <TableColumn fx:id="idSala" prefWidth="75.0" text="ID" />
                                           <TableColumn fx:id="capacidad" prefWidth="75.0" text="Capacidad" />
                                           <TableColumn prefWidth="75.0" text="3D" />
                                           <TableColumn prefWidth="75.0" text="4D" />
@@ -51,6 +52,7 @@
                                                 <TableColumn fx:id="salaFuncion" prefWidth="75.0" text="Sala" />
                                               <TableColumn fx:id="codigoFuncion" prefWidth="75.0" text="Codigo" />
                                               <TableColumn fx:id="peliculaFuncion" prefWidth="75.0" text="Pelicula" />
+                                                <TableColumn fx:id="dimensionFuncion" prefWidth="75.0" text="Dimension" />
                                                 <TableColumn fx:id="fechaFuncion" prefWidth="75.0" text="Fecha" />
                                                 <TableColumn fx:id="inicioFuncion" prefWidth="90.0" text="Inicio" />
                                                 <TableColumn fx:id="finFuncion" prefWidth="75.0" text="Fin" />

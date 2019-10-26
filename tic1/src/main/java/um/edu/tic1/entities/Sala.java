@@ -24,9 +24,13 @@ public class Sala {
     @JoinColumn(name = "cine_id")
     private Cine cine;
 
-
     public Sala(){
 
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 
     public Long getId() {

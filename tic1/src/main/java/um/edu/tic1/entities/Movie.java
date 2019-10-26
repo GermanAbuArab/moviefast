@@ -35,6 +35,11 @@ public class Movie {
     public Movie() {
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
     public Long getId() {
         return id;
     }

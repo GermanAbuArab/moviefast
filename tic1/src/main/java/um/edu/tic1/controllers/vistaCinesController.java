@@ -55,10 +55,19 @@ public class vistaCinesController {
     private TableColumn<Funcion,String> codigoFuncion;
 
     @FXML
+    private TableColumn<Funcion,String> peliculaFuncion;
+
+    @FXML
+    private TableColumn<Funcion,String> dimensionFuncion;
+
+    @FXML
     private TableColumn<Sala, String> nombreSala;
 
     @FXML
     private TableColumn<Sala, String> capacidad;
+
+    @FXML
+    private TableColumn<Sala, String> idSala;
 
     @FXML
     private TextField nombreAgregado;
@@ -83,6 +92,11 @@ public class vistaCinesController {
     public void inicializarFunciones(){
 
         codigoFuncion.setCellValueFactory(new PropertyValueFactory<>("id"));
+        salaFuncion.setCellValueFactory(new PropertyValueFactory<>("sala"));
+        peliculaFuncion.setCellValueFactory(new PropertyValueFactory<>("movie"));
+        dimensionFuncion.setCellValueFactory(new PropertyValueFactory<>("dimension"));
+
+        tablaFunciones.setItems((ObservableList<Funcion>) getFunciones());
 
     }
 
@@ -91,6 +105,7 @@ public class vistaCinesController {
         //set up the columns in the table
         nombreSala.setCellValueFactory(new PropertyValueFactory<>("name"));
         capacidad.setCellValueFactory(new PropertyValueFactory<>("capacidad"));
+        idSala.setCellValueFactory(new PropertyValueFactory<>("id"));
 
         //load dummy data
         tabla.setItems((ObservableList<Sala>) getSalas());

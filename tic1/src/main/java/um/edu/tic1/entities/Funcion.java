@@ -8,19 +8,26 @@ import java.util.Date;
 @Table(name = "funciones")
 public class Funcion {
     @Id
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "funcion_id")
     private Long id;
+
     private String name;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "movie_id ")
     private Movie movie;
-    private String dimension;
-    private String idioma;
-    private boolean subs;
 
-    private Date inicio;
-    private Date cierre;
+    private String dimension;
+
+    //private String idioma;
+
+    //private boolean subs;
+
+    //private Date inicio;
+
+    //private Date cierre;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "sala_id ")
@@ -59,37 +66,6 @@ public class Funcion {
         this.dimension = dimension;
     }
 
-    public String getIdioma() {
-        return idioma;
-    }
-
-    public void setIdioma(String idioma) {
-        this.idioma = idioma;
-    }
-
-    public boolean isSubs() {
-        return subs;
-    }
-
-    public void setSubs(boolean subs) {
-        this.subs = subs;
-    }
-
-    public Date getInicio() {
-        return inicio;
-    }
-
-    public void setInicio(Date inicio) {
-        this.inicio = inicio;
-    }
-
-    public Date getCierre() {
-        return cierre;
-    }
-
-    public void setCierre(Date cierre) {
-        this.cierre = cierre;
-    }
 
     public Sala getSala() {
         return sala;
