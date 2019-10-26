@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -73,64 +75,89 @@
       </VBox>
    </center>
    <right>
-      <VBox prefHeight="200.0" prefWidth="154.0">
-         <children>
-            <Label text="Agregar Funcion">
-               <VBox.margin>
-                  <Insets left="30.0" top="20.0" />
-               </VBox.margin>
-            </Label>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
-               <VBox.margin>
-                  <Insets left="8.0" top="30.0" />
-               </VBox.margin>
-            </Text>
-            <TextField fx:id="nombreAgregado" promptText="Nombre funcion">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </TextField>
-            <ComboBox fx:id="comboPeli" prefWidth="150.0" promptText="Pelicula">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </ComboBox>
-            <ComboBox fx:id="comboSala" onAction="#comboSalaActualizado" prefWidth="150.0" promptText="Sala">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </ComboBox>
-            <ComboBox fx:id="comboDimension" prefWidth="150.0" promptText="Dimensión">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </ComboBox>
-            <Label text="Fecha de inicio">
-               <VBox.margin>
-                  <Insets top="7.0" />
-               </VBox.margin>
-            </Label>
-            <DatePicker>
-               <VBox.margin>
-                  <Insets top="7.0" />
-               </VBox.margin>
-            </DatePicker>
-            <Label text="Fecha de fin">
-               <VBox.margin>
-                  <Insets top="7.0" />
-               </VBox.margin>
-            </Label>
-            <DatePicker>
-               <VBox.margin>
-                  <Insets top="7.0" />
-               </VBox.margin>
-            </DatePicker>
-            <Button mnemonicParsing="false" onAction="#addFun" text="Agregar">
-               <VBox.margin>
-                  <Insets left="40.0" top="45.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-      </VBox>
+      <ScrollPane prefHeight="416.0" prefWidth="177.0">
+         <content>
+            <VBox prefHeight="200.0" prefWidth="154.0">
+               <children>
+                  <Label text="Agregar Funcion">
+                     <VBox.margin>
+                        <Insets left="30.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
+                     <VBox.margin>
+                        <Insets left="8.0" top="30.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="nombreAgregado" promptText="Nombre funcion">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <ComboBox fx:id="comboPeli" prefWidth="150.0" promptText="Pelicula">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="comboSala" onAction="#comboSalaActualizado" prefWidth="150.0" promptText="Sala">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="comboDimension" prefWidth="150.0" promptText="Dimensión">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <Label text="Hora de inicio">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField promptText="Hora de inicio">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Duracion">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField promptText="Duracion">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Fecha de inicio">
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                  </Label>
+                  <DatePicker>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <Label text="Fecha de fin">
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                  </Label>
+                  <DatePicker>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <Button mnemonicParsing="false" onAction="#addFun" text="Agregar">
+                     <VBox.margin>
+                        <Insets left="40.0" top="45.0" />
+                     </VBox.margin>
+                  </Button>
+                  <ScrollBar orientation="VERTICAL" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
    </right>
 </BorderPane>
