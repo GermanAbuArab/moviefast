@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name="cines")
-public class Cine {
+public class Cine{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,6 +39,17 @@ public class Cine {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean equals(Cine cine){
+
+        boolean resultado = false;
+
+        if(cine.getId().equals(this.id)){
+            resultado = true;
+        }
+
+        return resultado;
     }
 
 

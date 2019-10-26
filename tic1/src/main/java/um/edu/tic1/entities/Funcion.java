@@ -18,10 +18,84 @@ public class Funcion {
     private String dimension;
     private String idioma;
     private boolean subs;
+
     private Date inicio;
     private Date cierre;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "sala_id ")
     private Sala sala;
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public String getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(String dimension) {
+        this.dimension = dimension;
+    }
+
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
+
+    public boolean isSubs() {
+        return subs;
+    }
+
+    public void setSubs(boolean subs) {
+        this.subs = subs;
+    }
+
+    public Date getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(Date inicio) {
+        this.inicio = inicio;
+    }
+
+    public Date getCierre() {
+        return cierre;
+    }
+
+    public void setCierre(Date cierre) {
+        this.cierre = cierre;
+    }
+
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
 }

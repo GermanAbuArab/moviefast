@@ -14,7 +14,10 @@ public class Sala {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "sala_id")
     private Long id;
+
     private String name;
+
+    private int capacidad;
 
     @ManyToOne
             //(cascade = CascadeType.ALL)
@@ -48,5 +51,13 @@ public class Sala {
 
     public void setCine(Cine cine) {
         this.cine = cine;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
     }
 }

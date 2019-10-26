@@ -19,9 +19,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import um.edu.tic1.Tic1Application;
 import um.edu.tic1.entities.Cine;
+import um.edu.tic1.entities.Funcion;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.entities.Sala;
 import um.edu.tic1.services.CineService;
+import um.edu.tic1.services.FuncionService;
 import um.edu.tic1.services.SalaService;
 
 import java.io.IOException;
@@ -44,6 +46,15 @@ public class vistaCinesController {
     private TableView<Sala> tabla;
 
     @FXML
+    private TableView<Funcion> tablaFunciones;
+
+    @FXML
+    private TableColumn<Funcion,String> salaFuncion;
+
+    @FXML
+    private TableColumn<Funcion,String> codigoFuncion;
+
+    @FXML
     private TableColumn<Sala, String> nombreSala;
 
     @FXML
@@ -51,13 +62,32 @@ public class vistaCinesController {
 
     @FXML
     private TextField nombreAgregado;
+
+    @FXML
+    private TextField capacidadAgregada;
+
     @Autowired
     private SalaService salaService;
+
+    @Autowired
+    private FuncionService funcionService;
 
 
     public void initialize() {
 
+        inicializarSalas();
+        inicializarFunciones();
 
+    }
+
+    public void inicializarFunciones(){
+
+        codigoFuncion.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+    }
+
+
+    public void inicializarSalas(){
         //set up the columns in the table
         nombreSala.setCellValueFactory(new PropertyValueFactory<>("name"));
         capacidad.setCellValueFactory(new PropertyValueFactory<>("capacidad"));
@@ -74,8 +104,23 @@ public class vistaCinesController {
         //This will allow the table to select multiple rows at once
         //vamos a usar esto para poder marcar varias y eliminarlas
         //tabla.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    }
 
+    public ObservableList<Funcion> getFunciones(){
 
+        ObservableList<Funcion> funciones = FXCollections.observableArrayList();
+
+        List<Funcion> lista = funcionService.findAll();
+
+        for (int i = 0; i < lista.size(); i++) {
+            Funcion funcion = lista.get(i);
+
+            if(funcion.getSala().getCine().equals(this.cine)) {
+                funciones.add(lista.get(i));
+            }
+        }
+
+        return funciones;
     }
 
     public ObservableList<Sala> getSalas() {
@@ -112,7 +157,7 @@ public class vistaCinesController {
         Sala sala = new Sala();
 
         try {
-            int capacidadInt = Integer.parseInt(capacidad.getText());
+            int capacidadInt = Integer.parseInt(capacidadAgregada.getText());
             sala.setCapacidad(capacidadInt);
         } catch (NumberFormatException nfe) {
             System.out.println("NumberFormatException: " + nfe.getMessage());
@@ -123,6 +168,9 @@ public class vistaCinesController {
         sala.setCine(cine);
         salaService.save(sala);
         nombreAgregado.clear();
+        capacidadAgregada.clear();
+        //capacidad.clear();
+
         initialize();
         // cineService.save(cine2);
 
