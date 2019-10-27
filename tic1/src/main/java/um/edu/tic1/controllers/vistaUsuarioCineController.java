@@ -93,6 +93,12 @@ public class vistaUsuarioCineController {
     @Autowired
     private MovieService movieService;
 
+    @FXML
+    private TableColumn<Sala, Boolean> tresDCol;
+
+    @FXML
+    private TableColumn<Sala, Boolean> cuatroDCol;
+
 
     public void initialize() {
 
@@ -118,6 +124,18 @@ public class vistaUsuarioCineController {
         Sala sala = (Sala) comboSala.getSelectionModel().getSelectedItem();
 
         //segun esto se pone la dimension
+        ObservableList<String> dimensiones = FXCollections.observableArrayList();
+        dimensiones.add("2D");
+
+        if(sala.isTresD()){
+            dimensiones.add("3D");
+        }
+
+        if(sala.isCuatroD()){
+            dimensiones.add("4D");
+        }
+
+        comboDimension.setItems(dimensiones);
 
     }
 
@@ -127,6 +145,7 @@ public class vistaUsuarioCineController {
         salaFuncion.setCellValueFactory(new PropertyValueFactory<>("sala"));
         peliculaFuncion.setCellValueFactory(new PropertyValueFactory<>("movie"));
         dimensionFuncion.setCellValueFactory(new PropertyValueFactory<>("dimension"));
+
 
         tablaFunciones.setItems((ObservableList<Funcion>) getFunciones());
 
@@ -138,6 +157,9 @@ public class vistaUsuarioCineController {
         nombreSala.setCellValueFactory(new PropertyValueFactory<>("name"));
         capacidad.setCellValueFactory(new PropertyValueFactory<>("capacidad"));
         idSala.setCellValueFactory(new PropertyValueFactory<>("id"));
+        //tresDCol.setCellValueFactory(new PropertyValueFactory<>("tresD"));
+        //cuatroDCol.setCellValueFactory(new PropertyValueFactory<>("cuatroD"));
+
 
         //load dummy data
         tabla.setItems((ObservableList<Sala>) getSalas());
@@ -227,16 +249,19 @@ public class vistaUsuarioCineController {
         Sala sala = (Sala) comboSala.getSelectionModel().getSelectedItem();
         Movie peli = (Movie) comboPeli.getSelectionModel().getSelectedItem();
         String nombre = nombreAgregado.getText();
+        String dimension = (String) comboDimension.getSelectionModel().getSelectedItem();
         long id = 1;
 
         funcion.setId(id);
         funcion.setSala(sala);
         funcion.setMovie(peli);
         funcion.setName(nombre);
-        funcion.setDimension("2D");
+        funcion.setDimension(dimension);
 
         funcionService.save(funcion);
 
+
+        inicializarFunciones();
     }
 
     @FXML
