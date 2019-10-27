@@ -3,9 +3,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -153,9 +156,28 @@
                         <Insets top="7.0" />
                      </VBox.margin>
                   </DatePicker>
+                  <CheckBox fx:id="todosDias" mnemonicParsing="false" text="Todos los dias" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets left="25.0" top="8.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <MenuButton text="Dias">
+                    <items>
+                        <CheckMenuItem fx:id="lunes" mnemonicParsing="false" text="Lunes" />
+                        <CheckMenuItem fx:id="martes" mnemonicParsing="false" text="Martes" />
+                        <CheckMenuItem fx:id="miercoles" mnemonicParsing="false" text="Miercoles" />
+                        <CheckMenuItem fx:id="jueves" mnemonicParsing="false" text="Jueves" />
+                        <CheckMenuItem fx:id="viernes" mnemonicParsing="false" text="Viernes" />
+                        <CheckMenuItem fx:id="sabado" mnemonicParsing="false" text="Sabado" />
+                        <CheckMenuItem fx:id="domingo" mnemonicParsing="false" text="Domingo" />
+                    </items>
+                     <VBox.margin>
+                        <Insets left="40.0" top="10.0" />
+                     </VBox.margin>
+                  </MenuButton>
                   <Button mnemonicParsing="false" onAction="#addFun" text="Agregar">
                      <VBox.margin>
-                        <Insets left="40.0" top="45.0" />
+                        <Insets left="40.0" top="35.0" />
                      </VBox.margin>
                   </Button>
                </children>
