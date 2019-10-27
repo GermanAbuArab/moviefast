@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
@@ -70,16 +67,28 @@ public class vistaCinesController {
     private TableColumn<Sala, String> idSala;
 
     @FXML
+    private TableColumn<Sala, Boolean> tresDCol;
+
+    @FXML
     private TextField nombreAgregado;
 
     @FXML
     private TextField capacidadAgregada;
+
+    @FXML
+    private CheckBox select3D;
+
+    @FXML
+    private CheckBox select4D;
 
     @Autowired
     private SalaService salaService;
 
     @Autowired
     private FuncionService funcionService;
+
+    @FXML
+    private TableColumn<Sala, Boolean> cuatroDCol;
 
 
     public void initialize() {
@@ -106,6 +115,8 @@ public class vistaCinesController {
         nombreSala.setCellValueFactory(new PropertyValueFactory<>("name"));
         capacidad.setCellValueFactory(new PropertyValueFactory<>("capacidad"));
         idSala.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tresDCol.setCellValueFactory(new PropertyValueFactory<>("tresD"));
+        cuatroDCol.setCellValueFactory(new PropertyValueFactory<>("cuatroD"));
 
         //load dummy data
         tabla.setItems((ObservableList<Sala>) getSalas());
@@ -176,6 +187,14 @@ public class vistaCinesController {
             sala.setCapacidad(capacidadInt);
         } catch (NumberFormatException nfe) {
             System.out.println("NumberFormatException: " + nfe.getMessage());
+        }
+
+        if(select3D.isSelected()){
+            sala.setTresD(true);
+        }
+
+        if(select4D.isSelected()){
+            sala.setCuatroD(true);
         }
 
 

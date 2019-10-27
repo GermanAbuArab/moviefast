@@ -157,8 +157,8 @@ public class vistaUsuarioCineController {
         nombreSala.setCellValueFactory(new PropertyValueFactory<>("name"));
         capacidad.setCellValueFactory(new PropertyValueFactory<>("capacidad"));
         idSala.setCellValueFactory(new PropertyValueFactory<>("id"));
-        //tresDCol.setCellValueFactory(new PropertyValueFactory<>("tresD"));
-        //cuatroDCol.setCellValueFactory(new PropertyValueFactory<>("cuatroD"));
+        tresDCol.setCellValueFactory(new PropertyValueFactory<>("tresD"));
+        cuatroDCol.setCellValueFactory(new PropertyValueFactory<>("cuatroD"));
 
 
         //load dummy data

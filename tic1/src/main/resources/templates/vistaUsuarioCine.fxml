@@ -34,8 +34,8 @@
                                   <TableColumn fx:id="nombreSala" onEditCommit="#editNombreCommit" prefWidth="75.0" text="Sala" />
                                     <TableColumn fx:id="idSala" prefWidth="75.0" text="ID" />
                                     <TableColumn fx:id="capacidad" prefWidth="75.0" text="Capacidad" />
-                                    <TableColumn prefWidth="75.0" text="3D" />
-                                    <TableColumn prefWidth="75.0" text="4D" />
+                                    <TableColumn fx:id="tresDCol" prefWidth="75.0" text="3D" />
+                                    <TableColumn fx:id="cuatroDCol" prefWidth="75.0" text="4D" />
                                 </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -79,7 +79,7 @@
       </VBox>
    </center>
    <right>
-      <ScrollPane prefHeight="416.0" prefWidth="177.0">
+      <ScrollPane prefHeight="549.0" prefWidth="189.0">
          <content>
             <VBox prefHeight="200.0" prefWidth="154.0">
                <children>
