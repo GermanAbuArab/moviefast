@@ -24,8 +24,12 @@ public class Sala {
     @JoinColumn(name = "cine_id")
     private Cine cine;
 
-    public Sala(){
+    private boolean tresD;
+    private boolean cuatroD;
 
+    public Sala(){
+        this.tresD = false;
+        this.cuatroD = false;
     }
 
     @Override
@@ -63,5 +67,21 @@ public class Sala {
 
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
+    }
+
+    public boolean isTresD() {
+        return tresD;
+    }
+
+    public void setTresD(boolean tresD) {
+        this.tresD = tresD;
+    }
+
+    public boolean isCuatroD() {
+        return cuatroD;
+    }
+
+    public void setCuatroD(boolean cuatroD) {
+        this.cuatroD = cuatroD;
     }
 }

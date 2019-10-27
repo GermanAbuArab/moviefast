@@ -8,7 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
@@ -21,14 +24,14 @@ import um.edu.tic1.entities.Movie;
 import um.edu.tic1.entities.Sala;
 import um.edu.tic1.services.CineService;
 import um.edu.tic1.services.FuncionService;
+import um.edu.tic1.services.MovieService;
 import um.edu.tic1.services.SalaService;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class vistaCinesController {
+public class vistaUsuarioCineController {
 
     private Cine cine;
 
@@ -67,25 +70,31 @@ public class vistaCinesController {
     private TableColumn<Sala, String> idSala;
 
     @FXML
-    private TableColumn<Sala, Boolean> tresDCol;
-
-    @FXML
     private TextField nombreAgregado;
 
     @FXML
     private TextField capacidadAgregada;
 
     @FXML
-    private CheckBox select3D;
+    private ComboBox comboSala;
 
     @FXML
-    private CheckBox select4D;
+    private ComboBox comboDimension;
+
+    @FXML
+    private ComboBox comboPeli;
 
     @Autowired
     private SalaService salaService;
 
     @Autowired
     private FuncionService funcionService;
+
+    @Autowired
+    private MovieService movieService;
+
+    @FXML
+    private TableColumn<Sala, Boolean> tresDCol;
 
     @FXML
     private TableColumn<Sala, Boolean> cuatroDCol;
@@ -95,6 +104,38 @@ public class vistaCinesController {
 
         inicializarSalas();
         inicializarFunciones();
+        inicializarCombos();
+
+    }
+
+    public void inicializarCombos(){
+
+        ObservableList<Sala> salas = getSalas();
+        ObservableList<Movie> pelis = getMovie();
+
+
+        comboSala.setItems(salas);
+        comboPeli.setItems(pelis);
+
+    }
+
+    public void comboSalaActualizado(){
+
+        Sala sala = (Sala) comboSala.getSelectionModel().getSelectedItem();
+
+        //segun esto se pone la dimension
+        ObservableList<String> dimensiones = FXCollections.observableArrayList();
+        dimensiones.add("2D");
+
+        if(sala.isTresD()){
+            dimensiones.add("3D");
+        }
+
+        if(sala.isCuatroD()){
+            dimensiones.add("4D");
+        }
+
+        comboDimension.setItems(dimensiones);
 
     }
 
@@ -104,6 +145,7 @@ public class vistaCinesController {
         salaFuncion.setCellValueFactory(new PropertyValueFactory<>("sala"));
         peliculaFuncion.setCellValueFactory(new PropertyValueFactory<>("movie"));
         dimensionFuncion.setCellValueFactory(new PropertyValueFactory<>("dimension"));
+
 
         tablaFunciones.setItems((ObservableList<Funcion>) getFunciones());
 
@@ -117,6 +159,7 @@ public class vistaCinesController {
         idSala.setCellValueFactory(new PropertyValueFactory<>("id"));
         tresDCol.setCellValueFactory(new PropertyValueFactory<>("tresD"));
         cuatroDCol.setCellValueFactory(new PropertyValueFactory<>("cuatroD"));
+
 
         //load dummy data
         tabla.setItems((ObservableList<Sala>) getSalas());
@@ -166,6 +209,19 @@ public class vistaCinesController {
         return salas;
     }
 
+    public ObservableList<Movie> getMovie() {
+
+        ObservableList<Movie> movie = FXCollections.observableArrayList();
+
+        List<Movie> lista = movieService.findAll();
+
+        for (int i = 0; i < lista.size(); i++) {
+            movie.add(lista.get(i));
+        }
+
+        return movie;
+    }
+
 
     @FXML
     void aplicar(ActionEvent event) {
@@ -178,37 +234,34 @@ public class vistaCinesController {
     }
 
     @FXML
-    void agregarSala(ActionEvent event) {
+    void agregarFuncion(ActionEvent event) {
+
+
+
+    }
+
+    public void addFun(){
+
+        System.out.println("Entro aca MAN");
+
+        Funcion funcion = new Funcion();
+
+        Sala sala = (Sala) comboSala.getSelectionModel().getSelectedItem();
+        Movie peli = (Movie) comboPeli.getSelectionModel().getSelectedItem();
         String nombre = nombreAgregado.getText();
-        Sala sala = new Sala();
+        String dimension = (String) comboDimension.getSelectionModel().getSelectedItem();
+        long id = 1;
 
-        try {
-            int capacidadInt = Integer.parseInt(capacidadAgregada.getText());
-            sala.setCapacidad(capacidadInt);
-        } catch (NumberFormatException nfe) {
-            System.out.println("NumberFormatException: " + nfe.getMessage());
-        }
+        funcion.setId(id);
+        funcion.setSala(sala);
+        funcion.setMovie(peli);
+        funcion.setName(nombre);
+        funcion.setDimension(dimension);
 
-        if(select3D.isSelected()){
-            sala.setTresD(true);
-        }
-
-        if(select4D.isSelected()){
-            sala.setCuatroD(true);
-        }
+        funcionService.save(funcion);
 
 
-        sala.setName(nombre);
-        sala.setCine(cine);
-        salaService.save(sala);
-        nombreAgregado.clear();
-        capacidadAgregada.clear();
-        //capacidad.clear();
-
-        initialize();
-        // cineService.save(cine2);
-
-
+        inicializarFunciones();
     }
 
     @FXML
@@ -222,6 +275,5 @@ public class vistaCinesController {
         window.setScene(inicioScene);
         window.show();
     }
-
 
 }

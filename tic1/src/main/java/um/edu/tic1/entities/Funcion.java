@@ -33,6 +33,9 @@ public class Funcion {
     @JoinColumn(name = "sala_id ")
     private Sala sala;
 
+    public Funcion(){
+
+    }
 
     public Long getId() {
         return id;

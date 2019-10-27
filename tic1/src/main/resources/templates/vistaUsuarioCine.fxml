@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.vistaUsuarioCineController">
+   <center>
+      <VBox prefHeight="400.0" prefWidth="640.0">
+        <children>
+          <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="298.0" prefWidth="528.0" VBox.vgrow="ALWAYS">
+               <children>
+                <AnchorPane layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                  <TabPane layoutY="10.0" prefHeight="427.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <tabs>
+                        <Tab closable="false" text="Salas">
+                           <content>
+                              <TableView fx:id="tabla" editable="true" prefHeight="388.0" prefWidth="423.0">
+                                <columns>
+                                  <TableColumn fx:id="nombreSala" onEditCommit="#editNombreCommit" prefWidth="75.0" text="Sala" />
+                                    <TableColumn fx:id="idSala" prefWidth="75.0" text="ID" />
+                                    <TableColumn fx:id="capacidad" prefWidth="75.0" text="Capacidad" />
+                                    <TableColumn fx:id="tresDCol" prefWidth="75.0" text="3D" />
+                                    <TableColumn fx:id="cuatroDCol" prefWidth="75.0" text="4D" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </content>
+                        </Tab>
+                        <Tab closable="false" text="Funciones">
+                           <content>
+                              <BorderPane>
+                                 <center>
+                                    <TableView fx:id="tablaFunciones" prefHeight="200.0" prefWidth="200.0">
+                                      <columns>
+                                          <TableColumn fx:id="salaFuncion" prefWidth="75.0" text="Sala" />
+                                        <TableColumn fx:id="codigoFuncion" prefWidth="75.0" text="Codigo" />
+                                        <TableColumn fx:id="peliculaFuncion" prefWidth="75.0" text="Pelicula" />
+                                          <TableColumn fx:id="dimensionFuncion" prefWidth="75.0" text="Dimension" />
+                                          <TableColumn fx:id="fechaFuncion" prefWidth="75.0" text="Fecha" />
+                                          <TableColumn fx:id="inicioFuncion" prefWidth="90.0" text="Inicio" />
+                                          <TableColumn fx:id="finFuncion" prefWidth="75.0" text="Fin" />
+                                      </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                       <effect>
+                                          <Blend />
+                                       </effect>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </TableView>
+                                 </center>
+                              </BorderPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </TabPane>
+               </children>
+          </AnchorPane>
+        </children>
+      </VBox>
+   </center>
+   <right>
+      <ScrollPane prefHeight="549.0" prefWidth="189.0">
+         <content>
+            <VBox prefHeight="200.0" prefWidth="154.0">
+               <children>
+                  <Label text="Agregar Funcion">
+                     <VBox.margin>
+                        <Insets left="30.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
+                     <VBox.margin>
+                        <Insets left="8.0" top="30.0" />
+                     </VBox.margin>
+                  </Text>
+                  <TextField fx:id="nombreAgregado" promptText="Nombre funcion">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <ComboBox fx:id="comboPeli" prefWidth="150.0" promptText="Pelicula">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="comboSala" onAction="#comboSalaActualizado" prefWidth="150.0" promptText="Sala">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="comboDimension" prefWidth="150.0" promptText="Dimensión">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <Label text="Hora de inicio">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField promptText="Hora de inicio">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Duracion">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField promptText="Duracion">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Fecha de inicio">
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                  </Label>
+                  <DatePicker>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <Label text="Fecha de fin">
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                  </Label>
+                  <DatePicker>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <CheckBox fx:id="todosDias" mnemonicParsing="false" text="Todos los dias" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets left="25.0" top="8.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <MenuButton text="Dias">
+                    <items>
+                        <CheckMenuItem fx:id="lunes" mnemonicParsing="false" text="Lunes" />
+                        <CheckMenuItem fx:id="martes" mnemonicParsing="false" text="Martes" />
+                        <CheckMenuItem fx:id="miercoles" mnemonicParsing="false" text="Miercoles" />
+                        <CheckMenuItem fx:id="jueves" mnemonicParsing="false" text="Jueves" />
+                        <CheckMenuItem fx:id="viernes" mnemonicParsing="false" text="Viernes" />
+                        <CheckMenuItem fx:id="sabado" mnemonicParsing="false" text="Sabado" />
+                        <CheckMenuItem fx:id="domingo" mnemonicParsing="false" text="Domingo" />
+                    </items>
+                     <VBox.margin>
+                        <Insets left="40.0" top="10.0" />
+                     </VBox.margin>
+                  </MenuButton>
+                  <Button mnemonicParsing="false" onAction="#addFun" text="Agregar">
+                     <VBox.margin>
+                        <Insets left="40.0" top="35.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </right>
+   <left>
+      <Button mnemonicParsing="false" onAction="#volver" text="Volver" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>
