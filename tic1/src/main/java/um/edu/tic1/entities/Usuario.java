@@ -1,6 +1,8 @@
 package um.edu.tic1.entities;
 
 
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,14 +12,13 @@ import javax.persistence.*;
         discriminatorType = DiscriminatorType.STRING)
 public abstract class Usuario {
 
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "usuario_id")
-    String userName;
+    @NotNull
+    private String userName;
 
-    String name;
-    String password;
+    private String name;
+    private String password;
 
 
     public Usuario(String userName, String name, String password) {
