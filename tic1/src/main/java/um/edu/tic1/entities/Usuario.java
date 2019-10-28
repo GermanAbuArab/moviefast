@@ -2,7 +2,6 @@ package um.edu.tic1.entities;
 
 
 
-
 import javax.persistence.*;
 
 @Entity
