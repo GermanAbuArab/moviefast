@@ -121,7 +121,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField promptText="Hora de inicio">
+                  <TextField fx:id="horaInicio" promptText="Hora de inicio">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -131,7 +131,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField promptText="Duracion">
+                  <TextField fx:id="duracion" promptText="Duracion">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -141,7 +141,7 @@
                         <Insets top="7.0" />
                      </VBox.margin>
                   </Label>
-                  <DatePicker>
+                  <DatePicker fx:id="fechaInicio">
                      <VBox.margin>
                         <Insets top="7.0" />
                      </VBox.margin>
@@ -151,7 +151,7 @@
                         <Insets top="7.0" />
                      </VBox.margin>
                   </Label>
-                  <DatePicker>
+                  <DatePicker fx:id="fechaFin">
                      <VBox.margin>
                         <Insets top="7.0" />
                      </VBox.margin>
