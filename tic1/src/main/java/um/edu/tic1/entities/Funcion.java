@@ -21,6 +21,8 @@ public class Funcion {
 
     private String dimension;
 
+    private int duracion;
+
     //private String idioma;
 
     //private boolean subs;
@@ -76,5 +78,13 @@ public class Funcion {
 
     public void setSala(Sala sala) {
         this.sala = sala;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
     }
 }

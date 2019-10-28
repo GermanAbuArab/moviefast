@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
@@ -27,7 +24,9 @@ import um.edu.tic1.services.FuncionService;
 import um.edu.tic1.services.MovieService;
 import um.edu.tic1.services.SalaService;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -98,6 +97,18 @@ public class vistaUsuarioCineController {
 
     @FXML
     private TableColumn<Sala, Boolean> cuatroDCol;
+
+    @FXML
+    private TextField horaInicio;
+
+    @FXML
+    private TextField duracion;
+
+    @FXML
+    private DatePicker fechaInicio;
+
+    @FXML
+    private DatePicker fechaFin;
 
 
     public void initialize() {
@@ -222,21 +233,8 @@ public class vistaUsuarioCineController {
         return movie;
     }
 
-
-    @FXML
-    void aplicar(ActionEvent event) {
-
-    }
-
     @FXML
     void editNombreCommit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void agregarFuncion(ActionEvent event) {
-
-
 
     }
 
@@ -252,11 +250,15 @@ public class vistaUsuarioCineController {
         String dimension = (String) comboDimension.getSelectionModel().getSelectedItem();
         long id = 1;
 
+        Date fecha = new Date(String.valueOf(fechaFin.getChronology()));
+        System.out.println(fecha.toString());
+
         funcion.setId(id);
         funcion.setSala(sala);
         funcion.setMovie(peli);
         funcion.setName(nombre);
         funcion.setDimension(dimension);
+
 
         funcionService.save(funcion);
 
