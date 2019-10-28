@@ -1,7 +1,7 @@
 package um.edu.tic1.entities;
 
 
-import com.sun.istack.internal.NotNull;
+
 
 import javax.persistence.*;
 
@@ -14,8 +14,8 @@ public abstract class Usuario {
 
     @Id
     @Column(name = "usuario_id")
-    @NotNull
     private String userName;
+
 
     private String name;
     private String password;
