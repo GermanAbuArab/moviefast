@@ -18,9 +18,12 @@
     -fx-effect: dropshadow(three-pass-box, rgb(220, 227, 210), 15, 0, 0, 0);
 }
 
-.fondoViewFilms, .scrollPane{
+.fondoViewFilms{
     -fx-background-image: url(../assets/fondoviewFilms.jpg);
     -fx-background-size: cover;
+}
+.scrollPane{
+    -fx-background-color: black;
 }
 
 .fondoFilm{

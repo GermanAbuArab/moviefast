@@ -144,7 +144,7 @@ public class ViewFilmsController  {
         grid.setVgap(170);
 
         int rows = 3;
-        int columns = 7;
+        int columns = 4;
         int imageIndex = 0;
         for (int i = 0 ; i < rows; i++) {
             for (int j = 0; j < columns; j++) {

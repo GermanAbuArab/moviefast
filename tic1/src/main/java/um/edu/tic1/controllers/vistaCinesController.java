@@ -73,7 +73,9 @@ public class vistaCinesController {
     private TextField nombreAgregado;
 
     @FXML
-    private TextField capacidadAgregada;
+    private TextField largo;
+    @FXML
+    private TextField ancho;
 
     @FXML
     private CheckBox select3D;
@@ -183,8 +185,11 @@ public class vistaCinesController {
         Sala sala = new Sala();
 
         try {
-            int capacidadInt = Integer.parseInt(capacidadAgregada.getText());
-            sala.setCapacidad(capacidadInt);
+            int capacidadIntLargo = Integer.parseInt(largo.getText());
+            int capacidadIntAncho = Integer.parseInt(ancho.getText());
+            sala.setX(capacidadIntAncho);
+            sala.setY(capacidadIntLargo);
+            sala.setCapacidad(capacidadIntAncho*capacidadIntLargo);
         } catch (NumberFormatException nfe) {
             System.out.println("NumberFormatException: " + nfe.getMessage());
         }
@@ -202,10 +207,12 @@ public class vistaCinesController {
         sala.setCine(cine);
         salaService.save(sala);
         nombreAgregado.clear();
-        capacidadAgregada.clear();
+        largo.clear();
+        ancho.clear();
         //capacidad.clear();
 
         initialize();
+
         // cineService.save(cine2);
 
 

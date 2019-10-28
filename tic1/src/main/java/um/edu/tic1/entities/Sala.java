@@ -14,6 +14,8 @@ public class Sala {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "sala_id")
     private Long id;
+    private int x;
+    private int y;
 
     private String name;
 
@@ -30,6 +32,22 @@ public class Sala {
     public Sala(){
         this.tresD = false;
         this.cuatroD = false;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     @Override

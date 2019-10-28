@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
@@ -80,16 +81,6 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </TextField>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Capacidad">
-               <VBox.margin>
-                  <Insets left="8.0" top="8.0" />
-               </VBox.margin>
-            </Text>
-            <TextField fx:id="capacidadAgregada" promptText="Capacidad">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </TextField>
             <CheckBox fx:id="select3D" mnemonicParsing="false" text="3D">
                <VBox.margin>
                   <Insets top="8.0" />
@@ -100,6 +91,10 @@
                   <Insets top="8.0" />
                </VBox.margin>
             </CheckBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Largo (butacas)" />
+            <TextField fx:id="largo" promptText="columnas de butacas" />
+            <Text layoutX="10.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ancho (butacas)" />
+            <TextField fx:id="ancho" promptText="fila butacas" />
             <Button mnemonicParsing="false" onAction="#agregarSala" text="Agregar">
                <VBox.margin>
                   <Insets left="8.0" top="50.0" />
@@ -108,7 +103,11 @@
          </children>
       </VBox>
    </right>
-   <left>
-      <Button mnemonicParsing="false" onAction="#volver" text="Volver" BorderPane.alignment="CENTER" />
-   </left>
+   <top>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#volver" text="Volver" />
+         </children>
+      </HBox>
+   </top>
 </BorderPane>

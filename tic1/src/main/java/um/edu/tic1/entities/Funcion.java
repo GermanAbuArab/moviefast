@@ -22,6 +22,7 @@ public class Funcion {
     private String dimension;
     private String horaInicio;
     private String horaFin;
+    private int[][] butacas;
 
     private int duracion;
 
@@ -88,6 +89,7 @@ public class Funcion {
 
     public void setSala(Sala sala) {
         this.sala = sala;
+        this.butacas = new int [sala.getX()][sala.getY()];
     }
 
     public int getDuracion() {
