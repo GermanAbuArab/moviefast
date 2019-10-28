@@ -18,8 +18,9 @@
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.vistaUsuarioCineController">
    <center>
@@ -50,15 +51,14 @@
                            <content>
                               <BorderPane>
                                  <center>
-                                    <TableView fx:id="tablaFunciones" prefHeight="200.0" prefWidth="200.0">
+                                    <TableView fx:id="tablaFunciones" prefHeight="520.0" prefWidth="602.0">
                                       <columns>
                                           <TableColumn fx:id="salaFuncion" prefWidth="75.0" text="Sala" />
                                         <TableColumn fx:id="codigoFuncion" prefWidth="75.0" text="Codigo" />
                                         <TableColumn fx:id="peliculaFuncion" prefWidth="75.0" text="Pelicula" />
                                           <TableColumn fx:id="dimensionFuncion" prefWidth="75.0" text="Dimension" />
-                                          <TableColumn fx:id="fechaFuncion" prefWidth="75.0" text="Fecha" />
-                                          <TableColumn fx:id="inicioFuncion" prefWidth="90.0" text="Inicio" />
-                                          <TableColumn fx:id="finFuncion" prefWidth="75.0" text="Fin" />
+                                          <TableColumn fx:id="fechaFuncion" prefWidth="75.0" text="Fecha inicio" />
+                                          <TableColumn fx:id="finFuncion" prefWidth="75.0" text="Fecha fin" />
                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -91,16 +91,6 @@
                         <Insets left="30.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
-                     <VBox.margin>
-                        <Insets left="8.0" top="30.0" />
-                     </VBox.margin>
-                  </Text>
-                  <TextField fx:id="nombreAgregado" promptText="Nombre funcion">
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </TextField>
                   <ComboBox fx:id="comboPeli" prefWidth="150.0" promptText="Pelicula">
                      <VBox.margin>
                         <Insets top="5.0" />
@@ -121,17 +111,13 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="horaInicio" promptText="Hora de inicio">
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </TextField>
+                  <ComboBox fx:id="horaInicio" prefWidth="150.0" promptText="Comienzo" />
                   <Label text="Duracion">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="duracion" promptText="Duracion">
+                  <TextField fx:id="duracionMovie" promptText="Duracion (minutos)">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -185,7 +171,13 @@
          </content>
       </ScrollPane>
    </right>
-   <left>
-      <Button mnemonicParsing="false" onAction="#volver" text="Volver" BorderPane.alignment="CENTER" />
-   </left>
+   <top>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="eliminar" mnemonicParsing="false" text="Eliminar" />
+            <Region prefHeight="25.0" prefWidth="651.0" />
+            <Button mnemonicParsing="false" onAction="#volver" text="Volver" />
+         </children>
+      </HBox>
+   </top>
 </BorderPane>

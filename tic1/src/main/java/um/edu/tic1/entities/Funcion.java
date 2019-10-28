@@ -20,6 +20,8 @@ public class Funcion {
     private Movie movie;
 
     private String dimension;
+    private String horaInicio;
+    private String horaFin;
 
     private int duracion;
 
@@ -59,6 +61,14 @@ public class Funcion {
         return movie;
     }
 
+    public String getHoraInicio() {
+        return horaInicio;
+    }
+
+    public void setHoraInicio(String horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
     public void setMovie(Movie movie) {
         this.movie = movie;
     }
@@ -82,6 +92,14 @@ public class Funcion {
 
     public int getDuracion() {
         return duracion;
+    }
+
+    public String getHoraFin() {
+        return horaFin;
+    }
+
+    public void setHoraFin(String horaFin) {
+        this.horaFin = horaFin;
     }
 
     public void setDuracion(int duracion) {

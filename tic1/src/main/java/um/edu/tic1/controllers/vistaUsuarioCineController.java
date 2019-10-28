@@ -26,6 +26,9 @@ import um.edu.tic1.services.SalaService;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -49,6 +52,11 @@ public class vistaUsuarioCineController {
 
     @FXML
     private TableColumn<Funcion,String> salaFuncion;
+
+    @FXML
+    private TableColumn<Funcion,String> fechaFuncion;
+    @FXML
+    private TableColumn<Funcion,String> finFuncion;
 
     @FXML
     private TableColumn<Funcion,String> codigoFuncion;
@@ -99,10 +107,10 @@ public class vistaUsuarioCineController {
     private TableColumn<Sala, Boolean> cuatroDCol;
 
     @FXML
-    private TextField horaInicio;
+    private ComboBox horaInicio;
 
     @FXML
-    private TextField duracion;
+    private TextField duracionMovie;
 
     @FXML
     private DatePicker fechaInicio;
@@ -123,10 +131,12 @@ public class vistaUsuarioCineController {
 
         ObservableList<Sala> salas = getSalas();
         ObservableList<Movie> pelis = getMovie();
-
+        ObservableList<String> horas = FXCollections.observableArrayList();
+        horas.setAll("08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00","24:00");
 
         comboSala.setItems(salas);
         comboPeli.setItems(pelis);
+        horaInicio.setItems(horas);
 
     }
 
@@ -156,6 +166,9 @@ public class vistaUsuarioCineController {
         salaFuncion.setCellValueFactory(new PropertyValueFactory<>("sala"));
         peliculaFuncion.setCellValueFactory(new PropertyValueFactory<>("movie"));
         dimensionFuncion.setCellValueFactory(new PropertyValueFactory<>("dimension"));
+        fechaFuncion.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
+        finFuncion.setCellValueFactory(new PropertyValueFactory<>("horaFin"));
+
 
 
         tablaFunciones.setItems((ObservableList<Funcion>) getFunciones());
@@ -248,19 +261,30 @@ public class vistaUsuarioCineController {
         Movie peli = (Movie) comboPeli.getSelectionModel().getSelectedItem();
         String nombre = nombreAgregado.getText();
         String dimension = (String) comboDimension.getSelectionModel().getSelectedItem();
+        LocalDate fechainicio = fechaInicio.getValue();
+        LocalDate fechafin = fechaFin.getValue();
+        String horainicio = (String)horaInicio.getSelectionModel().getSelectedItem();
+        String fechatotalInicio = fechainicio +"T"+ horainicio + ":00.00";
+        LocalDateTime fechatotalinicio = LocalDateTime.parse(fechatotalInicio);
+        LocalDateTime fechatotalFin = fechatotalinicio.plusMinutes(( Long.valueOf(duracionMovie.getText())));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy. HH:mm:ss");
         long id = 1;
 
-        Date fecha = new Date(String.valueOf(fechaFin.getChronology()));
-        System.out.println(fecha.toString());
+        //Date fecha = new Date(String.valueOf(fechaFin.getChronology()));
+        //System.out.println(fecha.toString());
 
         funcion.setId(id);
         funcion.setSala(sala);
         funcion.setMovie(peli);
         funcion.setName(nombre);
         funcion.setDimension(dimension);
+        funcion.setHoraInicio(fechatotalinicio.format(formatter));
+        funcion.setHoraFin(fechatotalFin.format(formatter));
+
 
 
         funcionService.save(funcion);
+
 
 
         inicializarFunciones();
