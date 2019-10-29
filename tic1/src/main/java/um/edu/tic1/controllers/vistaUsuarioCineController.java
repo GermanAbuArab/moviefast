@@ -192,7 +192,7 @@ public class vistaUsuarioCineController {
         peliculaFuncion.setCellValueFactory(new PropertyValueFactory<>("movie"));
         dimensionFuncion.setCellValueFactory(new PropertyValueFactory<>("dimension"));
         fechaFuncion.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
-        finFuncion.setCellValueFactory(new PropertyValueFactory<>("horaFin"));
+        finFuncion.setCellValueFactory(new PropertyValueFactory<>("duracion"));
 
 
 
@@ -386,10 +386,10 @@ public class vistaUsuarioCineController {
         String dimension = (String) comboDimension.getSelectionModel().getSelectedItem();
         LocalDate fechainicio = fecha;
         String horainicio = (String)horaInicio.getSelectionModel().getSelectedItem();
-        String fechatotalInicio = fechainicio +"T"+ horainicio + ":00.00";
+        String fechatotalInicio = fechainicio +"T"+ horainicio ;
         LocalDateTime fechatotalinicio = LocalDateTime.parse(fechatotalInicio);
         LocalDateTime fechatotalFin = fechatotalinicio.plusMinutes(( Long.valueOf(duracionMovie.getText())));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy. HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd/MM/yyyy HH:mm");
         long id = 1;
 
 
@@ -400,6 +400,7 @@ public class vistaUsuarioCineController {
         funcion.setId(id);
         funcion.setSala(sala);
         funcion.setMovie(peli);
+        funcion.setDuracion(Integer.parseInt(duracionMovie.getText()));
         //funcion.setName(nombre);
         funcion.setDimension(dimension);
         funcion.setHoraInicio(fechatotalinicio.format(formatter));
