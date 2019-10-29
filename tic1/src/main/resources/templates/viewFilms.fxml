@@ -162,7 +162,7 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <ScrollPane prefWidth="518.0" styleClass="scrollPane">
+            <ScrollPane  fx:id="scrollPane" prefWidth="518.0" styleClass="scrollPane">
                <content>
                   <GridPane fx:id="grid" styleClass="scrollPane">
                     <columnConstraints>

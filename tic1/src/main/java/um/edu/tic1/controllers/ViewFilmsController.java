@@ -176,8 +176,8 @@ public class ViewFilmsController  {
             });
         }
 
-        //scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        //scrollPane.setFitToHeight(true);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setFitToHeight(true);
     }
 
 

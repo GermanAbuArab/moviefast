@@ -28,17 +28,18 @@ public class MovieController {
 
     @Autowired
     private MovieService ms;
+    private Movie movie;
 
     @FXML
     private ImageView imagenMovie;
 
-
+    @FXML
     public void loadData(Movie movie){
         nombre.setText(movie.getName());
         descripcion.setText(movie.getDescription());
         genero.setText(movie.getGenero());
         categoria.setText(movie.getCategoria());
-
+        this.movie= movie;
     }
 
     public void setImagenMovie(Image imagen){
@@ -55,6 +56,7 @@ public class MovieController {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
+
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");
         Scene inicioScene = new Scene(inicio,1000,500);
@@ -69,8 +71,10 @@ public class MovieController {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
-        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/ManageBookingsScene.fxml"));
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/selectorButacas.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");
+        selectorButacasController selectorButacasController =fxmlLoader.getController();
+        selectorButacasController.setMovie(movie);
         Scene inicioScene = new Scene(inicio,700,500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
