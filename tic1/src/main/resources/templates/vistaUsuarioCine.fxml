@@ -151,8 +151,8 @@
                     <items>
                         <CheckMenuItem fx:id="lunes" mnemonicParsing="false" text="Lunes" />
                         <CheckMenuItem fx:id="martes" mnemonicParsing="false" text="Martes" />
-                        <CheckMenuItem fx:id="miercoles" mnemonicParsing="false" text="Miercoles" />
-                        <CheckMenuItem fx:id="jueves" mnemonicParsing="false" text="Jueves" />
+                        <CheckMenuItem fx:id="jueves" mnemonicParsing="false" text="Miercoles" />
+                        <CheckMenuItem fx:id="miercoles" mnemonicParsing="false" text="Jueves" />
                         <CheckMenuItem fx:id="viernes" mnemonicParsing="false" text="Viernes" />
                         <CheckMenuItem fx:id="sabado" mnemonicParsing="false" text="Sabado" />
                         <CheckMenuItem fx:id="domingo" mnemonicParsing="false" text="Domingo" />

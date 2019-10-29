@@ -329,50 +329,107 @@ public class vistaUsuarioCineController {
         window.show();
     }
 
-    public void addFun(){
+    public void addFun()throws datoNoSeleccionado{
+
+        this.agregado = false;
 
         LocalDate fechainicio = fechaInicio.getValue();
         LocalDate fechafin = fechaFin.getValue();
 
+        if(fechaFin.getValue() == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Alerta");
+            alert.setHeaderText("Alerta");
+            alert.setContentText("Fecha final no seleccionada");
+            alert.showAndWait();
+            throw new datoNoSeleccionado();
+        }
 
-        if(todosDias.isSelected()){
-            do {
+        if(fechaInicio.getValue() == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Alerta");
+            alert.setHeaderText("Alerta");
+            alert.setContentText("Fecha inicial no seleccionada");
+            alert.showAndWait();
+            throw new datoNoSeleccionado();
+        }
+
+        if(fechainicio.isAfter(fechafin)){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Alerta");
+            alert.setHeaderText("Alerta");
+            alert.setContentText("La fecha inicial es posterior a la fecha final");
+            alert.showAndWait();
+            throw new datoNoSeleccionado();
+        }
+
+        if(fechainicio.equals(fechafin)){
+            if (fechainicio.getDayOfWeek().equals(DayOfWeek.MONDAY) && lunes.isSelected()) {
                 agregarFunIndividual(fechainicio);
-                fechainicio = fechainicio.plusDays(1);
-            }while(!fechainicio.equals(fechafin));
+            } else if (fechainicio.getDayOfWeek().equals(DayOfWeek.TUESDAY) && martes.isSelected()) {
+                agregarFunIndividual(fechainicio);
+            } else if (fechainicio.getDayOfWeek().equals(DayOfWeek.WEDNESDAY) && miercoles.isSelected()) {
+                agregarFunIndividual(fechainicio);
+            } else if (fechainicio.getDayOfWeek().equals(DayOfWeek.THURSDAY) && jueves.isSelected()) {
+                agregarFunIndividual(fechainicio);
+            } else if (fechainicio.getDayOfWeek().equals(DayOfWeek.FRIDAY) && viernes.isSelected()) {
+                agregarFunIndividual(fechainicio);
+            } else if (fechainicio.getDayOfWeek().equals(DayOfWeek.SATURDAY) && sabado.isSelected()) {
+                agregarFunIndividual(fechainicio);
+            } else if (fechainicio.getDayOfWeek().equals(DayOfWeek.SUNDAY) && domingo.isSelected()) {
+                agregarFunIndividual(fechainicio);
+            }else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Alerta");
+                alert.setHeaderText("Alerta");
+                alert.setContentText("No se ha agregado ninguna funcion");
+                alert.showAndWait();
+            }
+
         }else {
+            if (todosDias.isSelected()) {
+                do {
+                    agregarFunIndividual(fechainicio);
+                    fechainicio = fechainicio.plusDays(1);
+                } while (!fechainicio.equals(fechafin));
 
-            do {
+            } else {
+                do {
 
-                if (fechainicio.getDayOfWeek().equals(DayOfWeek.MONDAY) && lunes.isSelected()) {
-                    agregarFunIndividual(fechainicio);
-                }
-                else if (fechainicio.getDayOfWeek().equals(DayOfWeek.TUESDAY) && martes.isSelected()) {
-                    agregarFunIndividual(fechainicio);
-                }
-                else if (fechainicio.getDayOfWeek().equals(DayOfWeek.THURSDAY) && miercoles.isSelected()) {
-                    agregarFunIndividual(fechainicio);
-                }
-                else if (fechainicio.getDayOfWeek().equals(DayOfWeek.WEDNESDAY) && jueves.isSelected()) {
-                    agregarFunIndividual(fechainicio);
-                }
-                else if (fechainicio.getDayOfWeek().equals(DayOfWeek.SUNDAY) && viernes.isSelected()) {
-                    agregarFunIndividual(fechainicio);
-                }
-                else if (fechainicio.getDayOfWeek().equals(DayOfWeek.SATURDAY) && sabado.isSelected()) {
-                    agregarFunIndividual(fechainicio);
-                }
-                else if (fechainicio.getDayOfWeek().equals(DayOfWeek.FRIDAY) && domingo.isSelected()) {
-                    agregarFunIndividual(fechainicio);
-                }
+                    if (fechainicio.getDayOfWeek().equals(DayOfWeek.MONDAY) && lunes.isSelected()) {
+                        agregarFunIndividual(fechainicio);
+                    } else if (fechainicio.getDayOfWeek().equals(DayOfWeek.TUESDAY) && martes.isSelected()) {
+                        agregarFunIndividual(fechainicio);
+                    } else if (fechainicio.getDayOfWeek().equals(DayOfWeek.THURSDAY) && miercoles.isSelected()) {
+                        agregarFunIndividual(fechainicio);
+                    } else if (fechainicio.getDayOfWeek().equals(DayOfWeek.WEDNESDAY) && jueves.isSelected()) {
+                        agregarFunIndividual(fechainicio);
+                    } else if (fechainicio.getDayOfWeek().equals(DayOfWeek.SUNDAY) && viernes.isSelected()) {
+                        agregarFunIndividual(fechainicio);
+                    } else if (fechainicio.getDayOfWeek().equals(DayOfWeek.SATURDAY) && sabado.isSelected()) {
+                        agregarFunIndividual(fechainicio);
+                    } else if (fechainicio.getDayOfWeek().equals(DayOfWeek.FRIDAY) && domingo.isSelected()) {
+                        agregarFunIndividual(fechainicio);
+                    }
 
-                fechainicio = fechainicio.plusDays(1);
+                    fechainicio = fechainicio.plusDays(1);
 
-            } while (!fechainicio.equals(fechafin));
+                } while (!fechainicio.equals(fechafin));
+
+                if(!agregado){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Alerta");
+                    alert.setHeaderText("Alerta");
+                    alert.setContentText("No se ha agregado ninguna funcion");
+                    alert.showAndWait();
+                }
+            }
         }
 
         inicializarFunciones();
     }
+
+    private boolean agregado = false;
 
     public void agregarFunIndividual(LocalDate fecha){
 
@@ -407,8 +464,9 @@ public class vistaUsuarioCineController {
         funcion.setHoraFin(fechatotalFin.format(formatter));
 
 
-
         funcionService.save(funcion);
+
+        this.agregado = true;
 
     }
 
