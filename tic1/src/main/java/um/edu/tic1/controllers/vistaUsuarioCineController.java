@@ -336,6 +336,15 @@ public class vistaUsuarioCineController {
         LocalDate fechainicio = fechaInicio.getValue();
         LocalDate fechafin = fechaFin.getValue();
 
+        if(fechainicio.isBefore(LocalDateTime.now().toLocalDate())){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Alerta");
+            alert.setHeaderText("Alerta");
+            alert.setContentText("La fecha inicial seleccionada es anterior a la fecha actual");
+            alert.showAndWait();
+            throw new datoNoSeleccionado();
+        }
+
         if(fechaFin.getValue() == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Alerta");
