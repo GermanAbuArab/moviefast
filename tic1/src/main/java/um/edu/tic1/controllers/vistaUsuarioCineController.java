@@ -26,6 +26,7 @@ import um.edu.tic1.services.SalaService;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -117,6 +118,30 @@ public class vistaUsuarioCineController {
 
     @FXML
     private DatePicker fechaFin;
+
+    @FXML
+    private CheckBox todosDias;
+
+    @FXML
+    private CheckMenuItem lunes;
+
+    @FXML
+    private CheckMenuItem martes;
+
+    @FXML
+    private CheckMenuItem miercoles;
+
+    @FXML
+    private CheckMenuItem jueves;
+
+    @FXML
+    private CheckMenuItem viernes;
+
+    @FXML
+    private CheckMenuItem sabado;
+
+    @FXML
+    private CheckMenuItem domingo;
 
 
     public void initialize() {
@@ -251,7 +276,7 @@ public class vistaUsuarioCineController {
 
     }
 
-    public void addFun(){
+    public void addFun2(){
 
         System.out.println("Entro aca MAN");
 
@@ -259,7 +284,7 @@ public class vistaUsuarioCineController {
 
         Sala sala = (Sala) comboSala.getSelectionModel().getSelectedItem();
         Movie peli = (Movie) comboPeli.getSelectionModel().getSelectedItem();
-        String nombre = nombreAgregado.getText();
+        //String nombre = nombreAgregado.getText();
         String dimension = (String) comboDimension.getSelectionModel().getSelectedItem();
         LocalDate fechainicio = fechaInicio.getValue();
         LocalDate fechafin = fechaFin.getValue();
@@ -270,13 +295,15 @@ public class vistaUsuarioCineController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy. HH:mm:ss");
         long id = 1;
 
+
+
         //Date fecha = new Date(String.valueOf(fechaFin.getChronology()));
         //System.out.println(fecha.toString());
 
         funcion.setId(id);
         funcion.setSala(sala);
         funcion.setMovie(peli);
-        funcion.setName(nombre);
+        //funcion.setName(nombre);
         funcion.setDimension(dimension);
         funcion.setHoraInicio(fechatotalinicio.format(formatter));
         funcion.setHoraFin(fechatotalFin.format(formatter));
@@ -300,6 +327,88 @@ public class vistaUsuarioCineController {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
+    }
+
+    public void addFun(){
+
+        LocalDate fechainicio = fechaInicio.getValue();
+        LocalDate fechafin = fechaFin.getValue();
+
+
+        if(todosDias.isSelected()){
+            do {
+                agregarFunIndividual(fechainicio);
+                fechainicio = fechainicio.plusDays(1);
+            }while(!fechainicio.equals(fechafin));
+        }else {
+
+            do {
+
+                if (fechainicio.getDayOfWeek().equals(DayOfWeek.MONDAY) && lunes.isSelected()) {
+                    agregarFunIndividual(fechainicio);
+                }
+                else if (fechainicio.getDayOfWeek().equals(DayOfWeek.TUESDAY) && martes.isSelected()) {
+                    agregarFunIndividual(fechainicio);
+                }
+                else if (fechainicio.getDayOfWeek().equals(DayOfWeek.THURSDAY) && miercoles.isSelected()) {
+                    agregarFunIndividual(fechainicio);
+                }
+                else if (fechainicio.getDayOfWeek().equals(DayOfWeek.WEDNESDAY) && jueves.isSelected()) {
+                    agregarFunIndividual(fechainicio);
+                }
+                else if (fechainicio.getDayOfWeek().equals(DayOfWeek.SUNDAY) && viernes.isSelected()) {
+                    agregarFunIndividual(fechainicio);
+                }
+                else if (fechainicio.getDayOfWeek().equals(DayOfWeek.SATURDAY) && sabado.isSelected()) {
+                    agregarFunIndividual(fechainicio);
+                }
+                else if (fechainicio.getDayOfWeek().equals(DayOfWeek.FRIDAY) && domingo.isSelected()) {
+                    agregarFunIndividual(fechainicio);
+                }
+
+                fechainicio = fechainicio.plusDays(1);
+
+            } while (!fechainicio.equals(fechafin));
+        }
+
+        inicializarFunciones();
+    }
+
+    public void agregarFunIndividual(LocalDate fecha){
+
+        System.out.println("Entro aca MAN");
+
+        Funcion funcion = new Funcion();
+
+        Sala sala = (Sala) comboSala.getSelectionModel().getSelectedItem();
+        Movie peli = (Movie) comboPeli.getSelectionModel().getSelectedItem();
+        //String nombre = nombreAgregado.getText();
+        String dimension = (String) comboDimension.getSelectionModel().getSelectedItem();
+        LocalDate fechainicio = fecha;
+        String horainicio = (String)horaInicio.getSelectionModel().getSelectedItem();
+        String fechatotalInicio = fechainicio +"T"+ horainicio + ":00.00";
+        LocalDateTime fechatotalinicio = LocalDateTime.parse(fechatotalInicio);
+        LocalDateTime fechatotalFin = fechatotalinicio.plusMinutes(( Long.valueOf(duracionMovie.getText())));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy. HH:mm:ss");
+        long id = 1;
+
+
+
+        //Date fecha = new Date(String.valueOf(fechaFin.getChronology()));
+        //System.out.println(fecha.toString());
+
+        funcion.setId(id);
+        funcion.setSala(sala);
+        funcion.setMovie(peli);
+        //funcion.setName(nombre);
+        funcion.setDimension(dimension);
+        funcion.setHoraInicio(fechatotalinicio.format(formatter));
+        funcion.setHoraFin(fechatotalFin.format(formatter));
+
+
+
+        funcionService.save(funcion);
+
     }
 
 }
