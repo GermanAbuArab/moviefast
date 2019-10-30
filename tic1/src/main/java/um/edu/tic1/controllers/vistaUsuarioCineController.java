@@ -306,6 +306,7 @@ public class vistaUsuarioCineController {
         //funcion.setName(nombre);
         funcion.setDimension(dimension);
         funcion.setHoraInicio(fechatotalinicio.format(formatter));
+        funcion.setHora(horainicio);
         funcion.setHoraFin(fechatotalFin.format(formatter));
 
 
@@ -470,6 +471,8 @@ public class vistaUsuarioCineController {
         //funcion.setName(nombre);
         funcion.setDimension(dimension);
         funcion.setHoraInicio(fechatotalinicio.format(formatter));
+        funcion.setHora(horainicio);
+        System.out.println("arranca a las " + horainicio);
         funcion.setHoraFin(fechatotalFin.format(formatter));
 
 

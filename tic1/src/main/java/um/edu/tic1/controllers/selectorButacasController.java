@@ -35,6 +35,8 @@ import um.edu.tic1.services.SalaService;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
@@ -58,43 +60,128 @@ public class selectorButacasController {
     @Autowired
     private CineService cineService;
     private Cine cine;
+    private Sala sala;
     private Movie movieAux;
 
     @FXML
     public void setMovie(Movie movie){
+
         movieAux = movie;
-
-
+        init();
     }
 
-    public void initialize(){
-
-
+    public void init(){
         datePicker.setValue(LocalDate.now());
-        addSeats();
+       ObservableList<String> cines = getCines();
+        ObservableList<String> horas = FXCollections.observableArrayList();
+       salaDropDownList.setVisible(false);
+       horaDropDownList.setVisible(false);
+       ObservableList<Funcion> funciones = getFunciones();
+       if (funciones.size() !=0) {
+
+           CineDropDownList.setItems(cines);
+           CineDropDownList.setOnAction((event) -> {
+               List<Cine> list = cineService.findAll();
+               for (int i = 0; i < list.size(); i++) {
+                   if (list.get(i).getName().equals(CineDropDownList.getValue())) {
+                       this.cine = list.get(i);
+                       for (int y=0; y<funciones.size();y++){
+                          horas.add(funciones.get(y).getHora());
+                       }
+                       horaDropDownList.setItems(horas);
+                       horaDropDownList.setVisible(true);
+
+                       horaDropDownList.setOnAction((event2 ->{
+                           String horainicio = (String)horaDropDownList.getSelectionModel().getSelectedItem();
+                           LocalDate fechainicio = datePicker.getValue();
+                           String fechatotalInicio = fechainicio +"T"+ horainicio + ":00.00";
+                           LocalDateTime fechatotalinicio = LocalDateTime.parse(fechatotalInicio);
+                           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd/MM/yyyy HH:mm");
+                           for (int k=0;k<funciones.size();k++) {
+                               try {
+                                  if (funciones.get(k).getHoraInicio().equals(fechatotalinicio.format(formatter))){
+
+                                      ObservableList<Sala> salas = FXCollections.observableArrayList();
+                                      salas.add(funciones.get(k).getSala());
+                                      salaDropDownList.setItems(salas);
+                                      salaDropDownList.setVisible(true);
+                                      salaDropDownList.setOnAction((e) -> {
+                                          List<Sala> listSala = getSalas();
+                                          sala = (Sala) salaDropDownList.getValue();
+
+                                          for (int j =0;j<listSala.size();j++){
+                                              if (sala.getName().equals(listSala.get(j).getName())){
+                                                  addSeats(sala.getX(),sala.getY());
+                                              }
+                                          }
+
+                                      });
+                                  } else {
+                                  }
+                               }catch (Exception e){
+                                   System.out.println("no hay peli");
+                               }
+
+                           }
+                       } ));
+                       ObservableList<Sala> salas = getSalas();
+                       salaDropDownList.setVisible(true);
+                       salaDropDownList.setItems(salas);
+                       salaDropDownList.setOnAction((e) -> {
+                            List<Sala> listSala = getSalas();
+                            sala = (Sala) salaDropDownList.getValue();
+
+                           for (int j =0;j<listSala.size();j++){
+                            if (sala.getName().equals(listSala.get(j).getName())){
+                                addSeats(sala.getX(),sala.getY());
+                            }
+                           }
+
+                       });
+                   }
+               }
+
+
+           });
+       }
+
+
 
     }
 
+    public ObservableList<String> getCines() {
 
-    private ObservableList<String> getCines() {
-
-        ObservableList<String> movie = FXCollections.observableArrayList();
+        ObservableList<String> cines = FXCollections.observableArrayList();
 
         List<Cine> lista = cineService.findAll();
 
         for (int i = 0; i < lista.size(); i++) {
-
-            if (funcionService.findAll().get(i).getMovie().equals(this.movieAux))
-            movie.add(lista.get(i).getName());
+            cines.add(lista.get(i).getName());
         }
 
-        return movie;
+        return cines;
+    }
+    public ObservableList<Sala> getSalas() {
+
+        ObservableList<Sala> salas = FXCollections.observableArrayList();
+
+        List<Sala> lista = salaService.findAll();
+
+        for (int i = 0; i < lista.size(); i++) {
+            Sala sala = lista.get(i);
+
+            if(sala.getCine().equals(this.cine)) {
+                salas.add(lista.get(i));
+
+            }
+        }
+
+        return salas;
     }
 
 
-    private void addSeats() {
-        int x =3;
-        int y = 3;
+    private void addSeats(int x,int y) {
+        gridSeats.getChildren().clear();
         int indiceButaca =0;
         for (int i=0;i<x;i++ ){
             for (int j =0;j<y;j++){
@@ -168,7 +255,7 @@ public class selectorButacasController {
         for (int i = 0; i < lista.size(); i++) {
             Funcion funcion = lista.get(i);
 
-            if(funcion.getMovie().equals(movieAux)) {
+            if(funcion.getMovie().getName().equals(movieAux.getName())) {
                 funciones.add(lista.get(i));
             }
         }

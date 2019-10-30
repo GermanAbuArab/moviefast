@@ -21,6 +21,7 @@ public class Funcion {
 
     private String dimension;
     private String horaInicio;
+    private String hora;
     private String horaFin;
     private int[][] butacas;
 
@@ -106,5 +107,21 @@ public class Funcion {
 
     public void setDuracion(int duracion) {
         this.duracion = duracion;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public int[][] getButacas() {
+        return butacas;
+    }
+
+    public void setButacas(int[][] butacas) {
+        this.butacas = butacas;
     }
 }
