@@ -23,7 +23,7 @@ public class Funcion {
     private String horaInicio;
     private String hora;
     private String horaFin;
-    private int[][] butacas;
+    private boolean[][] butacas;
 
     private int duracion;
 
@@ -90,8 +90,22 @@ public class Funcion {
 
     public void setSala(Sala sala) {
         this.sala = sala;
-        this.butacas = new int [sala.getX()][sala.getY()];
+        this.butacas = new boolean [sala.getX()][sala.getY()];
+        initButacas(sala.getX(),sala.getY());
     }
+    public void initButacas(int x ,int y){
+        for (int i=0;i<x;i++ ){
+            for (int j =0;j<y;j++){
+                butacas[i][j]= true;
+            }
+        }
+    }
+    public void reservaButaca(int x, int y){
+                butacas[x][y]= false;
+
+
+    }
+
 
     public int getDuracion() {
         return duracion;
@@ -117,11 +131,8 @@ public class Funcion {
         this.hora = hora;
     }
 
-    public int[][] getButacas() {
+    public boolean[][] getButacas() {
         return butacas;
     }
 
-    public void setButacas(int[][] butacas) {
-        this.butacas = butacas;
-    }
 }

@@ -12,10 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -24,10 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import um.edu.tic1.Tic1Application;
-import um.edu.tic1.entities.Cine;
-import um.edu.tic1.entities.Funcion;
-import um.edu.tic1.entities.Movie;
-import um.edu.tic1.entities.Sala;
+import um.edu.tic1.entities.*;
 import um.edu.tic1.services.CineService;
 import um.edu.tic1.services.FuncionService;
 import um.edu.tic1.services.MovieService;
@@ -50,7 +44,10 @@ public class selectorButacasController {
     @FXML
     DatePicker datePicker;
     @FXML
+    Button comprar;
+    @FXML
     ComboBox CineDropDownList, horaDropDownList, salaDropDownList;
+    private boolean[][] estadoButaca;
     @Autowired
     private SalaService salaService;
 
@@ -117,6 +114,7 @@ public class selectorButacasController {
 
                                                 for (int j =0;j<listSala.size();j++){
                                                     if (sala.getName().equals(listSala.get(j).getName())){
+                                                        funcionAux = getFunciones().get(j);
                                                         addSeats(sala.getX(),sala.getY());
                                                     }
                                                 }
@@ -178,12 +176,22 @@ public class selectorButacasController {
             for (int j =0;j<y;j++){
                 Seat(indiceButaca,i,j);
             }
+            indiceButaca++;
         }
     }
 
     private void Seat(int indiceButaca, int i, int j) {
         MaterialIconView icon = new MaterialIconView(MaterialIcon.EVENT_SEAT);
-        icon.setStyle("-fx-fill:black; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
+
+        if (funcionAux.getButacas()[i][j] == true) {
+            icon.setStyle("-fx-fill:black; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
+            gridSeats.add(icon, i, j);
+        }
+        else {
+            icon.setStyle("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
+            gridSeats.add(icon, i, j);
+        }
+
         icon.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
                     @Override
@@ -211,11 +219,13 @@ public class selectorButacasController {
                                         .setStyle("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
                                 // Main.getSelectedSeats().add(((Node) e.getSource()).getId());
                             }
+
                         }
 
                     }
                 });
-        gridSeats.add(icon,i,j);
+
+
 
     }
 
@@ -233,6 +243,35 @@ public class selectorButacasController {
         window.setScene(inicioScene);
         window.show();
 
+    }
+    @FXML
+    private void comprar(ActionEvent event) throws IOException{
+        for (int x= 0;x<sala.getX();x++){
+            for (int y= 0;y<sala.getY();y++){
+                if (getNodeByRowColumnIndex(x,y,gridSeats).getStyle().equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;")){
+                    getNodeByRowColumnIndex(x,y,gridSeats).setStyle("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
+                    funcionAux.reservaButaca(x,y);
+                    funcionService.save(funcionAux);
+                }
+
+            }
+
+        }
+
+
+    }
+    public Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {
+        Node result = null;
+        ObservableList<Node> childrens = gridPane.getChildren();
+
+        for (Node node : childrens) {
+            if(gridPane.getRowIndex(node) == row && gridPane.getColumnIndex(node) == column) {
+                result = node;
+                break;
+            }
+        }
+
+        return result;
     }
 
 

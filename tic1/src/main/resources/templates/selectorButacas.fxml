@@ -107,7 +107,7 @@
                 <DatePicker fx:id="datePicker" layoutX="18.0" layoutY="100.0" prefHeight="27.0" prefWidth="141.0" />
                 <Text layoutX="71.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora" />
                 <ComboBox fx:id="horaDropDownList" layoutX="15.0" layoutY="161.0" prefHeight="28.0" prefWidth="141.0" />
-                <Button layoutX="18.0" layoutY="309.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" style="-fx-background-color: #353238;" text="Comprar" textFill="WHITE">
+                <Button layoutX="18.0" fx:id="comprar" onAction="#comprar" layoutY="309.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" style="-fx-background-color: #353238;" text="Comprar" textFill="WHITE">
                     <graphic>
                         <MaterialIconView fill="WHITE" glyphName="EVENT_SEAT" size="20" />
                     </graphic>
