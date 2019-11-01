@@ -101,10 +101,10 @@
         <AnchorPane layoutY="34.0" prefHeight="378.0" prefWidth="157.0">
             <children>
                 <Separator layoutX="168.0" layoutY="9.0" orientation="VERTICAL" prefHeight="365.0" prefWidth="9.0" />
-                <Text layoutX="72.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cine" />
-                <ComboBox fx:id="CineDropDownList" layoutX="15.0" layoutY="97.0" prefHeight="28.0" prefWidth="141.0" />
-                <Text layoutX="71.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha" />
-                <DatePicker fx:id="datePicker" layoutX="15.0" layoutY="37.0" prefHeight="27.0" prefWidth="141.0" />
+                <Text layoutX="73.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cine" />
+                <ComboBox fx:id="CineDropDownList" layoutX="16.0" layoutY="39.0" prefHeight="28.0" prefWidth="141.0" />
+                <Text layoutX="68.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha" />
+                <DatePicker fx:id="datePicker" layoutX="18.0" layoutY="100.0" prefHeight="27.0" prefWidth="141.0" />
                 <Text layoutX="71.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora" />
                 <ComboBox fx:id="horaDropDownList" layoutX="15.0" layoutY="161.0" prefHeight="28.0" prefWidth="141.0" />
                 <Button layoutX="18.0" layoutY="309.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" style="-fx-background-color: #353238;" text="Comprar" textFill="WHITE">

@@ -62,6 +62,7 @@ public class selectorButacasController {
     private Cine cine;
     private Sala sala;
     private Movie movieAux;
+    private Funcion funcionAux;
 
     @FXML
     public void setMovie(Movie movie){
@@ -70,81 +71,71 @@ public class selectorButacasController {
         init();
     }
 
-    public void init(){
-        datePicker.setValue(LocalDate.now());
-       ObservableList<String> cines = getCines();
+    public void init() {
+        ObservableList<String> cines = getCines();
         ObservableList<String> horas = FXCollections.observableArrayList();
-       salaDropDownList.setVisible(false);
-       horaDropDownList.setVisible(false);
-       ObservableList<Funcion> funciones = getFunciones();
-       if (funciones.size() !=0) {
+        ObservableList<Sala> salas = FXCollections.observableArrayList();
+        datePicker.setVisible(false);
+        salaDropDownList.setVisible(false);
+        horaDropDownList.setVisible(false);
+        ObservableList<Funcion> funciones = getFunciones();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd/MM/yyyy ");
 
-           CineDropDownList.setItems(cines);
-           CineDropDownList.setOnAction((event) -> {
-               List<Cine> list = cineService.findAll();
-               for (int i = 0; i < list.size(); i++) {
-                   if (list.get(i).getName().equals(CineDropDownList.getValue())) {
-                       this.cine = list.get(i);
-                       for (int y=0; y<funciones.size();y++){
-                          horas.add(funciones.get(y).getHora());
-                       }
-                       horaDropDownList.setItems(horas);
-                       horaDropDownList.setVisible(true);
+        if (funciones.size() != 0) {
+            CineDropDownList.setItems(cines);
+        CineDropDownList.setOnAction((event -> {
+            List<Cine> list = cineService.findAll();
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i).getName().equals(CineDropDownList.getValue())) {
+                    this.cine = list.get(i);
+                    datePicker.setVisible(true);
+                    datePicker.setOnAction(event1 -> {
+                        horas.clear();
+                        for (int o =0 ;o<funciones.size();o++) {
+                            String str = funciones.get(o).getHoraInicio();
+                            if ((str.substring(0,str.length()-5).equals(datePicker.getValue().format(formatter)))){
+                                horaDropDownList.setVisible(true);
+                                horas.add(funciones.get(o).getHora());
+                                horaDropDownList.setItems(horas);
 
-                       horaDropDownList.setOnAction((event2 ->{
-                           String horainicio = (String)horaDropDownList.getSelectionModel().getSelectedItem();
-                           LocalDate fechainicio = datePicker.getValue();
-                           String fechatotalInicio = fechainicio +"T"+ horainicio + ":00.00";
-                           LocalDateTime fechatotalinicio = LocalDateTime.parse(fechatotalInicio);
-                           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd/MM/yyyy HH:mm");
-                           for (int k=0;k<funciones.size();k++) {
-                               try {
-                                  if (funciones.get(k).getHoraInicio().equals(fechatotalinicio.format(formatter))){
+                                horaDropDownList.setOnAction((event2) -> {
+                                    salas.clear();
+                                    String horainicio = (String)horaDropDownList.getSelectionModel().getSelectedItem();
+                                    LocalDate fechainicio = datePicker.getValue();
+                                    String fechatotalInicio = fechainicio +"T"+ horainicio + ":00.00";
+                                    LocalDateTime fechatotalinicio = LocalDateTime.parse(fechatotalInicio);
+                                    DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("E, dd/MM/yyyy HH:mm");
+                                    for(int t=0 ;t<funciones.size();t++){
+                                        if (funciones.get(t).getHoraInicio().equals(fechatotalinicio.format(formatter1))){
+                                            salaDropDownList.setVisible(true);
+                                            salas.add(funciones.get(t).getSala());
+                                            salaDropDownList.setItems(salas);
+                                            salaDropDownList.setOnAction((e) -> {
+                                                gridSeats.getChildren().clear();
+                                                List<Sala> listSala = getSalas();
+                                                sala = (Sala) salaDropDownList.getValue();
 
-                                      ObservableList<Sala> salas = FXCollections.observableArrayList();
-                                      salas.add(funciones.get(k).getSala());
-                                      salaDropDownList.setItems(salas);
-                                      salaDropDownList.setVisible(true);
-                                      salaDropDownList.setOnAction((e) -> {
-                                          List<Sala> listSala = getSalas();
-                                          sala = (Sala) salaDropDownList.getValue();
+                                                for (int j =0;j<listSala.size();j++){
+                                                    if (sala.getName().equals(listSala.get(j).getName())){
+                                                        addSeats(sala.getX(),sala.getY());
+                                                    }
+                                                }
 
-                                          for (int j =0;j<listSala.size();j++){
-                                              if (sala.getName().equals(listSala.get(j).getName())){
-                                                  addSeats(sala.getX(),sala.getY());
-                                              }
-                                          }
+                                            });
+                                        }
 
-                                      });
-                                  } else {
-                                  }
-                               }catch (Exception e){
-                                   System.out.println("no hay peli");
-                               }
+                                    }
 
-                           }
-                       } ));
-                       ObservableList<Sala> salas = getSalas();
-                       salaDropDownList.setVisible(true);
-                       salaDropDownList.setItems(salas);
-                       salaDropDownList.setOnAction((e) -> {
-                            List<Sala> listSala = getSalas();
-                            sala = (Sala) salaDropDownList.getValue();
-
-                           for (int j =0;j<listSala.size();j++){
-                            if (sala.getName().equals(listSala.get(j).getName())){
-                                addSeats(sala.getX(),sala.getY());
+                                });
                             }
-                           }
+                        }
+                    });
 
-                       });
-                   }
-               }
+                }
+            }
 
-
-           });
-       }
-
+        }));
+        }
 
 
     }
@@ -158,8 +149,8 @@ public class selectorButacasController {
         for (int i = 0; i < lista.size(); i++) {
             cines.add(lista.get(i).getName());
         }
+            return cines;
 
-        return cines;
     }
     public ObservableList<Sala> getSalas() {
 

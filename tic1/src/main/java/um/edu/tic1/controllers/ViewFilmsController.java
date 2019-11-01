@@ -26,7 +26,9 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.tic1.Tic1Application;
+import um.edu.tic1.entities.Funcion;
 import um.edu.tic1.entities.Movie;
+import um.edu.tic1.services.FuncionService;
 import um.edu.tic1.services.MovieService;
 import javafx.event.ActionEvent;
 import javax.imageio.ImageIO;
@@ -72,6 +74,10 @@ public class ViewFilmsController  {
     private TableView<Movie> tabla = new TableView<>();
 
     private Image[] images= new Image[150];
+    private Movie movieAux;
+    private Funcion funcionAux;
+    @Autowired
+    private FuncionService funcionService;
 
 
 
@@ -98,7 +104,76 @@ public class ViewFilmsController  {
         SortedList sortedList = new SortedList(filteredData);
         sortedList.comparatorProperty().bind(tabla.comparatorProperty());
         tabla.setItems(sortedList);
+        setUpIconosDec();
+        int m =0;
+        addImagesToArray(sortedList);
+        setUpGrid();
+        
+        for (m=0;m<getMovie().size();m++) {
+            int finalM = m;
+            grid.getChildren().get(m).setOnMouseEntered(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    grid.getChildren().get(finalM).setStyle("-fx-scale-x: 1.1; -fx-scale-y: 1.1;");
+                }
+            });
 
+            grid.getChildren().get(m).setOnMouseExited(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    grid.getChildren().get(finalM).setStyle("-fx-scale-x: 1; -fx-scale-y: 1;");
+                }
+            });
+        }
+
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setFitToHeight(true);
+    }
+
+    private void setUpGrid() {
+        grid.setPadding(new Insets(90,7,80,7));
+        grid.setHgap(50);
+        grid.setVgap(170);
+        int rows = 3;
+        int columns = 4;
+        int imageIndex = 0;
+        for (int i = 0 ; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (imageIndex < images.length) {
+                    try {
+
+                        addImage(imageIndex, j, i);
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    imageIndex++;
+                }
+            }
+        }
+
+
+    }
+
+    private void addImagesToArray(SortedList sortedList){
+        for (int m=0 ;m<sortedList.size();m++){
+            byte[] img = getMovie().get(m).getMovieImage();
+            ByteArrayInputStream bis = new ByteArrayInputStream(img);
+            BufferedImage bImage = null;
+            try {
+                bImage = ImageIO.read(bis);
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("RE LOCO");
+            }
+            Image image = SwingFXUtils.toFXImage(bImage,null);
+            images[m] = image;
+        }
+
+    }
+
+    private void setUpIconosDec(){
 
         imagenInicio.setFitWidth(25);
         imagenInicio.setFitHeight(25);
@@ -124,60 +199,7 @@ public class ViewFilmsController  {
         imagenMap.setFitHeight(25);
         imagenMap.setImage(ImagenMap);
 
-        int m =0;
-        for (m=0 ;m<sortedList.size();m++){
-            byte[] img = tabla.getItems().get(m).getMovieImage();
-            ByteArrayInputStream bis = new ByteArrayInputStream(img);
-            BufferedImage bImage = null;
-            try {
-                bImage = ImageIO.read(bis);
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.out.println("RE LOCO");
-            }
-            Image image = SwingFXUtils.toFXImage(bImage,null);
-            images[m] = image;
-        }
 
-        grid.setPadding(new Insets(90,7,80,7));
-        grid.setHgap(50);
-        grid.setVgap(170);
-
-        int rows = 3;
-        int columns = 4;
-        int imageIndex = 0;
-        for (int i = 0 ; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                if (imageIndex < images.length) {
-                    try {
-                        addImage(imageIndex, j, i);
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    imageIndex++;
-                }
-            }
-        }
-        for (m=0;m<getMovie().size();m++) {
-            int finalM = m;
-            grid.getChildren().get(m).setOnMouseEntered(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    grid.getChildren().get(finalM).setStyle("-fx-scale-x: 1.1; -fx-scale-y: 1.1;");
-                }
-            });
-
-            grid.getChildren().get(m).setOnMouseExited(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    grid.getChildren().get(finalM).setStyle("-fx-scale-x: 1; -fx-scale-y: 1;");
-                }
-            });
-        }
-
-        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        scrollPane.setFitToHeight(true);
     }
 
 
@@ -264,6 +286,22 @@ public class ViewFilmsController  {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
+    }
+    public ObservableList<Funcion> getFunciones(){
+
+        ObservableList<Funcion> funciones = FXCollections.observableArrayList();
+
+        List<Funcion> lista = funcionService.findAll();
+
+        for (int i = 0; i < lista.size(); i++) {
+            Funcion funcion = lista.get(i);
+            if (funcion.getMovie().getName().equals(movieAux.getName())) {
+                funciones.add(lista.get(i));
+            }
+
+        }
+
+        return funciones;
     }
 
 
