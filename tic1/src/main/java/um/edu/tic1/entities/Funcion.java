@@ -1,5 +1,7 @@
 package um.edu.tic1.entities;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.awt.*;
 import java.util.Date;
@@ -41,6 +43,10 @@ public class Funcion {
 
     public Funcion(){
 
+    }
+    public void clearAll(){
+        this.movie = null;
+        this.sala = null;
     }
 
     public Long getId() {

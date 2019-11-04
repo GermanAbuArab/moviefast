@@ -174,7 +174,7 @@
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="eliminar" mnemonicParsing="false" text="Eliminar" />
+            <Button fx:id="eliminar" onAction="#eliminar" mnemonicParsing="false" text="Eliminar" />
             <Region prefHeight="25.0" prefWidth="651.0" />
             <Button mnemonicParsing="false" onAction="#volver" text="Volver" />
          </children>

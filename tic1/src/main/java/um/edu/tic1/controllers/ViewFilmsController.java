@@ -86,27 +86,9 @@ public class ViewFilmsController  {
 
     public void initialize() {
 
-
-        FilteredList filteredData = new FilteredList(getMovie(),e -> true);
-            buscar.textProperty().addListener(((observable, oldValue, newValue) -> {
-                filteredData.setPredicate((Predicate<? super Movie>)(Movie movie) ->{
-
-                    if(newValue.isEmpty() || newValue==null){
-                        return true;
-                    }else if (movie.getName().contains(newValue)){
-                        return true;
-                    }else if (movie.getGenero().contains(newValue)){
-                        return true;
-                    }
-                    return false;
-                });
-            }));
-        SortedList sortedList = new SortedList(filteredData);
-        sortedList.comparatorProperty().bind(tabla.comparatorProperty());
-        tabla.setItems(sortedList);
         setUpIconosDec();
         int m =0;
-        addImagesToArray(sortedList);
+        addImagesToArray();
         setUpGrid();
         
         for (m=0;m<getMovie().size();m++) {
@@ -156,8 +138,8 @@ public class ViewFilmsController  {
 
     }
 
-    private void addImagesToArray(SortedList sortedList){
-        for (int m=0 ;m<sortedList.size();m++){
+    private void addImagesToArray(){
+        for (int m=0 ;m<getMovie().size();m++){
             byte[] img = getMovie().get(m).getMovieImage();
             ByteArrayInputStream bis = new ByteArrayInputStream(img);
             BufferedImage bImage = null;
@@ -268,10 +250,12 @@ public class ViewFilmsController  {
 
         ObservableList<Movie> movie = FXCollections.observableArrayList();
 
-        List<Movie> lista = ms.findAll();
+        List<Funcion> lista = funcionService.findAll();
 
         for (int i = 0; i < lista.size(); i++) {
-            movie.add(lista.get(i));
+            if (!movie.contains(lista.get(i).getMovie())) {
+                movie.add(lista.get(i).getMovie());
+            }
         }
 
         return movie;

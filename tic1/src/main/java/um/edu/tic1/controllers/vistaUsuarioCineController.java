@@ -482,4 +482,10 @@ public class vistaUsuarioCineController {
 
     }
 
+    public void eliminar(ActionEvent event) {
+        Funcion funcion = tablaFunciones.getSelectionModel().getSelectedItem();
+        funcion.clearAll();
+        funcionService.getMovieRepository().delete(funcion);
+        inicializarFunciones();
+    }
 }
