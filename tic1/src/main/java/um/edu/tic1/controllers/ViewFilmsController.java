@@ -36,7 +36,7 @@ import java.util.List;
 
 
 @Component
-public class ViewFilmsController  {
+public class ViewFilmsController {
 
 
     @FXML
@@ -46,10 +46,10 @@ public class ViewFilmsController  {
     @FXML
     private GridPane grid;
     @FXML
-    ImageView pic,imagenInicio,imagenRecomendados,imagenTeatros,imagenMap,imagenLogin,imagenMovieFast;
+    ImageView pic, imagenInicio, imagenRecomendados, imagenTeatros, imagenMap, imagenLogin, imagenMovieFast;
     @FXML
     Image ImagenInicio = new Image("assets/icono_inicio.png");
-   @FXML
+    @FXML
     Image ImagenRecomendados = new Image("assets/icono_fav.png");
     @FXML
     Image ImagenTeatros = new Image("assets/icono_teatro.png");
@@ -63,12 +63,11 @@ public class ViewFilmsController  {
     private TextField buscar;
     private TableView<Movie> tabla = new TableView<>();
 
-    private Image[] images= new Image[150];
+    private Image[] images = new Image[150];
     private Movie movieAux;
     private Funcion funcionAux;
     @Autowired
     private FuncionService funcionService;
-
 
 
     @Autowired
@@ -77,11 +76,11 @@ public class ViewFilmsController  {
     public void initialize() {
 
         setUpIconosDec();
-        int m =0;
+        int m = 0;
         addImagesToArray(getMovie());
         setUpGrid();
-        
-        for (m=0;m<getMovie().size();m++) {
+
+        for (m = 0; m < getMovie().size(); m++) {
             int finalM = m;
             grid.getChildren().get(m).setOnMouseEntered(new EventHandler<MouseEvent>() {
                 @Override
@@ -104,13 +103,13 @@ public class ViewFilmsController  {
 
     private void setUpGrid() {
         grid.getChildren().clear();
-        grid.setPadding(new Insets(90,7,80,7));
+        grid.setPadding(new Insets(90, 7, 80, 7));
         grid.setHgap(50);
         grid.setVgap(170);
         int rows = 3;
         int columns = 4;
         int imageIndex = 0;
-        for (int i = 0 ; i < rows; i++) {
+        for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 if (imageIndex < images.length) {
                     try {
@@ -129,9 +128,9 @@ public class ViewFilmsController  {
 
     }
 
-    private void addImagesToArray(ObservableList<Movie> movie){
+    private void addImagesToArray(ObservableList<Movie> movie) {
         Image[] imagesAux = new Image[150];
-        for (int m=0 ;m<movie.size();m++){
+        for (int m = 0; m < movie.size(); m++) {
             byte[] img = movie.get(m).getMovieImage();
             ByteArrayInputStream bis = new ByteArrayInputStream(img);
             BufferedImage bImage = null;
@@ -141,13 +140,13 @@ public class ViewFilmsController  {
                 e.printStackTrace();
                 System.out.println("RE LOCO");
             }
-            Image image = SwingFXUtils.toFXImage(bImage,null);
+            Image image = SwingFXUtils.toFXImage(bImage, null);
             imagesAux[m] = image;
         }
         images = imagesAux;
     }
 
-    private void setUpIconosDec(){
+    private void setUpIconosDec() {
 
         imagenInicio.setFitWidth(25);
         imagenInicio.setFitHeight(25);
@@ -177,20 +176,19 @@ public class ViewFilmsController  {
     }
 
 
-
     private void addImage(int index, int colIndex, int rowIndex) throws Exception {
 
         pic = new ImageView();
         pic.setFitWidth(150);
         pic.setFitHeight(200);
         pic.setImage(images[index]);
-        grid.add(pic,colIndex,rowIndex);
+        grid.add(pic, colIndex, rowIndex);
 
 
         pic.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
             public void handle(MouseEvent event) {
-            Movie movie = getMovie().get(index);
+                Movie movie = getMovie().get(index);
 
 
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -211,7 +209,7 @@ public class ViewFilmsController  {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                Scene inicioScene = new Scene(inicio,600,400);
+                Scene inicioScene = new Scene(inicio, 600, 400);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(inicioScene);
                 window.show();//ramayama
@@ -223,17 +221,14 @@ public class ViewFilmsController  {
     }
 
 
-
-
-
     @FXML
-    private void iniciarSesion(ActionEvent event)throws IOException {  // vuelve a la scena
+    private void iniciarSesion(ActionEvent event) throws IOException {  // vuelve a la scena
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/login.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");
-        Scene inicioScene = new Scene(inicio,600,500);
+        Scene inicioScene = new Scene(inicio, 600, 500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
@@ -255,17 +250,18 @@ public class ViewFilmsController  {
         return movie;
     }
 
-    public void SignIn(ActionEvent event)throws IOException {
+    public void SignIn(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/SignIn.fxml"));
-        Scene inicioScene = new Scene(inicio,800,500);
+        Scene inicioScene = new Scene(inicio, 800, 500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
     }
-    public ObservableList<Funcion> getFunciones(){
+
+    public ObservableList<Funcion> getFunciones() {
 
         ObservableList<Funcion> funciones = FXCollections.observableArrayList();
 
@@ -284,25 +280,25 @@ public class ViewFilmsController  {
 
 
     public void filtrar(ActionEvent event) {
-        ObservableList<Movie> movies =getMovie();
-        ObservableList<Movie> moviesFiltradas= FXCollections.observableArrayList();
+        ObservableList<Movie> movies = getMovie();
+        ObservableList<Movie> moviesFiltradas = FXCollections.observableArrayList();
 
-        if (buscar.getText() != null){
+        if (buscar.getText() != null) {
 
-            for(Movie m: movies){
-               if (m.getName().toLowerCase().contains(buscar.getText().toLowerCase())){
-                   moviesFiltradas.add(m);
-               }
+            for (Movie m : movies) {
+                if (m.getName().toLowerCase().contains(buscar.getText().toLowerCase())) {
+                    moviesFiltradas.add(m);
+                }
 
-           }
+            }
 
-        }else {
-            moviesFiltradas=getMovie();
+        } else {
+            moviesFiltradas = getMovie();
 
         }
         addImagesToArray(moviesFiltradas);
         setUpGrid();
-        for (int m=0;m<moviesFiltradas.size();m++) {
+        for (int m = 0; m < moviesFiltradas.size(); m++) {
             int finalM = m;
             grid.getChildren().get(m).setOnMouseEntered(new EventHandler<MouseEvent>() {
                 @Override
@@ -318,8 +314,10 @@ public class ViewFilmsController  {
                 }
             });
 
+        }
     }
+}
 
-    }
+
 
 
