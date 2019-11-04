@@ -1,10 +1,6 @@
 package um.edu.tic1.entities;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
-import java.awt.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "funciones")
@@ -140,5 +136,6 @@ public class Funcion {
     public boolean[][] getButacas() {
         return butacas;
     }
+
 
 }

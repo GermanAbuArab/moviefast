@@ -1,27 +1,24 @@
 package um.edu.tic1.controllers;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,19 +27,12 @@ import um.edu.tic1.entities.Funcion;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.FuncionService;
 import um.edu.tic1.services.MovieService;
-import javafx.event.ActionEvent;
+
 import javax.imageio.ImageIO;
-import javax.swing.border.Border;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import javafx.scene.control.ScrollBar;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
-import java.util.function.Predicate;
 
 
 @Component
@@ -142,7 +132,7 @@ public class ViewFilmsController  {
     private void addImagesToArray(ObservableList<Movie> movie){
         Image[] imagesAux = new Image[150];
         for (int m=0 ;m<movie.size();m++){
-            byte[] img = getMovie().get(m).getMovieImage();
+            byte[] img = movie.get(m).getMovieImage();
             ByteArrayInputStream bis = new ByteArrayInputStream(img);
             BufferedImage bImage = null;
             try {
@@ -228,6 +218,8 @@ public class ViewFilmsController  {
 
             }
         });
+
+
     }
 
 
@@ -292,23 +284,39 @@ public class ViewFilmsController  {
 
 
     public void filtrar(ActionEvent event) {
-        if (!buscar.getText().equals(null)){
-            ObservableList<Movie> movies =getMovie();
-            ObservableList<Movie> moviesFiltradas= FXCollections.observableArrayList();
+        ObservableList<Movie> movies =getMovie();
+        ObservableList<Movie> moviesFiltradas= FXCollections.observableArrayList();
+
+        if (buscar.getText() != null){
+
             for(Movie m: movies){
-               if (m.getName().contains(buscar.getText())){
+               if (m.getName().toLowerCase().contains(buscar.getText().toLowerCase())){
                    moviesFiltradas.add(m);
                }
 
            }
-            addImagesToArray(moviesFiltradas);
-            setUpGrid();
-
 
         }else {
-            addImagesToArray(getMovie());
-            setUpGrid();
+            moviesFiltradas=getMovie();
+
         }
+        addImagesToArray(moviesFiltradas);
+        setUpGrid();
+        for (int m=0;m<moviesFiltradas.size();m++) {
+            int finalM = m;
+            grid.getChildren().get(m).setOnMouseEntered(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    grid.getChildren().get(finalM).setStyle("-fx-scale-x: 1.1; -fx-scale-y: 1.1;");
+                }
+            });
+
+            grid.getChildren().get(m).setOnMouseExited(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    grid.getChildren().get(finalM).setStyle("-fx-scale-x: 1; -fx-scale-y: 1;");
+                }
+            });
 
     }
 
