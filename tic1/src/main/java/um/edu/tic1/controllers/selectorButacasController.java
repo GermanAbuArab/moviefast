@@ -2,7 +2,6 @@ package um.edu.tic1.controllers;
 
 import de.jensd.fx.glyphs.materialicons.MaterialIcon;
 import de.jensd.fx.glyphs.materialicons.MaterialIconView;
-import de.jensd.fx.glyphs.materialicons.utils.MaterialIconFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,16 +14,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import um.edu.tic1.Tic1Application;
-import um.edu.tic1.entities.*;
+import um.edu.tic1.entities.Cine;
+import um.edu.tic1.entities.Funcion;
+import um.edu.tic1.entities.Movie;
+import um.edu.tic1.entities.Sala;
 import um.edu.tic1.services.CineService;
 import um.edu.tic1.services.FuncionService;
-import um.edu.tic1.services.MovieService;
 import um.edu.tic1.services.SalaService;
 
 import java.io.IOException;
@@ -138,7 +137,7 @@ public class selectorButacasController {
 
     }
 
-    public ObservableList<String> getCines() {
+    private ObservableList<String> getCines() {
 
         ObservableList<String> cines = FXCollections.observableArrayList();
 
@@ -150,7 +149,7 @@ public class selectorButacasController {
             return cines;
 
     }
-    public ObservableList<Sala> getSalas() {
+    private ObservableList<Sala> getSalas() {
 
         ObservableList<Sala> salas = FXCollections.observableArrayList();
 
@@ -183,7 +182,7 @@ public class selectorButacasController {
     private void Seat(int indiceButaca, int i, int j) {
         MaterialIconView icon = new MaterialIconView(MaterialIcon.EVENT_SEAT);
 
-        if (funcionAux.getButacas()[i][j] == true) {
+        if (funcionAux.getButacas()[i][j]) {
             icon.setStyle("-fx-fill:black; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
             gridSeats.add(icon, i, j);
         }
@@ -199,7 +198,7 @@ public class selectorButacasController {
                         if (((Node) event.getSource()).getStyle()
                                 .equals("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;")) {
                             Alert alert = new Alert(Alert.AlertType.WARNING,
-                                    "The seat " + ((Node) event.getSource()).getId() + " is already booked!", ButtonType.OK);
+                                    "The seat is already booked!", ButtonType.OK);
                             alert.showAndWait();
                             if (alert.getResult() == ButtonType.OK) {
                                 alert.close();
