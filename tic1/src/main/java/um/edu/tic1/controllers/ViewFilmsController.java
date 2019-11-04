@@ -88,7 +88,7 @@ public class ViewFilmsController  {
 
         setUpIconosDec();
         int m =0;
-        addImagesToArray();
+        addImagesToArray(getMovie());
         setUpGrid();
         
         for (m=0;m<getMovie().size();m++) {
@@ -113,6 +113,7 @@ public class ViewFilmsController  {
     }
 
     private void setUpGrid() {
+        grid.getChildren().clear();
         grid.setPadding(new Insets(90,7,80,7));
         grid.setHgap(50);
         grid.setVgap(170);
@@ -138,8 +139,9 @@ public class ViewFilmsController  {
 
     }
 
-    private void addImagesToArray(){
-        for (int m=0 ;m<getMovie().size();m++){
+    private void addImagesToArray(ObservableList<Movie> movie){
+        Image[] imagesAux = new Image[150];
+        for (int m=0 ;m<movie.size();m++){
             byte[] img = getMovie().get(m).getMovieImage();
             ByteArrayInputStream bis = new ByteArrayInputStream(img);
             BufferedImage bImage = null;
@@ -150,9 +152,9 @@ public class ViewFilmsController  {
                 System.out.println("RE LOCO");
             }
             Image image = SwingFXUtils.toFXImage(bImage,null);
-            images[m] = image;
+            imagesAux[m] = image;
         }
-
+        images = imagesAux;
     }
 
     private void setUpIconosDec(){
@@ -289,4 +291,27 @@ public class ViewFilmsController  {
     }
 
 
-}
+    public void filtrar(ActionEvent event) {
+        if (!buscar.getText().equals(null)){
+            ObservableList<Movie> movies =getMovie();
+            ObservableList<Movie> moviesFiltradas= FXCollections.observableArrayList();
+            for(Movie m: movies){
+               if (m.getName().contains(buscar.getText())){
+                   moviesFiltradas.add(m);
+               }
+
+           }
+            addImagesToArray(moviesFiltradas);
+            setUpGrid();
+
+
+        }else {
+            addImagesToArray(getMovie());
+            setUpGrid();
+        }
+
+    }
+
+    }
+
+

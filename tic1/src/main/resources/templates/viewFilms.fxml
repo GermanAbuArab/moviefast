@@ -43,7 +43,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="buscar" alignment="TOP_RIGHT" prefHeight="34.0" prefWidth="148.0" promptText="Peliculas,Obras..">
+                  <TextField fx:id="buscar"  onAction="#filtrar" alignment="TOP_RIGHT" prefHeight="34.0" prefWidth="148.0" promptText="Peliculas,Obras..">
                      <HBox.margin>
                         <Insets bottom="8.0" right="8.0" top="8.0" />
                      </HBox.margin>
