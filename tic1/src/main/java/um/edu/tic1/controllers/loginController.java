@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.tic1.Tic1Application;
 import um.edu.tic1.entities.Cine;
+import um.edu.tic1.entities.ClienteFinal;
 import um.edu.tic1.services.CineService;
 import um.edu.tic1.services.UsuarioService;
 
@@ -33,6 +35,9 @@ public class loginController implements Initializable {
 
     @FXML
     private TextField usuarioIngresado;
+
+    @FXML
+    private PasswordField contraseñaIngresada;
     @Autowired
     private UsuarioService us;
 
@@ -70,7 +75,7 @@ public class loginController implements Initializable {
     void ingresar(ActionEvent event) throws IOException {
 
         String user = usuarioIngresado.getText();
-
+        String contra = contraseñaIngresada.getText();
         List<Cine> lista = cs.findAll();
 
         boolean cineEncontrado = false;
@@ -113,18 +118,21 @@ public class loginController implements Initializable {
 
 
         } else {
-
-            if (us.getUr().findByName(user).getUserName() !=user) { //todo arreglar que esta mal
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
-                Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
-                inicio.getStylesheets().add("/templates/styles.css");
-                Scene inicioScene = new Scene(inicio, 1000, 500);
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(inicioScene);
-                window.show();
+            ClienteFinal clienteDeBase = (ClienteFinal) us.getUr().findByUserName(user);
+            if (clienteDeBase != null) {
+                if (clienteDeBase.getPassword().equals(contra)) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+                    Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
+                    inicio.getStylesheets().add("/templates/styles.css");
+                    Scene inicioScene = new Scene(inicio, 1000, 500);
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    window.setScene(inicioScene);
+                    window.show();
+                }
+                else {AlertBox.display("No se pudo iniciar secion","Contraseña incorrecta");}
             } else {
-                AlertBox.display("Usuario no Encontrado","El usuario que usted escribio no fue encontrado");
+                AlertBox.display("No se pudo iniciar secion", "Usuario no encontrado");
             }
 
         }

@@ -9,8 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import java.io.IOException;
-
 @SpringBootApplication
 public class Tic1Application extends Application {
 
@@ -56,7 +54,7 @@ public class Tic1Application extends Application {
 	public void start(Stage primaryStage) throws Exception{
 		fxmlLoader = new FXMLLoader();
 		fxmlLoader.setControllerFactory(context::getBean);
-		root = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
+		root = fxmlLoader.load(getClass().getResourceAsStream("/templates/login.fxml"));
 		root.getStylesheets().add("/templates/styles.css");
 		primaryStage.setTitle("MovieFast");
 		primaryStage.setScene( new Scene(root,1000,500));
