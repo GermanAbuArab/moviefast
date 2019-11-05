@@ -15,9 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.tic1.Tic1Application;
 import um.edu.tic1.entities.Cine;
-import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.CineService;
-import um.edu.tic1.services.MovieService;
+import um.edu.tic1.services.UsuarioService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,7 +33,8 @@ public class loginController implements Initializable {
 
     @FXML
     private TextField usuarioIngresado;
-
+    @Autowired
+    private UsuarioService us;
 
     @Autowired
     private CineService cs;
@@ -60,11 +60,12 @@ public class loginController implements Initializable {
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");
-        Scene inicioScene = new Scene(inicio,1000,500);
+        Scene inicioScene = new Scene(inicio, 1000, 500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
     }
+
     @FXML
     void ingresar(ActionEvent event) throws IOException {
 
@@ -76,7 +77,7 @@ public class loginController implements Initializable {
 
         int indiceCine = 0;
 
-        for(int i=0;i<lista.size();i++){
+        for (int i = 0; i < lista.size(); i++) {
 
             String nombre = lista.get(i).getName();
 
@@ -88,7 +89,7 @@ public class loginController implements Initializable {
 
         }
 
-        if(cineEncontrado){
+        if (cineEncontrado) {
 
             vuc.setCine(lista.get(indiceCine));
 
@@ -100,16 +101,33 @@ public class loginController implements Initializable {
             window.setScene(inicioScene);
             window.show();
 
-        }
+        } else if (user.equals("root") || user.toUpperCase().equals("ADMIN")) {
 
-        if(!cineEncontrado){
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
-            Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/inicio.fxml"));
+            Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/mostrar.fxml"));
             Scene inicioScene = new Scene(inicio, 600, 500);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(inicioScene);
             window.show();
+
+
+        } else {
+
+            if (us.getUr().findByName(user).getUserName() !=user) { //todo arreglar que esta mal
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+                Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
+                inicio.getStylesheets().add("/templates/styles.css");
+                Scene inicioScene = new Scene(inicio, 1000, 500);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(inicioScene);
+                window.show();
+            } else {
+                AlertBox.display("Usuario no Encontrado","El usuario que usted escribio no fue encontrado");
+            }
+
         }
+
     }
 }

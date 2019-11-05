@@ -24,13 +24,11 @@ import um.edu.tic1.services.FuncionService;
 import um.edu.tic1.services.MovieService;
 import um.edu.tic1.services.SalaService;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -323,8 +321,9 @@ public class vistaUsuarioCineController {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
         this.cine = null;
-        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/inicio.fxml"));
-        Scene inicioScene = new Scene(inicio, 600, 500);
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml")); //todo tira un error
+        inicio.getStylesheets().add("/templates/styles.css");
+        Scene inicioScene = new Scene(inicio, 1000, 500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
