@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="borderPane" styleClass="fondoViewFilms" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.ViewFilmsController">
+<BorderPane fx:id="borderPane" styleClass="fondoViewFilms" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.ViewFilmsController">
    <top>
       <VBox styleClass="top_nav" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
@@ -43,7 +43,7 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="buscar"  onAction="#filtrar" alignment="TOP_RIGHT" prefHeight="34.0" prefWidth="148.0" promptText="Peliculas,Obras..">
+                  <TextField fx:id="buscar" alignment="TOP_RIGHT" onAction="#filtrar" prefHeight="34.0" prefWidth="148.0" promptText="Peliculas,Obras..">
                      <HBox.margin>
                         <Insets bottom="8.0" right="8.0" top="8.0" />
                      </HBox.margin>
@@ -51,7 +51,7 @@
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <Button mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="31.0" prefWidth="96.0" styleClass="icon_boton" stylesheets="@styles.css" text="Login" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="31.0" prefWidth="127.0" styleClass="icon_boton" stylesheets="@styles.css" text="Cerrar sesion" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="8.0" top="8.0" />
                      </HBox.margin>
@@ -60,17 +60,6 @@
                      </graphic>
                      <font>
                         <Font name="Arial Narrow" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="SignIn" mnemonicParsing="false" onAction="#SignIn" prefHeight="31.0" prefWidth="100.0" styleClass="icon_boton" text="Register" textFill="WHITE">
-                     <graphic>
-                        <ImageView fx:id="imagenLogin1" fitHeight="23.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                     <HBox.margin>
-                        <Insets right="8.0" top="8.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="Arial" size="12.0" />
                      </font>
                   </Button>
                </children>
@@ -162,7 +151,7 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <ScrollPane  fx:id="scrollPane" prefWidth="518.0" styleClass="scrollPane">
+            <ScrollPane fx:id="scrollPane" prefWidth="518.0" styleClass="scrollPane">
                <content>
                   <GridPane fx:id="grid" styleClass="scrollPane">
                     <columnConstraints>

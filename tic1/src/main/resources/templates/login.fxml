@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo_login" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.loginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo_login" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.loginController">
    <top>
       <VBox styleClass="top_nav" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
@@ -33,9 +33,14 @@
                      </HBox.margin>
                   </Text>
                   <Region prefHeight="50.0" prefWidth="127.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" onAction="#volver" styleClass="icon_boton" text="Volver" textFill="WHITE">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="¿Aun no estas registrado?">
                      <HBox.margin>
-                        <Insets right="8.0" top="8.0" />
+                        <Insets right="7.0" top="10.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Button mnemonicParsing="false" onAction="#registrar" styleClass="icon_boton" text="Registro" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets right="7.0" top="7.0" />
                      </HBox.margin>
                   </Button>
                </children>

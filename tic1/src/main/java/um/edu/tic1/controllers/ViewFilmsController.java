@@ -228,7 +228,7 @@ public class ViewFilmsController {
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/login.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");
-        Scene inicioScene = new Scene(inicio, 600, 500);
+        Scene inicioScene = new Scene(inicio, 1000, 500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
@@ -248,34 +248,6 @@ public class ViewFilmsController {
         }
 
         return movie;
-    }
-
-    public void SignIn(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
-
-        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/SignIn.fxml"));
-        Scene inicioScene = new Scene(inicio, 800, 500);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(inicioScene);
-        window.show();
-    }
-
-    public ObservableList<Funcion> getFunciones() {
-
-        ObservableList<Funcion> funciones = FXCollections.observableArrayList();
-
-        List<Funcion> lista = funcionService.findAll();
-
-        for (int i = 0; i < lista.size(); i++) {
-            Funcion funcion = lista.get(i);
-            if (funcion.getMovie().getName().equals(movieAux.getName())) {
-                funciones.add(lista.get(i));
-            }
-
-        }
-
-        return funciones;
     }
 
 
