@@ -473,8 +473,7 @@ public class vistaUsuarioCineController {
         funcion.setHora(horainicio);
         System.out.println("arranca a las " + horainicio);
         funcion.setHoraFin(fechatotalFin.format(formatter));
-
-
+        
         funcionService.save(funcion);
 
         this.agregado = true;
