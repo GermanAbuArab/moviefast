@@ -2,7 +2,6 @@ package um.edu.tic1.entities;
 
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name="tickets")
@@ -15,9 +14,9 @@ public class Ticket {
 
     //AGREGAR ASIENTOS
 
-    private Usuario cliente;
-    private Funcion funcion;
-    private Date fecha;
+    //private Usuario cliente;
+    //private Funcion funcion;
+    //private Date fecha;
 
 
 }
