@@ -261,6 +261,9 @@ public class ViewFilmsController {
                 if (m.getName().toLowerCase().contains(buscar.getText().toLowerCase())) {
                     moviesFiltradas.add(m);
                 }
+                else if (m.getGenero().toLowerCase().contains(buscar.getText().toLowerCase())){
+                    moviesFiltradas.add(m);
+                }
 
             }
 
