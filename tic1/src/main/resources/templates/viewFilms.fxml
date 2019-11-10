@@ -141,7 +141,7 @@
          <children>
             <HBox>
                <children>
-                  <Label text="Peliculas" textFill="WHITE">
+                  <Label text="Peliculas en Cartelera" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="32.0" />
                      </font>

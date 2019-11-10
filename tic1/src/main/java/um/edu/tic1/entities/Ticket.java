@@ -13,10 +13,14 @@ public class Ticket {
     private Long id;
 
     //AGREGAR ASIENTOS
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id ")
+    private Usuario cliente;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "funcion_id ")
+    private Funcion funcion;
+    //private Date fecha; es necesario? se puede sacar de funcion
 
-    //private Usuario cliente;
-    //private Funcion funcion;
-    //private Date fecha;
 
 
 }
