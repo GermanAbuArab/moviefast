@@ -1,0 +1,46 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.8.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+
+group = 'um.edu'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.controlsfx', name: 'controlsfx', version: '8.40.14'
+    compile group: 'de.jensd', name: 'fontawesomefx', version: '8.9'
+
+
+	// https://mvnrepository.com/artifact/de.jensd/fontawesomefx-commons
+
+    // https://mvnrepository.com/artifact/de.jensd/fontawesomefx-materialicons
+    compile group: 'de.jensd', name: 'fontawesomefx-materialicons', version: '2.2.0-9.1.2'
+    // https://mvnrepository.com/artifact/de.jensd/fontawesomefx-weathericons
+    compile group: 'de.jensd', name: 'fontawesomefx-weathericons', version: '2.0.10-9.1.2'
+// https://mvnrepository.com/artifact/de.jensd/fontawesomefx-icons525
+    compile group: 'de.jensd', name: 'fontawesomefx-icons525', version: '4.2.0-9.1.2'
+// https://mvnrepository.com/artifact/de.jensd/fontawesomefx-octicons
+    compile group: 'de.jensd', name: 'fontawesomefx-octicons', version: '4.3.0-9.1.2'
+// https://mvnrepository.com/artifact/de.jensd/fontawesomefx-materialdesignfont
+    compile group: 'de.jensd', name: 'fontawesomefx-materialdesignfont', version: '2.0.26-9.1.2'
+// https://mvnrepository.com/artifact/de.jensd/fontawesomefx-emojione
+    compile group: 'de.jensd', name: 'fontawesomefx-emojione', version: '3.1.1-9.1.2'
+    
+    
+
+
+    runtime group: 'de.jensd', name: 'fontawesomefx-commons', version: '8.12'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    runtimeOnly 'mysql:mysql-connector-java'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
