@@ -107,16 +107,16 @@ public class selectorButacasController {
                                     DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("E, dd/MM/yyyy HH:mm");
                                     for(int t=0 ;t<funciones.size();t++){
                                         if (funciones.get(t).getHoraInicio().equals(fechatotalinicio.format(formatter1))){
+                                            funcionAux = funciones.get(t);
                                             salaDropDownList.setVisible(true);
                                             salas.add(funciones.get(t).getSala());
                                             salaDropDownList.setItems(salas);
                                             salaDropDownList.setOnAction((e) -> {
                                                 gridSeats.getChildren().clear();
-                                                List<Sala> listSala = getSalas();
                                                 sala = (Sala) salaDropDownList.getValue();
 
-                                                for (int j =0;j<listSala.size();j++){
-                                                    if (sala.getName().equals(listSala.get(j).getName())){
+                                                for (int j =0;j<funciones.size();j++){
+                                                    if (sala.getName().equals(funciones.get(j).getSala().getName()) && funciones.get(j).getHoraInicio().equals(funcionAux.getHoraInicio())){
                                                         funcionAux = getFunciones().get(j);
                                                         addSeats(sala.getX(),sala.getY());
                                                     }
@@ -157,13 +157,13 @@ public class selectorButacasController {
 
         ObservableList<Sala> salas = FXCollections.observableArrayList();
 
-        List<Sala> lista = salaService.findAll();
+        List<Funcion> lista = funcionService.findAll();
 
         for (int i = 0; i < lista.size(); i++) {
-            Sala sala = lista.get(i);
+            Sala sala = lista.get(i).getSala();
 
             if(sala.getCine().equals(this.cine)) {
-                salas.add(lista.get(i));
+                salas.add(lista.get(i).getSala());
 
             }
         }
