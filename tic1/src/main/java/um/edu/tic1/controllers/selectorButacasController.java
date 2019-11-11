@@ -4,6 +4,7 @@ package um.edu.tic1.controllers;
 //import de.jensd.fx.glyphs.materialicons.MaterialIconView;
 //import de.jensd.fx.glyphs.materialicons.utils.MaterialIconFactory;
 
+import antlr.collections.Stack;
 import de.jensd.fx.glyphs.materialicons.MaterialIcon;
 import de.jensd.fx.glyphs.materialicons.MaterialIconView;
 import javafx.collections.FXCollections;
@@ -12,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -34,6 +36,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -50,7 +53,7 @@ public class selectorButacasController {
     Button comprar;
     @FXML
     ComboBox CineDropDownList, horaDropDownList, salaDropDownList;
-    private boolean[][] estadoButaca;
+    private ArrayList<Node> asientos = new ArrayList<>(150);
     @Autowired
     private SalaService salaService;
 
@@ -72,6 +75,7 @@ public class selectorButacasController {
     }
 
     public void init() {
+        asientos.clear();
         ObservableList<String> cines = getCines();
         ObservableList<String> horas = FXCollections.observableArrayList();
         ObservableList<Sala> salas = FXCollections.observableArrayList();
@@ -214,12 +218,14 @@ public class selectorButacasController {
                                     .equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;")) {
                                 ((Node) event.getSource())
                                         .setStyle("-fx-fill:black; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
+                                asientos.remove((Node) event.getSource());
                                 // Main.getSelectedSeats().remove(((Node) e.getSource()).getId());
                             }
                             // turning seat red if it is black - selecting it
                             else {
                                 ((Node) event.getSource())
                                         .setStyle("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
+                                asientos.add((Node) event.getSource());
                                 // Main.getSelectedSeats().add(((Node) e.getSource()).getId());
                             }
 
@@ -260,6 +266,9 @@ public class selectorButacasController {
             }
 
         }
+
+
+        AlertBox.display("Compra Exitosa","Compraste : "+ asientos.size() + "asientos ubicados en" );
 
 
     }
