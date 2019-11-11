@@ -191,7 +191,7 @@ public class vistaCinesController {
             sala.setY(capacidadIntLargo);
             sala.setCapacidad(capacidadIntAncho*capacidadIntLargo);
         } catch (NumberFormatException nfe) {
-            System.out.println("NumberFormatException: " + nfe.getMessage());
+
         }
 
         if(select3D.isSelected()){

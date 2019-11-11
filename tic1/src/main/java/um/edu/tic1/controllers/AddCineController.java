@@ -48,10 +48,10 @@ AddCineController {
 
         try {
             long id = Long.parseLong(idIngresado.getText());
-            System.out.println("long id = " +id);
+            //System.out.println("long id = " +id);
             cine.setId(id);
         } catch (NumberFormatException nfe) {
-            System.out.println("NumberFormatException: " + nfe.getMessage());
+            //System.out.println("NumberFormatException: " + nfe.getMessage());
         }
 
 

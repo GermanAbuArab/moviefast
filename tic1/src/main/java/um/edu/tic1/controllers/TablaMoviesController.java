@@ -32,12 +32,6 @@ public class TablaMoviesController {
 
     @Autowired
     private MovieService ms;
-
-
-    public TablaMoviesController() {
-        System.out.println("Entro");
-
-    }
     private Movie peli;
 
     @FXML

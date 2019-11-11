@@ -442,7 +442,6 @@ public class vistaUsuarioCineController {
 
     public void agregarFunIndividual(LocalDate fecha){
 
-        System.out.println("Entro aca MAN");
 
         Funcion funcion = new Funcion();
 
@@ -460,8 +459,6 @@ public class vistaUsuarioCineController {
 
 
 
-        //Date fecha = new Date(String.valueOf(fechaFin.getChronology()));
-        //System.out.println(fecha.toString());
 
         funcion.setId(id);
         funcion.setSala(sala);

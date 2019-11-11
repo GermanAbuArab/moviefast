@@ -25,9 +25,6 @@ import java.io.IOException;
 @Component
 public class AddMovieController {
 
-    public AddMovieController() {
-        System.out.println("SKERE");
-    }
 
     @Autowired
     private MovieService ms;

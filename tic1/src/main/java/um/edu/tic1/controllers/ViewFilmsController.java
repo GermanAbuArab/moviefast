@@ -138,7 +138,7 @@ public class ViewFilmsController {
                 bImage = ImageIO.read(bis);
             } catch (IOException e) {
                 e.printStackTrace();
-                System.out.println("RE LOCO");
+
             }
             Image image = SwingFXUtils.toFXImage(bImage, null);
             imagesAux[m] = image;
