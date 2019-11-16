@@ -1,4 +1,4 @@
-package tic1.client;
+package um.edu.tic1.client;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
