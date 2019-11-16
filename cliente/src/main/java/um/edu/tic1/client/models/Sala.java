@@ -4,21 +4,43 @@ import tic1.commons.transfers.SalaDTO;
 
 public class Sala {
     private long id;
-
     private String name;
+    private int x;
+    private int y;
+    private Long cineId;
+    private int capacidad;
+    private boolean tresD;
+    private boolean cuatroD;
 
-    private String cinemaName;
 
     public Sala() {
     }
 
 
     public Sala(SalaDTO dto) {
-        this.setCinemaName(dto.getCinemaName());
-        this.setId(dto.getId());
-        this.setName(dto.getName());
+        this.cineId=dto.getCineId();
+        this.id=dto.getId();
+        this.name=dto.getName();
+        this.capacidad=dto.getCapacidad();
+        this.cuatroD=dto.getCuatroD();
+        this.tresD=dto.getTresD();
+        this.x=dto.getX();
+        this.y=dto.getY();
     }
 
+    public SalaDTO toDTO() {
+        SalaDTO salaDTO = new SalaDTO();
+        salaDTO.setCineId(this.getCineId());
+        salaDTO.setId(this.getId());
+        salaDTO.setName(this.getName());
+        salaDTO.setCapacidad(this.getCapacidad());
+        salaDTO.setCuatroD(this.getCuatroD());
+        salaDTO.setTresD(this.getTresD());
+        salaDTO.setX(this.getX());
+        salaDTO.setY(this.getY());
+        return salaDTO;
+
+    }
 
     public long getId() {
         return id;
@@ -36,11 +58,53 @@ public class Sala {
         this.name = name;
     }
 
-    public String getCinemaName() {
-        return cinemaName;
+    public int getX() {
+        return x;
     }
 
-    public void setCinemaName(String cinemaName) {
-        this.cinemaName = cinemaName;
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public Long getCineId() {
+        return cineId;
+    }
+
+    public void setCineId(Long cineId) {
+        this.cineId = cineId;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public boolean isTresD() {
+        return tresD;
+    }
+
+    public void setTresD(boolean tresD) {
+        this.tresD = tresD;
+    }
+
+    public boolean isCuatroD() {
+        return cuatroD;
+    }
+
+    public void setCuatroD(boolean cuatroD) {
+        this.cuatroD = cuatroD;
     }
 }
+}
+

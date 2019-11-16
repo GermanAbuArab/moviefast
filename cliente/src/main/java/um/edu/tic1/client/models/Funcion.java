@@ -1,9 +1,7 @@
 package um.edu.tic1.client.models;
 
-import tic1.commons.transfers.FunctionDTO;
+import tic1.commons.transfers.FunctionDTO; // los ort se sacan de coommons
 
-import javax.xml.soap.SAAJResult;
-import java.time.LocalDateTime;
 
 public class Funcion {
     private Long id;
