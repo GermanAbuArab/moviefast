@@ -4,7 +4,7 @@ public class Ticket {
 
     private Long id;
     private Long funcionId;
-    private Long clienteId;
+    private String clienteId;
 
 
     public Ticket() {
@@ -42,11 +42,11 @@ public class Ticket {
         this.funcionId = funcionId;
     }
 
-    public Long getClienteId() {
+    public String getClienteId() {
         return clienteId;
     }
 
-    public void setClienteId(Long clienteId) {
+    public void setClienteId(String clienteId) {
         this.clienteId = clienteId;
     }
 }
