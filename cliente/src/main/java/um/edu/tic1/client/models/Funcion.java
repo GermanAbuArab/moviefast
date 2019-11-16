@@ -8,32 +8,54 @@ import java.time.LocalDateTime;
 public class Funcion {
     private Long id;
     private String name;
-    private String movieid;
+    private String movieId;
     private String dimension;
     private String horaInicio;
     private String hora;
-    private String horafin;
+    private String horaFin;
     private String salaId;
     private boolean[][] butacas;
 
     private int duracion;
 
 
-
     public Funcion() {
     }
 
     public Funcion(FunctionDTO dto) {
-        this.setDate(dto.getStartTime());
-        this.setMovie(new Movie(dto.getMovie()));
-        this.setSecondId(dto.getSala());
-
+        this.id=dto.getId();
+        this.hora=dto.getHora();
+        this.name=dto.getname();
+        this.dimension=dto.getDimension();
+        this.salaId=dto.getSalaId();
+        this.movieId=dto.getMovieId();
+        this.horaFin=dto.getHorafin();
+        this.horaInicio=dto.getHoraInicio();
+        this.duracion=dto.getDuracion();
+        this.butacas=dto.getButacas();
     }
 
-}
+
+
+    public FuncionDTO toDTO() {
+        FuncionDTO funcionDTO = new FuncionDTO();
+        funcionDTO.setId(this.id);
+        funcionDTO.setHora(this.hora);
+        funcionDTO.setName(this.name);
+        funcionDTO.setDimension(this.dimension);
+        funcionDTO.setSalaId(this.salaId);
+        funcionDTO.setMovieId(this.movieId);
+        funcionDTO.setHoraInicio(this.horaInicio);
+        funcionDTO.setHoraFin(this.horaFin);
+        funcionDTO.setDuracion(this.duracion);
+        funcionDTO.setButacas(this.butacas);
+        return funcionDTO;
+    }
+
+
     public void clearAll(){
-        this.movieid = null;
-        this.salaid = null;
+        this.movieId = null;
+        this.salaId = null;
     }
 
     public Long getId() {
@@ -53,11 +75,11 @@ public class Funcion {
     }
 
     public String getMovieid() {
-        return movieid;
+        return movieId;
     }
 
     public void setMovieid(String movieid) {
-        this.movieid = movieid;
+        this.movieId = movieid;
     }
 
     public String getDimension() {
@@ -85,11 +107,11 @@ public class Funcion {
     }
 
     public String getHorafin() {
-        return horafin;
+        return horaFin;
     }
 
     public void setHorafin(String horafin) {
-        this.horafin = horafin;
+        this.horaFin = horafin;
     }
 
     public String getSalaId() {
@@ -114,5 +136,21 @@ public class Funcion {
 
     public void setDuracion(int duracion) {
         this.duracion = duracion;
+    }
+
+    public String getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(String movieId) {
+        this.movieId = movieId;
+    }
+
+    public String getHoraFin() {
+        return horaFin;
+    }
+
+    public void setHoraFin(String horaFin) {
+        this.horaFin = horaFin;
     }
 }
