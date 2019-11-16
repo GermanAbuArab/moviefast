@@ -25,4 +25,18 @@ public class Cine {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Cine(CineDTO cine){
+        this.id = cine.getId();
+        this.name = cine.getName();
+    }
+
+    public CineDTO toDTO() {
+        CineDTO cineDTO = new CineDTO();
+        cineDTO.setName(this.name);
+        cineDTO.setId(this.id);
+        return cineDTO;
+    }
+
+
 }

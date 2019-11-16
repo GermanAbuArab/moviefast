@@ -2,18 +2,23 @@ package um.edu.tic1.client.models;
 
 import tic1.commons.transfers.FunctionDTO;
 
+import javax.xml.soap.SAAJResult;
 import java.time.LocalDateTime;
 
 public class Funcion {
+    private Long id;
+    private String name;
+    private String movieid;
+    private String dimension;
+    private String horaInicio;
+    private String hora;
+    private String horafin;
+    private String salaId;
+    private boolean[][] butacas;
+
+    private int duracion;
 
 
-    private Movie movie;
-
-   private long secondId;
-
-   private String salaId;
-
-    private LocalDateTime date;
 
     public Funcion() {
     }
@@ -22,24 +27,69 @@ public class Funcion {
         this.setDate(dto.getStartTime());
         this.setMovie(new Movie(dto.getMovie()));
         this.setSecondId(dto.getSala());
-        this.setSecondId(dto.getSecondId());
+
     }
 
-
-    public Movie getMovie() {
-        return movie;
+}
+    public void clearAll(){
+        this.movieid = null;
+        this.salaid = null;
     }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
+    public Long getId() {
+        return id;
     }
 
-    public long getSecondId() {
-        return secondId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setSecondId(long secondId) {
-        this.secondId = secondId;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMovieid() {
+        return movieid;
+    }
+
+    public void setMovieid(String movieid) {
+        this.movieid = movieid;
+    }
+
+    public String getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(String dimension) {
+        this.dimension = dimension;
+    }
+
+    public String getHoraInicio() {
+        return horaInicio;
+    }
+
+    public void setHoraInicio(String horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getHorafin() {
+        return horafin;
+    }
+
+    public void setHorafin(String horafin) {
+        this.horafin = horafin;
     }
 
     public String getSalaId() {
@@ -50,11 +100,19 @@ public class Funcion {
         this.salaId = salaId;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public boolean[][] getButacas() {
+        return butacas;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setButacas(boolean[][] butacas) {
+        this.butacas = butacas;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
     }
 }
