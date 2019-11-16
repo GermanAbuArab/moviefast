@@ -1,28 +1,28 @@
 package um.edu.tic1.client.models;
 
-public class ClienteFinal {
+public class UsuarioCine {
 
     private String userName;
     private Long name;
     private Long password;
 
 
-    public ClienteFinal() {
+    public UsuarioCine() {
     }
 
 
-    public ClienteFinal(ClienteFinalDTO dto) {
+    public UsuarioCine(UsuarioCineDTO dto) {
         this.name=dto.getName();
         this.userName=dto.getUserName();
         this.password=dto.getPassword();
     }
 
-    public ClienteFinalDTO toDTO() {
-        ClienteFinalDTO usuarioFinalDTO = new ClienteFinal();
-        usuarioFinalDTO.setName(this.getName());
-        usuarioFinalDTO.setUsername(this.getUserName());
-        usuarioFinalDTO.setPassword(this.getPassword());
-        return usuarioFinalDTO;
+    public UsuarioCineDTO toDTO() {
+        UsuarioCineDTO usuarioCineDTO = new UsuarioCineDTO();
+        usuarioCineDTO .setName(this.getName());
+        usuarioCineDTO .setUsername(this.getUserName());
+        usuarioCineDTO .setPassword(this.getPassword());
+        return usuarioCineDTO ;
 
     }
 
