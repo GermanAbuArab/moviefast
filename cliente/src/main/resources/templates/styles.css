@@ -1,0 +1,52 @@
+.fondo_login{
+    -fx-background-image: url(../assets/fondoLogin.jpg);
+    -fx-background-size: cover;
+}
+.fondoAux{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 15, 0, 0, 0);
+    -fx-background-radius: 18 18 18 18;
+    -fx-border-radius: 18 18 18 18;
+}
+
+.btn_nav, .search_button, .btn_login . btn_register{
+    -fx-background-color: #6697e3;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 15, 0, 0, 0);
+}
+
+.btn_comprar,.btn_volver{
+    -fx-background-color:#e8e7e3 ;
+    -fx-effect: dropshadow(three-pass-box, rgb(220, 227, 210), 15, 0, 0, 0);
+}
+
+.fondoViewFilms{
+    -fx-background-image: url(../assets/fondoviewFilms.jpg);
+    -fx-background-size: cover;
+}
+.scrollPane{
+    -fx-background-color: black;
+}
+
+.fondoFilm{
+    -fx-background-image: url(../assets/login_user.jpg);
+    -fx-background-size: cover;
+}
+
+.text-field{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 15, 0, 0, 0);
+}
+
+
+.btn_nav:hover, .search_button:hover , .icon_boton:hover{
+    -fx-cursor: pointer;
+    -fx-opacity: 0.8;
+}
+
+.icon_boton{
+    -fx-background-color: #6697e3;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,1), 15, 0, 0, 0);
+}
+
+.top_nav{
+    -fx-background-color: #e8e7e3;
+
+}

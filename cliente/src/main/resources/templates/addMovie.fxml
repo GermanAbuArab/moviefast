@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="457.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.AddMovieController">
+    <left>
+        <VBox prefHeight="349.0" prefWidth="129.0" style="-fx-background-color: #6697e3;" BorderPane.alignment="CENTER" />
+    </left>
+    <top>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <HBox style="-fx-background-color: #e8e7e3;">
+                    <children>
+                        <ImageView fitHeight="59.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+
+                            </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Agregar Pelicula" wrappingWidth="253.13671875">
+                            <font>
+                                <Font size="32.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="8.0" top="8.0" />
+                            </HBox.margin>
+                        </Text>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <AnchorPane id="anchorPane" fx:id="anchorPane" prefHeight="349.0" prefWidth="333.0" BorderPane.alignment="CENTER">
+            <children>
+                <TextField fx:id="nombrePelicula" layoutX="38.0" layoutY="66.0" prefHeight="29.0" prefWidth="172.0" promptText="Pelicula" />
+                <Button layoutX="210.0" layoutY="359.0" mnemonicParsing="false" onAction="#addMovie" prefHeight="25.0" prefWidth="154.0" text="Agregar Pelicula" textFill="#0a0a0a" />
+                <Label layoutX="38.0" layoutY="35.0" text="Nombre de pelicula:">
+                    <font>
+                        <Font name="Arial" size="15.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="categoria" alignment="TOP_LEFT" layoutX="37.0" layoutY="253.0" prefHeight="28.0" prefWidth="270.0" promptText="Categoria" />
+                <Label layoutX="38.0" layoutY="103.0" text="Descripcion:">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="descripcion" alignment="TOP_LEFT" layoutX="38.0" layoutY="131.0" prefHeight="31.0" prefWidth="270.0" promptText="Breve descripcion.." />
+                <TextField fx:id="genero" alignment="TOP_LEFT" layoutX="38.0" layoutY="197.0" prefHeight="24.0" prefWidth="270.0" promptText="Genero" />
+                <Label layoutX="38.0" layoutY="234.0" text="Categoria">
+                    <font>
+                        <Font name="Arial" size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="38.0" layoutY="175.0" text="Genero">
+                    <font>
+                        <Font name="Arial" size="15.0" />
+                    </font>
+                </Label>
+            <Label layoutX="38.0" layoutY="291.0" text="Imagen">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+                <Button layoutX="40.0" layoutY="359.0" mnemonicParsing="false" onAction="#mostrarPelis" prefHeight="25.0" prefWidth="62.0" text="Volver" textFill="#222020" />
+            <TextField layoutX="38.0" layoutY="308.0" prefHeight="25.0" prefWidth="211.0" />
+            <Button layoutX="272.0" layoutY="308.0" mnemonicParsing="false" onAction="#addImage" text="Agregar" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
