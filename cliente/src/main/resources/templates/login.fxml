@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo_login" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.loginController">
+   <top>
+      <VBox styleClass="top_nav" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox>
+               <children>
+                  <ImageView fx:id="imagenMovieFast" fitHeight="42.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MovieFast" wrappingWidth="140.71875">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Region prefHeight="50.0" prefWidth="127.0" HBox.hgrow="ALWAYS" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="¿Aun no estas registrado?">
+                     <HBox.margin>
+                        <Insets right="7.0" top="10.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Button mnemonicParsing="false" onAction="#registrar" styleClass="icon_boton" text="Registro" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets right="7.0" top="7.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <left>
+      <AnchorPane styleClass="fondo_login" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="24.0" layoutY="44.0" prefHeight="223.0" prefWidth="218.0" style="-fx-background-color: #e8e7e3;" styleClass="fondoAux">
+               <children>
+                  <TextField fx:id="usuarioIngresado" layoutX="26.0" layoutY="52.0" promptText="Usuario" />
+                  <Label layoutX="24.0" layoutY="24.0" text="Usuario:">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="24.0" layoutY="102.0" text="Contraseña:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="contraseñaIngresada" layoutX="26.0" layoutY="129.0" promptText="Contraseña" />
+                  <Button layoutX="71.0" layoutY="176.0" mnemonicParsing="false" onAction="#ingresar" styleClass="icon_boton" text="Ingresar" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

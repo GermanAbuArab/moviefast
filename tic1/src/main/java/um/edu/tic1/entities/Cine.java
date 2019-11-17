@@ -13,7 +13,6 @@ public class Cine{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "cine_id")
     private Long id;
-
     private String name;
 
 

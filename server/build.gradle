@@ -13,6 +13,10 @@ repositories {
 }
 
 dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+
+    compile group: 'org.springframework', name: 'spring-web', version: '3.0.2.RELEASE'
+
     compile group: 'org.controlsfx', name: 'controlsfx', version: '8.40.14'
     compile group: 'de.jensd', name: 'fontawesomefx', version: '8.9'
 
