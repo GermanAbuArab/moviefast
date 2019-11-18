@@ -1,7 +1,7 @@
 package um.edu.tic1.client.models;
 
-import tic1.commons.transfers.FunctionDTO; // los ort se sacan de coommons
 
+import um.edu.tic1.commons.DTO.FuncionDTO;
 
 public class Funcion {
     private Long id;
@@ -20,14 +20,14 @@ public class Funcion {
     public Funcion() {
     }
 
-    public Funcion(FunctionDTO dto) {
+    public Funcion(FuncionDTO dto) {
         this.id=dto.getId();
         this.hora=dto.getHora();
-        this.name=dto.getname();
+        this.name=dto.getName();
         this.dimension=dto.getDimension();
         this.salaId=dto.getSalaId();
         this.movieId=dto.getMovieId();
-        this.horaFin=dto.getHorafin();
+        this.horaFin=dto.getHoraFin();
         this.horaInicio=dto.getHoraInicio();
         this.duracion=dto.getDuracion();
         this.butacas=dto.getButacas();

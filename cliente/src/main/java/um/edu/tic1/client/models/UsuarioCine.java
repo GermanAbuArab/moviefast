@@ -1,5 +1,7 @@
 package um.edu.tic1.client.models;
 
+import um.edu.tic1.commons.DTO.UsuarioCineDTO;
+
 public class UsuarioCine {
 
     private String userName;
@@ -20,7 +22,7 @@ public class UsuarioCine {
     public UsuarioCineDTO toDTO() {
         UsuarioCineDTO usuarioCineDTO = new UsuarioCineDTO();
         usuarioCineDTO .setName(this.getName());
-        usuarioCineDTO .setUsername(this.getUserName());
+        usuarioCineDTO .setUserName(this.getUserName());
         usuarioCineDTO .setPassword(this.getPassword());
         return usuarioCineDTO ;
 

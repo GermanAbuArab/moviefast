@@ -1,9 +1,7 @@
-package um.edu.tic1.client.models;
+package um.edu.tic1.commons.DTO;
 
+public class SalaDTO {
 
-import um.edu.tic1.commons.DTO.SalaDTO;
-
-public class Sala {
     private long id;
     private String name;
     private int x;
@@ -14,33 +12,18 @@ public class Sala {
     private boolean cuatroD;
 
 
-    public Sala() {
+    public SalaDTO() {
     }
 
-
-    public Sala(SalaDTO dto) {
-        this.cineId=dto.getCineId();
-        this.id=dto.getId();
-        this.name=dto.getName();
-        this.capacidad=dto.getCapacidad();
-        this.cuatroD=dto.isCuatroD();
-        this.tresD=dto.isTresD();
-        this.x=dto.getX();
-        this.y=dto.getY();
-    }
-
-    public SalaDTO toDTO() {
-        SalaDTO salaDTO = new SalaDTO();
-        salaDTO.setCineId(this.getCineId());
-        salaDTO.setId(this.getId());
-        salaDTO.setName(this.getName());
-        salaDTO.setCapacidad(this.getCapacidad());
-        salaDTO.setCuatroD(this.isCuatroD());
-        salaDTO.setTresD(this.isTresD());
-        salaDTO.setX(this.getX());
-        salaDTO.setY(this.getY());
-        return salaDTO;
-
+    public SalaDTO(long id, String name, int x, int y, Long cineId, int capacidad, boolean tresD, boolean cuatroD) {
+        this.id = id;
+        this.name = name;
+        this.x = x;
+        this.y = y;
+        this.cineId = cineId;
+        this.capacidad = capacidad;
+        this.tresD = tresD;
+        this.cuatroD = cuatroD;
     }
 
     public long getId() {
@@ -106,6 +89,4 @@ public class Sala {
     public void setCuatroD(boolean cuatroD) {
         this.cuatroD = cuatroD;
     }
-
 }
-

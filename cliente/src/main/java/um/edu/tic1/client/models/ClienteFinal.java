@@ -1,5 +1,7 @@
 package um.edu.tic1.client.models;
 
+import um.edu.tic1.commons.DTO.ClienteFinalDTO;
+
 public class ClienteFinal {
 
     private String userName;
@@ -18,9 +20,9 @@ public class ClienteFinal {
     }
 
     public ClienteFinalDTO toDTO() {
-        ClienteFinalDTO usuarioFinalDTO = new ClienteFinal();
+        ClienteFinalDTO usuarioFinalDTO = new ClienteFinalDTO();
         usuarioFinalDTO.setName(this.getName());
-        usuarioFinalDTO.setUsername(this.getUserName());
+        usuarioFinalDTO.setUserName(this.getUserName());
         usuarioFinalDTO.setPassword(this.getPassword());
         return usuarioFinalDTO;
 

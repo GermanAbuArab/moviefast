@@ -1,5 +1,7 @@
 package um.edu.tic1.client.models;
 
+import um.edu.tic1.commons.DTO.TicketDTO;
+
 public class Ticket {
 
     private Long id;
@@ -21,7 +23,7 @@ public class Ticket {
         TicketDTO ticketDTO = new TicketDTO();
         ticketDTO.setClienteId(this.getClienteId());
         ticketDTO.setId(this.getId());
-        ticketDTO.setFuncionID(this.getFuncionId());
+        ticketDTO.setFuncionId(this.getFuncionId());
         return ticketDTO;
 
     }
