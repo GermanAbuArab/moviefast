@@ -3,8 +3,8 @@ package um.edu.tic1.client.models;
 public class UsuarioCine {
 
     private String userName;
-    private Long name;
-    private Long password;
+    private String name;
+    private String password;
 
 
     public UsuarioCine() {
@@ -35,19 +35,19 @@ public class UsuarioCine {
         this.userName = userName;
     }
 
-    public Long getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Long name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public Long getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Long password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 }
