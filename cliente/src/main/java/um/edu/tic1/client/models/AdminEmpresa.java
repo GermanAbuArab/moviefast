@@ -1,9 +1,12 @@
 package um.edu.tic1.client.models;
 
+
+import um.edu.tic1.commons.DTO.AdminEmpresaDTO;
+
 public class AdminEmpresa {
     private String userName;
-    private Long name;
-    private Long password;
+    private String name;
+    private String password;
 
 
     public AdminEmpresa() {
@@ -17,9 +20,9 @@ public class AdminEmpresa {
     }
 
     public AdminEmpresaDTO toDTO() {
-        AdminEmpresaDTO adminEmpresaDTO = new AdminEmpresa();
+        AdminEmpresaDTO adminEmpresaDTO = new AdminEmpresaDTO();
         adminEmpresaDTO.setName(this.getName());
-        adminEmpresaDTO.setUsername(this.getUserName());
+        adminEmpresaDTO.setUserName(this.getUserName());
         adminEmpresaDTO.setPassword(this.getPassword());
         return adminEmpresaDTO ;
 
@@ -34,19 +37,19 @@ public class AdminEmpresa {
         this.userName = userName;
     }
 
-    public Long getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Long name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public Long getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Long password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 }

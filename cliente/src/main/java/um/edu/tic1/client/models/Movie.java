@@ -1,6 +1,6 @@
 package um.edu.tic1.client.models;
 
-import tic1.commons.transfers.NewMovieDTO; //TODO auqnue lo muestra no esta compliandolo :(
+import um.edu.tic1.commons.DTO.MovieDTO; //TODO auqnue lo muestra no esta compliandolo :(
 
 
 public class Movie {
@@ -15,7 +15,7 @@ public class Movie {
         this.name = null;
     }
 
-    public Movie(NewMovieDTO movie) {
+    public Movie(MovieDTO movie) {
         this.id = movie.getId();
         this.name = movie.getName();
         this.description = movie.getDescription();
@@ -23,9 +23,9 @@ public class Movie {
         this.categoria = movie.getCategoria();
     }
 
-    public NewMovieDTO toDTO() {
-        NewMovieDTO movieDTO = new NewMovieDTO();
-        movieDTO.setgenero(this.genero);
+    public MovieDTO toDTO() {
+        MovieDTO movieDTO = new MovieDTO();
+        movieDTO.setGenero(this.genero);
         movieDTO.setDescription(this.description);
         movieDTO.setCategoria(this.categoria);
         movieDTO.setName(this.name);

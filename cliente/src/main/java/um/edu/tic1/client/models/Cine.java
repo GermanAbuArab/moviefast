@@ -1,5 +1,7 @@
 package um.edu.tic1.client.models;
 
+import um.edu.tic1.commons.DTO.CineDTO;
+
 public class Cine {
     private Long id;
     private  String name;
