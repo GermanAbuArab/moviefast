@@ -1,5 +1,5 @@
 package um.edu.tic1.rest;
 
-@RestS
+//@RestS
 public class ServiciosRest {
 }
