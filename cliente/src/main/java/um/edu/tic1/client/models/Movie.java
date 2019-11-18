@@ -15,7 +15,7 @@ public class Movie {
         this.name = null;
     }
 
-    public Movie(NewMovieDTO movie) {
+    public Movie(MovieDTO movie) {
         this.id = movie.getId();
         this.name = movie.getName();
         this.description = movie.getDescription();
@@ -23,8 +23,8 @@ public class Movie {
         this.categoria = movie.getCategoria();
     }
 
-    public NewMovieDTO toDTO() {
-        NewMovieDTO movieDTO = new NewMovieDTO();
+    public MovieDTO toDTO() {
+        MovieDTO movieDTO = new MovieDTO();
         movieDTO.setgenero(this.genero);
         movieDTO.setDescription(this.description);
         movieDTO.setCategoria(this.categoria);
