@@ -1,4 +1,5 @@
-package um.edu.tic1.rest;
+package um.edu.tic1;
+
 import org.springframework.web.bind.annotation.RestController;
 
 
