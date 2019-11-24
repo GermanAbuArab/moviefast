@@ -34,6 +34,9 @@ public class TablaMoviesController {
     private MovieService ms;
     private Movie peli;
 
+    @Autowired
+    private ViewFilmsController vfc;
+
     @FXML
     private TableView<Movie> tabla;
 
@@ -127,6 +130,8 @@ public class TablaMoviesController {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
+        vfc.setUser(vfc.getClienteFinal());
+
     }
 
     @FXML

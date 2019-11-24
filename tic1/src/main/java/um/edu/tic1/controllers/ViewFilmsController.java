@@ -19,10 +19,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.tic1.Tic1Application;
+import um.edu.tic1.entities.ClienteFinal;
 import um.edu.tic1.entities.Funcion;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.FuncionService;
@@ -43,6 +45,8 @@ public class ViewFilmsController {
     private ScrollPane scrollPane;
     @FXML
     private HBox hbox;
+    @FXML
+    private Text welcome;
     @FXML
     private GridPane grid;
     @FXML
@@ -65,6 +69,7 @@ public class ViewFilmsController {
 
     private Image[] images = new Image[150];
     private Movie movieAux;
+    private ClienteFinal clienteFinal;
     private Funcion funcionAux;
     @Autowired
     private FuncionService funcionService;
@@ -74,7 +79,6 @@ public class ViewFilmsController {
     private MovieService ms;
 
     public void initialize() {
-
         setUpIconosDec();
         int m = 0;
         addImagesToArray(getMovie());
@@ -99,6 +103,14 @@ public class ViewFilmsController {
 
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setFitToHeight(true);
+    }
+
+    public void setUser(ClienteFinal clienteFinal) {
+        this.clienteFinal = clienteFinal;
+        welcome.setText("Bienvenido " + clienteFinal.getName() + ",");
+    }
+    public ClienteFinal getClienteFinal(){
+        return clienteFinal;
     }
 
     private void setUpGrid() {

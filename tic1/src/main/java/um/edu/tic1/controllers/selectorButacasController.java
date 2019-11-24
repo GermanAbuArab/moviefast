@@ -59,6 +59,8 @@ public class selectorButacasController {
     private FuncionService funcionService;
     @Autowired
     private TicketService ticketService;
+    @Autowired
+    private ViewFilmsController vfc;
 
     @Autowired
     private CineService cineService;
@@ -289,7 +291,8 @@ public class selectorButacasController {
             }
 
         }
-        AlertBox.display("Compra Exitosa","Compraste el asiento : "  + ticket.imprimirAsientos()+ " \n Fecha : " + funcionAux.getHoraInicio() + " \n Pelicula : " +funcionAux.getMovie()+ " \n Sala : " + funcionAux.getSala());
+        ClienteFinal clienteFinal=  vfc.getClienteFinal();
+        AlertBox.display("Compra Exitosa","Compraste el asiento : "  + ticket.imprimirAsientos()+ " \n Fecha : " + funcionAux.getHoraInicio() + " \n Pelicula : " +funcionAux.getMovie()+ " \n Sala : " + funcionAux.getSala()+ " \n Cliente :" + clienteFinal.getName());
         //ticketService.save(ticket);
 
 

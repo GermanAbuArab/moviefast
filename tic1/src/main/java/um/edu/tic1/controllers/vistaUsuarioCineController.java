@@ -321,7 +321,7 @@ public class vistaUsuarioCineController {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
         this.cine = null;
-        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml")); //todo tira un error
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/login.fxml")); //todo tira un error
         inicio.getStylesheets().add("/templates/styles.css");
         Scene inicioScene = new Scene(inicio, 1000, 500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
