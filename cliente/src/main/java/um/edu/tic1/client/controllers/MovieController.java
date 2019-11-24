@@ -1,4 +1,4 @@
-package um.edu.tic1.client.controllers;
+/* package um.edu.tic1.client.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -94,3 +94,4 @@ public class MovieController {
         return movie;
     }
 }
+*/

@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/funcion")
-public class FuncionService {
+public class  FuncionService {
 
     @Autowired
     private FuncionRepository fr;

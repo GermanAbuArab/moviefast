@@ -1,4 +1,7 @@
+/*
+
 package um.edu.tic1.client.controllers;
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +20,8 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import um.edu.tic1.Tic1Application;
+*/
+/*
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.MovieService;
 
@@ -207,6 +212,7 @@ public class TablaMoviesController {
         return tabla;
     }
 
+*/
 
   /* @FXML
     private void search(KeyEvent event){
@@ -232,5 +238,8 @@ public class TablaMoviesController {
         tabla.setItems(sortedList);
     }*/
 
+/*
 
 }
+
+*/
