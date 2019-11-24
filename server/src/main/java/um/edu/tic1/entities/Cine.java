@@ -1,6 +1,8 @@
 package um.edu.tic1.entities;
 
 
+import um.edu.tic1.commons.DTO.CineDTO;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +53,14 @@ public class Cine{
 
         return resultado;
     }
+
+    public CineDTO toDTO() {
+        CineDTO cineDTO = new CineDTO();
+        cineDTO.setName(this.name);
+        cineDTO.setId(this.id);
+        return cineDTO;
+    }
+
 
 
 

@@ -1,5 +1,7 @@
 package um.edu.tic1.entities;
 
+import um.edu.tic1.commons.DTO.FuncionDTO;
+
 import javax.persistence.*;
 
 @Entity
@@ -137,5 +139,19 @@ public class Funcion {
         return butacas;
     }
 
+    public FuncionDTO toDTO() {
+        FuncionDTO funcionDTO = new FuncionDTO();
+        funcionDTO.setId(this.id);
+        funcionDTO.setHora(this.hora);
+        funcionDTO.setName(this.name);
+        funcionDTO.setDimension(this.dimension);
+        funcionDTO.setSalaId(this.sala.getId());
+        funcionDTO.setMovieId(this.movie.getId());
+        funcionDTO.setHoraInicio(this.horaInicio);
+        funcionDTO.setHoraFin(this.horaFin);
+        funcionDTO.setDuracion(this.duracion);
+        funcionDTO.setButacas(this.butacas);
+        return funcionDTO;
+    }
 
 }

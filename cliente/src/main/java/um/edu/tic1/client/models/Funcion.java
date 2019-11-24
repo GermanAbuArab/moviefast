@@ -6,12 +6,12 @@ import um.edu.tic1.commons.DTO.FuncionDTO;
 public class Funcion {
     private Long id;
     private String name;
-    private String movieId;
+    private Long movieId;
     private String dimension;
     private String horaInicio;
     private String hora;
     private String horaFin;
-    private String salaId;
+    private Long salaId;
     private boolean[][] butacas;
 
     private int duracion;
@@ -72,11 +72,11 @@ public class Funcion {
         this.name = name;
     }
 
-    public String getMovieid() {
+    public Long getMovieid() {
         return movieId;
     }
 
-    public void setMovieid(String movieid) {
+    public void setMovieid(Long movieid) {
         this.movieId = movieid;
     }
 
@@ -112,11 +112,11 @@ public class Funcion {
         this.horaFin = horafin;
     }
 
-    public String getSalaId() {
+    public Long getSalaId() {
         return salaId;
     }
 
-    public void setSalaId(String salaId) {
+    public void setSalaId(Long salaId) {
         this.salaId = salaId;
     }
 
@@ -136,11 +136,11 @@ public class Funcion {
         this.duracion = duracion;
     }
 
-    public String getMovieId() {
+    public Long getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(String movieId) {
+    public void setMovieId(Long movieId) {
         this.movieId = movieId;
     }
 
@@ -151,4 +151,6 @@ public class Funcion {
     public void setHoraFin(String horaFin) {
         this.horaFin = horaFin;
     }
+
+
 }

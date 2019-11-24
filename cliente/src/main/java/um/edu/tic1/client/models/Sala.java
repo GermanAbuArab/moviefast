@@ -4,7 +4,7 @@ package um.edu.tic1.client.models;
 import um.edu.tic1.commons.DTO.SalaDTO;
 
 public class Sala {
-    private long id;
+    private Long id;
     private String name;
     private int x;
     private int y;

@@ -3,6 +3,8 @@ package um.edu.tic1.entities;
 
 
 
+import um.edu.tic1.commons.DTO.MovieDTO;
+
 import javax.annotation.Generated;
 import javax.persistence.*;
 
@@ -86,5 +88,15 @@ public class Movie {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public MovieDTO toDTO() {
+        MovieDTO movieDTO = new MovieDTO();
+        movieDTO.setGenero(this.genero);
+        movieDTO.setDescription(this.description);
+        movieDTO.setCategoria(this.categoria);
+        movieDTO.setName(this.name);
+        movieDTO.setId(this.id);
+        return movieDTO;
     }
 }

@@ -4,12 +4,12 @@ public class FuncionDTO {
 
     private Long id;
     private String name;
-    private String movieId;
+    private Long movieId;
     private String dimension;
     private String horaInicio;
     private String hora;
     private String horaFin;
-    private String salaId;
+    private Long salaId;
     private boolean[][] butacas;
 
     private int duracion;
@@ -17,7 +17,7 @@ public class FuncionDTO {
     public FuncionDTO() {
     }
 
-    public FuncionDTO(Long id, String name, String movieId, String dimension, String horaInicio, String hora, String horaFin, String salaId, boolean[][] butacas, int duracion) {
+    public FuncionDTO(Long id, String name,Long movieId, String dimension, String horaInicio, String hora, String horaFin, Long salaId, boolean[][] butacas, int duracion) {
         this.id = id;
         this.name = name;
         this.movieId = movieId;
@@ -46,11 +46,11 @@ public class FuncionDTO {
         this.name = name;
     }
 
-    public String getMovieId() {
+    public Long getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(String movieId) {
+    public void setMovieId(Long movieId) {
         this.movieId = movieId;
     }
 
@@ -86,11 +86,11 @@ public class FuncionDTO {
         this.horaFin = horaFin;
     }
 
-    public String getSalaId() {
+    public Long getSalaId() {
         return salaId;
     }
 
-    public void setSalaId(String salaId) {
+    public void setSalaId(Long salaId) {
         this.salaId = salaId;
     }
 

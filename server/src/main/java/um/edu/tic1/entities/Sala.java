@@ -1,6 +1,8 @@
 package um.edu.tic1.entities;
 
 
+import um.edu.tic1.commons.DTO.SalaDTO;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -102,4 +104,20 @@ public class Sala {
     public void setCuatroD(boolean cuatroD) {
         this.cuatroD = cuatroD;
     }
+
+
+    public SalaDTO toDTO() {
+        SalaDTO salaDTO = new SalaDTO();
+        salaDTO.setCineId(this.getCine().getId());
+        salaDTO.setId(this.getId());
+        salaDTO.setName(this.getName());
+        salaDTO.setCapacidad(this.getCapacidad());
+        salaDTO.setCuatroD(this.isCuatroD());
+        salaDTO.setTresD(this.isTresD());
+        salaDTO.setX(this.getX());
+        salaDTO.setY(this.getY());
+        return salaDTO;
+
+    }
+
 }
