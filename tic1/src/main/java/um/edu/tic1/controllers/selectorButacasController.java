@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,6 +76,9 @@ public class selectorButacasController {
     }
 
     public void init() {
+        gridSeats.setHgap(10);
+        gridSeats.setVgap(10);
+        gridSeats.setPadding(new Insets(10, 10, 10, 10));
         ObservableList<String> cines = getCines();
         ObservableList<String> horas = FXCollections.observableArrayList();
         ObservableList<Sala> salas = FXCollections.observableArrayList();
@@ -194,11 +198,11 @@ public class selectorButacasController {
         MaterialIconView icon = new MaterialIconView(MaterialIcon.EVENT_SEAT);
 
         if (funcionAux.getButacas()[i][j] == true) {
-            icon.setStyle("-fx-fill:black; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
+            icon.setStyle("-fx-fill:black; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;");
             gridSeats.add(icon, i, j);
         }
         else {
-            icon.setStyle("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
+            icon.setStyle("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;");
             gridSeats.add(icon, i, j);
         }
 
@@ -207,7 +211,7 @@ public class selectorButacasController {
                     @Override
                     public void handle(MouseEvent event) {
                         if (((Node) event.getSource()).getStyle()
-                                .equals("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;")) {
+                                .equals("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;")) {
                             Alert alert = new Alert(Alert.AlertType.WARNING,
                                     "The seat is already booked!", ButtonType.OK);
                             alert.showAndWait();
@@ -218,16 +222,16 @@ public class selectorButacasController {
                         else {
                             // turning seat back to black if it is red - unselecting it
                             if (((Node) event.getSource()).getStyle()
-                                    .equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;")) {
+                                    .equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;")) {
                                 ((Node) event.getSource())
-                                        .setStyle("-fx-fill:black; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
+                                        .setStyle("-fx-fill:black; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;");
 
                                 // Main.getSelectedSeats().remove(((Node) e.getSource()).getId());
                             }
                             // turning seat red if it is black - selecting it
                             else {
                                 ((Node) event.getSource())
-                                        .setStyle("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
+                                        .setStyle("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;");
 
                                 // Main.getSelectedSeats().add(((Node) e.getSource()).getId());
                             }
@@ -271,8 +275,8 @@ public class selectorButacasController {
         ticket.setFuncion(funcionAux);
         for (int x= 0;x<salaFuncion.getX();x++){
             for (int y= 0;y<salaFuncion.getY();y++){
-                if (getNodeByRowColumnIndex(x,y,gridSeats).getStyle().equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;")){
-                    getNodeByRowColumnIndex(x,y,gridSeats).setStyle("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
+                if (getNodeByRowColumnIndex(x,y,gridSeats).getStyle().equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;")){
+                    getNodeByRowColumnIndex(x,y,gridSeats).setStyle("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;");
                     funcionAux.reservaButaca(y,x);
                     funcionService.save(funcionAux);
                     System.out.println(funcionAux.getId() + funcionAux.getHoraInicio() + funcionAux.getSala() );
