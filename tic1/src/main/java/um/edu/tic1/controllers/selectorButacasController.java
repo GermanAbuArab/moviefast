@@ -54,13 +54,13 @@ public class selectorButacasController {
     ComboBox CineDropDownList, horaDropDownList, salaDropDownList;
     @Autowired
     private SalaService salaService;
+    @Autowired
+    private ViewFilmsController vfc;
 
     @Autowired
     private FuncionService funcionService;
     @Autowired
     private TicketService ticketService;
-    @Autowired
-    private ViewFilmsController vfc;
 
     @Autowired
     private CineService cineService;
@@ -267,6 +267,8 @@ public class selectorButacasController {
         Scene inicioScene = new Scene(inicio,1000,500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
+        ClienteFinal clienteFinal=  vfc.getClienteFinal();
+        vfc.setUser(clienteFinal);
         window.show();
 
     }

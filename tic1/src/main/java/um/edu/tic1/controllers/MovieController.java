@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.tic1.Tic1Application;
+import um.edu.tic1.entities.ClienteFinal;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.MovieService;
 
@@ -29,6 +30,8 @@ public class MovieController {
     @Autowired
     private MovieService ms;
     private Movie movie;
+    @Autowired
+    private ViewFilmsController vfc;
 
     @FXML
     private ImageView imagenMovie;
@@ -62,6 +65,8 @@ public class MovieController {
         Scene inicioScene = new Scene(inicio,1000,500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
+        ClienteFinal clienteFinal=  vfc.getClienteFinal();
+        vfc.setUser(clienteFinal);
         window.show();
 
     }

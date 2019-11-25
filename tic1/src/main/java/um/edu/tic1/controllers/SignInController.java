@@ -41,16 +41,18 @@ public class SignInController {
 
     @FXML
     private ImageView imagenFondo;
+    @FXML
+    Image ImagenMovieFast = new Image("assets/icono_movieFast.png");
+    @FXML
+    private ImageView imagenMovieFast;
 
     @Autowired
     private UsuarioService us;
 
     public void initialize() {
-
-        Image imagenCine = new Image("cinema.jpg");
-
-        imagenFondo.setImage(imagenCine);
-
+        imagenMovieFast.setFitWidth(30);
+        imagenMovieFast.setFitHeight(30);
+        imagenMovieFast.setImage(ImagenMovieFast);
 
     }
 
