@@ -1,4 +1,4 @@
-/*package um.edu.tic1.client.controllers;
+package um.edu.tic1.client.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -64,4 +64,3 @@ public class AdentroCineController {
 }
 
 
-*/

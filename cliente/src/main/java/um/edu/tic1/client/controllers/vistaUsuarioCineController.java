@@ -1,4 +1,4 @@
-/*
+
 package um.edu.tic1.client.controllers;
 
 import javafx.collections.FXCollections;
@@ -490,4 +490,3 @@ public class vistaUsuarioCineController {
 }
 
 
-*/

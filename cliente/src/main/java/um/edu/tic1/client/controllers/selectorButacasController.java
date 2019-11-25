@@ -1,4 +1,4 @@
-/*
+
 package um.edu.tic1.client.controllers;
 
 //import de.jensd.fx.glyphs.materialicons.MaterialIcon;
@@ -311,4 +311,3 @@ public class selectorButacasController {
 
 
 // TODO LAS FUNCIONES SE REGISTRAN EN TODAS LOS HORARIOS
-*/
