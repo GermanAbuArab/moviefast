@@ -14,11 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import um.edu.tic1.Tic1Application;
-import um.edu.tic1.entities.Cine;
-import um.edu.tic1.entities.ClienteFinal;
-import um.edu.tic1.services.CineService;
-import um.edu.tic1.services.UsuarioService;
+
 
 import java.io.IOException;
 import java.net.URL;

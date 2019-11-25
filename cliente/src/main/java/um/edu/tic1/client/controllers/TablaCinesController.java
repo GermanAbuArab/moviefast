@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import um.edu.tic1.Tic1Application;
+import um.edu.tic1.client.ClientApplication;
+import um.edu.tic1.client.models.Cine;
 import um.edu.tic1.entities.Cine;
 import um.edu.tic1.services.CineService;
 
@@ -79,7 +81,7 @@ public class TablaCinesController {
     @FXML
     void agregar(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/addCine.fxml"));
         Scene inicioScene = new Scene(inicio,600,500);

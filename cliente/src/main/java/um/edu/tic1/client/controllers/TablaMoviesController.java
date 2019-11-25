@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import um.edu.tic1.Tic1Application;
 
 
+import um.edu.tic1.client.models.Movie;
 import um.edu.tic1.entities.Movie;
 import um.edu.tic1.services.MovieService;
 

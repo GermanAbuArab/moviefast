@@ -1,4 +1,4 @@
-/*package um.edu.tic1.client.controllers;
+package um.edu.tic1.client.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,11 +22,9 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import um.edu.tic1.Tic1Application;
-import um.edu.tic1.entities.Funcion;
-import um.edu.tic1.entities.Movie;
-import um.edu.tic1.services.FuncionService;
-import um.edu.tic1.services.MovieService;
+import um.edu.tic1.client.models.Funcion;
+import um.edu.tic1.client.models.Movie;
+
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -292,7 +290,6 @@ public class ViewFilmsController {
         }
     }
 }
- */
 
 
 

@@ -20,10 +20,6 @@ import um.edu.tic1.client.models.Cine;
 import um.edu.tic1.client.models.Funcion;
 import um.edu.tic1.client.models.Movie;
 import um.edu.tic1.client.models.Sala;
-import um.edu.tic1.services.CineService;
-import um.edu.tic1.services.FuncionService;
-import um.edu.tic1.services.MovieService;
-import um.edu.tic1.services.SalaService;
 
 import java.io.IOException;
 import java.time.DayOfWeek;
