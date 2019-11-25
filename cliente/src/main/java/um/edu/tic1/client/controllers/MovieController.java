@@ -71,7 +71,7 @@ public class MovieController {
     private void comprar(ActionEvent event)throws IOException {  // vuelve a la scena
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/selectorButacas.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");
@@ -86,7 +86,7 @@ public class MovieController {
 
 
 
-    public ObservableList<Movie> getMovie() {
+    public ObservableList<Movie> getMovie() throws IOException {
 
         ObservableList<Movie> movie = FXCollections.observableArrayList();
 

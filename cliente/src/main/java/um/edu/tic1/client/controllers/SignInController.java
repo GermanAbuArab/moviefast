@@ -59,7 +59,7 @@ public class SignInController {
         String userName = nombreUsuario.getText();
         String contra = password.getText();
         // TODO: 25/11/2019  
-        //ClienteFinal usuario = new ClienteFinal(userName,nombre,contra); ERROR ACA MAN
+        ClienteFinal usuario = new ClienteFinal(userName,nombre,contra);
 
         if (us.getUr().findByName(userName)!=null) {
             if (us.getUr().findByName(userName).getUserName().equals(userName)) {

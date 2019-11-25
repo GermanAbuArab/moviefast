@@ -19,6 +19,10 @@ public class ClienteFinal {
         this.password=dto.getPassword();
     }
 
+    public ClienteFinal(String userName, String nombre, String contra) {
+
+    }
+
     public ClienteFinalDTO toDTO() {
         ClienteFinalDTO usuarioFinalDTO = new ClienteFinalDTO();
         usuarioFinalDTO.setName(this.getName());
