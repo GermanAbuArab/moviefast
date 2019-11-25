@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 import javafx.event.ActionEvent;
+import um.edu.tic1.client.ClientApplication;
 
 import java.io.IOException;
 
@@ -22,7 +23,7 @@ public class InicioController {
     @FXML
     public void adminEmpresa(ActionEvent actionEvent)throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/mostrar.fxml"));
         Scene inicioScene = new Scene(inicio);
@@ -34,7 +35,7 @@ public class InicioController {
     @FXML
     public void usuarioFinal(ActionEvent event)throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");

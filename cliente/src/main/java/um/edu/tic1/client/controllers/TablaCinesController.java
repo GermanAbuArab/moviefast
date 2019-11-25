@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.Cine;
 import um.edu.tic1.client.services.CineService;
 
@@ -36,7 +37,7 @@ public class TablaCinesController {
     @FXML
     private TableColumn<Cine, String> nombrePeli;
 
-    public void initialize() {
+    public void initialize() throws IOException {
 
         //set up the columns in the table
         nombrePeli.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -62,7 +63,7 @@ public class TablaCinesController {
     @Autowired
     private vistaCinesController vc;
 
-    private ObservableList<Cine> getCine() {
+    private ObservableList<Cine> getCine() throws IOException {
 
         ObservableList<Cine> movie = FXCollections.observableArrayList();
 
@@ -80,7 +81,7 @@ public class TablaCinesController {
     @FXML
     void agregar(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/addCine.fxml"));
         Scene inicioScene = new Scene(inicio,600,500);
@@ -107,7 +108,7 @@ public class TablaCinesController {
     @FXML
     void volver(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/mostrar.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");
@@ -119,7 +120,7 @@ public class TablaCinesController {
 
     public void peliculas(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/mostrar.fxml"));
         Scene inicioScene = new Scene(inicio,600,500);
@@ -139,7 +140,7 @@ public class TablaCinesController {
 
 
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+            fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
             Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/vistaCines.fxml"));
             Scene inicioScene = new Scene(inicio, 600, 500);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
