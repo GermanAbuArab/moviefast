@@ -4,7 +4,6 @@ package um.edu.tic1.client.controllers;
 //import de.jensd.fx.glyphs.materialicons.MaterialIconView;
 //import de.jensd.fx.glyphs.materialicons.utils.MaterialIconFactory;
 
-import antlr.collections.Stack;
 import de.jensd.fx.glyphs.materialicons.MaterialIcon;
 import de.jensd.fx.glyphs.materialicons.MaterialIconView;
 import javafx.collections.FXCollections;
@@ -23,13 +22,12 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import um.edu.tic1.Tic1Application;
-import um.edu.tic1.client.models.ClienteFinal;
-import um.edu.tic1.entities.*;
-import um.edu.tic1.services.CineService;
-import um.edu.tic1.services.FuncionService;
-import um.edu.tic1.services.SalaService;
-import um.edu.tic1.services.TicketService;
+import um.edu.tic1.client.models.*;
+import um.edu.tic1.client.services.CineService;
+import um.edu.tic1.client.services.FuncionService;
+import um.edu.tic1.client.services.SalaService;
+import um.edu.tic1.client.services.TicketService;
+
 
 import java.io.IOException;
 import java.time.LocalDate;

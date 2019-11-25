@@ -15,11 +15,10 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import um.edu.tic1.Tic1Application;
+import um.edu.tic1.client.ClientApplication;
+import um.edu.tic1.client.models.ClienteFinal;
 import um.edu.tic1.client.services.UsuarioService;
-import um.edu.tic1.entities.ClienteFinal;
-import um.edu.tic1.entities.Usuario;
-import um.edu.tic1.services.UsuarioService;
+
 
 import java.io.IOException;
 
@@ -59,7 +58,8 @@ public class SignInController {
         String nombre = Nombre.getText();
         String userName = nombreUsuario.getText();
         String contra = password.getText();
-        ClienteFinal usuario = new ClienteFinal(userName,nombre,contra);
+        // TODO: 25/11/2019  
+        //ClienteFinal usuario = new ClienteFinal(userName,nombre,contra); ERROR ACA MAN
 
         if (us.getUr().findByName(userName)!=null) {
             if (us.getUr().findByName(userName).getUserName().equals(userName)) {
@@ -85,7 +85,7 @@ public class SignInController {
     private void volver(ActionEvent event)throws IOException {  // vuelve a la scena
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/login.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");

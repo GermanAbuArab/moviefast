@@ -14,10 +14,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import um.edu.tic1.Tic1Application;
+
+import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.Movie;
-import um.edu.tic1.entities.Movie;
-import um.edu.tic1.services.MovieService;
+import um.edu.tic1.client.services.MovieService;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -55,7 +56,7 @@ public class MovieController {
     private void volver(ActionEvent event)throws IOException {  // vuelve a la scena
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
