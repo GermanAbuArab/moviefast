@@ -16,11 +16,11 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import um.edu.tic1.Tic1Application;
+
 import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.Cine;
-import um.edu.tic1.entities.Cine;
-import um.edu.tic1.services.CineService;
+import um.edu.tic1.client.services.CineService;
+
 
 import java.io.IOException;
 import java.util.List;

@@ -13,6 +13,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import um.edu.tic1.client.models.Movie;
+import um.edu.tic1.client.services.MovieService;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -70,7 +72,11 @@ public class AddMovieController {
         String genero1 = genero.getText();
         byte[] movieImage = addImage();
 
-        Movie movie = new Movie(nombre, descripcion1, genero1, categoria1);
+        Movie movie = new Movie();
+        movie.setName(nombre);
+        movie.setDescription(descripcion1);
+        movie.setGenero(genero1);
+        movie.setCategoria(categoria1);
         movie.setMovieImage(movieImage);
 
         ms.save(movie);
