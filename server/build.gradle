@@ -16,7 +16,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
 
     compile group: 'org.springframework', name: 'spring-web', version: '3.0.2.RELEASE'
-
+    implementation('tic1:commons')
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
