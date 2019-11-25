@@ -83,6 +83,9 @@ public class MovieController {
         window.show();
 
     }
+
+
+
     public ObservableList<Movie> getMovie() {
 
         ObservableList<Movie> movie = FXCollections.observableArrayList();
