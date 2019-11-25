@@ -13,8 +13,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import um.edu.tic1.Tic1Application;
 import um.edu.tic1.client.models.Movie;
 import um.edu.tic1.client.services.MovieService;
+import um.edu.tic1.entities.Movie;
+import um.edu.tic1.services.MovieService;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,9 +27,6 @@ import java.io.IOException;
 @Component
 public class AddMovieController {
 
-    public AddMovieController() {
-        System.out.println("SKERE");
-    }
 
     @Autowired
     private MovieService ms;
@@ -72,11 +72,7 @@ public class AddMovieController {
         String genero1 = genero.getText();
         byte[] movieImage = addImage();
 
-        Movie movie = new Movie();
-        movie.setName(nombre);
-        movie.setDescription(descripcion1);
-        movie.setGenero(genero1);
-        movie.setCategoria(categoria1);
+        Movie movie = new Movie(nombre, descripcion1, genero1, categoria1);
         movie.setMovieImage(movieImage);
 
         ms.save(movie);

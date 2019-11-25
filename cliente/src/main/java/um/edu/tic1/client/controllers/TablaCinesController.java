@@ -17,10 +17,9 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.Cine;
-import um.edu.tic1.client.services.CineService;
-
+import um.edu.tic1.entities.Cine;
+import um.edu.tic1.services.CineService;
 
 import java.io.IOException;
 import java.util.List;
@@ -81,7 +80,7 @@ public class TablaCinesController {
     @FXML
     void agregar(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
+        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/addCine.fxml"));
         Scene inicioScene = new Scene(inicio,600,500);
@@ -110,7 +109,7 @@ public class TablaCinesController {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
-        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/mostrar.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");
         Scene inicioScene = new Scene(inicio,1000,500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -141,7 +140,7 @@ public class TablaCinesController {
 
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
-            Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/vistaFunciones.fxml"));
+            Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/vistaCines.fxml"));
             Scene inicioScene = new Scene(inicio, 600, 500);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(inicioScene);

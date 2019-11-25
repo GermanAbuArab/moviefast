@@ -1,4 +1,3 @@
-
 package um.edu.tic1.client.controllers;
 
 import javafx.collections.FXCollections;
@@ -15,7 +14,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import um.edu.tic1.client.ClientApplication;
+
 import um.edu.tic1.client.models.Cine;
 import um.edu.tic1.client.models.Funcion;
 import um.edu.tic1.client.models.Movie;
@@ -24,6 +23,7 @@ import um.edu.tic1.client.services.CineService;
 import um.edu.tic1.client.services.FuncionService;
 import um.edu.tic1.client.services.MovieService;
 import um.edu.tic1.client.services.SalaService;
+
 
 import java.io.IOException;
 import java.time.DayOfWeek;
@@ -322,7 +322,7 @@ public class vistaUsuarioCineController {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
         this.cine = null;
-        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml")); //todo tira un error
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/login.fxml")); //todo tira un error
         inicio.getStylesheets().add("/templates/styles.css");
         Scene inicioScene = new Scene(inicio, 1000, 500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -443,7 +443,6 @@ public class vistaUsuarioCineController {
 
     public void agregarFunIndividual(LocalDate fecha){
 
-        System.out.println("Entro aca MAN");
 
         Funcion funcion = new Funcion();
 
@@ -461,8 +460,6 @@ public class vistaUsuarioCineController {
 
 
 
-        //Date fecha = new Date(String.valueOf(fechaFin.getChronology()));
-        //System.out.println(fecha.toString());
 
         funcion.setId(id);
         funcion.setSala(sala);
@@ -488,5 +485,3 @@ public class vistaUsuarioCineController {
         inicializarFunciones();
     }
 }
-
-

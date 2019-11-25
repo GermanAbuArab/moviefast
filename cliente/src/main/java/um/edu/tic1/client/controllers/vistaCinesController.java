@@ -8,23 +8,27 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import um.edu.tic1.client.models.Cine;
+import um.edu.tic1.Tic1Application;
 import um.edu.tic1.client.models.Funcion;
 import um.edu.tic1.client.models.Sala;
-import um.edu.tic1.client.services.CineService;
 import um.edu.tic1.client.services.FuncionService;
 import um.edu.tic1.client.services.SalaService;
+import um.edu.tic1.entities.Cine;
+import um.edu.tic1.entities.Funcion;
+import um.edu.tic1.entities.Movie;
+import um.edu.tic1.entities.Sala;
+import um.edu.tic1.services.CineService;
+import um.edu.tic1.services.FuncionService;
+import um.edu.tic1.services.SalaService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -191,7 +195,7 @@ public class vistaCinesController {
             sala.setY(capacidadIntLargo);
             sala.setCapacidad(capacidadIntAncho*capacidadIntLargo);
         } catch (NumberFormatException nfe) {
-            System.out.println("NumberFormatException: " + nfe.getMessage());
+
         }
 
         if(select3D.isSelected()){
@@ -223,7 +227,7 @@ public class vistaCinesController {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
         this.cine = null;
-        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/inicio.fxml"));
+        Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/mostrar.fxml"));
         Scene inicioScene = new Scene(inicio, 600, 500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);

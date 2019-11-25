@@ -1,10 +1,10 @@
-
 package um.edu.tic1.client.controllers;
 
 //import de.jensd.fx.glyphs.materialicons.MaterialIcon;
 //import de.jensd.fx.glyphs.materialicons.MaterialIconView;
 //import de.jensd.fx.glyphs.materialicons.utils.MaterialIconFactory;
 
+import antlr.collections.Stack;
 import de.jensd.fx.glyphs.materialicons.MaterialIcon;
 import de.jensd.fx.glyphs.materialicons.MaterialIconView;
 import javafx.collections.FXCollections;
@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,17 +23,18 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import um.edu.tic1.client.models.Cine;
-import um.edu.tic1.client.models.Funcion;
-import um.edu.tic1.client.models.Movie;
-import um.edu.tic1.client.models.Sala;
-
+import um.edu.tic1.Tic1Application;
+import um.edu.tic1.client.models.ClienteFinal;
+import um.edu.tic1.entities.*;
+import um.edu.tic1.services.CineService;
+import um.edu.tic1.services.FuncionService;
+import um.edu.tic1.services.SalaService;
+import um.edu.tic1.services.TicketService;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -49,12 +51,15 @@ public class selectorButacasController {
     Button comprar;
     @FXML
     ComboBox CineDropDownList, horaDropDownList, salaDropDownList;
-    private ArrayList<Node> asientos = new ArrayList<>(150);
     @Autowired
     private SalaService salaService;
 
     @Autowired
     private FuncionService funcionService;
+    @Autowired
+    private TicketService ticketService;
+    @Autowired
+    private ViewFilmsController vfc;
 
     @Autowired
     private CineService cineService;
@@ -62,6 +67,7 @@ public class selectorButacasController {
     private Sala sala;
     private Movie movieAux;
     private Funcion funcionAux;
+    private Sala salaFuncion;
 
     @FXML
     public void setMovie(Movie movie){
@@ -71,7 +77,9 @@ public class selectorButacasController {
     }
 
     public void init() {
-        asientos.clear();
+        gridSeats.setHgap(10);
+        gridSeats.setVgap(10);
+        gridSeats.setPadding(new Insets(10, 10, 10, 10));
         ObservableList<String> cines = getCines();
         ObservableList<String> horas = FXCollections.observableArrayList();
         ObservableList<Sala> salas = FXCollections.observableArrayList();
@@ -111,14 +119,18 @@ public class selectorButacasController {
                                             salaDropDownList.setVisible(true);
                                             salas.add(funciones.get(t).getSala());
                                             salaDropDownList.setItems(salas);
+                                            int finalT = t;
                                             salaDropDownList.setOnAction((e) -> {
                                                 gridSeats.getChildren().clear();
                                                 sala = (Sala) salaDropDownList.getValue();
 
                                                 for (int j =0;j<funciones.size();j++){
-                                                    if (sala.getName().equals(funciones.get(j).getSala().getName()) && funciones.get(j).getHoraInicio().equals(funcionAux.getHoraInicio())){
-                                                        funcionAux = getFunciones().get(j);
-                                                        addSeats(sala.getX(),sala.getY());
+                                                    if (sala.getName().equals(funciones.get(finalT).getSala().getName()) && funciones.get(finalT).getHoraInicio().equals(funcionAux.getHoraInicio())){
+                                                        salaFuncion = getFunciones().get(finalT).getSala();
+                                                        funcionAux = getFunciones().get(finalT);
+                                                        addSeats(salaFuncion.getX(),salaFuncion.getY());
+                                                        ShowButacas();
+                                                        System.out.println(funcionAux.getId());
                                                     }
                                                 }
 
@@ -186,12 +198,12 @@ public class selectorButacasController {
     private void Seat(int indiceButaca, int i, int j) {
         MaterialIconView icon = new MaterialIconView(MaterialIcon.EVENT_SEAT);
 
-        if (funcionAux.getButacas()[i][j]) {
-            icon.setStyle("-fx-fill:black; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
+        if (funcionAux.getButacas()[i][j] == true) {
+            icon.setStyle("-fx-fill:black; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;");
             gridSeats.add(icon, i, j);
         }
         else {
-            icon.setStyle("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
+            icon.setStyle("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;");
             gridSeats.add(icon, i, j);
         }
 
@@ -200,7 +212,7 @@ public class selectorButacasController {
                     @Override
                     public void handle(MouseEvent event) {
                         if (((Node) event.getSource()).getStyle()
-                                .equals("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;")) {
+                                .equals("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;")) {
                             Alert alert = new Alert(Alert.AlertType.WARNING,
                                     "The seat is already booked!", ButtonType.OK);
                             alert.showAndWait();
@@ -211,17 +223,17 @@ public class selectorButacasController {
                         else {
                             // turning seat back to black if it is red - unselecting it
                             if (((Node) event.getSource()).getStyle()
-                                    .equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;")) {
+                                    .equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;")) {
                                 ((Node) event.getSource())
-                                        .setStyle("-fx-fill:black; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
-                                asientos.remove((Node) event.getSource());
+                                        .setStyle("-fx-fill:black; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;");
+
                                 // Main.getSelectedSeats().remove(((Node) e.getSource()).getId());
                             }
                             // turning seat red if it is black - selecting it
                             else {
                                 ((Node) event.getSource())
-                                        .setStyle("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
-                                asientos.add((Node) event.getSource());
+                                        .setStyle("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;");
+
                                 // Main.getSelectedSeats().add(((Node) e.getSource()).getId());
                             }
 
@@ -232,6 +244,14 @@ public class selectorButacasController {
 
 
 
+    }
+
+    void ShowButacas(){
+        for (int x= 0;x<salaFuncion.getX();x++) {
+            for (int y = 0; y < salaFuncion.getY(); y++) {
+                System.out.println(funcionAux.getButacas()[x][y]);
+            }
+        }
     }
 
 
@@ -251,20 +271,29 @@ public class selectorButacasController {
     }
     @FXML
     private void comprar(ActionEvent event) throws IOException{
-        for (int x= 0;x<sala.getX();x++){
-            for (int y= 0;y<sala.getY();y++){
-                if (getNodeByRowColumnIndex(x,y,gridSeats).getStyle().equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;")){
-                    getNodeByRowColumnIndex(x,y,gridSeats).setStyle("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 40.0;");
-                    funcionAux.reservaButaca(x,y);
+
+        Ticket ticket = new Ticket();
+        ticket.setFuncion(funcionAux);
+        for (int x= 0;x<salaFuncion.getX();x++){
+            for (int y= 0;y<salaFuncion.getY();y++){
+                if (getNodeByRowColumnIndex(x,y,gridSeats).getStyle().equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;")){
+                    getNodeByRowColumnIndex(x,y,gridSeats).setStyle("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;");
+                    funcionAux.reservaButaca(y,x);
                     funcionService.save(funcionAux);
+                    System.out.println(funcionAux.getId() + funcionAux.getHoraInicio() + funcionAux.getSala() );
+                    ShowButacas();
+                    ticket.addAsiento(y,x);
+
+
                 }
 
             }
 
         }
+        ClienteFinal clienteFinal=  vfc.getClienteFinal();
+        AlertBox.display("Compra Exitosa","Compraste el asiento : "  + ticket.imprimirAsientos()+ " \n Fecha : " + funcionAux.getHoraInicio() + " \n Pelicula : " +funcionAux.getMovie()+ " \n Sala : " + funcionAux.getSala()+ " \n Cliente :" + clienteFinal.getName());
+        //ticketService.save(ticket);
 
-
-        AlertBox.display("Compra Exitosa","Compraste : "+ asientos.size() + "asientos ubicados en" );
 
 
     }
@@ -293,7 +322,7 @@ public class selectorButacasController {
         for (int i = 0; i < lista.size(); i++) {
             Funcion funcion = lista.get(i);
 
-            if(funcion.getMovie().getName().equals(movieAux.getName())) {
+            if(funcion.getMovie().getName().equals(movieAux.getName()) ) {
                 funciones.add(lista.get(i));
             }
         }

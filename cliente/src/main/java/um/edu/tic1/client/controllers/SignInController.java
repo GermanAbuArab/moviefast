@@ -16,7 +16,9 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.tic1.Tic1Application;
+import um.edu.tic1.client.services.UsuarioService;
 import um.edu.tic1.entities.ClienteFinal;
+import um.edu.tic1.entities.Usuario;
 import um.edu.tic1.services.UsuarioService;
 
 import java.io.IOException;
@@ -95,5 +97,3 @@ public class SignInController {
     }
 
 }
-
-

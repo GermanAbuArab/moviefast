@@ -14,8 +14,11 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import um.edu.tic1.client.models.Cine;
-
+import um.edu.tic1.Tic1Application;
+import um.edu.tic1.entities.Cine;
+import um.edu.tic1.entities.ClienteFinal;
+import um.edu.tic1.services.CineService;
+import um.edu.tic1.services.UsuarioService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,6 +49,8 @@ public class loginController implements Initializable {
 
     @Autowired
     private vistaUsuarioCineController vuc;
+    @Autowired
+    private ViewFilmsController vfc;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -98,7 +103,7 @@ public class loginController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
             Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/vistaUsuarioCine.fxml"));
-            Scene inicioScene = new Scene(inicio, 600, 500);
+            Scene inicioScene = new Scene(inicio, 800, 600);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(inicioScene);
             window.show();
@@ -112,6 +117,10 @@ public class loginController implements Initializable {
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(inicioScene);
             window.show();
+            ClienteFinal clienteFinal = new ClienteFinal();
+            clienteFinal.setName("ADMIN");
+            vfc.setUser(clienteFinal);
+
 
 
         } else {
@@ -126,6 +135,7 @@ public class loginController implements Initializable {
                     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     window.setScene(inicioScene);
                     window.show();
+                    vfc.setUser(clienteDeBase);
                 }
                 else {AlertBox.display("No se pudo iniciar secion","Contraseña incorrecta");}
             } else {

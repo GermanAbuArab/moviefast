@@ -1,7 +1,4 @@
-
-
 package um.edu.tic1.client.controllers;
-
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,9 +16,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import um.edu.tic1.Tic1Application;
-
-
 import um.edu.tic1.client.models.Movie;
 import um.edu.tic1.client.services.MovieService;
 import um.edu.tic1.entities.Movie;
@@ -38,13 +34,10 @@ public class TablaMoviesController {
 
     @Autowired
     private MovieService ms;
-
-
-    public TablaMoviesController() {
-        System.out.println("Entro");
-
-    }
     private Movie peli;
+
+    @Autowired
+    private ViewFilmsController vfc;
 
     @FXML
     private TableView<Movie> tabla;
@@ -139,6 +132,8 @@ public class TablaMoviesController {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
+        vfc.setUser(vfc.getClienteFinal());
+
     }
 
     @FXML
@@ -215,7 +210,6 @@ public class TablaMoviesController {
     }
 
 
-
   /* @FXML
     private void search(KeyEvent event){
 
@@ -241,6 +235,4 @@ public class TablaMoviesController {
     }*/
 
 
-
 }
-

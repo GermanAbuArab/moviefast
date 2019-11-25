@@ -1,4 +1,4 @@
- package um.edu.tic1.client.controllers;
+package um.edu.tic1.client.controllers;
 
 
 import javafx.event.ActionEvent;
@@ -12,9 +12,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import um.edu.tic1.client.ClientApplication;
-import um.edu.tic1.client.models.Cine;
 import um.edu.tic1.client.services.CineService;
+
 
 import java.io.IOException;
 
@@ -48,10 +47,10 @@ AddCineController {
 
         try {
             long id = Long.parseLong(idIngresado.getText());
-            System.out.println("long id = " +id);
+            //System.out.println("long id = " +id);
             cine.setId(id);
         } catch (NumberFormatException nfe) {
-            System.out.println("NumberFormatException: " + nfe.getMessage());
+            //System.out.println("NumberFormatException: " + nfe.getMessage());
         }
 
 
@@ -67,7 +66,7 @@ AddCineController {
     private void volver(ActionEvent event)throws IOException {  // vuelve a la scena
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
+        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/tablaCines.fxml"));
         Scene inicioScene = new Scene(inicio,600,500);
