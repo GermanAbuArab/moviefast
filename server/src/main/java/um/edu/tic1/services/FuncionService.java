@@ -32,5 +32,9 @@ public class  FuncionService {
         return mov.toDTO();
     }
 
+    @DeleteMapping(value = "/{id}")
+    public void eliminar(@PathVariable Long id){
+        fr.deleteById(id);
+    }
 
 }

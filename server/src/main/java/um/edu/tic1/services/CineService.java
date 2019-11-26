@@ -33,4 +33,9 @@ public class CineService{
         return mov.toDTO();
     }
 
+    @DeleteMapping(value = "/{id}")
+    public void eliminar(@PathVariable Long id){
+        cr.deleteById(id);
+    }
+
 }

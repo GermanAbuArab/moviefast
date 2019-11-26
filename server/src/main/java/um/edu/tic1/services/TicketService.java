@@ -1,10 +1,7 @@
 package um.edu.tic1.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import um.edu.tic1.commons.DTO.TicketDTO;
 import um.edu.tic1.entities.Ticket;
 import um.edu.tic1.repositories.TicketRepository;
@@ -30,6 +27,11 @@ public class TicketService {
     public TicketDTO findById(@PathVariable("id") String id){
         Ticket mov = tr.findById(Long.parseLong(id)).get();
         return mov.toDTO();
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public void eliminar(@PathVariable Long id){
+        tr.deleteById(id);
     }
 
 }

@@ -35,4 +35,10 @@ public class MovieService {
         return mov.toDTO();
     }
 
+    @DeleteMapping(value = "/{id}")
+    public void eliminar(@PathVariable Long id){
+        mr.deleteById(id);
+    }
+
+
 }

@@ -32,4 +32,9 @@ public class SalaService {
         return mov.toDTO();
     }
 
+    @DeleteMapping(value = "/{id}")
+    public void eliminar(@PathVariable Long id){
+        sr.deleteById(id);
+    }
+
 }
