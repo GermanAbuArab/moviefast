@@ -26,10 +26,8 @@ import org.springframework.stereotype.Component;
 
 import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.*;
-import um.edu.tic1.client.services.CineService;
-import um.edu.tic1.client.services.FuncionService;
-import um.edu.tic1.client.services.SalaService;
-import um.edu.tic1.client.services.TicketService;
+import um.edu.tic1.client.services.*;
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -52,6 +50,9 @@ public class selectorButacasController {
     ComboBox CineDropDownList, horaDropDownList, salaDropDownList;
     @Autowired
     private SalaService salaService;
+
+    @Autowired
+    private MovieService movieService;
 
     @Autowired
     private FuncionService funcionService;
@@ -326,7 +327,7 @@ public class selectorButacasController {
         for (int i = 0; i < lista.size(); i++) {
             Funcion funcion = lista.get(i);
 
-            if(funcion.getMovie().getName().equals(movieAux.getName()) ) {
+            if(movieService.findById(funcion.getMovieId()).getName().equals(movieAux.getName()) ) {
                 funciones.add(lista.get(i));
             }
         }
