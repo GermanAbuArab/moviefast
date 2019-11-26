@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.Cine;
 import um.edu.tic1.client.models.Funcion;
 import um.edu.tic1.client.models.Movie;
@@ -232,7 +233,7 @@ public class vistaUsuarioCineController {
         for (int i = 0; i < lista.size(); i++) {
             Funcion funcion = lista.get(i);
 
-            if(funcion.getSala().getCine().equals(this.cine)) {
+            if(funcion.getCineId().equals(this.cine.getId())) {
                 funciones.add(lista.get(i));
             }
         }
@@ -249,7 +250,7 @@ public class vistaUsuarioCineController {
         for (int i = 0; i < lista.size(); i++) {
             Sala sala = lista.get(i);
 
-            if(sala.getCine().equals(this.cine)) {
+            if(sala.getCineId().equals(this.cine.getId())) {
                 salas.add(lista.get(i));
             }
         }
@@ -300,8 +301,8 @@ public class vistaUsuarioCineController {
         //System.out.println(fecha.toString());
 
         funcion.setId(id);
-        funcion.setSala(sala);
-        funcion.setMovie(peli);
+        funcion.setSalaId(sala.getId());
+        funcion.setMovieId(peli.getId());
         //funcion.setName(nombre);
         funcion.setDimension(dimension);
         funcion.setHoraInicio(fechatotalinicio.format(formatter));
@@ -320,7 +321,7 @@ public class vistaUsuarioCineController {
     @FXML
     void volver(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
         this.cine = null;
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/login.fxml")); //todo tira un error
         inicio.getStylesheets().add("/templates/styles.css");
@@ -462,8 +463,8 @@ public class vistaUsuarioCineController {
 
 
         funcion.setId(id);
-        funcion.setSala(sala);
-        funcion.setMovie(peli);
+        funcion.setSalaId(sala.getId());
+        funcion.setMovieId(peli.getId());
         funcion.setDuracion(Integer.parseInt(duracionMovie.getText()));
         //funcion.setName(nombre);
         funcion.setDimension(dimension);
@@ -481,7 +482,7 @@ public class vistaUsuarioCineController {
     public void eliminar(ActionEvent event) {
         Funcion funcion = tablaFunciones.getSelectionModel().getSelectedItem();
         funcion.clearAll();
-        funcionService.getMovieRepository().delete(funcion);
+        funcionService.deleteFuncion(funcion.getId());
         inicializarFunciones();
     }
 }
