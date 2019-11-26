@@ -10,4 +10,5 @@ import java.util.List;
 public interface MovieRepository extends JpaRepository<Movie,Long> {
     List<Movie> findAllByName(String name);
     Movie findByName(String name);
+    Movie findById(Long id);
 }
