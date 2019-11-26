@@ -14,6 +14,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.Cine;
 import um.edu.tic1.client.models.Funcion;
 import um.edu.tic1.client.models.Sala;
@@ -202,7 +203,7 @@ public class vistaCinesController {
 
 
         sala.setName(nombre);
-        sala.setCine(cine);
+        sala.setCineId(cine.getId());
         salaService.save(sala);
         nombreAgregado.clear();
         largo.clear();
@@ -219,7 +220,7 @@ public class vistaCinesController {
     @FXML
     void volver(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
         this.cine = null;
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/mostrar.fxml"));
         Scene inicioScene = new Scene(inicio, 600, 500);

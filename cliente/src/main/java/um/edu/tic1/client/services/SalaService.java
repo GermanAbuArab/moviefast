@@ -2,13 +2,16 @@ package um.edu.tic1.client.services;
 
 
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import um.edu.tic1.client.models.Funcion;
+import um.edu.tic1.client.models.Movie;
 import um.edu.tic1.client.models.Sala;
 import um.edu.tic1.commons.DTO.FuncionDTO;
+import um.edu.tic1.commons.DTO.MovieDTO;
 import um.edu.tic1.commons.DTO.SalaDTO;
 
 import java.util.List;
@@ -16,6 +19,18 @@ import java.util.stream.Collectors;
 
 @Service
 public class SalaService {
+
+
+    public void save(Sala sala)
+    {
+        RestTemplate restTemplate= new RestTemplate();
+        HttpEntity<SalaDTO> body = new HttpEntity<>(
+                sala.toDTO());
+        ResponseEntity<String> response =
+                restTemplate.exchange("http://localhost:8080/sala", HttpMethod.POST, body, String.class);
+        System.out.println("RestTemplate response : " + response.getBody());
+    }
+
 
     //@Deprecated
     public List<Sala> findAll(){

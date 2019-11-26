@@ -23,6 +23,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.ClienteFinal;
 import um.edu.tic1.client.models.Funcion;
 import um.edu.tic1.client.models.Movie;
@@ -142,7 +143,7 @@ public class ViewFilmsController {
     private void addImagesToArray(ObservableList<Movie> movie) {
         Image[] imagesAux = new Image[150];
         for (int m = 0; m < movie.size(); m++) {
-            byte[] img = movie.get(m).getMovieImage();
+            byte[] img = movie.get(m).getImagen();
             ByteArrayInputStream bis = new ByteArrayInputStream(img);
             BufferedImage bImage = null;
             try {
@@ -203,7 +204,7 @@ public class ViewFilmsController {
 
 
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+                fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
                 Parent inicio = null;
                 try {
@@ -235,7 +236,7 @@ public class ViewFilmsController {
     @FXML
     private void iniciarSesion(ActionEvent event) throws IOException {  // vuelve a la scena
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/login.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");
