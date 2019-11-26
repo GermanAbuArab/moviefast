@@ -39,7 +39,8 @@ public class MovieService {
     public Movie findById(Long id) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<MovieDTO> response = restTemplate.exchange(
-                "http://localhost:8080/movie/findById/" + id, HttpMethod.GET, null, new ParameterizedTypeReference<MovieDTO>() {
+                "http://localhost:8080/movie/findById/" + id, HttpMethod.GET, null,
+                new ParameterizedTypeReference<MovieDTO>() {
                 });
         MovieDTO user = response.getBody();
 
