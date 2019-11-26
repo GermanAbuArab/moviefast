@@ -21,7 +21,7 @@ public class FuncionService {
         HttpEntity<FuncionDTO> body = new HttpEntity<>(
                 funcion.toDTO());
         ResponseEntity<String> response =
-                restTemplate.exchange("http://localhost:8080/funcion/save", HttpMethod.POST, body, String.class);
+                restTemplate.exchange("http://localhost:8080/funcion/saveFuncion", HttpMethod.POST, body, String.class);
         System.out.println("RestTemplate response : " + response.getBody());
     }
 
