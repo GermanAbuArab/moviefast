@@ -20,9 +20,7 @@ import um.edu.tic1.client.services.CineService;
 import java.io.IOException;
 
 @Component
-public class
-
-AddCineController {
+public class AddCineController {
 
     @Autowired
     private CineService cs;
