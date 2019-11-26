@@ -92,7 +92,12 @@ public class selectorButacasController {
         if (funciones.size() != 0) {
             CineDropDownList.setItems(cines);
         CineDropDownList.setOnAction((event -> {
-            List<Cine> list = cineService.findAll();
+            List<Cine> list = null;
+            try {
+                list = cineService.findAll();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             for (int i = 0; i < list.size(); i++) {
                 if (list.get(i).getName().equals(CineDropDownList.getValue())) {
                     this.cine = list.get(i);
@@ -283,11 +288,11 @@ public class selectorButacasController {
             for (int y= 0;y<salaFuncion.getY();y++){
                 if (getNodeByRowColumnIndex(x,y,gridSeats).getStyle().equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;")){
                     getNodeByRowColumnIndex(x,y,gridSeats).setStyle("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;");
-                    funcionAux.reservaButaca(y,x);
+                    //funcionAux.reservaButaca(y,x);
                     funcionService.save(funcionAux);
                     System.out.println(funcionAux.getId() + funcionAux.getHoraInicio() + salaService.findById(funcionAux.getSalaId()) );
                     ShowButacas();
-                    ticket.addAsiento(y,x);
+                    //ticket.addAsiento(y,x);
 
 
                 }
