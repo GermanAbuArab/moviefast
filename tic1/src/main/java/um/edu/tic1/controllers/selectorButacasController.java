@@ -69,6 +69,7 @@ public class selectorButacasController {
     private Movie movieAux;
     private Funcion funcionAux;
     private Sala salaFuncion;
+    private Ticket ticket;
 
     @FXML
     public void setMovie(Movie movie){
@@ -274,9 +275,7 @@ public class selectorButacasController {
     }
     @FXML
     private void comprar(ActionEvent event) throws IOException{
-
-        Ticket ticket = new Ticket();
-        ticket.setFuncion(funcionAux);
+        ClienteFinal clienteFinal=  vfc.getClienteFinal();
         for (int x= 0;x<salaFuncion.getX();x++){
             for (int y= 0;y<salaFuncion.getY();y++){
                 if (getNodeByRowColumnIndex(x,y,gridSeats).getStyle().equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;")){
@@ -285,7 +284,13 @@ public class selectorButacasController {
                     funcionService.save(funcionAux);
                     System.out.println(funcionAux.getId() + funcionAux.getHoraInicio() + funcionAux.getSala() );
                     ShowButacas();
+                    ticket = new Ticket();
                     ticket.addAsiento(y,x);
+                    ticket.setAsientoCol(x);
+                    ticket.setAsientosFila(y);
+                    ticket.setFuncion(funcionAux);
+                    ticket.setCliente(clienteFinal);
+                    ticketService.save(ticket);
 
 
                 }
@@ -293,7 +298,6 @@ public class selectorButacasController {
             }
 
         }
-        ClienteFinal clienteFinal=  vfc.getClienteFinal();
         AlertBox.display("Compra Exitosa","Compraste el asiento : "  + ticket.imprimirAsientos()+ " \n Fecha : " + funcionAux.getHoraInicio() + " \n Pelicula : " +funcionAux.getMovie()+ " \n Sala : " + funcionAux.getSala()+ " \n Cliente :" + clienteFinal.getName());
         //ticketService.save(ticket);
 

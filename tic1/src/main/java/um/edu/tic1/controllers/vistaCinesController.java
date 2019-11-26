@@ -15,13 +15,11 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import um.edu.tic1.Tic1Application;
-import um.edu.tic1.entities.Cine;
-import um.edu.tic1.entities.Funcion;
-import um.edu.tic1.entities.Movie;
-import um.edu.tic1.entities.Sala;
+import um.edu.tic1.entities.*;
 import um.edu.tic1.services.CineService;
 import um.edu.tic1.services.FuncionService;
 import um.edu.tic1.services.SalaService;
+import um.edu.tic1.services.TicketService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,6 +36,24 @@ public class vistaCinesController {
 
     @Autowired
     private CineService cineService;
+    @Autowired
+    private TicketService ticketService;
+
+    @FXML
+    private TableView<Ticket> tablaTickets;
+
+    @FXML
+    private TableColumn<Ticket,String> peliculaTicket;
+    @FXML
+    private TableColumn<Ticket,String> salaTicket;
+    @FXML
+    private TableColumn<Ticket,String> clienteTicket;
+    @FXML
+    private TableColumn<Ticket,String> FilaTicket;
+    @FXML
+    private TableColumn<Ticket,String> ColumnaTicket;
+    @FXML
+    private TableColumn<Ticket,String> horarioTicket;
 
     @FXML
     private TableView<Sala> tabla;
@@ -109,6 +125,32 @@ public class vistaCinesController {
 
         tablaFunciones.setItems((ObservableList<Funcion>) getFunciones());
 
+        peliculaTicket.setCellValueFactory(new PropertyValueFactory<>("name"));
+        salaTicket.setCellValueFactory(new PropertyValueFactory<>("sala"));
+        clienteTicket.setCellValueFactory(new PropertyValueFactory<>("clienteName"));
+        horarioTicket.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
+        FilaTicket.setCellValueFactory(new PropertyValueFactory<>("asientosFila"));
+        ColumnaTicket.setCellValueFactory(new PropertyValueFactory<>("asientoCol"));
+        tablaTickets.setItems(getTickets());
+
+
+    }
+
+    private ObservableList<Ticket> getTickets() {
+
+        ObservableList<Ticket> tickets = FXCollections.observableArrayList();
+
+        List<Ticket> lista = ticketService.findAll();
+
+        for (int i = 0; i < lista.size(); i++) {
+            Ticket ticket = lista.get(i);
+
+            if(ticket.getFuncion().getSala().getCine().equals(this.cine)) {
+                tickets.add(lista.get(i));
+            }
+        }
+
+        return tickets;
     }
 
 
