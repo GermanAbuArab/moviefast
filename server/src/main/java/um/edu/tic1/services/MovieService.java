@@ -28,7 +28,7 @@ public class MovieService {
         mr.save(movie);
     }
 
-    @GetMapping
+    @GetMapping("/findAll")
     public List<Movie> findAll() {
         return mr.findAll();
     }

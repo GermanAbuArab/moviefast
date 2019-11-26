@@ -22,7 +22,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.client.controllers.vistaUsuarioCineController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.vistaUsuarioCineController">
    <center>
       <VBox prefHeight="400.0" prefWidth="640.0">
         <children>
@@ -174,9 +174,9 @@
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="eliminar" onAction="#eliminar" mnemonicParsing="false" text="Eliminar" />
-            <Region prefHeight="25.0" prefWidth="651.0" />
+            <Button fx:id="eliminar" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
             <Button mnemonicParsing="false" onAction="#volver" text="Volver" />
+            <Region prefHeight="25.0" prefWidth="651.0" />
          </children>
       </HBox>
    </top>

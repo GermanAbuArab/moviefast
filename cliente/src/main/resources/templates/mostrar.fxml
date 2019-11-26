@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.client.controllers.TablaMoviesController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.TablaMoviesController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -62,7 +62,7 @@
                         <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#agregar" text="Agregar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <Button layoutY="73.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <Button fx:id="botonAplicar" cache="true" layoutY="114.0" mnemonicParsing="false" onAction="#aplicar" prefHeight="22.0" prefWidth="80.0" text="Aplicar " textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <Button layoutX="11.0" layoutY="324.0" mnemonicParsing="false" onAction="#volver" text="Volver" />
+                        <Button layoutX="11.0" layoutY="324.0" mnemonicParsing="false" onAction="#volver" text="Cartelera" />
                         <Button fx:id="cines" layoutX="8.0" layoutY="151.0" mnemonicParsing="false" onAction="#cines" text="Cines" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <TextField fx:id="buscar" layoutX="10.0" layoutY="2.0" prefHeight="25.0" prefWidth="104.0" promptText="Filtrar" />
                      </children>
