@@ -1,6 +1,7 @@
 package um.edu.tic1.client.services;
 
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -18,18 +19,25 @@ public class UsuarioService {
     public UsuarioDTO findByUserName(String user) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<UsuarioDTO> response = restTemplate.exchange(
-                "http://localhost:8080/user/"+user,
+                "http://localhost:8080/user/" + user,
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<UsuarioDTO>(){});
-        UsuarioDTO usuario = response.getBody();
+                new ParameterizedTypeReference<UsuarioDTO>() {
+                });
 
-        return usuario;
+        return response.getBody();
 
     }
 
 
     public void saveFinal(ClienteFinal usuario) {
-        usuario.toDTO();
+        RestTemplate restTemplate =
+                new RestTemplate();
+        HttpEntity<UsuarioDTO> body = new HttpEntity<>(
+                usuario.toDTO());
+        ResponseEntity<String> response =
+                restTemplate.exchange("http://localhost:8080/movie/saveFinal", HttpMethod.POST, body, String.class);
+        System.out.println("RestTemplate response : " + response.getBody());
+
     }
 }

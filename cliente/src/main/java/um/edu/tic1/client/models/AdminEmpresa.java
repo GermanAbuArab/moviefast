@@ -24,6 +24,7 @@ public class AdminEmpresa {
         adminEmpresaDTO.setName(this.getName());
         adminEmpresaDTO.setUserName(this.getUserName());
         adminEmpresaDTO.setPassword(this.getPassword());
+        adminEmpresaDTO.setTipo("ADMIN");
         return adminEmpresaDTO ;
 
     }

@@ -28,6 +28,7 @@ public class ClienteFinal {
         usuarioFinalDTO.setName(this.getName());
         usuarioFinalDTO.setUserName(this.getUserName());
         usuarioFinalDTO.setPassword(this.getPassword());
+        usuarioFinalDTO.setTipo("FINAL");
         return usuarioFinalDTO;
 
     }

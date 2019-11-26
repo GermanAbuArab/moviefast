@@ -24,6 +24,7 @@ public class UsuarioCine {
         usuarioCineDTO .setName(this.getName());
         usuarioCineDTO .setUserName(this.getUserName());
         usuarioCineDTO .setPassword(this.getPassword());
+        usuarioCineDTO.setTipo("CINE");
         return usuarioCineDTO ;
 
     }

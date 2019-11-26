@@ -19,6 +19,7 @@ import um.edu.tic1.client.models.Cine;
 import um.edu.tic1.client.models.ClienteFinal;
 import um.edu.tic1.client.services.CineService;
 import um.edu.tic1.client.services.UsuarioService;
+import um.edu.tic1.commons.DTO.UsuarioDTO;
 
 
 import java.io.IOException;
@@ -125,7 +126,8 @@ public class loginController implements Initializable {
 
 
         } else {
-            ClienteFinal clienteDeBase = (ClienteFinal) us.findByUserName(user);
+            UsuarioDTO clienteDeBase1 = us.findByUserName(user);
+            ClienteFinal clienteDeBase = new ClienteFinal(clienteDeBase1));
             if (clienteDeBase != null) {
                 if (clienteDeBase.getPassword().equals(contra)) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
