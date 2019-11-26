@@ -4,6 +4,7 @@ package um.edu.tic1.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+import um.edu.tic1.commons.DTO.UsuarioDTO;
 import um.edu.tic1.entities.AdminEmpresa;
 import um.edu.tic1.entities.ClienteFinal;
 import um.edu.tic1.entities.Usuario;
@@ -30,9 +31,9 @@ public class UsuarioService {
     public void saveCliente(@RequestBody ClienteFinal usuario) {
         ur.save(usuario);
     }
-    @PostMapping(path = "/saveUsuario")
-    public void saveUsuario(@RequestBody UsuarioCine usuario) {
-        ur.save(usuario);
+    @PostMapping(path = "/saveFinal")
+    public void saveUsuario(@RequestBody UsuarioDTO usuario) {
+        ur.save(new ClienteFinal(usuario));
     }
     @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable("id") Long id){
@@ -42,5 +43,10 @@ public class UsuarioService {
     @GetMapping
     public List<Usuario> findAll() {
         return ur.findAll();
+    }
+
+    @GetMapping("/Final/{id}" )
+    public Usuario findByUserName(@PathVariable("id") String id){
+        return ur.findByUserName(id);
     }
 }
