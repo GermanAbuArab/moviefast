@@ -1,6 +1,6 @@
 package um.edu.tic1.client.models;
 
-import um.edu.tic1.commons.DTO.UsuarioCineDTO;
+import um.edu.tic1.commons.DTO.UsuarioDTO;
 
 public class UsuarioCine {
 
@@ -13,14 +13,14 @@ public class UsuarioCine {
     }
 
 
-    public UsuarioCine(UsuarioCineDTO dto) {
+    public UsuarioCine(UsuarioDTO dto) {
         this.name=dto.getName();
         this.userName=dto.getUserName();
         this.password=dto.getPassword();
     }
 
-    public UsuarioCineDTO toDTO() {
-        UsuarioCineDTO usuarioCineDTO = new UsuarioCineDTO();
+    public UsuarioDTO toDTO() {
+        UsuarioDTO usuarioCineDTO = new UsuarioDTO();
         usuarioCineDTO .setName(this.getName());
         usuarioCineDTO .setUserName(this.getUserName());
         usuarioCineDTO .setPassword(this.getPassword());
