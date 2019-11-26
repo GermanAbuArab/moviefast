@@ -8,6 +8,8 @@ import um.edu.tic1.commons.DTO.FuncionDTO;
 import um.edu.tic1.entities.Cine;
 import um.edu.tic1.entities.Funcion;
 import um.edu.tic1.repositories.FuncionRepository;
+import um.edu.tic1.repositories.MovieRepository;
+import um.edu.tic1.repositories.SalasRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,9 +21,18 @@ public class  FuncionService {
     @Autowired
     private FuncionRepository fr;
 
+    @Autowired
+    private MovieRepository mr;
+
+    @Autowired
+    private SalasRepository sr;
+
     @PostMapping
-    public void save(@RequestBody Funcion funcion) {
-        fr.save(funcion);
+    public void save(@RequestBody FuncionDTO funcion) {
+        Funcion dev = new Funcion(funcion);
+        dev.setMovie(mr.findById(funcion.getCineId()).get());
+        dev.setSala(sr.findById(funcion.getCineId()).get());
+        fr.save(dev);
     }
 
     @GetMapping("/findAll")

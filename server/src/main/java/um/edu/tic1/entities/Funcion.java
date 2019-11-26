@@ -1,6 +1,7 @@
 package um.edu.tic1.entities;
 
 import um.edu.tic1.commons.DTO.FuncionDTO;
+import um.edu.tic1.services.MovieService;
 
 import javax.persistence.*;
 
@@ -43,6 +44,20 @@ public class Funcion {
     public Funcion(){
 
     }
+
+
+    public Funcion(FuncionDTO funcion) {
+        this.butacas = funcion.getButacas();
+        this.cineId = funcion.getCineId();
+        this.dimension = funcion.getDimension();
+        this.duracion = funcion.getDuracion();
+        this.hora = funcion.getHora();
+        this.horaFin = funcion.getHoraFin();
+        this.horaInicio = funcion.getHoraInicio();
+        //this.id = funcion.getId();
+        this.name = funcion.getName();
+    }
+
     public void clearAll(){
         this.movie = null;
         this.sala = null;
