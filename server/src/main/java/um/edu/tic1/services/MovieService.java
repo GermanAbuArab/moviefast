@@ -3,6 +3,7 @@ package um.edu.tic1.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+import um.edu.tic1.commons.DTO.MovieDTO;
 import um.edu.tic1.commons.DTO.UsuarioDTO;
 import um.edu.tic1.entities.ClienteFinal;
 import um.edu.tic1.entities.Movie;
@@ -32,9 +33,9 @@ public class MovieService {
         return mr.findAll();
     }
 
-    @GetMapping("/Final/{id}" )
-    public MovieDTO findByUserNameFinal(@PathVariable("id") String id){
-        Movie mov = ( ) mr.findById(Long.parseLong(id));
+    @GetMapping("/findById/{id}")
+    public MovieDTO findById(@PathVariable("id") String id){
+        Movie mov = mr.findById(Long.parseLong(id)).get();
         return mov.toDTO();
     }
 
