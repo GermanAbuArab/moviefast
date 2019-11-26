@@ -39,6 +39,15 @@ public class UsuarioDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getTipo() {
+
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 }
 
 
