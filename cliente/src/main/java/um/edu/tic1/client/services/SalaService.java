@@ -21,8 +21,7 @@ import java.util.stream.Collectors;
 public class SalaService {
 
 
-    public void save(Sala sala)
-    {
+    public void save(Sala sala) {
         RestTemplate restTemplate= new RestTemplate();
         HttpEntity<SalaDTO> body = new HttpEntity<>(
                 sala.toDTO());
