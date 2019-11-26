@@ -22,13 +22,12 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import um.edu.tic1.client.models.*;
 import um.edu.tic1.client.services.CineService;
 import um.edu.tic1.client.services.FuncionService;
 import um.edu.tic1.client.services.SalaService;
 import um.edu.tic1.client.services.TicketService;
-
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

@@ -6,15 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-public class Tic1Application {
+public class ServerApplication {
 
-
-	public static void main(String[] args) {
-	SpringApplication.run(Tic1Application.class,args);
-	}
-
-
-
+    public static void main(String[] args) {
+        SpringApplication.run(ServerApplication.class, args);
+    }
 
 
 }
+
