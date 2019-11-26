@@ -164,4 +164,7 @@ public class Funcion {
     }
 
 
+    public void reservaButaca(int y, int x) {
+        butacas[x][y]=false
+    }
 }

@@ -51,4 +51,7 @@ public class Ticket {
     public void setClienteId(String clienteId) {
         this.clienteId = clienteId;
     }
+
+    public void addAsiento(int y, int x) {
+    }
 }
