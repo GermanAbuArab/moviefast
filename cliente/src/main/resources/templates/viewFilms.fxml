@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="borderPane" styleClass="fondoViewFilms" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.controllers.ViewFilmsController">
+<BorderPane fx:id="borderPane" styleClass="fondoViewFilms" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.client.controllers.ViewFilmsController">
    <top>
       <VBox styleClass="top_nav" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
