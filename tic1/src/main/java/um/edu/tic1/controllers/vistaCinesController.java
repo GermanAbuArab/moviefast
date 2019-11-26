@@ -124,7 +124,7 @@ public class vistaCinesController {
         dimensionFuncion.setCellValueFactory(new PropertyValueFactory<>("dimension"));
 
         tablaFunciones.setItems((ObservableList<Funcion>) getFunciones());
-
+    if(!getTickets().isEmpty()) {
         peliculaTicket.setCellValueFactory(new PropertyValueFactory<>("name"));
         salaTicket.setCellValueFactory(new PropertyValueFactory<>("sala"));
         clienteTicket.setCellValueFactory(new PropertyValueFactory<>("clienteName"));
@@ -132,6 +132,7 @@ public class vistaCinesController {
         FilaTicket.setCellValueFactory(new PropertyValueFactory<>("asientosFila"));
         ColumnaTicket.setCellValueFactory(new PropertyValueFactory<>("asientoCol"));
         tablaTickets.setItems(getTickets());
+    }
 
 
     }
