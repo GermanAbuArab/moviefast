@@ -11,6 +11,7 @@ import java.util.List;
 
 @Service
 public class TicketService {
+
     @Autowired
     private TicketRepository ts;
 
@@ -20,6 +21,7 @@ public class TicketService {
 
 
     public void save(Ticket ticket) {
+
         ts.save(ticket);
     }
 

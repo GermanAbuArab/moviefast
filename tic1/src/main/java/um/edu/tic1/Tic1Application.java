@@ -38,15 +38,6 @@ public class Tic1Application extends Application {
 		context = SpringApplication.run(Tic1Application.class);
 		System.out.println(context.getBeanDefinitionCount());
 
-//
-//		for (String bean : context.getBeanDefinitionNames()) {
-//			String name = context.getBean(bean).getClass().toString();
-//			if(name.contains("ovie")){
-//				System.out.println(name);
-//			}
-//		fxmlLoader = new FXMLLoader();
-//		fxmlLoader.setControllerFactory(context::getBean);
-//		}
 
 	}
 

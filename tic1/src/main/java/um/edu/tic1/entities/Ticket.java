@@ -13,20 +13,53 @@ public class Ticket {
     @CollectionTable(name = "ticket_id")
     private Long id;
 
-    //AGREGAR ASIENTOS
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "usuario_id ")
     private Usuario cliente;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "funcion_id ")
     private Funcion funcion;
+
     private ArrayList<Integer> asientos = new ArrayList<>(150);
     //private Date fecha; es necesario? se puede sacar de funcion
+    private String name,sala,clienteName,horaInicio ;
+    private Integer asientoCol,asientosFila;
 
     public Funcion getFuncion() {
         return funcion;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getSala() {
+        return funcion.getSala().getName();
+    }
+
+    public Integer getAsientoCol() {
+        return asientoCol;
+    }
+
+    public void setAsientoCol(Integer asientoCol) {
+        this.asientoCol = asientoCol;
+    }
+
+    public Integer getAsientosFila() {
+        return asientosFila;
+    }
+
+    public void setAsientosFila(Integer asientosFila) {
+        this.asientosFila = asientosFila;
+    }
+
+    public String getClienteName() {
+        return cliente.getName();
+    }
+
+    public String getHoraInicio() {
+        return funcion.getHoraInicio();
+    }
 
     public Long getId() {
         return id;
@@ -54,8 +87,21 @@ public class Ticket {
         return asientos;
     }
 
+    public Usuario getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Usuario cliente) {
+        this.cliente = cliente;
+    }
+
+
+    public void setAsientos(ArrayList<Integer> asientos) {
+        this.asientos = asientos;
+    }
 
     public void setFuncion(Funcion funcion) {
         this.funcion = funcion;
+        name = funcion.getMovie().getName();
     }
 }
