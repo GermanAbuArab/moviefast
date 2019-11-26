@@ -145,7 +145,7 @@ public class TablaMoviesController {
                     AlertBox.display("Error", "Porfavor seleccione la pelicula que quiere borrar");
                 } else {
                     Movie product = tabla.getSelectionModel().getSelectedItem();
-                    ms.getMovieRepository().delete(product);
+                    ms.delete(product.getId());
 
 
                 }
@@ -198,8 +198,8 @@ public class TablaMoviesController {
     @FXML
     private void aplicar(ActionEvent event)throws IOException{
         // todo problema no se puede editar de a mas de a uno, podira solucionarse con un arraylist de movies en lugar de una sola.
-            ms.getMovieRepository().deleteById(idEdit);
-        ms.getMovieRepository().save(movie);
+            ms.delete(idEdit);
+        ms.save(movie);
     }
 
     public TableView<Movie> getTabla(){

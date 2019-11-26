@@ -44,6 +44,15 @@ public class FuncionService {
         System.out.println("RestTemplate response : " + response.getBody());
     }
 
+    public Funcion findById(Long id){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<FuncionDTO> response = restTemplate.exchange(
+                "http://localhost:8080/funcion/"+id, HttpMethod.GET, null, new ParameterizedTypeReference<FuncionDTO>(){});
+        FuncionDTO func = response.getBody();
+
+        return new Funcion(func);
+    }
+
 
 
 }

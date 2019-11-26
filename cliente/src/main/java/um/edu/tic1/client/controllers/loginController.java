@@ -127,7 +127,7 @@ public class loginController implements Initializable {
 
         } else {
             UsuarioDTO clienteDeBase1 = us.findByUserName(user);
-            ClienteFinal clienteDeBase = new ClienteFinal(clienteDeBase1));
+            ClienteFinal clienteDeBase = new ClienteFinal(clienteDeBase1);
             if (clienteDeBase != null) {
                 if (clienteDeBase.getPassword().equals(contra)) {
                     FXMLLoader fxmlLoader = new FXMLLoader();

@@ -50,4 +50,12 @@ public class MovieService {
         return new Movie(user);
     }
 
+    public void delete(long id) {
+        RestTemplate restTemplate =
+                new RestTemplate();
+        ResponseEntity<String> response =
+                restTemplate.exchange("http://localhost:8080/movie/"+id, HttpMethod.DELETE, null, String.class);
+        System.out.println("RestTemplate response : " + response.getBody());
+    }
+
 }
