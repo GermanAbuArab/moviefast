@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 
 import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.Movie;
+import um.edu.tic1.client.services.MovieService;
 
 
 import java.io.IOException;

@@ -25,6 +25,7 @@ import org.springframework.stereotype.Component;
 
 import um.edu.tic1.client.models.*;
 import um.edu.tic1.client.services.CineService;
+import um.edu.tic1.client.services.FuncionService;
 import um.edu.tic1.client.services.SalaService;
 import um.edu.tic1.client.services.TicketService;
 import java.io.IOException;

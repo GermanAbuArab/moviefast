@@ -32,6 +32,7 @@ public class Funcion {
         this.horaInicio=dto.getHoraInicio();
         this.duracion=dto.getDuracion();
         this.butacas=dto.getButacas();
+        this.cineId=dto.getCineId();
     }
 
 
@@ -48,6 +49,7 @@ public class Funcion {
         funcionDTO.setHoraFin(this.horaFin);
         funcionDTO.setDuracion(this.duracion);
         funcionDTO.setButacas(this.butacas);
+        funcionDTO.setCineId(this.cineId);
         return funcionDTO;
     }
 
@@ -55,6 +57,14 @@ public class Funcion {
     public void clearAll(){
         this.movieId = null;
         this.salaId = null;
+    }
+
+    public Long getCineId() {
+        return cineId;
+    }
+
+    public void setCineId(Long cineId) {
+        this.cineId = cineId;
     }
 
     public Long getId() {

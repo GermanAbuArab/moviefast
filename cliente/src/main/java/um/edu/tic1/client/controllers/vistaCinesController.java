@@ -141,8 +141,7 @@ public class vistaCinesController {
         for (int i = 0; i < lista.size(); i++) {
             Funcion funcion = lista.get(i);
 
-
-            if(funcion.getSala().getCine().equals(this.cine)) {
+            if(funcion.getCineId().equals(this.cine)) {
                 funciones.add(lista.get(i));
             }
         }
@@ -159,7 +158,7 @@ public class vistaCinesController {
         for (int i = 0; i < lista.size(); i++) {
             Sala sala = lista.get(i);
 
-            if(sala.getCine().equals(this.cine)) {
+            if(sala.getCineId().equals(this.cine.getId())) {//aca puede haber cosa
                 salas.add(lista.get(i));
             }
         }

@@ -26,6 +26,8 @@ import org.springframework.stereotype.Component;
 import um.edu.tic1.client.models.ClienteFinal;
 import um.edu.tic1.client.models.Funcion;
 import um.edu.tic1.client.models.Movie;
+import um.edu.tic1.client.services.FuncionService;
+import um.edu.tic1.client.services.MovieService;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
