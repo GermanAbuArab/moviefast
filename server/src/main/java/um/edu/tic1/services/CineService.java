@@ -9,6 +9,7 @@ import um.edu.tic1.repositories.CineRepository;
 import um.edu.tic1.repositories.SalasRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/cine")
@@ -23,8 +24,9 @@ public class CineService{
     }
 
     @GetMapping("/findAll")
-    public List<Cine> findAll() {
-        return cr.findAll();
+    public List<CineDTO> findAll() {
+        List<Cine> lista = cr.findAll();
+        return lista.stream().map(Cine::toDTO).collect(Collectors.toList());
     }
 
     @GetMapping("/findById/{id}")

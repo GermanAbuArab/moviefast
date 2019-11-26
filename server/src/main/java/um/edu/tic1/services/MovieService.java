@@ -30,8 +30,8 @@ public class MovieService {
     }
 
     @GetMapping("/findById/{id}")
-    public MovieDTO findById(@PathVariable("id") String id){
-        Movie mov = mr.findById(Long.parseLong(id)).get();
+    public MovieDTO findById(@PathVariable("id") long id){
+        Movie mov = mr.findById(id).get();
         return mov.toDTO();
     }
 

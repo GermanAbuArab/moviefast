@@ -254,8 +254,17 @@ public class ViewFilmsController {
         List<Funcion> lista = funcionService.findAll();
 
         for (int i = 0; i < lista.size(); i++) {
-            if (!movie.contains(ms.findById(lista.get(i).getId()))) {
-                movie.add(ms.findById(lista.get(i).getId()));
+            Movie movie1= ms.findById(lista.get(i).getMovieId());
+            if (movie.isEmpty())
+            {
+                movie.add(movie1);
+            }
+            for (Movie var : movie)
+            {
+            if (var.getId()!=movie1.getId())
+            {
+                movie.add(movie1);
+            }
             }
         }
 

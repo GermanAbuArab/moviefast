@@ -29,7 +29,7 @@ public class MovieService {
     public List<Movie> findAll() {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<MovieDTO>> response = restTemplate.exchange(
-                "http://localhost:8080/movie", HttpMethod.GET, null,
+                "http://localhost:8080/movie/findAll", HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<MovieDTO>>() {
                 });
         List<MovieDTO> movies = response.getBody();
