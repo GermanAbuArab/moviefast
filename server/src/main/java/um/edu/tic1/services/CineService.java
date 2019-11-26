@@ -17,7 +17,7 @@ public class CineService{
     private CineRepository cr;
 
     @PostMapping("save")
-    public void save(@RequestBody Cine cine) {
+    public void save(@RequestBody Cine  cine) {
         cr.save(cine);
     }
 

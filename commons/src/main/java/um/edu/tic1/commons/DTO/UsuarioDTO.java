@@ -1,15 +1,16 @@
 package um.edu.tic1.commons.DTO;
 
 
-public class UsuarioCineDTO {
+public class UsuarioDTO {
     private String userName;
     private String name;
     private String password;
+    private String tipo;
 
-    public UsuarioCineDTO() {
+    public UsuarioDTO() {
     }
 
-    public UsuarioCineDTO(String userName, String name, String password) {
+    public UsuarioDTO(String userName, String name, String password) {
         this.userName = userName;
         this.name = name;
         this.password = password;

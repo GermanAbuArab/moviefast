@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.ClienteFinal;
 import um.edu.tic1.client.services.UsuarioService;
+import um.edu.tic1.commons.DTO.UsuarioDTO;
 
 
 import java.io.IOException;
@@ -61,18 +62,18 @@ public class SignInController {
         // TODO: 25/11/2019  
         ClienteFinal usuario = new ClienteFinal(userName,nombre,contra);
 
-        UserDTO userdto = us.findByUserName(userName);
+        UsuarioDTO userdto = us.findByUserName(userName);
 
 
-        if (us.findByUserName(userName)!=null) {
-            if (us.getUr().findByName(userName).getUserName().equals(userName)) {
+        if (userdto!=null) {
+            if (userdto.getUserName().equals(userName)) {
                 AlertBox.display("Registro","Lo siento,ese usuario ya exsite,porfavor elija otro");
                 Nombre.clear();
                 nombreUsuario.clear();
                 password.clear();
             }
         }else {
-            us.save(usuario);
+            us.saveFinal(usuario);
             Nombre.clear();
             nombreUsuario.clear();
             password.clear();
