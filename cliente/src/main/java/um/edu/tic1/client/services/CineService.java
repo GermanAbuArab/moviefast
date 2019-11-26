@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import um.edu.tic1.client.models.Cine;
-import um.edu.tic1.client.rest.Rest;
 import um.edu.tic1.commons.DTO.CineDTO;
 import um.edu.tic1.commons.DTO.MovieDTO;
 
