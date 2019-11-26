@@ -97,6 +97,7 @@ public class Movie {
         movieDTO.setCategoria(this.categoria);
         movieDTO.setName(this.name);
         movieDTO.setId(this.id);
+        movieDTO.setImagen(this.movieImage);
         return movieDTO;
     }
 }
