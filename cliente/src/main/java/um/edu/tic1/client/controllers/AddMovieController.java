@@ -13,6 +13,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.Movie;
 import um.edu.tic1.client.services.MovieService;
 
@@ -69,8 +70,12 @@ public class AddMovieController {
         String genero1 = genero.getText();
         byte[] movieImage = addImage();
 
-        Movie movie = new Movie(nombre, descripcion1, genero1, categoria1);
-        movie.setMovieImage(movieImage);
+        Movie movie = new Movie();
+        movie.setName(nombre);
+        movie.setGenero(genero1);
+        movie.setCategoria(categoria1);
+        movie.setDescription(descripcion1);
+        movie.setImagen(movieImage);
 
         ms.save(movie);
         nombrePelicula.clear();
@@ -83,7 +88,7 @@ public class AddMovieController {
     @FXML
     private void mostrarPelis(ActionEvent event) throws IOException {  // vuelve a la scena
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/mostrar.fxml"));
         Scene inicioScene = new Scene(inicio);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

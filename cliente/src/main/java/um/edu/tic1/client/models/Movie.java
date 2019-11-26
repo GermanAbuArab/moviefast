@@ -10,6 +10,7 @@ public class Movie {
     private String description;
     private String genero;
     private String categoria;
+    private byte[] imagen;
 
     public Movie() {
         this.name = null;
@@ -21,6 +22,7 @@ public class Movie {
         this.description = movie.getDescription();
         this.genero = movie.getGenero();
         this.categoria = movie.getCategoria();
+        this.imagen=movie.getImagen();
     }
 
     public MovieDTO toDTO() {
@@ -30,6 +32,7 @@ public class Movie {
         movieDTO.setCategoria(this.categoria);
         movieDTO.setName(this.name);
         movieDTO.setId(this.id);
+        movieDTO.setImagen(this.imagen);
         return movieDTO;
     }
 
@@ -73,5 +76,13 @@ public class Movie {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    public byte[] getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(byte[] imagen) {
+        this.imagen = imagen;
     }
 }

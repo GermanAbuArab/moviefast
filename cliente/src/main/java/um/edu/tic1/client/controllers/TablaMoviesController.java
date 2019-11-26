@@ -17,8 +17,8 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.Movie;
-import um.edu.tic1.client.services.MovieService;
 
 import java.awt.*;
 import java.io.IOException;
@@ -110,7 +110,7 @@ public class TablaMoviesController {
     @FXML
     private void agregar(ActionEvent event)throws IOException {  // vuelve a la scena
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/addMovie.fxml"));
         Scene inicioScene = new Scene(inicio,600,500);
@@ -121,7 +121,7 @@ public class TablaMoviesController {
     @FXML
     private void volver(ActionEvent event)throws IOException {  // vuelve a la scena
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");
@@ -156,7 +156,7 @@ public class TablaMoviesController {
 
     public void cines(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/tablaCines.fxml"));
         Scene inicioScene = new Scene(inicio,600,500);

@@ -16,17 +16,12 @@ public class CineService{
     @Autowired
     private CineRepository cr;
 
-
-    public CineRepository getMovieRepository() {
-        return cr;
-    }
-
-    @PostMapping
+    @PostMapping("save")
     public void save(@RequestBody Cine cine) {
         cr.save(cine);
     }
 
-    @GetMapping
+    @GetMapping("/findAll")
     public List<Cine> findAll() {
         return cr.findAll();
     }

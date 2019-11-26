@@ -6,6 +6,7 @@ public class MovieDTO {
     private String description;
     private String genero;
     private String categoria;
+    private byte[] imagen;
 
     public MovieDTO() {
     }
@@ -16,6 +17,7 @@ public class MovieDTO {
         this.description = description;
         this.genero = genero;
         this.categoria = categoria;
+
     }
 
     public Long getId() {
@@ -56,5 +58,13 @@ public class MovieDTO {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public byte[] getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(byte[] imagen) {
+        this.imagen = imagen;
     }
 }

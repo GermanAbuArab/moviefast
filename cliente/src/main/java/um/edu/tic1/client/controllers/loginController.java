@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import um.edu.tic1.client.ClientApplication;
+import um.edu.tic1.client.models.Cine;
 import um.edu.tic1.client.models.ClienteFinal;
 import um.edu.tic1.client.services.CineService;
 import um.edu.tic1.client.services.UsuarioService;
@@ -64,7 +65,7 @@ public class loginController implements Initializable {
     @FXML
     void volver(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");
         Scene inicioScene = new Scene(inicio, 1000, 500);
@@ -101,7 +102,7 @@ public class loginController implements Initializable {
             vuc.setCine(lista.get(indiceCine));
 
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+            fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
             Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/vistaUsuarioCine.fxml"));
             Scene inicioScene = new Scene(inicio, 800, 600);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -124,11 +125,11 @@ public class loginController implements Initializable {
 
 
         } else {
-            ClienteFinal clienteDeBase = (ClienteFinal) us.getUr().findByUserName(user);
+            ClienteFinal clienteDeBase = (ClienteFinal) us.findByUserName(user);
             if (clienteDeBase != null) {
                 if (clienteDeBase.getPassword().equals(contra)) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+                    fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
                     Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
                     inicio.getStylesheets().add("/templates/styles.css");
                     Scene inicioScene = new Scene(inicio, 1000, 500);
@@ -148,7 +149,7 @@ public class loginController implements Initializable {
 
     public void registrar(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/SignIn.fxml"));
         Scene inicioScene = new Scene(inicio, 600, 500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
