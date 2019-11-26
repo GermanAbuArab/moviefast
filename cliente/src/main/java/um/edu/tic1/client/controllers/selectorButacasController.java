@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.*;
 import um.edu.tic1.client.services.CineService;
 import um.edu.tic1.client.services.FuncionService;
@@ -262,7 +263,7 @@ public class selectorButacasController {
     private void volver(ActionEvent event)throws IOException {  // vuelve a la scena
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(CineService.getContext()::getBean);
+        fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
 
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
         inicio.getStylesheets().add("/templates/styles.css");
