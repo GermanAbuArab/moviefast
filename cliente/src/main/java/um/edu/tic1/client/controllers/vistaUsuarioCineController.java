@@ -16,14 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import um.edu.tic1.client.ClientApplication;
-import um.edu.tic1.client.models.Cine;
-import um.edu.tic1.client.models.Funcion;
-import um.edu.tic1.client.models.Movie;
-import um.edu.tic1.client.models.Sala;
-import um.edu.tic1.client.services.CineService;
-import um.edu.tic1.client.services.FuncionService;
-import um.edu.tic1.client.services.MovieService;
-import um.edu.tic1.client.services.SalaService;
+import um.edu.tic1.client.models.*;
+import um.edu.tic1.client.services.*;
 
 
 import java.io.IOException;
@@ -44,12 +38,17 @@ public class vistaUsuarioCineController {
 
     @Autowired
     private CineService cineService;
+    @Autowired
+    private TicketService ticketService;
 
     @FXML
     private TableView<Sala> tabla;
 
     @FXML
     private TableView<Funcion> tablaFunciones;
+
+    @FXML
+    private TableView<Ticket> tablaTickets;
 
     @FXML
     private TableColumn<Funcion,String> salaFuncion;
