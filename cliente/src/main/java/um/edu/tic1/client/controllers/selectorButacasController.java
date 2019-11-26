@@ -301,8 +301,8 @@ public class selectorButacasController {
 
         }
         ClienteFinal clienteFinal=  vfc.getClienteFinal();
-        AlertBox.display("Compra Exitosa","Compraste el asiento : "  + ticket.imprimirAsientos()+ " \n Fecha : " + funcionAux.getHoraInicio() + " \n Pelicula : " +funcionAux.getMovie()+ " \n Sala : " + funcionAux.getSala()+ " \n Cliente :" + clienteFinal.getName());
-        ticketService.save(ticket);
+        AlertBox.display("Compra Exitosa","Compraste el asiento : "  + ticket.imprimirAsientos()+ " \n Fecha : " + funcionAux.getHoraInicio() + " \n Pelicula : " +funcionService.findById(funcionAux.getMovieId())+ " \n Sala : " + salaService.findById(funcionAux.getSalaId())+ " \n Cliente :" + clienteFinal.getName());
+        ticketService.save(ticket)
 
 
 
