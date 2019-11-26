@@ -19,10 +19,6 @@ public class MovieService {
     @Autowired
     private MovieRepository mr;
 
-    public MovieRepository getMovieRepository() {
-        return mr;
-    }
-
     @PostMapping
     public void save(@RequestBody Movie movie) {
         mr.save(movie);

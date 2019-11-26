@@ -20,9 +20,6 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository ur;
 
-    public UsuarioRepository getUr() {
-        return ur;
-    }
     @PostMapping(path = "/saveAdmin")
     public void save(@RequestBody AdminEmpresa usuario) {
         ur.save(usuario);
@@ -50,4 +47,5 @@ public class UsuarioService {
         ClienteFinal user =(ClienteFinal) ur.findByUserName(id);
         return user.toDTO();
     }
+
 }
