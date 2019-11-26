@@ -13,6 +13,10 @@ public class Sala {
     private boolean tresD;
     private boolean cuatroD;
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
 
     public Sala() {
     }

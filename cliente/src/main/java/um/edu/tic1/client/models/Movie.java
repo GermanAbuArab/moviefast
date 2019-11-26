@@ -25,6 +25,11 @@ public class Movie {
         this.imagen=movie.getImagen();
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
     public MovieDTO toDTO() {
         MovieDTO movieDTO = new MovieDTO();
         movieDTO.setGenero(this.genero);
