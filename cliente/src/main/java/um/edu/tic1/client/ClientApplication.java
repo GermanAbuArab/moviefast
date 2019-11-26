@@ -60,7 +60,7 @@ public class ClientApplication extends Application {
 	public void start(Stage primaryStage) throws Exception{
 		fxmlLoader = new FXMLLoader();
 		fxmlLoader.setControllerFactory(context::getBean);
-		root = fxmlLoader.load(getClass().getResourceAsStream("/templates/viewFilms.fxml"));
+		root = fxmlLoader.load(getClass().getResourceAsStream("/templates/login.fxml"));
 		root.getStylesheets().add("/templates/styles.css");
 		primaryStage.setTitle("MovieFast");
 		primaryStage.setScene( new Scene(root,1000,500));

@@ -35,7 +35,7 @@ public class SalaService {
     public List<Sala> findAll(){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<SalaDTO>> response = restTemplate.exchange(
-                "http://localhost:8080/sala", HttpMethod.GET, null,
+                "http://localhost:8080/sala/findAll", HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<SalaDTO>>(){});
         List<SalaDTO> salas = response.getBody();
         return salas.stream().map(Sala::new).collect(Collectors.toList());

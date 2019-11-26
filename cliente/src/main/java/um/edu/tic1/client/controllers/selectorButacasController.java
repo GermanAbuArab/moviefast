@@ -93,11 +93,7 @@ public class selectorButacasController {
             CineDropDownList.setItems(cines);
         CineDropDownList.setOnAction((event -> {
             List<Cine> list = null;
-            try {
-                list = cineService.findAll();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            list = cineService.findAll();
             for (int i = 0; i < list.size(); i++) {
                 if (list.get(i).getName().equals(CineDropDownList.getValue())) {
                     this.cine = list.get(i);
@@ -163,11 +159,7 @@ public class selectorButacasController {
         ObservableList<String> cines = FXCollections.observableArrayList();
 
         List<Cine> lista = null;
-        try {
-            lista = cineService.findAll();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        lista = cineService.findAll();
 
         for (int i = 0; i < lista.size(); i++) {
             cines.add(lista.get(i).getName());
