@@ -46,7 +46,8 @@ public class UsuarioService {
     }
 
     @GetMapping("/Final/{id}" )
-    public Usuario findByUserName(@PathVariable("id") String id){
-        return ur.findByUserName(id);
+    public UsuarioDTO findByUserNameFinal(@PathVariable("id") String id){
+        ClienteFinal user =(ClienteFinal) ur.findByUserName(id);
+        return user.toDTO();
     }
 }

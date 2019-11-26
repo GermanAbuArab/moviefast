@@ -1,6 +1,6 @@
 package um.edu.tic1.entities;
 
-import um.edu.tic1.commons.DTO.AdminEmpresaDTO;
+import um.edu.tic1.commons.DTO.UsuarioDTO;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -16,8 +16,8 @@ public class AdminEmpresa extends Usuario {
     public AdminEmpresa() {
     }
 
-    public AdminEmpresaDTO toDTO() {
-        AdminEmpresaDTO adminEmpresaDTO = new AdminEmpresaDTO();
+    public UsuarioDTO toDTO() {
+        UsuarioDTO adminEmpresaDTO = new UsuarioDTO();
         adminEmpresaDTO.setName(this.getName());
         adminEmpresaDTO.setUserName(this.getUserName());
         adminEmpresaDTO.setPassword(this.getPassword());
