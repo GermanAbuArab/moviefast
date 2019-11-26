@@ -7,6 +7,7 @@ import um.edu.tic1.entities.Ticket;
 import um.edu.tic1.repositories.TicketRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TicketService {
 
@@ -19,8 +20,9 @@ public class TicketService {
     }
 
     @GetMapping("/findAll")
-    public List<Ticket> findAll() {
-        return tr.findAll();
+    public List<TicketDTO> findAll() {
+        List<Ticket> lista = tr.findAll();
+        return lista.stream().map(Ticket::toDTO).collect(Collectors.toList());
     }
 
     @GetMapping("/findById/{id}")
