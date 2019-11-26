@@ -288,11 +288,11 @@ public class selectorButacasController {
             for (int y= 0;y<salaFuncion.getY();y++){
                 if (getNodeByRowColumnIndex(x,y,gridSeats).getStyle().equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;")){
                     getNodeByRowColumnIndex(x,y,gridSeats).setStyle("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;");
-                    //funcionAux.reservaButaca(y,x);
+                    funcionAux.reservaButaca(y,x);
                     funcionService.save(funcionAux);
                     System.out.println(funcionAux.getId() + funcionAux.getHoraInicio() + salaService.findById(funcionAux.getSalaId()) );
                     ShowButacas();
-                    //ticket.addAsiento(y,x);
+                    ticket.addAsiento(y,x);
 
 
                 }
@@ -301,8 +301,8 @@ public class selectorButacasController {
 
         }
         ClienteFinal clienteFinal=  vfc.getClienteFinal();
-        AlertBox.display("Compra Exitosa","Compraste el asiento : "  + ticket.imprimirAsientos()+ " \n Fecha : " + funcionAux.getHoraInicio() + " \n Pelicula : " +funcionService.findById(funcionAux.getMovieId())+ " \n Sala : " + salaService.findById(funcionAux.getSalaId())+ " \n Cliente :" + clienteFinal.getName());
-        ticketService.save(ticket)
+        AlertBox.display("Compra Exitosa","Compraste el asiento : "  + ticket.imprimirAsientos()+ " \n Fecha : " + funcionAux.getHoraInicio() + " \n Pelicula : " +movieService.findById(funcionAux.getMovieId()) + " \n Sala : " + salaService.findById(funcionAux.getSalaId())+ " \n Cliente :" + clienteFinal.getName());
+        ticketService.save(ticket);
 
 
 

@@ -2,11 +2,15 @@ package um.edu.tic1.client.models;
 
 import um.edu.tic1.commons.DTO.TicketDTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Ticket {
 
     private Long id;
     private Long funcionId;
     private String clienteId;
+    private List<Integer> asientos= new ArrayList<>(150);
 
 
     public Ticket() {
@@ -52,6 +56,17 @@ public class Ticket {
         this.clienteId = clienteId;
     }
 
-    public void addAsiento(int y, int x) {
+    public void addAsiento(int x,int y){
+        asientos.add(x);
+        asientos.add(y);
+
+    }
+    public String imprimirAsientos(){
+        String str = "";
+        for (int i =0;i<asientos.size();i = i+2){
+            str = str + " columna "+ asientos.get(i).toString();
+            str = str +" fila "+ asientos.get(i + 1).toString();
+        }
+        return str;
     }
 }
