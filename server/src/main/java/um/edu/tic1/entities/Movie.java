@@ -103,7 +103,7 @@ public class Movie {
 
     public Movie(MovieDTO movieDTO){
         this.description=movieDTO.getDescription();
-        this.name=movieDTO.getDescription();
+        this.name=movieDTO.getName();
         this.categoria=movieDTO.getCategoria();
         this.genero=movieDTO.getGenero();
         this.id=movieDTO.getId();
