@@ -61,7 +61,10 @@ public class SignInController {
         // TODO: 25/11/2019  
         ClienteFinal usuario = new ClienteFinal(userName,nombre,contra);
 
-        if (us.getUr().findByName(userName)!=null) {
+        UserDTO userdto = us.findByUserName(userName);
+
+
+        if (us.findByUserName(userName)!=null) {
             if (us.getUr().findByName(userName).getUserName().equals(userName)) {
                 AlertBox.display("Registro","Lo siento,ese usuario ya exsite,porfavor elija otro");
                 Nombre.clear();

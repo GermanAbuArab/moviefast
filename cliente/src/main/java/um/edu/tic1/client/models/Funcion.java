@@ -13,6 +13,7 @@ public class Funcion {
     private String horaFin;
     private Long salaId;
     private boolean[][] butacas;
+    private Long cineId;
 
     private int duracion;
 

@@ -18,6 +18,7 @@ import um.edu.tic1.client.models.Cine;
 import um.edu.tic1.client.models.Funcion;
 import um.edu.tic1.client.models.Sala;
 import um.edu.tic1.client.services.CineService;
+import um.edu.tic1.client.services.FuncionService;
 import um.edu.tic1.client.services.SalaService;
 
 
@@ -139,6 +140,7 @@ public class vistaCinesController {
 
         for (int i = 0; i < lista.size(); i++) {
             Funcion funcion = lista.get(i);
+
 
             if(funcion.getSala().getCine().equals(this.cine)) {
                 funciones.add(lista.get(i));

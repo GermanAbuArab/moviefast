@@ -24,6 +24,7 @@ public class Funcion {
     private String hora;
     private String horaFin;
     private boolean[][] butacas;
+    private Long cineId;
 
     private int duracion;
 
@@ -94,6 +95,7 @@ public class Funcion {
 
     public void setSala(Sala sala) {
         this.sala = sala;
+        this.cineId = sala.getCine().getId();
         this.butacas = new boolean [sala.getX()][sala.getY()];
         initButacas(sala.getX(),sala.getY());
     }
