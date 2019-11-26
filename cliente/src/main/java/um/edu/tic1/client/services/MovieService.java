@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class MovieService {
 
 
-    public void save(Movie movie) {
+    public void save(Movie movie){
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<MovieDTO> body = new HttpEntity<>(
                 movie.toDTO());

@@ -31,8 +31,7 @@ public class Sala {
 
     public SalaDTO toDTO() {
         SalaDTO salaDTO = new SalaDTO();
-        salaDTO.setCineId(this.getCineId());
-        salaDTO.setId(this.getId());
+        salaDTO.setCineId(this.cineId);
         salaDTO.setName(this.getName());
         salaDTO.setCapacidad(this.getCapacidad());
         salaDTO.setCuatroD(this.isCuatroD());

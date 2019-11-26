@@ -203,7 +203,7 @@ public class vistaCinesController {
 
 
         sala.setName(nombre);
-        sala.setCineId(cine.getId());
+        sala.setCineId(this.cine.getId()); //ACA
         salaService.save(sala);
         nombreAgregado.clear();
         largo.clear();

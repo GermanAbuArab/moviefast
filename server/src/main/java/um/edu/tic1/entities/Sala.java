@@ -18,6 +18,7 @@ public class Sala {
     private Long id;
     private int x;
     private int y;
+    private long cineId;
 
     private String name;
 
@@ -117,6 +118,18 @@ public class Sala {
         salaDTO.setX(this.getX());
         salaDTO.setY(this.getY());
         return salaDTO;
+    }
+
+
+    public Sala(SalaDTO dto){
+        this.cineId = dto.getCineId();
+        this.id = dto.getId();
+        this.name = dto.getName();
+        this.capacidad = dto.getCapacidad();
+        this.cuatroD = dto.isCuatroD();
+        this.tresD = dto.isTresD();
+        this.x = dto.getX();
+        this.y = dto.getY();
 
     }
 
