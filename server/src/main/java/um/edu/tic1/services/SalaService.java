@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import um.edu.tic1.commons.DTO.SalaDTO;
+import um.edu.tic1.entities.Funcion;
 import um.edu.tic1.entities.Sala;
 import um.edu.tic1.repositories.CineRepository;
 import um.edu.tic1.repositories.SalasRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/sala")
@@ -28,9 +30,10 @@ public class SalaService {
     public SalasRepository getMovieRepository() {
         return sr;
     }
-    @GetMapping
-    public List<Sala> findAll() {
-        return sr.findAll();
+    @GetMapping("/findAll")
+    public List<SalaDTO> findAll() {
+        List<Sala> lista =   sr.findAll();
+        return lista.stream().map(Sala::toDTO).collect(Collectors.toList());
     }
 
     @GetMapping("/findById/{id}")
