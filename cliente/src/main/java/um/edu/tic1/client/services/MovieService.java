@@ -20,8 +20,8 @@ public class MovieService {
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<MovieDTO> body = new HttpEntity<>(
                 movie.toDTO());
-        ResponseEntity<String> response =
-                restTemplate.exchange("http://localhost:8080/movie/saveMovie", HttpMethod.POST, body, String.class);
+        ResponseEntity<String> response =  restTemplate.exchange("http://localhost:8080/movie/saveMovie", HttpMethod.POST, body, String.class);
+
         System.out.println("RestTemplate response : " + response.getBody());
     }
 

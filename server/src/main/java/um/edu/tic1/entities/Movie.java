@@ -100,4 +100,15 @@ public class Movie {
         movieDTO.setImagen(this.movieImage);
         return movieDTO;
     }
+
+    public Movie(MovieDTO movieDTO){
+        this.description=movieDTO.getDescription();
+        this.name=movieDTO.getDescription();
+        this.categoria=movieDTO.getCategoria();
+        this.genero=movieDTO.getGenero();
+        this.id=movieDTO.getId();
+        this.movieImage=movieDTO.getImagen();
+    }
+
+
 }

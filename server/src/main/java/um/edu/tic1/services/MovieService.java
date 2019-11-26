@@ -20,8 +20,8 @@ public class MovieService {
     private MovieRepository mr;
 
     @PostMapping(path = "/saveMovie")
-    public void save(@RequestBody Movie movie) {
-        mr.save(movie);
+    public void save(@RequestBody MovieDTO movie) {
+        mr.save(new Movie(movie));
     }
 
     @GetMapping("/findAll")
@@ -35,7 +35,7 @@ public class MovieService {
         return mov.toDTO();
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping("delete/{id}")
     public void eliminar(@PathVariable Long id){
         mr.deleteById(id);
     }
