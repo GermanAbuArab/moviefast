@@ -4,6 +4,7 @@ public class CineDTO {
 
     private Long id;
     private  String name;
+
     public CineDTO(String name){
         this.name =name;
     }

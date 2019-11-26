@@ -9,6 +9,8 @@ import um.edu.tic1.client.models.Cine;
 public class Rest {
 
 
+
+
     public void saveCine(Cine cine) {
         RestTemplate restTemplate=new RestTemplate();
 

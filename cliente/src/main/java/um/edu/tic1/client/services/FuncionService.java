@@ -30,7 +30,7 @@ public class FuncionService {
     public List<Funcion> findAll(){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<FuncionDTO>> response = restTemplate.exchange(
-                "http://localhost:8080/funcion", HttpMethod.GET, null,
+                "http://localhost:8080/funcion/findAll", HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<FuncionDTO>>(){});
         List<FuncionDTO> funciones = response.getBody();
         return funciones.stream().map(Funcion::new).collect(Collectors.toList());

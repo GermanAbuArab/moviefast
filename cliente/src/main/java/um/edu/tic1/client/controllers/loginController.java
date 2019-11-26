@@ -153,6 +153,7 @@ public class loginController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/SignIn.fxml"));
+        inicio.getStylesheets().add("/templates/styles.css");
         Scene inicioScene = new Scene(inicio, 600, 500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);

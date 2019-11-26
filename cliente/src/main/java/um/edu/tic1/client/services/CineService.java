@@ -34,7 +34,7 @@ public class CineService {
         RestTemplate restTemplate=
                 new RestTemplate();
         ResponseEntity<String> response=
-                restTemplate.exchange("http://localhost:8090/cine/findAll", HttpMethod.GET,null, String.class);
+                restTemplate.exchange("http://localhost:8080/cine/findAll", HttpMethod.GET,null, String.class);
 
         CollectionType listType=
                 factory.constructCollectionType(List.class,Cine.class);

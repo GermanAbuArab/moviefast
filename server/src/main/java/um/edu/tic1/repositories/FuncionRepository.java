@@ -11,4 +11,5 @@ import java.util.List;
 public interface FuncionRepository extends JpaRepository<Funcion,Long> {
     List<Funcion> findAllByName(String name);
     Funcion findByName(String name);
+    List<Funcion> findAll();
 }
