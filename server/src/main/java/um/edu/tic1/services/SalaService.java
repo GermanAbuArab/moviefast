@@ -15,6 +15,7 @@ public class SalaService {
     @Autowired
     private SalasRepository sr;
 
+    @PostMapping(path = "/saveMovie")
     public void save(@RequestBody Sala sala) {
         sr.save(sala);
     }
