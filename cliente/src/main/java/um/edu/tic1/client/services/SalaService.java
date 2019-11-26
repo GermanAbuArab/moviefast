@@ -44,7 +44,7 @@ public class SalaService {
     public Sala findById(Long id){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<SalaDTO> response = restTemplate.exchange(
-                "http://localhost:8080/movie/"+id, HttpMethod.GET, null, new ParameterizedTypeReference<SalaDTO>(){});
+                "http://localhost:8080/movie/findByID"+id, HttpMethod.GET, null, new ParameterizedTypeReference<SalaDTO>(){});
         SalaDTO user = response.getBody();
 
         return new Sala(user);

@@ -211,7 +211,7 @@ public class vistaUsuarioCineController {
 
 
         //load dummy data
-        tabla.setItems((ObservableList<Sala>) getSalas());
+        tabla.setItems(getSalas());
 
         //Update the table to allow for the first and last name fields
         //to be editable

@@ -82,8 +82,6 @@ public class AddMovieController {
         descripcion.clear();
         categoria.clear();
         genero.clear();
-        Movie movie1= ms.findById(movie.getId());
-        System.out.println(movie1.getName());
 
     }
 

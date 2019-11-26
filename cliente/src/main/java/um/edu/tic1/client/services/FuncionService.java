@@ -21,7 +21,7 @@ public class FuncionService {
         HttpEntity<FuncionDTO> body = new HttpEntity<>(
                 funcion.toDTO());
         ResponseEntity<String> response =
-                restTemplate.exchange("http://localhost:8080/funcion", HttpMethod.POST, body, String.class);
+                restTemplate.exchange("http://localhost:8080/funcion/save", HttpMethod.POST, body, String.class);
         System.out.println("RestTemplate response : " + response.getBody());
     }
 
@@ -40,14 +40,14 @@ public class FuncionService {
         RestTemplate restTemplate =
                 new RestTemplate();
         ResponseEntity<String> response =
-                restTemplate.exchange("http://localhost:8080/funcion/"+id, HttpMethod.DELETE, null, String.class);
+                restTemplate.exchange("http://localhost:8080/funcion/delete"+id, HttpMethod.DELETE, null, String.class);
         System.out.println("RestTemplate response : " + response.getBody());
     }
 
     public Funcion findById(Long id){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<FuncionDTO> response = restTemplate.exchange(
-                "http://localhost:8080/funcion/"+id, HttpMethod.GET, null, new ParameterizedTypeReference<FuncionDTO>(){});
+                "http://localhost:8080/funcion/findById"+id, HttpMethod.GET, null, new ParameterizedTypeReference<FuncionDTO>(){});
         FuncionDTO func = response.getBody();
 
         return new Funcion(func);
