@@ -16,14 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import um.edu.tic1.client.ClientApplication;
-import um.edu.tic1.client.models.Cine;
-import um.edu.tic1.client.models.Funcion;
-import um.edu.tic1.client.models.Movie;
-import um.edu.tic1.client.models.Sala;
-import um.edu.tic1.client.services.CineService;
-import um.edu.tic1.client.services.FuncionService;
-import um.edu.tic1.client.services.MovieService;
-import um.edu.tic1.client.services.SalaService;
+import um.edu.tic1.client.models.*;
+import um.edu.tic1.client.services.*;
 
 
 import java.io.IOException;
@@ -44,6 +38,25 @@ public class vistaUsuarioCineController {
 
     @Autowired
     private CineService cineService;
+    @Autowired
+    private TicketService ticketService;
+
+    @FXML
+    private TableColumn<Ticket,String> peliculaTicket;
+    @FXML
+    private TableColumn<Ticket,String> salaTicket;
+    @FXML
+    private TableColumn<Ticket,String> clienteTicket;
+    @FXML
+    private TableColumn<Ticket,String> FilaTicket;
+    @FXML
+    private TableColumn<Ticket,String> ColumnaTicket;
+    @FXML
+    private TableColumn<Ticket,String> horarioTicket;
+
+
+    @FXML
+    private TableView<Ticket> tablaTickets;
 
     @FXML
     private TableView<Sala> tabla;
@@ -148,6 +161,7 @@ public class vistaUsuarioCineController {
 
         inicializarSalas();
         inicializarFunciones();
+        inicializarTickets();
         inicializarCombos();
 
     }
@@ -164,6 +178,24 @@ public class vistaUsuarioCineController {
         horaInicio.setItems(horas);
 
     }
+
+    private ObservableList<Ticket> getTickets() {
+
+        ObservableList<Ticket> tickets = FXCollections.observableArrayList();
+
+        List<Ticket> lista = ticketService.findAll();
+
+        for (int i = 0; i < lista.size(); i++) {
+            Ticket ticket = lista.get(i);
+
+            if(ticket.getFuncion().getSala().getCine().equals(this.cine)) {
+                tickets.add(lista.get(i));
+            }
+        }
+
+        return tickets;
+    }
+
 
     public void comboSalaActualizado(){
 
@@ -199,7 +231,16 @@ public class vistaUsuarioCineController {
         tablaFunciones.setItems((ObservableList<Funcion>) getFunciones());
 
     }
+    public void inicializarTickets(){
+        peliculaTicket.setCellValueFactory(new PropertyValueFactory<>("name"));
+        salaTicket.setCellValueFactory(new PropertyValueFactory<>("sala"));
+        clienteTicket.setCellValueFactory(new PropertyValueFactory<>("clienteName"));
+        horarioTicket.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
+        FilaTicket.setCellValueFactory(new PropertyValueFactory<>("asientosFila"));
+        ColumnaTicket.setCellValueFactory(new PropertyValueFactory<>("asientoCol"));
+        tablaTickets.setItems(getTickets());
 
+    }
 
     public void inicializarSalas(){
         //set up the columns in the table
