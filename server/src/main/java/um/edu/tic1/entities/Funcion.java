@@ -153,6 +153,7 @@ public class Funcion {
         funcionDTO.setHoraFin(this.horaFin);
         funcionDTO.setDuracion(this.duracion);
         funcionDTO.setButacas(this.butacas);
+        funcionDTO.setCineId(this.cineId);
         return funcionDTO;
     }
 

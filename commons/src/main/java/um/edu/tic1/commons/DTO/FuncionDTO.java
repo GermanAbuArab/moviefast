@@ -11,6 +11,7 @@ public class FuncionDTO {
     private String horaFin;
     private Long salaId;
     private boolean[][] butacas;
+    private Long cineId;
 
     private int duracion;
 
@@ -28,6 +29,14 @@ public class FuncionDTO {
         this.salaId = salaId;
         this.butacas = butacas;
         this.duracion = duracion;
+    }
+
+    public Long getCineId() {
+        return cineId;
+    }
+
+    public void setCineId(Long cineId) {
+        this.cineId = cineId;
     }
 
     public Long getId() {
