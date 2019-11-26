@@ -19,7 +19,7 @@ public class MovieService {
     @Autowired
     private MovieRepository mr;
 
-    @PostMapping
+    @PostMapping(path = "/saveMovie")
     public void save(@RequestBody Movie movie) {
         mr.save(movie);
     }
