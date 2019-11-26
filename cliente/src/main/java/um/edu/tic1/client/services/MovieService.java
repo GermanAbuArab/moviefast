@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class MovieService {
 
 
-    public void save(Movie movie) {
+    public void save(Movie movie){
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<MovieDTO> body = new HttpEntity<>(
                 movie.toDTO());
@@ -39,7 +39,8 @@ public class MovieService {
     public Movie findById(Long id) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<MovieDTO> response = restTemplate.exchange(
-                "http://localhost:8080/movie/findById/" + id, HttpMethod.GET, null, new ParameterizedTypeReference<MovieDTO>() {
+                "http://localhost:8080/movie/findById/" + id, HttpMethod.GET, null,
+                new ParameterizedTypeReference<MovieDTO>() {
                 });
         MovieDTO user = response.getBody();
 

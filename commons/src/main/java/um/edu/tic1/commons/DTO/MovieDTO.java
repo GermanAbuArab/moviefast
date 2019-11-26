@@ -20,6 +20,10 @@ public class MovieDTO {
 
     }
 
+
+
+
+
     public Long getId() {
         return id;
     }

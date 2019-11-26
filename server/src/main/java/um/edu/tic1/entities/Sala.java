@@ -19,6 +19,7 @@ public class Sala {
     private int x;
     private int y;
 
+
     private String name;
 
     private int capacidad;
@@ -34,6 +35,16 @@ public class Sala {
     public Sala(){
         this.tresD = false;
         this.cuatroD = false;
+    }
+
+    public Sala(SalaDTO sala) {
+        this.y=sala.getY();
+        this.x=sala.getX();
+        this.tresD=sala.isTresD();
+        this.cuatroD=sala.isCuatroD();
+        this.capacidad=sala.getCapacidad();
+        this.name=sala.getName();
+        //this.id=sala.getId();
     }
 
     public int getX() {
@@ -117,7 +128,9 @@ public class Sala {
         salaDTO.setX(this.getX());
         salaDTO.setY(this.getY());
         return salaDTO;
-
     }
+
+
+
 
 }

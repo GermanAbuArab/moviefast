@@ -69,11 +69,11 @@
                   </AnchorPane>
                   <TableView fx:id="tabla" editable="true" prefHeight="375.0" prefWidth="640.0">
                     <columns>
-                      <TableColumn fx:id="nombrePeli" onEditCommit="#editNombreCommit" prefWidth="75.0" text="Nombre" />
-                        <TableColumn fx:id="descripcion" prefWidth="75.0" text="Descripcion" />
-                        <TableColumn fx:id="categoria" prefWidth="75.0" text="Categoria" />
-                        <TableColumn fx:id="genero" prefWidth="75.0" text="Genero" />
+                      <TableColumn fx:id="nombrePeli" onEditCommit="#editNombreCommit" prefWidth="75.0" text="Cines" />
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
               </items>
             </SplitPane>
