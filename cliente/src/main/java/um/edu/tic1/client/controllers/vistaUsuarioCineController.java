@@ -53,6 +53,8 @@ public class vistaUsuarioCineController {
     private TableColumn<Ticket,String> ColumnaTicket;
     @FXML
     private TableColumn<Ticket,String> horarioTicket;
+    @FXML
+    private TableColumn<Ticket,String> asientosTicket;
 
 
     @FXML
@@ -194,6 +196,15 @@ public class vistaUsuarioCineController {
             if(funcionService.findById(ticket.getFuncionId()).getCineId().equals(this.cine.getId())) {
                 lista.get(i).setMovie(movieService.findById(funcionService.findById(lista.get(i).getFuncionId()).getMovieId()).getName());
                 lista.get(i).setSala(salaService.findById(funcionService.findById(lista.get(i).getFuncionId()).getSalaId()).getName());
+
+                String aux = "Asientos: ";
+                for(int k=0;k<lista.get(i).getAsientos().size();k=k+2){
+                    aux = aux + " columna "+lista.get(i).getAsientos().get(k);
+                    aux = aux + " fila "+lista.get(i).getAsientos().get(k+1);
+                }
+
+                lista.get(i).setAsientosString(aux);
+
                 ticketsLista.add(lista.get(i));
             }
         }
@@ -241,6 +252,7 @@ public class vistaUsuarioCineController {
         peliculaTicket.setCellValueFactory(new PropertyValueFactory<>("movie"));
         salaTicket.setCellValueFactory(new PropertyValueFactory<>("sala"));
         funcionTicket.setCellValueFactory(new PropertyValueFactory<>("funcionId"));
+        asientosTicket.setCellValueFactory(new PropertyValueFactory<>("asientosString"));
 
         tablaTickets.setItems((ObservableList<Ticket>) getTickets());
 

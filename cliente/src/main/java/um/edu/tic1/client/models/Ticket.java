@@ -16,6 +16,8 @@ public class Ticket {
     private String movie;
     private String sala;
 
+    private String asientosString;
+
     public Ticket() {
     }
 
@@ -103,5 +105,21 @@ public class Ticket {
 
     public void setSala(String sala) {
         this.sala = sala;
+    }
+
+    public String getAsientosString() {
+        return asientosString;
+    }
+
+    public void setAsientosString(String asientosString) {
+        this.asientosString = asientosString;
+    }
+
+    public ArrayList<Integer> getAsientos() {
+        return asientos;
+    }
+
+    public void setAsientos(ArrayList<Integer> asientos) {
+        this.asientos = asientos;
     }
 }

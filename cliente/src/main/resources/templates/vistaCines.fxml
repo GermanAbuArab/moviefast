@@ -68,6 +68,7 @@
                                     <TableColumn fx:id="peliculaTicket" onEditCommit="#editNombreCommit" prefWidth="75.0" text="Pelicula" />
                                     <TableColumn fx:id="salaTicket" prefWidth="75.0" text="Sala" />
                                     <TableColumn fx:id="funcionTicket" prefWidth="75.0" text="Funcion Id" />
+                                    <TableColumn fx:id="asientosTicket" prefWidth="75.0" text="Asientos" />
                                  </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
