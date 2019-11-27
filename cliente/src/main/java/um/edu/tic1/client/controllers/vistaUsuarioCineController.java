@@ -68,6 +68,9 @@ public class vistaUsuarioCineController {
     private TableColumn<Funcion,String> salaFuncion;
 
     @FXML
+    private TableColumn<Funcion,String> funcionTicket;
+
+    @FXML
     private TableColumn<Funcion,String> fechaFuncion;
     @FXML
     private TableColumn<Funcion,String> finFuncion;
@@ -181,21 +184,21 @@ public class vistaUsuarioCineController {
 
     private ObservableList<Ticket> getTickets() {
 
-        ObservableList<Ticket> tickets = FXCollections.observableArrayList();
+        ObservableList<Ticket> ticketsLista = FXCollections.observableArrayList();
 
         List<Ticket> lista = ticketService.findAll();
 
         for (int i = 0; i < lista.size(); i++) {
             Ticket ticket = lista.get(i);
 
-
-
-            if((funcionService.findById(ticket.getFuncionId())).getCineId().equals(this.cine.getId())) {
-                tickets.add(lista.get(i));
+            if(funcionService.findById(ticket.getFuncionId()).getCineId().equals(this.cine.getId())) {
+                lista.get(i).setMovie(movieService.findById(funcionService.findById(lista.get(i).getFuncionId()).getMovieId()).getName());
+                lista.get(i).setSala(salaService.findById(funcionService.findById(lista.get(i).getFuncionId()).getSalaId()).getName());
+                ticketsLista.add(lista.get(i));
             }
         }
 
-        return tickets;
+        return ticketsLista;
     }
 
 
@@ -234,13 +237,12 @@ public class vistaUsuarioCineController {
 
     }
     public void inicializarTickets(){
-        peliculaTicket.setCellValueFactory(new PropertyValueFactory<>("name"));
-        salaTicket.setCellValueFactory(new PropertyValueFactory<>("salaId"));
-        clienteTicket.setCellValueFactory(new PropertyValueFactory<>("clienteName"));
-        horarioTicket.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
-        FilaTicket.setCellValueFactory(new PropertyValueFactory<>("asientosFila"));
-        ColumnaTicket.setCellValueFactory(new PropertyValueFactory<>("asientoCol"));
-        tablaTickets.setItems(getTickets());
+        clienteTicket.setCellValueFactory(new PropertyValueFactory<>("clienteId"));
+        peliculaTicket.setCellValueFactory(new PropertyValueFactory<>("movie"));
+        salaTicket.setCellValueFactory(new PropertyValueFactory<>("sala"));
+        funcionTicket.setCellValueFactory(new PropertyValueFactory<>("funcionId"));
+
+        tablaTickets.setItems((ObservableList<Ticket>) getTickets());
 
     }
 

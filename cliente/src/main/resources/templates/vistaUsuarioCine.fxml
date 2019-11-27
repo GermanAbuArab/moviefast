@@ -22,7 +22,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.client.controllers.vistaUsuarioCineController">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="um.edu.tic1.client.controllers.vistaUsuarioCineController">
    <center>
       <VBox prefHeight="400.0" prefWidth="640.0">
         <children>
@@ -78,12 +78,10 @@
                            <content>
                               <TableView fx:id="tablaTickets" editable="true" prefHeight="388.0" prefWidth="423.0">
                                  <columns>
+                                    <TableColumn fx:id="clienteTicket" prefWidth="75.0" text="Cliente" />
                                     <TableColumn fx:id="peliculaTicket" onEditCommit="#editNombreCommit" prefWidth="75.0" text="Pelicula" />
                                     <TableColumn fx:id="salaTicket" prefWidth="75.0" text="Sala" />
-                                    <TableColumn fx:id="clienteTicket" prefWidth="75.0" text="Cliente" />
-                                    <TableColumn fx:id="horarioTicket" onEditCommit="#editNombreCommit" prefWidth="75.0" text="Horario" />
-                                    <TableColumn fx:id="ColumnaTicket" onEditCommit="#editNombreCommit" prefWidth="75.0" text="Columna" />
-                                    <TableColumn fx:id="FilaTicket" onEditCommit="#editNombreCommit" prefWidth="75.0" text="Fila" />
+                                    <TableColumn fx:id="funcionTicket" onEditCommit="#editNombreCommit" prefWidth="75.0" text="Funcion Id" />
                                  </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
