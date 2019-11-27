@@ -52,5 +52,10 @@ public class FuncionService {
     }
 
 
-
+    public void update(Funcion funcionAux) {
+        RestTemplate restTemplate= new RestTemplate();
+        HttpEntity<FuncionDTO> body = new HttpEntity<>(funcionAux.toDTO());
+        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8081/funcion/updateFuncion", HttpMethod.POST, body, String.class);
+        System.out.println("RestTemplate response : " + response.getBody());
+    }
 }

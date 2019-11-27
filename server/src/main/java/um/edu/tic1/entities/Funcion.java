@@ -121,6 +121,11 @@ public class Funcion {
             }
         }
     }
+
+    public void setButacas(boolean[][] butacas) {
+        this.butacas = butacas;
+    }
+
     public void reservaButaca(int x, int y){
                 butacas[x][y]= false;
 

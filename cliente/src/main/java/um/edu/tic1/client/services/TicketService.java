@@ -20,7 +20,7 @@ public class TicketService {
         HttpEntity<TicketDTO> body = new HttpEntity<>(
                 ticket.toDTO());
         ResponseEntity<String> response =
-                restTemplate.exchange("http://localhost:8081/saveTicket", HttpMethod.POST, body, String.class);
+                restTemplate.exchange("http://localhost:8081/ticket/saveTicket", HttpMethod.POST, body, String.class);
         System.out.println("RestTemplate response : " + response.getBody());
     }
 

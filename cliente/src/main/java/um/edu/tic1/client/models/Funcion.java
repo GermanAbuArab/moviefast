@@ -44,7 +44,7 @@ public class Funcion {
 
     public FuncionDTO toDTO() {
         FuncionDTO funcionDTO = new FuncionDTO();
-        //funcionDTO.setId(this.id);
+        if (this.id != null){funcionDTO.setId(this.id);}
         funcionDTO.setHora(this.hora);
         funcionDTO.setName(this.name);
         funcionDTO.setDimension(this.dimension);

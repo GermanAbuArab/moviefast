@@ -54,4 +54,12 @@ public class  FuncionService {
         fr.deleteById(id);
     }
 
+    @PostMapping("/updateFuncion")
+    public void update(@RequestBody FuncionDTO funcion) {
+            Funcion base=fr.findById(funcion.getId()).get();
+            base.setButacas(funcion.getButacas());
+            fr.save(base);
+    }
+
+
 }

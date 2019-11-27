@@ -275,28 +275,29 @@ public class selectorButacasController {
     @FXML
     private void comprar(ActionEvent event) throws IOException{
         ClienteFinal clienteFinal=  vfc.getClienteFinal();
+        ticket = new Ticket();
         for (int x= 0;x<salaFuncion.getX();x++){
             for (int y= 0;y<salaFuncion.getY();y++){
                 if (getNodeByRowColumnIndex(x,y,gridSeats).getStyle().equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;")){
                     getNodeByRowColumnIndex(x,y,gridSeats).setStyle("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;");
                     funcionAux.reservaButaca(y,x);
-                    funcionService.save(funcionAux);
                     System.out.println(funcionAux.getId() + funcionAux.getHoraInicio() + salaService.findById(funcionAux.getSalaId()) );
                     ShowButacas();
-                    ticket = new Ticket();
-                    ticket.addAsiento(y,x);
+                    ticket.addAsiento(x,y);
                     ticket.setAsientoCol(x);
                     ticket.setAsientosFila(y);
                     ticket.setFuncionId(funcionAux.getId());
                     ticket.setClienteId(clienteFinal.getUserName());
-                    ticketService.save(ticket);
-                    AlertBox.display("Compra Exitosa","Compraste el asiento : "  + ticket.imprimirAsientos()+ " \n Fecha : " + funcionAux.getHoraInicio() + " \n Pelicula : " +movieService.findById(funcionAux.getMovieId())+ " \n Sala : " + salaService.findById(funcionAux.getSalaId())+ " \n Cliente :" + clienteFinal.getName());
 
 
                 }
 
             }
         }
+        funcionService.update(funcionAux); // se esta creando una nueva funcion en la base no se esta updateando
+        ticketService.save(ticket);
+        AlertBox.display("Compra Exitosa","Compraste el asiento : "  + ticket.imprimirAsientos()+ " \n Fecha : " + funcionAux.getHoraInicio() + " \n Pelicula : " +movieService.findById(funcionAux.getMovieId())+ " \n Sala : " + salaService.findById(funcionAux.getSalaId())+ " \n Cliente :" + clienteFinal.getName());
+
     }
     public Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {
         Node result = null;

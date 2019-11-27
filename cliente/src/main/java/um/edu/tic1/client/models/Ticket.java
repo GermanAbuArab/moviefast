@@ -37,7 +37,7 @@ public class Ticket {
     public TicketDTO toDTO() {
         TicketDTO ticketDTO = new TicketDTO();
         ticketDTO.setClienteId(this.getClienteId());
-        ticketDTO.setId(this.getId());
+        if (this.id != null) ticketDTO.setId(this.getId());
         ticketDTO.setFuncionId(this.getFuncionId());
         return ticketDTO;
 
