@@ -43,6 +43,11 @@ public class vistaCinesController {
     private TableView<Ticket> tablaTickets;
 
     @FXML
+    private TableColumn<Funcion,String> fechaFuncion;
+    @FXML
+    private TableColumn<Funcion,String> finFuncion;
+
+    @FXML
     private TableColumn<Ticket,String> peliculaTicket;
     @FXML
     private TableColumn<Ticket,String> salaTicket;
@@ -126,6 +131,8 @@ public class vistaCinesController {
         salaFuncion.setCellValueFactory(new PropertyValueFactory<>("sala"));
         peliculaFuncion.setCellValueFactory(new PropertyValueFactory<>("movie"));
         dimensionFuncion.setCellValueFactory(new PropertyValueFactory<>("dimension"));
+        fechaFuncion.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
+        finFuncion.setCellValueFactory(new PropertyValueFactory<>("duracion"));
 
         tablaFunciones.setItems((ObservableList<Funcion>) getFunciones());
 
