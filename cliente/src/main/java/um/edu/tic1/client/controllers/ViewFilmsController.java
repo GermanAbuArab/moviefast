@@ -107,7 +107,7 @@ public class ViewFilmsController {
 
     public void setUser(ClienteFinal clienteFinal) {
         this.clienteFinal = clienteFinal;
-        welcome.setText("Bienvenido " + clienteFinal.getName() + ",");
+       welcome.setText("Bienvenido " + clienteFinal.getName() + ",");
     }
     public ClienteFinal getClienteFinal(){
         return clienteFinal;
