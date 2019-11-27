@@ -63,13 +63,14 @@
                         </Tab>
                         <Tab closable="false" text="Tickets">
                            <content>
-                              <TableView fx:id="tabla1" editable="true" prefHeight="388.0" prefWidth="423.0">
+                              <TableView fx:id="tablaTickets" editable="true" prefHeight="388.0" prefWidth="423.0">
                                  <columns>
-                                    <TableColumn onEditCommit="#editNombreCommit" prefWidth="75.0" text="Pelicula" />
-                                    <TableColumn prefWidth="75.0" text="Sala" />
-                                    <TableColumn prefWidth="75.0" text="Horario" />
-                                    <TableColumn prefWidth="75.0" text="Cliente" />
-                                    <TableColumn prefWidth="75.0" text="Asiento" />
+                                    <TableColumn fx:id="peliculaTicket" onEditCommit="#editNombreCommit" prefWidth="75.0" text="Pelicula" />
+                                    <TableColumn fx:id="salaTicket" prefWidth="75.0" text="Sala" />
+                                    <TableColumn fx:id="horarioTicket" prefWidth="75.0" text="Horario" />
+                                    <TableColumn fx:id="clienteTicket" prefWidth="75.0" text="Cliente" />
+                                    <TableColumn fx:id="FilaTicket" prefWidth="75.0" text="Fila" />
+                                    <TableColumn fx:id="ColumnaTicket" prefWidth="75.0" text="Columna" />
                                  </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
