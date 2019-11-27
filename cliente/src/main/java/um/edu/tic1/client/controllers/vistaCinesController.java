@@ -122,7 +122,7 @@ public class vistaCinesController {
 
         inicializarSalas();
         inicializarFunciones();
-
+        inicializarTickets();
     }
 
     public void inicializarFunciones(){
@@ -136,21 +136,26 @@ public class vistaCinesController {
 
         tablaFunciones.setItems((ObservableList<Funcion>) getFunciones());
 
-        if(!getTickets().isEmpty()) {
-            peliculaTicket.setCellValueFactory(new PropertyValueFactory<>("name"));
-            salaTicket.setCellValueFactory(new PropertyValueFactory<>("sala"));
-            clienteTicket.setCellValueFactory(new PropertyValueFactory<>("clienteName"));
-            horarioTicket.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
-            FilaTicket.setCellValueFactory(new PropertyValueFactory<>("asientosFila"));
-            ColumnaTicket.setCellValueFactory(new PropertyValueFactory<>("asientoCol"));
-            tablaTickets.setItems(getTickets());
+        ObservableList<Ticket> listaObsTickets = getTickets();
+
+        if(listaObsTickets.size()!=0) {
+
 
     }
+    }
+
+    private void inicializarTickets(){
+
+
+
+        clienteTicket.setCellValueFactory(new PropertyValueFactory<>("clienteId"));
+        tablaTickets.setItems((ObservableList<Ticket>) getTickets());
+
     }
 
     private ObservableList<Ticket> getTickets() {
 
-        ObservableList<Ticket> tickets = FXCollections.observableArrayList();
+        ObservableList<Ticket> ticketsLista = FXCollections.observableArrayList();
 
         List<Ticket> lista = ticketService.findAll();
 
@@ -158,11 +163,13 @@ public class vistaCinesController {
             Ticket ticket = lista.get(i);
 
             if(funcionService.findById(ticket.getFuncionId()).getCineId().equals(this.cine.getId())) {
-                tickets.add(lista.get(i));
+                System.out.println("ENTRO ACA EN ESTO 1010101010");
+                System.out.println(lista.get(i).getClienteId());
+                ticketsLista.add(lista.get(i));
             }
         }
 
-        return tickets;
+        return ticketsLista;
     }
 
 

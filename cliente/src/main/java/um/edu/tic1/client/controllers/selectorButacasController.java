@@ -286,14 +286,16 @@ public class selectorButacasController {
                     ticket.addAsiento(y,x);
                     ticket.setAsientoCol(x);
                     ticket.setAsientosFila(y);
-                    ticket.setFuncionId(funcionAux.getId());
-                    ticket.setClienteId(clienteFinal.getUserName());
+                    //ticket.setFuncionId(funcionAux.getId());
+                    //ticket.setClienteId(clienteFinal.getUserName());
 
 
                 }
 
             }
         }
+        ticket.setFuncionId(funcionAux.getId());
+        ticket.setClienteId(clienteFinal.getUserName());
         funcionService.update(funcionAux); // se esta creando una nueva funcion en la base no se esta updateando
         ticketService.save(ticket);
         AlertBox.display("Compra Exitosa","Compraste el asiento : "  + ticket.imprimirAsientos()+ " \n Fecha : " + funcionAux.getHoraInicio() + " \n Pelicula : " +movieService.findById(funcionAux.getMovieId())+ " \n Sala : " + salaService.findById(funcionAux.getSalaId())+ " \n Cliente :" + clienteFinal.getName());

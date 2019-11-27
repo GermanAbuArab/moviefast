@@ -29,6 +29,9 @@ public class Ticket {
     //private Date fecha; es necesario? se puede sacar de funcion
 
 
+    public Ticket() {
+    }
+
     public Long getId() {
         return id;
     }
