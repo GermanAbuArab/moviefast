@@ -10,7 +10,7 @@ public class Ticket {
     private Long id;
     private Long funcionId;
     private String clienteId;
-    private List<Integer> asientos= new ArrayList<>(150);
+    private ArrayList<Integer> asientos= new ArrayList<>(150);
     private Integer asientoCol,asientosFila;
 
     private String movie;
