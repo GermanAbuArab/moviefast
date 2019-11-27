@@ -16,6 +16,9 @@ public class Funcion {
     private boolean[][] butacas;
     private Long cineId;
     private Movie movie;
+    private Sala sala;
+
+
 
     private int duracion;
 
@@ -175,5 +178,22 @@ public class Funcion {
 
     public void reservaButaca(int y, int x) {
         butacas[x][y]=false;
+    }
+
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
     }
 }

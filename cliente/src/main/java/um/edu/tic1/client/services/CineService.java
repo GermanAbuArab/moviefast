@@ -42,6 +42,15 @@ public class CineService {
         return movies.stream().map(Cine::new).collect(Collectors.toList());
     }
 
+    public Cine findById(Long id){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<CineDTO> response = restTemplate.exchange(
+                "http://localhost:8080/movie/findByID/"+id, HttpMethod.GET, null, new ParameterizedTypeReference<CineDTO>(){});
+        CineDTO user = response.getBody();
+
+        return new Cine(user);
+    }
+
 
 
 }
