@@ -31,6 +31,7 @@ public class TicketService {
                 new ParameterizedTypeReference<List<TicketDTO>>(){});
         List<TicketDTO> salas = response.getBody();
         return salas.stream().map(Ticket::new).collect(Collectors.toList());
+
     }
 
 }
