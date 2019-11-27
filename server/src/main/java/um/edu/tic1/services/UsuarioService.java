@@ -32,12 +32,9 @@ public class UsuarioService {
     public void saveUsuario(@RequestBody UsuarioDTO usuario) {
         ur.save(new ClienteFinal(usuario));
     }
-    @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable("id") Long id){
-               ur.deleteById(id);
-    }
 
-    @GetMapping
+
+    @GetMapping("/findAll")
     public List<Usuario> findAll() {
         return ur.findAll();
     }
@@ -45,12 +42,19 @@ public class UsuarioService {
     @GetMapping("/Final/{id}" )
     public UsuarioDTO findByUserNameFinal(@PathVariable("id") String id){
         ClienteFinal user =(ClienteFinal) ur.findByUserName(id);
-        return user.toDTO();
+        if(user != null){
+        UsuarioDTO dev= user.toDTO();
+        dev.setTipo("FINAL");
+        return dev;}
+        else
+        {return null;
+
+        }
     }
 
     @GetMapping("/{id}" )
-    public UsuarioDTO findByUserName(@PathVariable("id") String id){
-        ClienteFinal user =(ClienteFinal) ur.findByUserName(id);
+    public UsuarioDTO findByUserName(@PathVariable("id") String user1){
+        ClienteFinal user =(ClienteFinal) ur.findByUserName(user1);
         return user.toDTO();
     }
 

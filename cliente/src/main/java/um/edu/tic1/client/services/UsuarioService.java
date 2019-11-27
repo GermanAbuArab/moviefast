@@ -19,7 +19,7 @@ public class UsuarioService {
     public UsuarioDTO findByUserName(String user) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<UsuarioDTO> response = restTemplate.exchange(
-                "http://localhost:8080/usuario/" + user,
+                "http://localhost:8080/usuario/Final/" + user,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<UsuarioDTO>() {
@@ -27,6 +27,15 @@ public class UsuarioService {
 
         return response.getBody();
 
+    }
+
+    public ClienteFinal findByUserNameFinal(String user) {
+        UsuarioDTO dto= findByUserName(user);
+        if (dto != null) {
+            return new ClienteFinal(dto);
+        } else {
+            return null;
+        }
     }
 
 

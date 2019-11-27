@@ -27,7 +27,7 @@ public class  FuncionService {
     @Autowired
     private SalasRepository sr;
 
-    @PostMapping("/save")
+    @PostMapping("/saveFuncion")
     public void save(@RequestBody FuncionDTO funcion) {
         Funcion dev = new Funcion(funcion);
         dev.setMovie(mr.findById(funcion.getCineId()).get());

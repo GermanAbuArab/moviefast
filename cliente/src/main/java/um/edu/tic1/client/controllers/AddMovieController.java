@@ -77,6 +77,7 @@ public class AddMovieController {
         movie.setDescription(descripcion1);
         movie.setImagen(movieImage);
 
+
         ms.save(movie);
         nombrePelicula.clear();
         descripcion.clear();

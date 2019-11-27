@@ -5,7 +5,7 @@ import um.edu.tic1.commons.DTO.FuncionDTO;
 
 public class Funcion {
     private Long id;
-    private String name;
+    private String name = "nombreGenerico";
     private Long movieId;
     private String dimension;
     private String horaInicio;
@@ -39,7 +39,7 @@ public class Funcion {
 
     public FuncionDTO toDTO() {
         FuncionDTO funcionDTO = new FuncionDTO();
-        funcionDTO.setId(this.id);
+        //funcionDTO.setId(this.id);
         funcionDTO.setHora(this.hora);
         funcionDTO.setName(this.name);
         funcionDTO.setDimension(this.dimension);
@@ -137,6 +137,13 @@ public class Funcion {
 
     public void setButacas(boolean[][] butacas) {
         this.butacas = butacas;
+    }
+
+    public void setButacasConSala(Sala sala) {
+        int x = sala.getX();
+        int y = sala.getY();
+        boolean[][] aux = new boolean[x][y];
+        this.butacas = aux;
     }
 
     public int getDuracion() {

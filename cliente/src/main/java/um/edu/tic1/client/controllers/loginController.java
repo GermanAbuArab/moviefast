@@ -21,7 +21,6 @@ import um.edu.tic1.client.services.CineService;
 import um.edu.tic1.client.services.UsuarioService;
 import um.edu.tic1.commons.DTO.UsuarioDTO;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -110,24 +109,26 @@ public class loginController implements Initializable {
             window.setScene(inicioScene);
             window.show();
 
-        } else if (user.equals("root") || user.toUpperCase().equals("ADMIN")) {
-
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
-            Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/mostrar.fxml"));
-            Scene inicioScene = new Scene(inicio, 600, 500);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(inicioScene);
-            window.show();
-            ClienteFinal clienteFinal = new ClienteFinal();
-            clienteFinal.setName("ADMIN");
-            vfc.setUser(clienteFinal);
-
+        } else if (user.toUpperCase().equals("ROOT") || user.toUpperCase().equals("ADMIN")) {
+            if (!contra.equals("tic1")) {
+                AlertBox.display("No se pudo iniciar secion", "Contraseña incorrecta");
+            } else {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setControllerFactory(ClientApplication.getContext()::getBean);
+                Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/mostrar.fxml"));
+                Scene inicioScene = new Scene(inicio, 600, 500);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(inicioScene);
+                window.show();
+                ClienteFinal clienteFinal = new ClienteFinal();
+                clienteFinal.setName("ADMIN");
+                vfc.setUser(clienteFinal);
+            }
 
 
         } else {
-            UsuarioDTO clienteDeBase1 = us.findByUserName(user);
-            ClienteFinal clienteDeBase = new ClienteFinal(clienteDeBase1);
+            ClienteFinal clienteDeBase = us.findByUserNameFinal(user);
+
             if (clienteDeBase != null) {
                 if (clienteDeBase.getPassword().equals(contra)) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
@@ -139,8 +140,9 @@ public class loginController implements Initializable {
                     window.setScene(inicioScene);
                     window.show();
                     vfc.setUser(clienteDeBase);
+                } else {
+                    AlertBox.display("No se pudo iniciar secion", "Contraseña incorrecta");
                 }
-                else {AlertBox.display("No se pudo iniciar secion","Contraseña incorrecta");}
             } else {
                 AlertBox.display("No se pudo iniciar secion", "Usuario no encontrado");
             }
