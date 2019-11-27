@@ -45,7 +45,7 @@ public class UsuarioService {
         HttpEntity<UsuarioDTO> body = new HttpEntity<>(
                 usuario.toDTO());
         ResponseEntity<String> response =
-                restTemplate.exchange("http://localhost:8080/movie/saveFinal", HttpMethod.POST, body, String.class);
+                restTemplate.exchange("http://localhost:8080/usuario/saveFinal", HttpMethod.POST, body, String.class);
         System.out.println("RestTemplate response : " + response.getBody());
 
     }
