@@ -515,7 +515,9 @@ public class vistaUsuarioCineController {
         funcion.setHora(horainicio);
         System.out.println("arranca a las " + horainicio);
         funcion.setHoraFin(fechatotalFin.format(formatter));
-        
+        funcion.setCineId(this.cine.getId());
+        funcion.setButacasConSala(sala);
+
         funcionService.save(funcion);
 
         this.agregado = true;
