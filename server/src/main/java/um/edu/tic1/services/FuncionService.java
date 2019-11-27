@@ -30,10 +30,10 @@ public class  FuncionService {
     @PostMapping("/saveFuncion")
     public void save(@RequestBody FuncionDTO funcion) {
         Funcion dev = new Funcion(funcion);
-        System.out.println("ID cine: "+funcion.getCineId()); //con esto podemos ver que los ID estan bien
-        System.out.println("ID sala: "+funcion.getSalaId());
+        //System.out.println("ID cine: "+funcion.getCineId()); //con esto podemos ver que los ID estan bien
+        //System.out.println("ID sala: "+funcion.getSalaId());
         dev.setSala(sr.findById(funcion.getSalaId()).get());
-        //dev.setMovie(mr.findById(funcion.getCineId()).get());
+        dev.setMovie(mr.findById(funcion.getMovieId()).get());
 
         fr.save(dev);
     }
