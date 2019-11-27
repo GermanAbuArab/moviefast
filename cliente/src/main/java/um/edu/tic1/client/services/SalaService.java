@@ -26,7 +26,7 @@ public class SalaService {
         HttpEntity<SalaDTO> body = new HttpEntity<>(
                 sala.toDTO());
         ResponseEntity<String> response =
-                restTemplate.exchange("http://localhost:8081/sala/saveMovie", HttpMethod.POST, body, String.class);
+                restTemplate.exchange("http://localhost:8081/sala/saveSala", HttpMethod.POST, body, String.class);
         System.out.println("RestTemplate response : " + response.getBody());
     }
 
