@@ -38,14 +38,14 @@ public class FuncionService {
         RestTemplate restTemplate =
                 new RestTemplate();
         ResponseEntity<String> response =
-                restTemplate.exchange("http://localhost:8081/funcion/delete"+id, HttpMethod.DELETE, null, String.class);
+                restTemplate.exchange("http://localhost:8081/funcion/delete/"+id, HttpMethod.DELETE, null, String.class);
         System.out.println("RestTemplate response : " + response.getBody());
     }
 
     public Funcion findById(Long id){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<FuncionDTO> response = restTemplate.exchange(
-                "http://localhost:8081/funcion/findById"+id, HttpMethod.GET, null, new ParameterizedTypeReference<FuncionDTO>(){});
+                "http://localhost:8081/funcion/findById/"+id, HttpMethod.GET, null, new ParameterizedTypeReference<FuncionDTO>(){});
         FuncionDTO func = response.getBody();
 
         return new Funcion(func);
