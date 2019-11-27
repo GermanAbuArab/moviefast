@@ -39,7 +39,7 @@ import java.util.List;
 public class selectorButacasController {
 
 
-
+    private Ticket ticket;
     @FXML
     private GridPane gridSeats;
     @FXML
@@ -53,6 +53,7 @@ public class selectorButacasController {
 
     @Autowired
     private MovieService movieService;
+
 
     @Autowired
     private FuncionService funcionService;
@@ -161,7 +162,7 @@ public class selectorButacasController {
         List<Cine> lista = null;
         lista = cineService.findAll();
 
-        for (int i = 0; i < lista.size(); i++) {
+        for (int i = 0; i < lista.size(); i++) { //TODO puede haber error aca con actualizar de tic
             cines.add(lista.get(i).getName());
         }
             return cines;
@@ -273,31 +274,29 @@ public class selectorButacasController {
     }
     @FXML
     private void comprar(ActionEvent event) throws IOException{
-
-        Ticket ticket = new Ticket();
-        ticket.setFuncionId(funcionAux.getId());
+        ClienteFinal clienteFinal=  vfc.getClienteFinal();
         for (int x= 0;x<salaFuncion.getX();x++){
             for (int y= 0;y<salaFuncion.getY();y++){
                 if (getNodeByRowColumnIndex(x,y,gridSeats).getStyle().equals("-fx-fill:red; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;")){
                     getNodeByRowColumnIndex(x,y,gridSeats).setStyle("-fx-fill:#c9b3b3; -fx-font-family: 'Material Icons'; -fx-font-size: 30.0;");
                     funcionAux.reservaButaca(y,x);
                     funcionService.save(funcionAux);
-                    System.out.println(funcionAux.getId() + funcionAux.getHoraInicio() + salaService.findById(funcionAux.getSalaId()) );
+                    System.out.println(funcionAux.getId() + funcionAux.getHoraInicio() + funcionAux.getSala() );
                     ShowButacas();
+                    ticket = new Ticket();
                     ticket.addAsiento(y,x);
+                    ticket.setAsientoCol(x);
+                    ticket.setAsientosFila(y);
+                    ticket.setFuncion(funcionAux);
+                    ticket.setCliente(clienteFinal);
+                    ticketService.save(ticket);
+                    AlertBox.display("Compra Exitosa","Compraste el asiento : "  + ticket.imprimirAsientos()+ " \n Fecha : " + funcionAux.getHoraInicio() + " \n Pelicula : " +funcionAux.getMovie()+ " \n Sala : " + funcionAux.getSala()+ " \n Cliente :" + clienteFinal.getName());
 
 
                 }
 
             }
-
         }
-        ClienteFinal clienteFinal=  vfc.getClienteFinal();
-        AlertBox.display("Compra Exitosa","Compraste el asiento : "  + ticket.imprimirAsientos()+ " \n Fecha : " + funcionAux.getHoraInicio() + " \n Pelicula : " +movieService.findById(funcionAux.getMovieId()) + " \n Sala : " + salaService.findById(funcionAux.getSalaId())+ " \n Cliente :" + clienteFinal.getName());
-        ticketService.save(ticket);
-
-
-
     }
     public Node getNodeByRowColumnIndex (final int row, final int column, GridPane gridPane) {
         Node result = null;
