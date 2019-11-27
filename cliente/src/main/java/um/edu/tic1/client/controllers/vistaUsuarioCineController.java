@@ -490,6 +490,10 @@ public class vistaUsuarioCineController {
 
         Funcion funcion = new Funcion();
 
+        if(duracionMovie.getText().equals("")){
+            AlertBox.display("Alerta","No ha introducido duracion");
+        }
+
         Sala sala = (Sala) comboSala.getSelectionModel().getSelectedItem();
         Movie peli = (Movie) comboPeli.getSelectionModel().getSelectedItem();
         //String nombre = nombreAgregado.getText();
@@ -503,10 +507,6 @@ public class vistaUsuarioCineController {
         long id = 1;
 
 
-
-
-        funcion.setId(id);
-        funcion.setSalaId(sala.getId());
         funcion.setMovieId(peli.getId());
         funcion.setDuracion(Integer.parseInt(duracionMovie.getText()));
         //funcion.setName(nombre);
@@ -516,6 +516,7 @@ public class vistaUsuarioCineController {
         System.out.println("arranca a las " + horainicio);
         funcion.setHoraFin(fechatotalFin.format(formatter));
         funcion.setCineId(this.cine.getId());
+        funcion.setSalaId(sala.getId());
         funcion.setButacasConSala(sala);
 
         funcionService.save(funcion);
