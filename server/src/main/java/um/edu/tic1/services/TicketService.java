@@ -9,6 +9,8 @@ import um.edu.tic1.repositories.TicketRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RestController
+@RequestMapping("/ticket")
 public class TicketService {
 
     @Autowired

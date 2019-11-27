@@ -188,7 +188,9 @@ public class vistaUsuarioCineController {
         for (int i = 0; i < lista.size(); i++) {
             Ticket ticket = lista.get(i);
 
-            if(ticket.getFuncion().getSala().getCine().equals(this.cine)) {
+
+
+            if((funcionService.findById(ticket.getFuncionId())).getCineId().equals(this.cine.getId())) {
                 tickets.add(lista.get(i));
             }
         }
