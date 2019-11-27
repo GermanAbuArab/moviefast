@@ -107,9 +107,10 @@ public class ViewFilmsController {
 
     public void setUser(ClienteFinal clienteFinal) {
         this.clienteFinal = clienteFinal;
-       welcome.setText("Bienvenido " + clienteFinal.getName() + ",");
+        welcome.setText("Bienvenido " + clienteFinal.getName() + ",");
     }
-    public ClienteFinal getClienteFinal(){
+
+    public ClienteFinal getClienteFinal() {
         return clienteFinal;
     }
 
@@ -254,18 +255,17 @@ public class ViewFilmsController {
         List<Funcion> lista = funcionService.findAll();
 
         for (int i = 0; i < lista.size(); i++) {
-            Movie movie1= ms.findById(lista.get(i).getMovieId());
-            if (movie.isEmpty())
-            {
+            boolean esta = false;
+            Movie movie1 = ms.findById(lista.get(i).getMovieId());
+            if (movie.isEmpty()) {
                 movie.add(movie1);
             }
-            for (Movie var : movie)
-            {
-            if (var.getId()!=movie1.getId())
-            {
-                movie.add(movie1);
+            for (Movie var : movie) {
+                if (var.getId() == movie1.getId()) {
+                    esta=true;
+                }
             }
-            }
+            if (!esta){movie.add(movie1);}
         }
 
         return movie;
@@ -281,8 +281,7 @@ public class ViewFilmsController {
             for (Movie m : movies) {
                 if (m.getName().toLowerCase().contains(buscar.getText().toLowerCase())) {
                     moviesFiltradas.add(m);
-                }
-                else if (m.getGenero().toLowerCase().contains(buscar.getText().toLowerCase())){
+                } else if (m.getGenero().toLowerCase().contains(buscar.getText().toLowerCase())) {
                     moviesFiltradas.add(m);
                 }
 
