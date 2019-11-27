@@ -12,6 +12,8 @@ public class Ticket {
     private String clienteId;
     private List<Integer> asientos= new ArrayList<>(150);
     private Integer asientoCol,asientosFila;
+    private String movie;
+    private String sala;
 
     public Ticket() {
     }
@@ -85,6 +87,19 @@ public class Ticket {
         this.asientoCol = asientoCol;
     }
 
+    public String getMovie() {
+        return movie;
+    }
 
+    public void setMovie(String movie) {
+        this.movie = movie;
+    }
 
+    public String getSala() {
+        return sala;
+    }
+
+    public void setSala(String sala) {
+        this.sala = sala;
+    }
 }

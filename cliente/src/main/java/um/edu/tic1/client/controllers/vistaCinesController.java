@@ -53,6 +53,9 @@ public class vistaCinesController {
     private TableColumn<Ticket,String> salaTicket;
     @FXML
     private TableColumn<Ticket,String> clienteTicket;
+
+    @FXML
+    private TableColumn<Ticket,Long> funcionTicket;
     @FXML
     private TableColumn<Ticket,String> FilaTicket;
     @FXML
@@ -146,9 +149,11 @@ public class vistaCinesController {
 
     private void inicializarTickets(){
 
-
-
         clienteTicket.setCellValueFactory(new PropertyValueFactory<>("clienteId"));
+        peliculaTicket.setCellValueFactory(new PropertyValueFactory<>("movie"));
+        salaTicket.setCellValueFactory(new PropertyValueFactory<>("sala"));
+        funcionTicket.setCellValueFactory(new PropertyValueFactory<>("funcionId"));
+
         tablaTickets.setItems((ObservableList<Ticket>) getTickets());
 
     }
@@ -163,8 +168,8 @@ public class vistaCinesController {
             Ticket ticket = lista.get(i);
 
             if(funcionService.findById(ticket.getFuncionId()).getCineId().equals(this.cine.getId())) {
-                System.out.println("ENTRO ACA EN ESTO 1010101010");
-                System.out.println(lista.get(i).getClienteId());
+                lista.get(i).setMovie(movieService.findById(funcionService.findById(lista.get(i).getFuncionId()).getMovieId()).getName());
+                lista.get(i).setSala(salaService.findById(funcionService.findById(lista.get(i).getFuncionId()).getSalaId()).getName());
                 ticketsLista.add(lista.get(i));
             }
         }
