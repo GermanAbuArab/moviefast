@@ -278,8 +278,8 @@ public class vistaUsuarioCineController {
 
             if(funcion.getCineId().equals(this.cine.getId())) {
                 lista.get(i).setMovie(movieService.findById(lista.get(i).getMovieid()));
-                System.out.println("SalaID "+lista.get(i).getSalaId());//podemos ver que llega el salaID
-               // lista.get(i).setSala(salaService.findById(lista.get(i).getSalaId()));
+                //System.out.println("SalaID "+lista.get(i).getSalaId());//podemos ver que llega el salaID
+                lista.get(i).setSala(salaService.findById(lista.get(i).getSalaId()));
                 funciones.add(lista.get(i));
             }
         }
