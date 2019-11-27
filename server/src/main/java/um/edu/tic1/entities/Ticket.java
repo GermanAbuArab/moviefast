@@ -4,6 +4,8 @@ package um.edu.tic1.entities;
 import um.edu.tic1.commons.DTO.TicketDTO;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Entity
@@ -22,6 +24,8 @@ public class Ticket {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "funcion_id ")
     private Funcion funcion;
+
+    private ArrayList<Integer> asientos= new ArrayList<>(150);
 
     public Ticket(TicketDTO dto) {
         this.id=dto.getId();
@@ -61,10 +65,16 @@ public class Ticket {
         ticketDTO.setClienteId(this.getCliente().getUserName());
         ticketDTO.setId(this.getId());
         ticketDTO.setFuncionId(this.getFuncion().getId());
+        ticketDTO.setAsientos(this.asientos);
         return ticketDTO;
 
     }
 
+    public ArrayList<Integer> getAsientos() {
+        return asientos;
+    }
 
-
+    public void setAsientos(ArrayList<Integer> asientos) {
+        this.asientos = asientos;
+    }
 }

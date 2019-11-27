@@ -12,6 +12,7 @@ public class Ticket {
     private String clienteId;
     private List<Integer> asientos= new ArrayList<>(150);
     private Integer asientoCol,asientosFila;
+
     private String movie;
     private String sala;
 
@@ -39,6 +40,7 @@ public class Ticket {
     public TicketDTO toDTO() {
         TicketDTO ticketDTO = new TicketDTO();
         ticketDTO.setClienteId(this.getClienteId());
+        ticketDTO.setAsientos(this.asientos);
         if (this.id != null) ticketDTO.setId(this.getId());
         ticketDTO.setFuncionId(this.getFuncionId());
         return ticketDTO;
