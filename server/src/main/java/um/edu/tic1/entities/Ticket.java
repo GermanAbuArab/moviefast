@@ -4,6 +4,7 @@ package um.edu.tic1.entities;
 import um.edu.tic1.commons.DTO.TicketDTO;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 @Table(name="tickets")
@@ -21,6 +22,10 @@ public class Ticket {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "funcion_id ")
     private Funcion funcion;
+
+    public Ticket(TicketDTO dto) {
+        this.id=dto.getId();
+    }
     //private Date fecha; es necesario? se puede sacar de funcion
 
 
@@ -50,7 +55,7 @@ public class Ticket {
 
     public TicketDTO toDTO() {
         TicketDTO ticketDTO = new TicketDTO();
-        ticketDTO.setClienteId(this.getCliente().getName());
+        ticketDTO.setClienteId(this.getCliente().getUserName());
         ticketDTO.setId(this.getId());
         ticketDTO.setFuncionId(this.getFuncion().getId());
         return ticketDTO;
