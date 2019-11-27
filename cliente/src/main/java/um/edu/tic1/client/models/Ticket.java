@@ -37,6 +37,7 @@ public class Ticket {
         this.clienteId=dto.getClienteId();
         this.id=dto.getId();
         this.funcionId=dto.getFuncionId();
+        this.asientos=dto.getAsientos();
     }
 
     public TicketDTO toDTO() {

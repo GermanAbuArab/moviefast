@@ -29,6 +29,7 @@ public class Ticket {
 
     public Ticket(TicketDTO dto) {
         this.id=dto.getId();
+        this.asientos=dto.getAsientos();
     }
     //private Date fecha; es necesario? se puede sacar de funcion
 
