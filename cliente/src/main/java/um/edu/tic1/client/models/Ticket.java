@@ -11,11 +11,22 @@ public class Ticket {
     private Long funcionId;
     private String clienteId;
     private List<Integer> asientos= new ArrayList<>(150);
-
+    private Integer asientoCol,asientosFila;
 
     public Ticket() {
     }
 
+    public Integer getAsientoCol() {
+        return asientoCol;
+    }
+
+    public Integer getAsientosFila() {
+        return asientosFila;
+    }
+
+    public void setAsientosFila(Integer asientosFila) {
+        this.asientosFila = asientosFila;
+    }
 
     public Ticket(TicketDTO dto) {
         this.clienteId=dto.getClienteId();
@@ -69,4 +80,11 @@ public class Ticket {
         }
         return str;
     }
+
+    public void setAsientoCol(Integer asientoCol) {
+        this.asientoCol = asientoCol;
+    }
+
+
+
 }
