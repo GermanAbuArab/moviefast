@@ -40,6 +40,9 @@ public class UsuarioService {
 
 
     public void saveFinal(ClienteFinal usuario) {
+        System.out.println("Nombre: "+usuario.getName());
+        System.out.println("Pass: "+usuario.getPassword());
+        System.out.println("Username: "+usuario.getUserName());
         RestTemplate restTemplate =
                 new RestTemplate();
         HttpEntity<UsuarioDTO> body = new HttpEntity<>(

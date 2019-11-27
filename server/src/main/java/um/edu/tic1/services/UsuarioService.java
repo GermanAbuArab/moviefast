@@ -30,6 +30,10 @@ public class UsuarioService {
     }
     @PostMapping(path = "/saveFinal")
     public void saveUsuario(@RequestBody UsuarioDTO usuario) {
+        System.out.println("Nombre: "+usuario.getName());
+        System.out.println("Pass: "+usuario.getPassword());
+        System.out.println("Username: "+usuario.getUserName());
+        System.out.println("Tipo: "+usuario.getTipo());
         ur.save(new ClienteFinal(usuario));
     }
 

@@ -19,10 +19,7 @@ import um.edu.tic1.client.models.Cine;
 import um.edu.tic1.client.models.Funcion;
 import um.edu.tic1.client.models.Sala;
 import um.edu.tic1.client.models.Ticket;
-import um.edu.tic1.client.services.CineService;
-import um.edu.tic1.client.services.FuncionService;
-import um.edu.tic1.client.services.SalaService;
-import um.edu.tic1.client.services.TicketService;
+import um.edu.tic1.client.services.*;
 
 
 import java.io.IOException;
@@ -109,6 +106,9 @@ public class vistaCinesController {
     @Autowired
     private FuncionService funcionService;
 
+    @Autowired
+    private MovieService movieService;
+
     @FXML
     private TableColumn<Sala, Boolean> cuatroDCol;
 
@@ -128,6 +128,7 @@ public class vistaCinesController {
         dimensionFuncion.setCellValueFactory(new PropertyValueFactory<>("dimension"));
 
         tablaFunciones.setItems((ObservableList<Funcion>) getFunciones());
+
         if(!getTickets().isEmpty()) {
             peliculaTicket.setCellValueFactory(new PropertyValueFactory<>("name"));
             salaTicket.setCellValueFactory(new PropertyValueFactory<>("sala"));
@@ -189,7 +190,10 @@ public class vistaCinesController {
         for (int i = 0; i < lista.size(); i++) {
             Funcion funcion = lista.get(i);
 
-            if(funcion.getCineId().equals(this.cine)) {
+            if(funcion.getCineId().equals(this.cine.getId())) {
+                lista.get(i).setMovie(movieService.findById(lista.get(i).getMovieid()));
+                System.out.println("SalaID "+lista.get(i).getSalaId());//podemos ver que llega el salaID
+                lista.get(i).setSala(salaService.findById(lista.get(i).getSalaId()));
                 funciones.add(lista.get(i));
             }
         }
