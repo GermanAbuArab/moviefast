@@ -222,8 +222,8 @@ public class vistaUsuarioCineController {
     public void inicializarFunciones(){
 
         codigoFuncion.setCellValueFactory(new PropertyValueFactory<>("id"));
-        salaFuncion.setCellValueFactory(new PropertyValueFactory<>("sala"));
-        peliculaFuncion.setCellValueFactory(new PropertyValueFactory<>("movie"));
+        salaFuncion.setCellValueFactory(new PropertyValueFactory<>("salaId"));
+        peliculaFuncion.setCellValueFactory(new PropertyValueFactory<>("movieId"));
         dimensionFuncion.setCellValueFactory(new PropertyValueFactory<>("dimension"));
         fechaFuncion.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
         finFuncion.setCellValueFactory(new PropertyValueFactory<>("duracion"));
@@ -235,7 +235,7 @@ public class vistaUsuarioCineController {
     }
     public void inicializarTickets(){
         peliculaTicket.setCellValueFactory(new PropertyValueFactory<>("name"));
-        salaTicket.setCellValueFactory(new PropertyValueFactory<>("sala"));
+        salaTicket.setCellValueFactory(new PropertyValueFactory<>("salaId"));
         clienteTicket.setCellValueFactory(new PropertyValueFactory<>("clienteName"));
         horarioTicket.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
         FilaTicket.setCellValueFactory(new PropertyValueFactory<>("asientosFila"));

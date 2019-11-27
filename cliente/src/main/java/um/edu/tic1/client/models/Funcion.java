@@ -1,6 +1,7 @@
 package um.edu.tic1.client.models;
 
 
+import um.edu.tic1.client.services.MovieService;
 import um.edu.tic1.commons.DTO.FuncionDTO;
 
 public class Funcion {
@@ -14,6 +15,7 @@ public class Funcion {
     private Long salaId;
     private boolean[][] butacas;
     private Long cineId;
+    private Movie movie;
 
     private int duracion;
 
