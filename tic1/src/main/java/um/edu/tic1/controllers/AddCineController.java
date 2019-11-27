@@ -38,14 +38,8 @@ AddCineController {
 
     @FXML
     public void addCine() throws IOException {
-
         String nombre=nombreCine.getText();
-
-
-
-
         Cine cine = new Cine(nombre);
-
         try {
             long id = Long.parseLong(idIngresado.getText());
             //System.out.println("long id = " +id);
@@ -53,29 +47,19 @@ AddCineController {
         } catch (NumberFormatException nfe) {
             //System.out.println("NumberFormatException: " + nfe.getMessage());
         }
-
-
-
-
         cs.save(cine);
-
         nombreCine.clear();
         idIngresado.clear();
     }
 
     @FXML
     private void volver(ActionEvent event)throws IOException {  // vuelve a la scena
-
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Tic1Application.getContext()::getBean);
-
         Parent inicio = fxmlLoader.load(getClass().getResourceAsStream("/templates/tablaCines.fxml"));
         Scene inicioScene = new Scene(inicio,600,500);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
-
     }
-
-
 }

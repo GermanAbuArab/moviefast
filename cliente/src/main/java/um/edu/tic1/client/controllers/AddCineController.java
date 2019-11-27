@@ -16,7 +16,6 @@ import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.Cine;
 import um.edu.tic1.client.services.CineService;
 
-
 import java.io.IOException;
 
 @Component
@@ -37,7 +36,6 @@ public class AddCineController {
 
     @FXML
     public void addCine() throws IOException {
-
         String nombre=nombreCine.getText();
         Cine cine = new Cine(nombre);
         try {
@@ -63,8 +61,5 @@ public class AddCineController {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inicioScene);
         window.show();
-
     }
-
-
 }
