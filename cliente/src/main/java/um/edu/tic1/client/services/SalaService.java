@@ -26,7 +26,7 @@ public class SalaService {
         HttpEntity<SalaDTO> body = new HttpEntity<>(
                 sala.toDTO());
         ResponseEntity<String> response =
-                restTemplate.exchange("http://localhost:8080/sala/saveMovie", HttpMethod.POST, body, String.class);
+                restTemplate.exchange("http://localhost:8081/sala/saveSala", HttpMethod.POST, body, String.class);
         System.out.println("RestTemplate response : " + response.getBody());
     }
 
@@ -35,7 +35,7 @@ public class SalaService {
     public List<Sala> findAll(){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<SalaDTO>> response = restTemplate.exchange(
-                "http://localhost:8080/sala/findAll", HttpMethod.GET, null,
+                "http://localhost:8081/sala/findAll", HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<SalaDTO>>(){});
         List<SalaDTO> salas = response.getBody();
         return salas.stream().map(Sala::new).collect(Collectors.toList());
@@ -44,7 +44,7 @@ public class SalaService {
     public Sala findById(Long id){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<SalaDTO> response = restTemplate.exchange(
-                "http://localhost:8080/movie/findByID/"+id, HttpMethod.GET, null, new ParameterizedTypeReference<SalaDTO>(){});
+                "http://localhost:8081/sala/findById/"+id, HttpMethod.GET, null, new ParameterizedTypeReference<SalaDTO>(){});
         SalaDTO user = response.getBody();
 
         return new Sala(user);

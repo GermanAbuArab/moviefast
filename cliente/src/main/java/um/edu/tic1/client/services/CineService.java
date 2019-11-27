@@ -26,7 +26,7 @@ public class CineService {
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<CineDTO> body = new HttpEntity<>(
                 cine.toDTO());
-        ResponseEntity<String> response =  restTemplate.exchange("http://localhost:8080/cine/saveCine", HttpMethod.POST, body, String.class);
+        ResponseEntity<String> response =  restTemplate.exchange("http://localhost:8081/cine/saveCine", HttpMethod.POST, body, String.class);
 
         System.out.println("RestTemplate response : " + response.getBody());
     }
@@ -35,7 +35,7 @@ public class CineService {
     public List<Cine> findAll() {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<CineDTO>> response = restTemplate.exchange(
-                "http://localhost:8080/cine/findAll", HttpMethod.GET, null,
+                "http://localhost:8081/cine/findAll", HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<CineDTO>>() {
                 });
         List<CineDTO> movies = response.getBody();

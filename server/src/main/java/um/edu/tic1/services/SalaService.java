@@ -20,7 +20,7 @@ public class SalaService {
     @Autowired
     private CineRepository cr;
 
-    @PostMapping(path = "/saveMovie")//ACA HAY ALGO RARO
+    @PostMapping(path = "/saveSala")//ACA HAY ALGO RARO
     public void save(@RequestBody SalaDTO sala) {
         Sala aux = new Sala(sala);
         aux.setCine(cr.findById(sala.getCineId()).get());
