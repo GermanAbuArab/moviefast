@@ -37,7 +37,7 @@ public class UsuarioService {
                ur.deleteById(id);
     }
 
-    @GetMapping
+    @GetMapping("/findAll")
     public List<Usuario> findAll() {
         return ur.findAll();
     }
