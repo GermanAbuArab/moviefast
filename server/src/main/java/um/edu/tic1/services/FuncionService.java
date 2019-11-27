@@ -57,6 +57,7 @@ public class  FuncionService {
     @PostMapping("/updateFuncion")
     public void update(@RequestBody FuncionDTO funcion) {
             Funcion base=fr.findById(funcion.getId()).get();
+            System.out.println(funcion.getButacas().toString());
             base.setButacas(funcion.getButacas());
             fr.save(base);
     }

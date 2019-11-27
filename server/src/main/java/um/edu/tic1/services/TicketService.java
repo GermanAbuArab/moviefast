@@ -16,7 +16,7 @@ public class TicketService {
     @Autowired
     private TicketRepository tr;
 
-    @PostMapping("/save")
+    @PostMapping("/saveTicket")
     public void save(@RequestBody Ticket cine) {
         tr.save(cine);
     }
