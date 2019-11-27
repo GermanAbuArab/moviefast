@@ -222,8 +222,8 @@ public class vistaUsuarioCineController {
     public void inicializarFunciones(){
 
         codigoFuncion.setCellValueFactory(new PropertyValueFactory<>("id"));
-        salaFuncion.setCellValueFactory(new PropertyValueFactory<>("salaId"));
-        peliculaFuncion.setCellValueFactory(new PropertyValueFactory<>("movieId"));
+        salaFuncion.setCellValueFactory(new PropertyValueFactory<>("sala"));
+        peliculaFuncion.setCellValueFactory(new PropertyValueFactory<>("movie"));
         dimensionFuncion.setCellValueFactory(new PropertyValueFactory<>("dimension"));
         fechaFuncion.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
         finFuncion.setCellValueFactory(new PropertyValueFactory<>("duracion"));
@@ -277,6 +277,8 @@ public class vistaUsuarioCineController {
             Funcion funcion = lista.get(i);
 
             if(funcion.getCineId().equals(this.cine.getId())) {
+                lista.get(i).setMovie(movieService.findById(lista.get(i).getMovieid()));
+                lista.get(i).setSala(salaService.findById(lista.get(i).getSalaId()));
                 funciones.add(lista.get(i));
             }
         }
