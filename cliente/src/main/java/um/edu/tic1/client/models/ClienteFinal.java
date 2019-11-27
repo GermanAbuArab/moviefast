@@ -20,7 +20,9 @@ public class ClienteFinal {
     }
 
     public ClienteFinal(String userName, String nombre, String contra) {
-
+        this.name=nombre;
+        this.userName=userName;
+        this.password=contra;
     }
 
     public UsuarioDTO toDTO() {
