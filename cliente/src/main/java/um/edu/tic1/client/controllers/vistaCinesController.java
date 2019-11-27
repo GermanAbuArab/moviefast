@@ -18,9 +18,11 @@ import um.edu.tic1.client.ClientApplication;
 import um.edu.tic1.client.models.Cine;
 import um.edu.tic1.client.models.Funcion;
 import um.edu.tic1.client.models.Sala;
+import um.edu.tic1.client.models.Ticket;
 import um.edu.tic1.client.services.CineService;
 import um.edu.tic1.client.services.FuncionService;
 import um.edu.tic1.client.services.SalaService;
+import um.edu.tic1.client.services.TicketService;
 
 
 import java.io.IOException;
@@ -37,6 +39,25 @@ public class vistaCinesController {
 
     @Autowired
     private CineService cineService;
+    @Autowired
+    private TicketService ticketService;
+
+    @FXML
+    private TableView<Ticket> tablaTickets;
+
+    @FXML
+    private TableColumn<Ticket,String> peliculaTicket;
+    @FXML
+    private TableColumn<Ticket,String> salaTicket;
+    @FXML
+    private TableColumn<Ticket,String> clienteTicket;
+    @FXML
+    private TableColumn<Ticket,String> FilaTicket;
+    @FXML
+    private TableColumn<Ticket,String> ColumnaTicket;
+    @FXML
+    private TableColumn<Ticket,String> horarioTicket;
+
 
     @FXML
     private TableView<Sala> tabla;
@@ -107,7 +128,33 @@ public class vistaCinesController {
         dimensionFuncion.setCellValueFactory(new PropertyValueFactory<>("dimension"));
 
         tablaFunciones.setItems((ObservableList<Funcion>) getFunciones());
+        if(!getTickets().isEmpty()) {
+            peliculaTicket.setCellValueFactory(new PropertyValueFactory<>("name"));
+            salaTicket.setCellValueFactory(new PropertyValueFactory<>("sala"));
+            clienteTicket.setCellValueFactory(new PropertyValueFactory<>("clienteName"));
+            horarioTicket.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
+            FilaTicket.setCellValueFactory(new PropertyValueFactory<>("asientosFila"));
+            ColumnaTicket.setCellValueFactory(new PropertyValueFactory<>("asientoCol"));
+            tablaTickets.setItems(getTickets());
 
+    }
+    }
+
+    private ObservableList<Ticket> getTickets() {
+
+        ObservableList<Ticket> tickets = FXCollections.observableArrayList();
+
+        List<Ticket> lista = ticketService.findAll();
+
+        for (int i = 0; i < lista.size(); i++) {
+            Ticket ticket = lista.get(i);
+
+            if(funcionService.findById(ticket.getFuncionId()).getCineId().equals(this.cine.getId())) {
+                tickets.add(lista.get(i));
+            }
+        }
+
+        return tickets;
     }
 
 
