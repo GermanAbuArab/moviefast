@@ -117,6 +117,20 @@ public class selectorButacasController {
                                     LocalDateTime fechatotalinicio = LocalDateTime.parse(fechatotalInicio);
                                     DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("E, dd/MM/yyyy HH:mm");
                                     for(int t=0 ;t<funciones.size();t++){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                         if (funciones.get(t).getHoraInicio().equals(fechatotalinicio.format(formatter1))){
                                             funcionAux = funciones.get(t);
                                             salaDropDownList.setVisible(true);
@@ -126,6 +140,24 @@ public class selectorButacasController {
                                             salaDropDownList.setOnAction((e) -> {
                                                 gridSeats.getChildren().clear();
                                                 sala = (Sala) salaDropDownList.getValue();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                                                 for (int j =0;j<funciones.size();j++){
                                                     if (sala.getName().equals(funciones.get(finalT).getSala().getName()) && funciones.get(finalT).getHoraInicio().equals(funcionAux.getHoraInicio())){

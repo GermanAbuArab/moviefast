@@ -93,6 +93,7 @@ public class selectorButacasController {
         if (funciones.size() != 0) {
             CineDropDownList.setItems(cines);
         CineDropDownList.setOnAction((event -> {
+            datePicker.setValue(null);
             List<Cine> list = null;
             list = cineService.findAll();
             for (int i = 0; i < list.size(); i++) {
@@ -103,7 +104,7 @@ public class selectorButacasController {
                         horas.clear();
                         for (int o =0 ;o<funciones.size();o++) {
                             String str = funciones.get(o).getHoraInicio();
-                            if ((str.substring(0,str.length()-5).equals(datePicker.getValue().format(formatter)))){
+                            if ((str.substring(0,str.length()-5).equals(datePicker.getValue().format(formatter))) && funciones.get(o).getCineId().equals(this.cine.getId())){
                                 horaDropDownList.setVisible(true);
                                 horas.add(funciones.get(o).getHora());
                                 horaDropDownList.setItems(horas);
@@ -159,11 +160,15 @@ public class selectorButacasController {
 
         ObservableList<String> cines = FXCollections.observableArrayList();
 
-        List<Cine> lista = null;
-        lista = cineService.findAll();
+        List<Cine> lista  = cineService.findAll();
 
-        for (int i = 0; i < lista.size(); i++) { //TODO puede haber error aca con actualizar de tic
-            cines.add(lista.get(i).getName());
+        for (int i = 0; i < getFunciones().size(); i++) {
+            for (int j = 0; j < lista.size(); j++) {
+                if (getFunciones().get(i).getCineId().equals(lista.get(j).getId()))
+                    if (!cines.contains(lista.get(j).getName())) {
+                        cines.add(lista.get(j).getName());
+                    }
+            }
         }
             return cines;
 
