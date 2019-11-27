@@ -20,14 +20,14 @@ public class TicketService {
         HttpEntity<TicketDTO> body = new HttpEntity<>(
                 ticket.toDTO());
         ResponseEntity<String> response =
-                restTemplate.exchange("http://localhost:8080/saveTicket", HttpMethod.POST, body, String.class);
+                restTemplate.exchange("http://localhost:8081/saveTicket", HttpMethod.POST, body, String.class);
         System.out.println("RestTemplate response : " + response.getBody());
     }
 
     public List<Ticket> findAll(){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<TicketDTO>> response = restTemplate.exchange(
-                "http://localhost:8080/ticket/findAll", HttpMethod.GET, null,
+                "http://localhost:8081/ticket/findAll", HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<TicketDTO>>(){});
         List<TicketDTO> salas = response.getBody();
         return salas.stream().map(Ticket::new).collect(Collectors.toList());

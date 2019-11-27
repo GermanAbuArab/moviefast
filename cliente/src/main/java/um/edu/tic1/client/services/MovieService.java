@@ -19,7 +19,7 @@ public class MovieService {
     public void save(Movie movie){
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<MovieDTO> body = new HttpEntity<>(movie.toDTO());
-        ResponseEntity<String> response =  restTemplate.exchange("http://localhost:8080/movie/saveMovie", HttpMethod.POST, body, String.class);
+        ResponseEntity<String> response =  restTemplate.exchange("http://localhost:8081/movie/saveMovie", HttpMethod.POST, body, String.class);
         System.out.println("RestTemplate response : " + response.getBody());
     }
 
@@ -27,7 +27,7 @@ public class MovieService {
     public List<Movie> findAll() {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<MovieDTO>> response = restTemplate.exchange(
-                "http://localhost:8080/movie/findAll", HttpMethod.GET, null,
+                "http://localhost:8081/movie/findAll", HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<MovieDTO>>() {
                 });
         List<MovieDTO> movies = response.getBody();
@@ -37,7 +37,7 @@ public class MovieService {
     public Movie findById(Long id) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<MovieDTO> response = restTemplate.exchange(
-                "http://localhost:8080/movie/findById/" + id, HttpMethod.GET, null,
+                "http://localhost:8081/movie/findById/" + id, HttpMethod.GET, null,
                 new ParameterizedTypeReference<MovieDTO>() {
                 });
         MovieDTO user = response.getBody();
@@ -49,7 +49,7 @@ public class MovieService {
 
         RestTemplate restTemplate =
                 new RestTemplate();
-        ResponseEntity<String> response =  restTemplate.exchange("http://localhost:8080/movie/delete/"+id, HttpMethod.DELETE, null, String.class);
+        ResponseEntity<String> response =  restTemplate.exchange("http://localhost:8081/movie/delete/"+id, HttpMethod.DELETE, null, String.class);
         System.out.println("RestTemplate response : " + response.getBody());
     }
 }

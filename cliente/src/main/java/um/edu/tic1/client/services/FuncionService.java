@@ -19,7 +19,7 @@ public class FuncionService {
     public void save(Funcion funcion) {
         RestTemplate restTemplate= new RestTemplate();
         HttpEntity<FuncionDTO> body = new HttpEntity<>(funcion.toDTO());
-        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8080/funcion/saveFuncion", HttpMethod.POST, body, String.class);
+        ResponseEntity<String> response = restTemplate.exchange("http://localhost:8081/funcion/saveFuncion", HttpMethod.POST, body, String.class);
         System.out.println("RestTemplate response : " + response.getBody());
     }
 
@@ -28,7 +28,7 @@ public class FuncionService {
     public List<Funcion> findAll(){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<FuncionDTO>> response = restTemplate.exchange(
-                "http://localhost:8080/funcion/findAll", HttpMethod.GET, null,
+                "http://localhost:8081/funcion/findAll", HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<FuncionDTO>>(){});
         List<FuncionDTO> funciones = response.getBody();
         return funciones.stream().map(Funcion::new).collect(Collectors.toList());
@@ -38,14 +38,14 @@ public class FuncionService {
         RestTemplate restTemplate =
                 new RestTemplate();
         ResponseEntity<String> response =
-                restTemplate.exchange("http://localhost:8080/funcion/delete"+id, HttpMethod.DELETE, null, String.class);
+                restTemplate.exchange("http://localhost:8081/funcion/delete"+id, HttpMethod.DELETE, null, String.class);
         System.out.println("RestTemplate response : " + response.getBody());
     }
 
     public Funcion findById(Long id){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<FuncionDTO> response = restTemplate.exchange(
-                "http://localhost:8080/funcion/findById"+id, HttpMethod.GET, null, new ParameterizedTypeReference<FuncionDTO>(){});
+                "http://localhost:8081/funcion/findById"+id, HttpMethod.GET, null, new ParameterizedTypeReference<FuncionDTO>(){});
         FuncionDTO func = response.getBody();
 
         return new Funcion(func);
